@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Universul Iordache Georgiana</title>
+  <meta name="description" content="Bine ai venit în Universul Iordache Georgiana — alege unde vrei să începi.">
+
+  <!-- ══════════════════════════════════════════════════════════
+       FONTURI: Playfair Display (titluri) + Montserrat (text)
+       ══════════════════════════════════════════════════════════ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ══════════════════════════════════════════════════════════
+       VARIABILE GLOBALE — paleta de culori a universului
+       ══════════════════════════════════════════════════════════ */
+    :root {
+      --negru-cosmic:  #080808;   /* fundalul profund */
+      --negru-albastru:#0D0D14;   /* nuanța spre care curge gradientul */
+      --auriu:         #D4AF37;   /* semnătura brandului — nucleul */
+      --crem:          #F5F3EE;   /* textul cald */
+      --mov:           #8B5CF6;   /* energie AI */
+      --albastru:      #3B82F6;   /* energie AI */
+      --smarald:       #10B981;   /* accent foarte discret */
+
+      /* Curbe de easing „de lux" — nimic brusc */
+      --ease-lux:  cubic-bezier(0.22, 1, 0.36, 1);      /* ease-out fin */
+      --ease-lent: cubic-bezier(0.65, 0, 0.35, 1);       /* in-out catifelat */
+    }
+
+    /* Reset minimal */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;                 /* portalul ocupă exact un ecran */
+      background: var(--negru-cosmic);
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--crem);
+      /* Gradient subtil: negru profund → negru-albastru, ca o nebuloasă îndepărtată */
+      background:
+        radial-gradient(ellipse 120% 90% at 50% 42%, var(--negru-albastru) 0%, var(--negru-cosmic) 70%);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       STELELE DE FUNDAL — desenate pe canvas (vezi JavaScript),
+       cu pâlpâire organică și parallax subtil la mișcarea mouse-ului
+       ══════════════════════════════════════════════════════════ */
+    #stele {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;             /* stelele nu blochează click-urile */
+      z-index: 0;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       SCENA — containerul întregului univers
+       ══════════════════════════════════════════════════════════ */
+    .scena {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       TITLUL DE ÎNTÂMPINARE — discret, deasupra universului
+       ══════════════════════════════════════════════════════════ */
+    .intampinare {
+      position: absolute;
+      top: clamp(1.5rem, 4vh, 3.5rem);
+      left: 0; right: 0;
+      text-align: center;
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .intampinare h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      font-size: clamp(1.15rem, 2.6vw, 1.9rem);
+      letter-spacing: 0.12em;
+      color: var(--crem);
+    }
+
+    .intampinare p {
+      margin-top: 0.6rem;
+      font-size: clamp(0.7rem, 1.3vw, 0.85rem);
+      font-weight: 300;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: rgba(245, 243, 238, 0.55);
+    }
+
+    /* Literele titlului se dezvăluie una câte una (span-uri create în JS) */
+    .intampinare .litera {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(0.5em);
+      filter: blur(4px);
+      animation: dezvaluie-litera 1.1s var(--ease-lux) forwards;
+      /* întârzierea per literă se setează inline din JS: --i */
+      animation-delay: calc(2.4s + var(--i) * 0.035s);
+    }
+    .intampinare p .litera {
+      animation-delay: calc(3.4s + var(--i) * 0.03s);
+    }
+
+    @keyframes dezvaluie-litera {
+      to { opacity: 1; transform: translateY(0); filter: blur(0); }
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       UNIVERSUL — nucleul + orbitele, centrate pe ecran
+       ══════════════════════════════════════════════════════════ */
+    .univers {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       NUCLEUL CENTRAL — globul auriu pulsatoriu
+       ══════════════════════════════════════════════════════════ */
+    .nucleu {
+      position: absolute;
+      z-index: 4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* Intrarea cinematică: nucleul apare din întuneric */
+      opacity: 0;
+      animation: nastere-nucleu 2.2s var(--ease-lux) 0.3s forwards;
+    }
+
+    @keyframes nastere-nucleu {
+      from { opacity: 0; transform: scale(0.6); filter: brightness(3) blur(12px); }
+      to   { opacity: 1; transform: scale(1);   filter: brightness(1) blur(0); }
+    }
+
+    /* Globul propriu-zis.
+       ┌─────────────────────────────────────────────────────────┐
+       │  AICI SE POATE ÎNLOCUI GLOBUL CU O FOTOGRAFIE:          │
+       │  adaugă în interiorul div-ului .glob o imagine, ex.:    │
+       │    <img src="georgiana.jpg" alt="Georgiana">            │
+       │  Stilul .glob img (definit mai jos) o va decupa rotund  │
+       │  și va păstra aura + pulsația aurie din jur.            │
+       └─────────────────────────────────────────────────────────┘ */
+    .glob {
+      position: relative;
+      width: clamp(90px, 17vmin, 160px);
+      height: clamp(90px, 17vmin, 160px);
+      border-radius: 50%;
+      /* Suprafața globului: auriu cu lumină venită din stânga-sus */
+      background:
+        radial-gradient(circle at 32% 28%,
+          #f7e7b0 0%, #e8cc6e 22%, var(--auriu) 48%, #8a6d1e 78%, #4a3a10 100%);
+      /* Pulsația de glow: crește și scade lin, la nesfârșit */
+      animation: puls-nucleu 5s var(--ease-lent) infinite;
+    }
+
+    /* Dacă se adaugă o poză în glob, e decupată perfect rotund */
+    .glob img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    @keyframes puls-nucleu {
+      0%, 100% {
+        box-shadow:
+          0 0 30px  8px rgba(212, 175, 55, 0.35),
+          0 0 80px 24px rgba(212, 175, 55, 0.18),
+          0 0 160px 48px rgba(212, 175, 55, 0.07);
+      }
+      50% {
+        box-shadow:
+          0 0 45px 14px rgba(212, 175, 55, 0.55),
+          0 0 110px 36px rgba(212, 175, 55, 0.28),
+          0 0 220px 70px rgba(212, 175, 55, 0.12);
+      }
+    }
+
+    /* Textura care se rotește lent pe suprafața globului —
+       dă senzația că sfera se învârte în jurul propriei axe */
+    .glob::before {
+      content: '';
+      position: absolute;
+      inset: -2%;
+      border-radius: 50%;
+      background:
+        radial-gradient(ellipse 40% 65% at 20% 50%, rgba(255,255,255,0.14), transparent 65%),
+        radial-gradient(ellipse 35% 55% at 80% 45%, rgba(0,0,0,0.22), transparent 60%);
+      animation: rotire-glob 24s linear infinite;
+      mix-blend-mode: overlay;
+    }
+
+    @keyframes rotire-glob {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Aura aurie difuză din jurul globului */
+    .aura {
+      position: absolute;
+      inset: -55%;
+      border-radius: 50%;
+      background: radial-gradient(circle,
+        rgba(212, 175, 55, 0.16) 0%,
+        rgba(212, 175, 55, 0.06) 40%,
+        transparent 70%);
+      animation: respira-aura 5s var(--ease-lent) infinite;
+      pointer-events: none;
+    }
+
+    @keyframes respira-aura {
+      0%, 100% { transform: scale(1);    opacity: 0.8; }
+      50%      { transform: scale(1.12); opacity: 1; }
+    }
+
+    /* FARUL COSMIC — o rază fină de lumină care se rotește în jurul nucleului */
+    .far {
+      position: absolute;
+      inset: -70%;
+      border-radius: 50%;
+      /* un sector îngust de lumină, restul transparent */
+      background: conic-gradient(
+        from 0deg,
+        transparent 0deg,
+        rgba(245, 233, 190, 0.20) 8deg,
+        rgba(212, 175, 55, 0.08) 16deg,
+        transparent 26deg,
+        transparent 360deg);
+      filter: blur(6px);
+      animation: rotire-far 14s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes rotire-far {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Numele de sub glob */
+    .nucleu-nume {
+      margin-top: 1.4rem;
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: clamp(1.05rem, 2.4vmin, 1.5rem);
+      letter-spacing: 0.42em;
+      text-indent: 0.42em;             /* compensează spațierea ultimei litere */
+      color: var(--crem);
+      text-shadow: 0 0 24px rgba(212, 175, 55, 0.45);
+    }
+
+    .nucleu-subnume {
+      margin-top: 0.45rem;
+      font-size: clamp(0.6rem, 1.4vmin, 0.75rem);
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      text-indent: 0.3em;
+      text-transform: uppercase;
+      color: rgba(212, 175, 55, 0.85);
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       ORBITELE — șase cercuri concentrice pe care călătoresc planetele
+       Fiecare .orbita primește inline: --diam (diametru), --durata
+       (o rotație completă) și --start (unghiul de pornire)
+       ══════════════════════════════════════════════════════════ */
+    .orbita {
+      position: absolute;
+      /* inset:0 + margin:auto centrează perfect cercul pe nucleu,
+         fără să folosim transform (acela e rezervat rotației) */
+      inset: 0;
+      margin: auto;
+      width:  var(--diam);
+      height: var(--diam);
+      border-radius: 50%;
+      /* linia orbitei — abia vizibilă, ca o urmă de praf stelar */
+      border: 1px solid rgba(245, 243, 238, 0.06);
+      box-shadow: inset 0 0 40px rgba(245, 243, 238, 0.015);
+      /* discul orbitei nu prinde mouse-ul — altfel orbitele mari ar
+         acoperi planetele interioare; doar planetele sunt interactive */
+      pointer-events: none;
+      /* Rotația continuă a orbitei — poartă planeta cu ea */
+      animation: rotire-orbita var(--durata) linear infinite;
+    }
+
+    @keyframes rotire-orbita {
+      from { transform: rotate(var(--start)); }
+      to   { transform: rotate(calc(var(--start) + 360deg)); }
+    }
+
+    /* Când vizitatorul e cu mouse-ul pe o planetă,
+       orbita ei se oprește lin din rotație */
+    .orbita:has(.planeta:hover),
+    .orbita:has(.planeta:focus-visible) {
+      animation-play-state: paused;
+    }
+    .orbita:has(.planeta:hover) .contra-rotire,
+    .orbita:has(.planeta:focus-visible) .contra-rotire {
+      animation-play-state: paused;
+    }
+
+    /* SATELITUL — punctul de pe orbită unde stă planeta (sus, pe cerc) */
+    .satelit {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* URMA DE COMETĂ — o dâră fină de lumină în spatele planetei.
+       Trăiește în sistemul de referință al orbitei, deci rămâne
+       mereu tangentă la cerc, în urma direcției de mișcare. */
+    .coada {
+      position: absolute;
+      top: 50%;
+      right: 50%;
+      width: clamp(40px, 7vmin, 70px);
+      height: 2px;
+      transform: translateY(-50%);
+      background: linear-gradient(to left,
+        var(--culoare) 0%,
+        color-mix(in srgb, var(--culoare) 30%, transparent) 45%,
+        transparent 100%);
+      filter: blur(1px);
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    /* Orbitele care se rotesc invers au coada pe partea cealaltă */
+    .orbita.invers { animation-direction: reverse; }
+    .orbita.invers .contra-rotire { animation-direction: reverse; }
+    .orbita.invers .coada {
+      right: auto;
+      left: 50%;
+      background: linear-gradient(to right,
+        var(--culoare) 0%,
+        color-mix(in srgb, var(--culoare) 30%, transparent) 45%,
+        transparent 100%);
+    }
+
+    /* CONTRA-ROTIREA — anulează rotația orbitei, astfel încât
+       planeta (emoji-ul) și cardul să rămână mereu drepte, citibile */
+    .contra-rotire {
+      animation: contra-rotire var(--durata) linear infinite;
+    }
+
+    @keyframes contra-rotire {
+      from { transform: rotate(calc(-1 * var(--start))); }
+      to   { transform: rotate(calc(-1 * var(--start) - 360deg)); }
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       PLANETELE — cercuri mici, luminoase, fiecare cu culoarea ei
+       ══════════════════════════════════════════════════════════ */
+    .planeta {
+      position: relative;
+      cursor: pointer;
+      outline: none;
+      pointer-events: auto;             /* planeta rămâne interactivă */
+      /* Intrarea cinematică: planetele „se trezesc" una câte una;
+         întârzierea per planetă (--n) e setată în HTML */
+      opacity: 0;
+      animation: trezire-planeta 1.4s var(--ease-lux) forwards;
+      animation-delay: calc(1.9s + var(--n) * 0.35s);
+    }
+
+    @keyframes trezire-planeta {
+      from { opacity: 0; transform: scale(0.3); filter: blur(6px); }
+      to   { opacity: 1; transform: scale(1);   filter: blur(0); }
+    }
+
+    .planeta-corp {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width:  clamp(40px, 6.2vmin, 58px);
+      height: clamp(40px, 6.2vmin, 58px);
+      border-radius: 50%;
+      font-size: clamp(1.05rem, 2.6vmin, 1.5rem);
+      /* Corpul planetei: culoarea proprie, cu un miez mai luminos */
+      background:
+        radial-gradient(circle at 35% 30%,
+          color-mix(in srgb, var(--culoare) 55%, #fff) 0%,
+          color-mix(in srgb, var(--culoare) 60%, #000) 100%);
+      box-shadow:
+        0 0 14px 2px color-mix(in srgb, var(--culoare) 55%, transparent),
+        0 0 34px 8px color-mix(in srgb, var(--culoare) 22%, transparent),
+        inset 0 0 10px rgba(0, 0, 0, 0.35);
+      /* Tranziția de hover: lină, ease-out, ~0.4s */
+      transition:
+        transform  0.4s var(--ease-lux),
+        box-shadow 0.4s var(--ease-lux);
+    }
+
+    /* Academia MIR — cea mai strălucitoare planetă din univers */
+    .planeta.regina .planeta-corp {
+      box-shadow:
+        0 0 18px 4px  color-mix(in srgb, var(--culoare) 75%, transparent),
+        0 0 44px 14px color-mix(in srgb, var(--culoare) 35%, transparent),
+        0 0 90px 28px color-mix(in srgb, var(--culoare) 14%, transparent),
+        inset 0 0 10px rgba(0, 0, 0, 0.25);
+    }
+
+    /* La hover / focus: planeta se mărește ușor și se luminează */
+    .planeta:hover .planeta-corp,
+    .planeta:focus-visible .planeta-corp {
+      transform: scale(1.28);
+      box-shadow:
+        0 0 24px 6px  color-mix(in srgb, var(--culoare) 80%, transparent),
+        0 0 60px 18px color-mix(in srgb, var(--culoare) 40%, transparent),
+        0 0 120px 36px color-mix(in srgb, var(--culoare) 15%, transparent),
+        inset 0 0 10px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Eticheta cu numele planetei — pe desktop e ascunsă
+       (numele apare în card); pe mobil devine vizibilă */
+    .planeta-nume { display: none; }
+
+    /* ══════════════════════════════════════════════════════════
+       CARDUL DE DESCRIERE — apare elegant lângă planetă la hover
+       ══════════════════════════════════════════════════════════ */
+    .card {
+      position: absolute;
+      bottom: calc(100% + 18px);        /* deasupra planetei */
+      left: 50%;
+      width: max-content;
+      max-width: 240px;
+      padding: 0.9rem 1.15rem;
+      border-radius: 12px;
+      text-align: center;
+      /* Sticlă întunecată cu un contur fin în culoarea planetei */
+      background: rgba(10, 10, 16, 0.88);
+      border: 1px solid color-mix(in srgb, var(--culoare) 45%, transparent);
+      box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.6),
+        0 0 24px color-mix(in srgb, var(--culoare) 12%, transparent);
+      backdrop-filter: blur(8px);
+      /* Starea ascunsă: transparent + ușor coborât (pentru fade + slide) */
+      opacity: 0;
+      transform: translate(-50%, 10px);
+      pointer-events: none;
+      transition:
+        opacity   0.45s var(--ease-lux),
+        transform 0.45s var(--ease-lux);
+      z-index: 10;
+    }
+
+    .card h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.06em;
+      color: color-mix(in srgb, var(--culoare) 65%, var(--crem));
+    }
+
+    .card p {
+      margin-top: 0.4rem;
+      font-size: 0.72rem;
+      font-weight: 300;
+      line-height: 1.55;
+      color: rgba(245, 243, 238, 0.75);
+    }
+
+    /* Cardul apare cu fade + slide când planeta e atinsă */
+    .planeta:hover .card,
+    .planeta:focus-visible .card {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       ACCESIBILITATE — respectăm preferința de mișcare redusă
+       ══════════════════════════════════════════════════════════ */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       MOBIL — sub 760px universul se reașază:
+       nucleul rămâne sus, iar planetele coboară într-o
+       constelație ordonată (grilă), ușor de atins cu degetul
+       ══════════════════════════════════════════════════════════ */
+    @media (max-width: 760px) {
+      html, body { overflow-y: auto; }              /* pe mobil se poate derula */
+
+      .scena { justify-content: flex-start; }
+
+      .intampinare { position: static; margin-top: 2rem; padding: 0 1.5rem; }
+
+      .univers {
+        flex-direction: column;
+        height: auto;
+        margin-top: 2.5rem;
+        padding-bottom: 3rem;
+        gap: 3rem;
+      }
+
+      .nucleu { position: static; }
+
+      /* Orbitele nu mai sunt cercuri absolute — devin celule de grilă */
+      .univers { display: grid; grid-template-columns: 1fr; justify-items: center; }
+      .nucleu  { grid-column: 1; margin-bottom: 2.5rem; }
+
+      .orbite-mobile {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.2rem 1.5rem;
+        width: min(100%, 420px);
+        padding: 0 1.5rem;
+      }
+
+      .orbita {
+        position: static;
+        margin: 0;
+        width: auto; height: auto;
+        border: none; box-shadow: none;
+        animation: none;
+        display: flex;
+        justify-content: center;
+      }
+
+      .satelit { position: static; transform: none; }
+      .coada   { display: none; }                    /* fără urme de cometă pe mobil */
+      .contra-rotire { animation: none; }
+
+      .planeta {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.6rem;
+      }
+
+      /* Pe mobil numele planetei e mereu vizibil, sub cerc */
+      .planeta-nume {
+        display: block;
+        font-size: 0.7rem;
+        font-weight: 400;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        text-align: center;
+        color: rgba(245, 243, 238, 0.7);
+      }
+
+      /* Cardul apare sub planetă, nu deasupra (mai natural la atingere) */
+      .card {
+        bottom: auto;
+        top: calc(100% + 12px);
+        max-width: 200px;
+        transform: translate(-50%, -6px);
+      }
+      .planeta:hover .card,
+      .planeta:focus-visible .card {
+        transform: translate(-50%, 0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Stelele de fundal (desenate din JavaScript) -->
+  <canvas id="stele" aria-hidden="true"></canvas>
+
+  <div class="scena">
+
+    <!-- ═══════ TITLUL DE ÎNTÂMPINARE ═══════ -->
+    <header class="intampinare">
+      <h1 data-dezvaluie>Bine ai venit în Universul Iordache Georgiana</h1>
+      <p data-dezvaluie>Alege unde vrei să începi</p>
+    </header>
+
+    <!-- ═══════ UNIVERSUL: nucleu + orbite ═══════ -->
+    <main class="univers">
+
+      <!-- ─── NUCLEUL CENTRAL ─── -->
+      <div class="nucleu">
+        <div class="glob">
+          <!-- ★ AICI POȚI PUNE FOTOGRAFIA GEORGIANEI ★
+               Șterge comentariul și decomentează linia de mai jos:
+               <img src="georgiana.jpg" alt="Iordache Georgiana">
+               Poza va fi decupată rotund automat, iar aura aurie
+               și pulsația luminoasă rămân în jurul ei. -->
+          <div class="aura"></div>
+          <div class="far"></div>
+        </div>
+        <div class="nucleu-nume">GEORGIANA</div>
+        <div class="nucleu-subnume">Universul GEO</div>
+      </div>
+
+      <!-- ─── CELE ȘASE PLANETE ───
+           Fiecare orbită primește:
+             --diam   → diametrul orbitei
+             --durata → cât durează o rotație completă
+             --start  → unghiul de pornire pe cerc
+           Fiecare planetă primește:
+             --culoare → culoarea ei proprie
+             --n       → ordinea de „trezire" la încărcarea paginii -->
+      <div class="orbite-mobile">
+
+        <!-- Planeta 1: Sunt la început (verde smarald) — orbita cea mai apropiată -->
+        <div class="orbita" style="--diam: 38vmin; --durata: 48s; --start: 20deg;">
+          <div class="satelit">
+            <div class="coada" style="--culoare: #10B981;"></div>
+            <div class="contra-rotire" style="--durata: 48s; --start: 20deg;">
+              <div class="planeta" tabindex="0" style="--culoare: #10B981; --n: 0;">
+                <div class="planeta-corp">🌱</div>
+                <div class="planeta-nume">Sunt la început</div>
+                <div class="card">
+                  <h3>Sunt la început</h3>
+                  <p>Primii pași în lumea digitală, ghidați cu claritate și răbdare.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Planeta 2: AI Creativ (mov electric) -->
+        <div class="orbita invers" style="--diam: 49vmin; --durata: 62s; --start: 150deg;">
+          <div class="satelit">
+            <div class="coada" style="--culoare: #8B5CF6;"></div>
+            <div class="contra-rotire" style="--durata: 62s; --start: 150deg;">
+              <div class="planeta" tabindex="0" style="--culoare: #8B5CF6; --n: 1;">
+                <div class="planeta-corp">🤖</div>
+                <div class="planeta-nume">AI Creativ</div>
+                <div class="card">
+                  <h3>AI Creativ</h3>
+                  <p>Inteligența artificială pusă în slujba creativității tale.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Planeta 3: Marketing Digital (auriu) -->
+        <div class="orbita" style="--diam: 60vmin; --durata: 76s; --start: 260deg;">
+          <div class="satelit">
+            <div class="coada" style="--culoare: #D4AF37;"></div>
+            <div class="contra-rotire" style="--durata: 76s; --start: 260deg;">
+              <div class="planeta" tabindex="0" style="--culoare: #D4AF37; --n: 2;">
+                <div class="planeta-corp">🚀</div>
+                <div class="planeta-nume">Marketing Digital</div>
+                <div class="card">
+                  <h3>Marketing Digital</h3>
+                  <p>Strategii moderne care transformă vizibilitatea în rezultate reale.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Planeta 4: Mentorat 1:1 (crem) -->
+        <div class="orbita invers" style="--diam: 70vmin; --durata: 90s; --start: 80deg;">
+          <div class="satelit">
+            <div class="coada" style="--culoare: #F5F3EE;"></div>
+            <div class="contra-rotire" style="--durata: 90s; --start: 80deg;">
+              <div class="planeta" tabindex="0" style="--culoare: #F5F3EE; --n: 3;">
+                <div class="planeta-corp">✨</div>
+                <div class="planeta-nume">Mentorat 1:1</div>
+                <div class="card">
+                  <h3>Mentorat 1:1</h3>
+                  <p>Ghidare personală, direct de la Georgiana, pas cu pas.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Planeta 5: Am deja un business (albastru electric) -->
+        <div class="orbita" style="--diam: 80vmin; --durata: 104s; --start: 330deg;">
+          <div class="satelit">
+            <div class="coada" style="--culoare: #3B82F6;"></div>
+            <div class="contra-rotire" style="--durata: 104s; --start: 330deg;">
+              <div class="planeta" tabindex="0" style="--culoare: #3B82F6; --n: 4;">
+                <div class="planeta-corp">💼</div>
+                <div class="planeta-nume">Am deja un business</div>
+                <div class="card">
+                  <h3>Am deja un business</h3>
+                  <p>Soluții de creștere pentru afaceri care vor următorul nivel.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Planeta 6: Academia MIR (auriu strălucitor — cea mai luminoasă) -->
+        <div class="orbita invers" style="--diam: 90vmin; --durata: 120s; --start: 200deg;">
+          <div class="satelit">
+            <div class="coada" style="--culoare: #E8C558;"></div>
+            <div class="contra-rotire" style="--durata: 120s; --start: 200deg;">
+              <div class="planeta regina" tabindex="0" style="--culoare: #E8C558; --n: 5;">
+                <div class="planeta-corp">👑</div>
+                <div class="planeta-nume">Academia MIR</div>
+                <div class="card">
+                  <h3>Academia MIR</h3>
+                  <p>Inima universului GEO — programul complet de transformare.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /orbite-mobile -->
+    </main>
+  </div>
+
+  <script>
+    /* ══════════════════════════════════════════════════════════
+       1. DEZVĂLUIREA LITERELOR — titlul de întâmpinare
+       Spargem textul în litere individuale (<span class="litera">),
+       fiecare cu propriul index --i, ca să apară pe rând,
+       cu fade + blur care se limpezește (vezi CSS @keyframes).
+       ══════════════════════════════════════════════════════════ */
+    document.querySelectorAll('[data-dezvaluie]').forEach(element => {
+      const text = element.textContent;
+      element.textContent = '';
+      [...text].forEach((caracter, index) => {
+        const span = document.createElement('span');
+        span.className = 'litera';
+        span.style.setProperty('--i', index);
+        // spațiile trebuie păstrate ca spații reale, nu colapsate
+        span.innerHTML = caracter === ' ' ? '&nbsp;' : caracter;
+        element.appendChild(span);
+      });
+    });
+
+    /* ══════════════════════════════════════════════════════════
+       2. STELELE DE FUNDAL — canvas cu pâlpâire organică
+          și parallax subtil la mișcarea mouse-ului.
+       Fiecare stea are o „adâncime": cele apropiate sunt mai mari,
+       mai luminoase și se mișcă mai mult la parallax; cele
+       îndepărtate abia se clintesc — asta creează senzația de spațiu.
+       ══════════════════════════════════════════════════════════ */
+    const canvas  = document.getElementById('stele');
+    const context = canvas.getContext('2d');
+
+    let latime, inaltime;
+    let stele = [];
+
+    // Ținta parallax-ului (unde e mouse-ul) și poziția curentă (lină)
+    let tintaX = 0, tintaY = 0;
+    let curentX = 0, curentY = 0;
+
+    const NUMAR_STELE = 190;
+
+    /* Recreăm câmpul de stele la fiecare redimensionare a ferestrei */
+    function construiesteStele() {
+      latime  = canvas.width  = window.innerWidth;
+      inaltime = canvas.height = window.innerHeight;
+
+      stele = [];
+      for (let i = 0; i < NUMAR_STELE; i++) {
+        const adancime = Math.random();            // 0 = departe, 1 = aproape
+        stele.push({
+          x: Math.random() * latime,
+          y: Math.random() * inaltime,
+          adancime: adancime,
+          raza: 0.4 + adancime * 1.3,              // stelele apropiate sunt mai mari
+          // fiecare stea pâlpâie în ritmul ei propriu (fază + viteză aleatorii)
+          faza:   Math.random() * Math.PI * 2,
+          viteza: 0.3 + Math.random() * 0.7,
+          // câteva stele au o tentă discretă de auriu sau albastru
+          nuanta: Math.random() < 0.08 ? '212, 175, 55'
+                : Math.random() < 0.06 ? '139, 168, 246'
+                : '245, 243, 238'
+        });
+      }
+    }
+
+    /* Preferința vizitatorului pentru mișcare redusă (accesibilitate) */
+    const miscareRedusa = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* Bucla de desenare — rulează la fiecare cadru */
+    function deseneazaStele(timp) {
+      context.clearRect(0, 0, latime, inaltime);
+
+      // Parallax-ul alunecă lin spre țintă (interpolare, fără salturi)
+      curentX += (tintaX - curentX) * 0.03;
+      curentY += (tintaY - curentY) * 0.03;
+
+      for (const stea of stele) {
+        // Pâlpâire organică: sinusoidă lentă, diferită pentru fiecare stea
+        const licarire = 0.35 + 0.65 * (0.5 + 0.5 * Math.sin(timp * 0.001 * stea.viteza + stea.faza));
+        const opacitate = licarire * (0.25 + stea.adancime * 0.55);
+
+        // Deplasarea de parallax: proporțională cu adâncimea stelei
+        const deplasareX = curentX * stea.adancime * 18;
+        const deplasareY = curentY * stea.adancime * 18;
+
+        context.beginPath();
+        context.arc(stea.x + deplasareX, stea.y + deplasareY, stea.raza, 0, Math.PI * 2);
+        context.fillStyle = `rgba(${stea.nuanta}, ${opacitate})`;
+        context.fill();
+      }
+
+      // continuăm animația doar dacă vizitatorul nu a cerut mișcare redusă
+      if (!miscareRedusa) {
+        requestAnimationFrame(deseneazaStele);
+      }
+    }
+
+    /* Mouse-ul mută ținta parallax-ului (normalizat între -1 și 1) */
+    window.addEventListener('mousemove', eveniment => {
+      tintaX = (eveniment.clientX / latime  - 0.5) * 2;
+      tintaY = (eveniment.clientY / inaltime - 0.5) * 2;
+    });
+
+    window.addEventListener('resize', construiesteStele);
+
+    construiesteStele();
+    /* Pornim: un singur cadru dacă e cerută mișcare redusă,
+       altfel bucla continuă de animație */
+    deseneazaStele(0);
+  </script>
+</body>
+</html>
