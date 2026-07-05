@@ -8,6 +8,7 @@
 
   const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const FINE_POINTER = window.matchMedia('(pointer: fine)').matches;
+  const COARSE = window.matchMedia('(pointer: coarse)').matches;
   const lerp = (a, b, t) => a + (b - a) * t;
   const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
 
@@ -18,43 +19,43 @@
       slug: 'abia-incep',
       name: 'Abia încep',
       desc: 'Primul pas în online, fără haos. Fundamentele marketingului digital, așezate pas cu pas — de la zero absolut până la primele rezultate.',
-      ring: 0, phase: 0.65, size: 16,
-      tint: '#8fae9c', tintHi: '#e9f2ec', glow: 'rgba(143,174,156,0.55)'
+      ring: 0, phase: 0.65, size: 32,
+      tint: '#8fae9c', tintHi: '#e9f2ec', glow: 'rgba(143,174,156,0.8)'
     },
     {
       slug: 'marketing-antreprenorial',
       name: 'Marketing Digital Antreprenorial',
       desc: 'Strategie, conținut și vânzare pentru antreprenori. Nu doar postări — un sistem de marketing care lucrează pentru afacerea ta.',
-      ring: 1, phase: 2.3, size: 22,
-      tint: '#16b581', tintHi: '#c9f5e4', glow: 'rgba(22,181,129,0.6)'
+      ring: 1, phase: 2.3, size: 42,
+      tint: '#16b581', tintHi: '#c9f5e4', glow: 'rgba(22,181,129,0.85)'
     },
     {
       slug: 'ai-creativ',
       name: 'AI Creativ & Productivitate',
       desc: 'Instrumentele AI care îți înmulțesc timpul: creezi mai mult, muncești mai puțin și rămâi mereu cu un pas înaintea celorlalți.',
-      ring: 2, phase: 4.1, size: 19,
-      tint: '#2e8b8b', tintHi: '#d7f0f0', glow: 'rgba(70,170,170,0.55)'
+      ring: 2, phase: 4.1, size: 38,
+      tint: '#2e8b8b', tintHi: '#d7f0f0', glow: 'rgba(70,170,170,0.8)'
     },
     {
       slug: 'am-deja-o-afacere',
       name: 'Am deja o afacere',
       desc: 'Pentru cei care au trecut de început: structură, claritate și sisteme de creștere care scalează fără să te consume.',
-      ring: 0, phase: 0.65 + Math.PI, size: 18,
-      tint: '#c9a24b', tintHi: '#f6e8c6', glow: 'rgba(201,162,75,0.6)'
+      ring: 0, phase: 0.65 + Math.PI, size: 36,
+      tint: '#c9a24b', tintHi: '#f6e8c6', glow: 'rgba(201,162,75,0.85)'
     },
     {
       slug: 'sistemul-mir',
       name: 'Sistemul MIR',
       desc: 'Metoda semnătură a universului — cadrul complet care leagă totul, de la idee la rezultat. Inima Academiei, disponibilă și de sine stătător.',
-      ring: 1, phase: 2.3 + Math.PI, size: 24,
-      tint: '#d8c69a', tintHi: '#fdf6e2', glow: 'rgba(216,198,154,0.65)'
+      ring: 1, phase: 2.3 + Math.PI, size: 46,
+      tint: '#d8c69a', tintHi: '#fdf6e2', glow: 'rgba(216,198,154,0.9)'
     },
     {
       slug: 'mentorat',
       name: 'Mentorat 1:1',
       desc: 'Lucrezi direct cu Georgiana. Strategie personalizată, feedback fără menajamente și o transformare pe care o simți în cifre.',
-      ring: 2, phase: 4.1 + Math.PI, size: 15,
-      tint: '#b8a6d9', tintHi: '#efe9f9', glow: 'rgba(184,166,217,0.55)'
+      ring: 2, phase: 4.1 + Math.PI, size: 30,
+      tint: '#b8a6d9', tintHi: '#efe9f9', glow: 'rgba(184,166,217,0.8)'
     }
   ];
 
@@ -271,11 +272,13 @@
     btn.style.setProperty('--tint', w.tint);
     btn.style.setProperty('--tint-hi', w.tintHi);
     btn.style.setProperty('--glow', w.glow);
-    btn.style.setProperty('--glow-soft', w.glow.replace(/[\d.]+\)$/, '0.22)'));
+    btn.style.setProperty('--glow-soft', w.glow.replace(/[\d.]+\)$/, '0.35)'));
+    btn.style.setProperty('--ping-delay', `${2.6 + i * 0.4}s`);
     btn.style.transitionDelay = `${0.9 + i * 0.12}s`;
     btn.innerHTML = `
       <span class="planet__num">0${i + 1}</span>
-      <span class="planet__body"></span>`;
+      <span class="planet__body"></span>
+      <span class="planet__pulse" aria-hidden="true"></span>`;
     system.appendChild(btn);
     return {
       el: btn,
@@ -334,30 +337,36 @@
     if (hovered >= 0) positionCard(planets[hovered]);
   }
 
+  function fillCard(i) {
+    const w = WORLDS[i];
+    cardIndex.textContent = `0${i + 1}`;
+    cardTitle.textContent = w.name;
+    cardDesc.textContent = w.desc;
+  }
+
   function positionCard(p) {
     const cw = card.offsetWidth, ch = card.offsetHeight;
-    let x = p.x + 34;
+    let x = p.x + 40;
     let y = p.y - ch / 2;
-    if (x + cw > window.innerWidth - 20) x = p.x - cw - 34;
+    if (x + cw > window.innerWidth - 20) x = p.x - cw - 40;
     y = clamp(y, 16, window.innerHeight - ch - 16);
     card.style.left = `${x}px`;
     card.style.top = `${y}px`;
   }
 
   planets.forEach((p, i) => {
-    p.el.addEventListener('pointerenter', () => {
+    p.el.addEventListener('pointerenter', (e) => {
+      if (e.pointerType !== 'mouse') return;   // pe touch, cardul apare la tap
       hovered = i;
       p.speedTarget = 0.07;
       p.el.classList.add('is-hot');
-      const w = WORLDS[i];
-      cardIndex.textContent = `0${i + 1}`;
-      cardTitle.textContent = w.name;
-      cardDesc.textContent = w.desc;
+      fillCard(i);
       positionCard(p);
       card.classList.add('is-on');
       card.setAttribute('aria-hidden', 'false');
     });
-    p.el.addEventListener('pointerleave', () => {
+    p.el.addEventListener('pointerleave', (e) => {
+      if (e.pointerType !== 'mouse') return;
       if (hovered === i) hovered = -1;
       p.speedTarget = 1;
       p.el.classList.remove('is-hot');
@@ -365,6 +374,37 @@
       card.setAttribute('aria-hidden', 'true');
     });
   });
+
+  /* --- pe ecrane tactile: prima atingere arată cardul, a doua deschide lumea --- */
+
+  let touchIdx = -1;
+
+  function showTouchCard(i) {
+    if (touchIdx >= 0 && touchIdx !== i) resetTouchPlanet(touchIdx);
+    touchIdx = i;
+    const p = planets[i];
+    p.speedTarget = 0.07;
+    p.el.classList.add('is-hot');
+    fillCard(i);
+    const cw = card.offsetWidth, ch = card.offsetHeight;
+    card.style.left = `${Math.round((window.innerWidth - cw) / 2)}px`;
+    card.style.top = `${window.innerHeight - ch - 20}px`;
+    card.classList.add('is-on', 'is-touch');
+    card.setAttribute('aria-hidden', 'false');
+  }
+
+  function resetTouchPlanet(i) {
+    planets[i].speedTarget = 1;
+    planets[i].el.classList.remove('is-hot');
+  }
+
+  function hideTouchCard() {
+    if (touchIdx < 0) return;
+    resetTouchPlanet(touchIdx);
+    touchIdx = -1;
+    card.classList.remove('is-on', 'is-touch');
+    card.setAttribute('aria-hidden', 'true');
+  }
 
   /* ─────────────── LUMILE (paginile dedicate — placeholder) ─────────────── */
 
@@ -388,6 +428,7 @@
     lenis.stop();
     document.body.classList.add('no-scroll');
     history.replaceState(null, '', `#${data.slug}`);
+    hideTouchCard();
     card.classList.remove('is-on');
   }
 
@@ -405,8 +446,26 @@
     const trigger = e.target.closest('[data-world]');
     if (trigger) {
       e.preventDefault();
+      const isTouchTap = e.pointerType ? e.pointerType !== 'mouse' : COARSE;
+      if (isTouchTap && trigger.classList.contains('planet')) {
+        const i = +trigger.dataset.index;
+        if (touchIdx !== i) { showTouchCard(i); return; }   // prima atingere: cardul
+        hideTouchCard();                                     // a doua: intră în lume
+      }
       const rect = trigger.getBoundingClientRect();
       openWorld(trigger.dataset.world, rect.left + rect.width / 2, rect.top + rect.height / 2);
+      return;
+    }
+    // atingerea cardului deschide lumea; atingerea în afara lui îl închide
+    if (touchIdx >= 0) {
+      if (e.target.closest('.offer-card')) {
+        const i = touchIdx;
+        hideTouchCard();
+        const r = planets[i].el.getBoundingClientRect();
+        openWorld(WORLDS[i].slug, r.left + r.width / 2, r.top + r.height / 2);
+      } else {
+        hideTouchCard();
+      }
     }
   });
   document.getElementById('world-close').addEventListener('click', closeWorld);
