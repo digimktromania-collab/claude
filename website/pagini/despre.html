@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Despre Georgiana — Universul GEO</title>
+  <meta name="description" content="Povestea din spatele universului GEO — de ce există și altă cale.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/stil.css">
+</head>
+<body style="--culoare: #D4AF37;">
+  <div class="fundal-gradient"></div>
+  <canvas id="cosmos" aria-hidden="true"></canvas>
+
+  <header class="bara">
+    <a href="../index.html" class="marca">Universul <b>GEO</b></a>
+    <button class="meniu-buton" aria-label="Deschide meniul"><span></span><span></span><span></span></button>
+  </header>
+
+  <nav class="meniu" aria-label="Meniu principal">
+    <button class="meniu-inchide" aria-label="Închide meniul"></button>
+    <a href="../index.html">Acasă</a>
+    <a href="incepe-aici.html">Începe aici</a>
+    <a href="academia-mir.html">Academia MIR</a>
+    <a href="incepe-aici.html">Planetele</a>
+    <a href="despre.html" class="activ">Despre Georgiana</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+    <p class="meniu-nota">Există și o altă cale.</p>
+  </nav>
+
+  <section class="pagina-hero">
+    <div class="container">
+      <div class="nucleu" style="position:static;display:inline-flex;margin-bottom:2rem;">
+        <div class="nucleu-aura"></div>
+        <div class="nucleu-orb">
+          <img src="../../assets/nucleu.png" alt="Iordache Georgiana">
+        </div>
+      </div>
+      <p class="eyebrow reveal">Despre Georgiana</p>
+      <h1 class="reveal">Omul din centrul universului GEO.</h1>
+      <p class="lead text-moale reveal">Nu un brand rece, ci un om care a ales altă cale
+      — și acum arată drumul și altora.</p>
+    </div>
+  </section>
+
+  <section class="sectiune">
+    <div class="container" style="max-width:760px;">
+      <p class="eyebrow reveal">Povestea</p>
+      <h2 class="reveal">A existat mereu o altă cale. Doar că nu o vedea nimeni.</h2>
+      <p class="lead text-moale reveal">Ca mulți dintre noi, Georgiana a pornit dintr-un
+      loc în care „așa se face” părea singura variantă. Tranziția n-a venit dintr-un
+      moment magic, ci dintr-o serie de alegeri: să învețe, să construiască, să nu se
+      oprească atunci când era mai ușor să renunțe.</p>
+      <p class="lead text-moale reveal" style="margin-top:1.2rem;">Din drumul acela s-a
+      născut Universul GEO — un loc unde educația, comunitatea și strategia stau la un
+      loc, ca nimeni să nu mai fie nevoit să pornească singur, pe întuneric.</p>
+    </div>
+  </section>
+
+  <section class="sectiune">
+    <div class="container doua-coloane">
+      <div class="panou reveal">
+        <p class="eyebrow">De ce există Universul GEO</p>
+        <ul class="lista-aurie">
+        <li>Ca „altă cale” să nu mai fie doar o vorbă, ci un drum.</li>
+        <li>Ca oamenii să înceapă cu claritate, nu cu confuzie.</li>
+        <li>Ca succesul să însemne libertate, nu dependență.</li>
+      </ul>
+      </div>
+      <div class="panou reveal">
+        <p class="eyebrow">Autoritate &amp; comunitate</p>
+        <div class="dovada" style="text-align:left;">
+          <div class="cifra">700+</div>
+          <div class="cifra-eticheta">membri în comunitatea MIR</div>
+        </div>
+        <p class="text-moale" style="margin-top:1rem;">Un ecosistem viu de oameni care
+        construiesc altfel — cu răbdare și împreună.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sectiune final">
+    <div class="container">
+      <h2 class="reveal semnatura">Nu construim doar afaceri digitale.<br>Construim oameni.</h2>
+      <div class="reveal" style="margin-top:2rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="incepe-aici.html" class="buton buton-auriu">Începe aici</a>
+        <a href="academia-mir.html" class="buton buton-linie">Descoperă Academia MIR</a>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      <a href="../index.html" class="marca">Universul <b>GEO</b></a>
+      <nav class="footer-linkuri">
+        <a href="../index.html">Acasă</a>
+        <a href="incepe-aici.html">Începe aici</a>
+        <a href="academia-mir.html">Academia MIR</a>
+        <a href="despre.html">Despre Georgiana</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <small>© <span id="an"></span> Universul Iordache Georgiana. Există și o altă cale.</small>
+    </div>
+  </footer>
+
+  <script src="../js/vendor/three.min.js"></script>
+  <script src="../js/vendor/gsap.min.js"></script>
+  <script src="../js/vendor/ScrollTrigger.min.js"></script>
+  <script src="../js/vendor/lenis.min.js"></script>
+  <script>document.getElementById('an').textContent = new Date().getFullYear();</script>
+  <script src="../js/univers.js"></script>
+</body>
+</html>

@@ -550,6 +550,29 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 500; line-heig
 }
 
 /* ═══════ 6. SECȚIUNI DE SCROLL ═══════ */
+
+/* Hero-ul paginilor interioare (lumile planetelor) */
+.pagina-hero {
+  position: relative;
+  padding: clamp(8rem, 18vh, 12rem) 0 clamp(2.5rem, 7vh, 5rem);
+  text-align: center;
+  overflow: hidden;
+}
+.pagina-hero .planeta-mare {
+  width: clamp(150px, 30vmin, 300px);
+  margin: 0 auto 2rem;
+  filter: drop-shadow(0 0 40px color-mix(in srgb, var(--culoare, var(--auriu)) 45%, transparent));
+  animation: plutire-nucleu 10s var(--ease-lent) infinite;
+}
+.pagina-hero::before {
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: radial-gradient(ellipse 60% 55% at 50% 30%,
+    color-mix(in srgb, var(--culoare, var(--auriu)) 9%, transparent), transparent 70%);
+}
+.pagina-hero h1 { font-size: clamp(2.2rem, 6vw, 4rem); }
+.pagina-hero .lead { margin: 1.4rem auto 0; max-width: 46ch; }
+.pagina-hero .eyebrow { color: color-mix(in srgb, var(--culoare, var(--auriu)) 70%, var(--crem)); }
+
 .sectiune { position: relative; padding: clamp(5rem, 12vh, 9rem) 0; }
 .sectiune-centrata { text-align: center; }
 
@@ -641,6 +664,23 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 500; line-heig
 }
 .banda-planeta img { width: clamp(140px, 26vw, 260px); }
 .banda-planeta.dreapta { flex-direction: row-reverse; }
+
+/* Card „lume" — o planetă mică + descriere + link (pagina Începe aici) */
+.lume { text-align: center; }
+.lume img {
+  width: clamp(72px, 12vw, 104px);
+  margin: 0 auto 1.1rem;
+  filter: drop-shadow(0 0 18px color-mix(in srgb, var(--culoare) 45%, transparent));
+  transition: transform 0.5s var(--ease-lux);
+}
+.lume:hover img { transform: scale(1.08) translateY(-4px); }
+.lume h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+.lume p { font-size: 0.88rem; }
+.lume .card-cta {
+  display: inline-block; margin-top: 1rem;
+  font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--auriu-clar);
+}
 
 /* Liste cu bulină aurie */
 .lista-aurie { list-style: none; margin-top: 1.4rem; }

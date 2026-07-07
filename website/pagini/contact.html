@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Universul GEO</title>
+  <meta name="description" content="Scrie-ne — îți răspundem cu un pas concret.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/stil.css">
+</head>
+<body style="--culoare: #D4AF37;">
+  <div class="fundal-gradient"></div>
+  <canvas id="cosmos" aria-hidden="true"></canvas>
+
+  <header class="bara">
+    <a href="../index.html" class="marca">Universul <b>GEO</b></a>
+    <button class="meniu-buton" aria-label="Deschide meniul"><span></span><span></span><span></span></button>
+  </header>
+
+  <nav class="meniu" aria-label="Meniu principal">
+    <button class="meniu-inchide" aria-label="Închide meniul"></button>
+    <a href="../index.html">Acasă</a>
+    <a href="incepe-aici.html">Începe aici</a>
+    <a href="academia-mir.html">Academia MIR</a>
+    <a href="incepe-aici.html">Planetele</a>
+    <a href="despre.html">Despre Georgiana</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html" class="activ">Contact</a>
+    <p class="meniu-nota">Există și o altă cale.</p>
+  </nav>
+
+  <section class="pagina-hero">
+    <div class="container">
+      
+      <p class="eyebrow reveal">Contact</p>
+      <h1 class="reveal">Hai să vorbim.</h1>
+      <p class="lead text-moale reveal">Fie că știi exact ce vrei, fie că simți doar că trebuie să fie și altfel, scrie-ne. Îți răspundem cu un pas concret.</p>
+    </div>
+  </section>
+  <section class="sectiune">
+    <div class="container doua-coloane">
+      <div class="reveal">
+        <p class="eyebrow">Scrie-ne direct</p>
+        <h2>Un mesaj scurt e de ajuns pentru început.</h2>
+        <p class="lead text-moale">Spune-ne unde te afli acum și ce ți-ai dori. Nu trebuie
+        să ai totul clar — de asta suntem aici.</p>
+        <p style="margin-top:1.6rem;">
+          <a href="mailto:contact@universulgeo.ro" class="semnatura" style="font-size:1.2rem;">contact@universulgeo.ro</a>
+        </p>
+        <nav class="footer-linkuri" style="justify-content:flex-start;margin-top:1.4rem;">
+          <a href="#">Instagram</a><a href="#">Facebook</a><a href="#">YouTube</a><a href="#">TikTok</a>
+        </nav>
+      </div>
+      <form class="panou formular reveal" onsubmit="return false;">
+        <input type="text" placeholder="Numele tău" required>
+        <input type="email" placeholder="Email" required>
+        <input type="text" placeholder="Subiect (opțional)">
+        <textarea placeholder="Mesajul tău"></textarea>
+        <button type="submit" class="buton buton-auriu" style="justify-content:center;">Trimite mesajul</button>
+      </form>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      <a href="../index.html" class="marca">Universul <b>GEO</b></a>
+      <nav class="footer-linkuri">
+        <a href="../index.html">Acasă</a>
+        <a href="incepe-aici.html">Începe aici</a>
+        <a href="academia-mir.html">Academia MIR</a>
+        <a href="despre.html">Despre Georgiana</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <small>© <span id="an"></span> Universul Iordache Georgiana. Există și o altă cale.</small>
+    </div>
+  </footer>
+
+  <script src="../js/vendor/three.min.js"></script>
+  <script src="../js/vendor/gsap.min.js"></script>
+  <script src="../js/vendor/ScrollTrigger.min.js"></script>
+  <script src="../js/vendor/lenis.min.js"></script>
+  <script>document.getElementById('an').textContent = new Date().getFullYear();</script>
+  <script src="../js/univers.js"></script>
+</body>
+</html>
