@@ -13,13 +13,22 @@ cosmic, cald, sofisticat.* Profunzimea bate zgomotul.
 ## Structura proiectului
 
 ```
-├── assets/            Imaginile universului (nucleu + planete) — vezi mai jos
-├── copy/              Documentele de strategie și conținut
-│   ├── directie-creativa.md   ADN-ul brandului (ton, culori, principii)
-│   └── brief-site.md          Arhitectura site-ului, pagină cu pagină
-├── website/           Site-ul propriu-zis (se construiește din Faza 2)
-├── index.html         Prototip actual al portalului (emoji + gradienți CSS)
-└── README.md          Acest fișier
+├── assets/
+│   ├── nucleu.png              Portretul Georgianei (de adăugat — vezi mai jos)
+│   └── planete/                Cele 6 planete (PNG cu fundal transparent)
+├── copy/
+│   ├── directie-creativa.md    ADN-ul brandului (ton, culori, principii)
+│   └── brief-site.md           Arhitectura site-ului, pagină cu pagină
+├── website/                    ★ SITE-UL ★
+│   ├── index.html              Homepage — portalul (nucleu + planete orbitând)
+│   ├── css/stil.css            Sistemul de design complet
+│   ├── js/
+│   │   ├── univers.js          Motorul partajat (Three.js, Lenis, GSAP, meniu)
+│   │   └── vendor/             Librăriile găzduite local (three, gsap, lenis)
+│   └── pagini/                 Cele 9 pagini-lumi
+├── scripts/genereaza-pagini.py Generatorul paginilor interioare
+├── index.html                  Prototip vechi (NU se folosește)
+└── README.md                   Acest fișier
 ```
 
 ---
@@ -59,13 +68,11 @@ python3 -m http.server 8000
 npx serve .
 ```
 
-Apoi deschide în browser:
+Apoi deschide în browser: <http://localhost:8000/website/index.html>
 
-- Prototip actual: <http://localhost:8000/index.html>
-- Homepage (din Faza 2): <http://localhost:8000/website/index.html>
-
-> Librăriile GSAP, ScrollTrigger, Lenis și Three.js se încarcă din CDN, deci e
-> nevoie de conexiune la internet la prima rulare.
+> Librăriile Three.js, GSAP, ScrollTrigger și Lenis sunt **găzduite local** în
+> `website/js/vendor/` — site-ul funcționează și fără CDN, offline. Singura
+> resursă externă rămasă sunt fonturile Google (cu fallback elegant serif/sans).
 
 ---
 
@@ -78,10 +85,13 @@ Google Fonts (Playfair Display + Montserrat).
 
 ## Stadiul lucrului
 
-- [x] **Faza 1** — workspace + documente de plan (`copy/`, `README.md`).
-- [ ] **Faza 2** — homepage: nucleu + planete orbitând, carduri, fundal Three.js.
-- [ ] **Faza 3** — scroll cinematic (GSAP + ScrollTrigger + Lenis).
-- [ ] **Faza 4** — paginile-lumi.
-- [ ] **Faza 5** — meniu fullscreen, mobil, verificare, raport final.
+- [x] **Faza 1** — workspace + documente de plan.
+- [x] **Faza 2** — homepage: nucleu + 6 planete orbitând, carduri, fundal Three.js.
+- [x] **Faza 3** — scroll cinematic (GSAP + ScrollTrigger + Lenis), secțiuni homepage.
+- [x] **Faza 4** — cele 9 pagini-lumi.
+- [x] **Faza 5** — meniu fullscreen, mobil, verificare.
+
+**Rămâne de adăugat:** `assets/nucleu.png` (portretul Georgianei). Până atunci,
+nucleul afișează un orb auriu de rezervă, generat prin cod.
 
 Vezi `copy/directie-creativa.md` și `copy/brief-site.md` pentru detalii.
