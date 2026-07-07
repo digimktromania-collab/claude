@@ -1,0 +1,777 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   UNIVERSUL IORDACHE GEORGIANA — foaia de stil partajată
+   „Profunzimea bate zgomotul."
+
+   Cuprins:
+     0. Variabile & reset
+     1. Fundal cosmic (canvas Three.js + gradient)
+     2. Tipografie & utilitare
+     3. Butoane (CTA)
+     4. Bara de sus + meniul fullscreen
+     5. Hero portal: nucleu + orbite + planete + carduri
+     6. Secțiuni de scroll (homepage & pagini)
+     7. Footer
+     8. Accesibilitate (reduced motion)
+     9. Mobil (< 768px)
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ═══════ 0. VARIABILE & RESET ═══════ */
+:root {
+  --negru-cosmic:  #080808;   /* fundalul profund */
+  --negru-albastru:#0D0D14;   /* nuanța spre care curge gradientul */
+  --auriu:         #D4AF37;   /* semnătura brandului — nucleul */
+  --auriu-clar:    #F0DFA0;   /* aurul luminat, pentru accente */
+  --crem:          #F5F3EE;   /* textul cald */
+  --mov:           #8B5CF6;   /* energie AI (subtil) */
+  --albastru:      #3B82F6;   /* energie AI (subtil) */
+  --smarald:       #10B981;   /* accent foarte discret */
+
+  /* Curbe de easing „de lux" — nimic brusc */
+  --ease-lux:  cubic-bezier(0.22, 1, 0.36, 1);   /* ease-out fin */
+  --ease-lent: cubic-bezier(0.65, 0, 0.35, 1);    /* in-out catifelat */
+
+  --latime-max: 1180px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: auto; }  /* derularea o gestionează Lenis */
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--crem);
+  background: var(--negru-cosmic);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  line-height: 1.65;
+}
+
+/* Lenis: transformă derularea nativă în cea catifelată */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+/* ═══════ 1. FUNDAL COSMIC ═══════ */
+/* Gradientul de bază — o nebuloasă îndepărtată, mereu în spate */
+.fundal-gradient {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(ellipse 130% 100% at 50% 0%, var(--negru-albastru) 0%, var(--negru-cosmic) 60%),
+    radial-gradient(ellipse 80% 60% at 50% 50%, rgba(212,175,55,0.05), transparent 70%);
+}
+
+/* Canvasul Three.js cu stele + particule aurii */
+#cosmos {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ═══════ 2. TIPOGRAFIE & UTILITARE ═══════ */
+h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 500; line-height: 1.18; }
+
+.eyebrow {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--auriu);
+}
+
+.text-moale { color: rgba(245, 243, 238, 0.66); font-weight: 300; }
+
+/* Text afișat doar pe desktop / doar pe mobil (ex. indiciul de interacțiune) */
+.doar-mobil { display: none; }
+.doar-desktop { display: inline; }
+
+.container {
+  width: min(92%, var(--latime-max));
+  margin-inline: auto;
+}
+
+.semnatura {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  color: var(--auriu-clar);
+}
+
+/* Elemente care se dezvăluie la scroll (JS adaugă .vizibil) */
+.reveal {
+  opacity: 0;
+  transform: translateY(34px);
+  transition: opacity 1s var(--ease-lux), transform 1s var(--ease-lux);
+  will-change: opacity, transform;
+}
+.reveal.vizibil { opacity: 1; transform: translateY(0); }
+
+/* ═══════ 3. BUTOANE (CTA) ═══════ */
+.buton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.95em 2.1em;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.86rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 100px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform 0.4s var(--ease-lux), box-shadow 0.4s var(--ease-lux),
+              background 0.4s var(--ease-lux), color 0.4s var(--ease-lux);
+}
+.buton:hover { transform: translateY(-3px); }
+
+/* CTA principal — auriu plin */
+.buton-auriu {
+  background: linear-gradient(135deg, var(--auriu-clar), var(--auriu));
+  color: #1a1405;
+  box-shadow: 0 10px 40px rgba(212, 175, 55, 0.28);
+}
+.buton-auriu:hover { box-shadow: 0 16px 54px rgba(212, 175, 55, 0.42); }
+
+/* CTA secundar — contur fin */
+.buton-linie {
+  background: transparent;
+  color: var(--crem);
+  border-color: rgba(245, 243, 238, 0.28);
+}
+.buton-linie:hover {
+  border-color: var(--auriu);
+  color: var(--auriu-clar);
+  box-shadow: 0 10px 40px rgba(212, 175, 55, 0.12);
+}
+
+/* ═══════ 4. BARA DE SUS + MENIUL FULLSCREEN ═══════ */
+.bara {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.4rem clamp(1.2rem, 4vw, 3rem);
+  transition: background 0.5s var(--ease-lux), padding 0.5s var(--ease-lux);
+}
+/* Fundal subtil când pagina e derulată (adăugat din JS: .bara.compact) */
+.bara.compact {
+  background: rgba(8, 8, 8, 0.72);
+  backdrop-filter: blur(14px);
+  padding-block: 0.9rem;
+  border-bottom: 1px solid rgba(245, 243, 238, 0.06);
+}
+
+.marca {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.22em;
+  color: var(--crem);
+}
+.marca b { color: var(--auriu); font-weight: 600; }
+
+/* Butonul-hamburger care deschide meniul */
+.meniu-buton {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 60;
+}
+.meniu-buton span {
+  height: 1.5px;
+  width: 100%;
+  background: var(--crem);
+  transition: transform 0.4s var(--ease-lux), opacity 0.3s var(--ease-lux);
+}
+.meniu-buton:hover span { background: var(--auriu-clar); }
+
+/* Overlay-ul de meniu fullscreen (animat din GSAP) */
+.meniu {
+  position: fixed;
+  inset: 0;
+  z-index: 55;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  background: rgba(6, 6, 10, 0.96);
+  backdrop-filter: blur(20px);
+  /* Ascuns implicit: GSAP îl comută */
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+.meniu.deschis { pointer-events: auto; }
+
+.meniu a {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 5vw, 3rem);
+  letter-spacing: 0.04em;
+  color: rgba(245, 243, 238, 0.8);
+  padding: 0.28em 0;
+  position: relative;
+  transition: color 0.4s var(--ease-lux), letter-spacing 0.4s var(--ease-lux);
+}
+.meniu a:hover { color: var(--auriu-clar); letter-spacing: 0.12em; }
+.meniu a.activ { color: var(--auriu); }
+
+/* Butonul X de închidere */
+.meniu-inchide {
+  position: absolute;
+  top: 1.5rem; right: clamp(1.2rem, 4vw, 3rem);
+  width: 40px; height: 40px;
+  background: none; border: none; cursor: pointer;
+}
+.meniu-inchide::before, .meniu-inchide::after {
+  content: ''; position: absolute; top: 50%; left: 50%;
+  width: 26px; height: 1.5px; background: var(--crem);
+  transition: background 0.3s var(--ease-lux);
+}
+.meniu-inchide::before { transform: translate(-50%, -50%) rotate(45deg); }
+.meniu-inchide::after  { transform: translate(-50%, -50%) rotate(-45deg); }
+.meniu-inchide:hover::before, .meniu-inchide:hover::after { background: var(--auriu-clar); }
+
+.meniu-nota {
+  margin-top: 2.2rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(212, 175, 55, 0.6);
+}
+
+/* ═══════ 5. HERO PORTAL: NUCLEU + ORBITE + PLANETE ═══════ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Sistemul solar — containerul central al orbitelor */
+.sistem {
+  position: relative;
+  width: min(94vmin, 860px);
+  height: min(94vmin, 860px);
+  display: grid;
+  place-items: center;
+}
+
+/* --- NUCLEUL --- */
+.nucleu {
+  position: absolute;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* plutire foarte lentă — nucleul „viu" */
+  animation: plutire-nucleu 9s var(--ease-lent) infinite;
+}
+@keyframes plutire-nucleu {
+  0%, 100% { transform: translateY(-1.2%); }
+  50%      { transform: translateY(1.2%); }
+}
+
+.nucleu-orb {
+  position: relative;
+  width: clamp(120px, 21vmin, 210px);
+  height: clamp(120px, 21vmin, 210px);
+  border-radius: 50%;
+  overflow: hidden;
+  /* aură aurie care pulsează (crește/scade) */
+  animation: puls-nucleu 6s var(--ease-lent) infinite;
+  box-shadow:
+    0 0 34px 8px rgba(212, 175, 55, 0.35),
+    0 0 90px 26px rgba(212, 175, 55, 0.16);
+}
+.nucleu-orb img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Fallback auriu dacă nucleu.png lipsește (clasa .fallback pusă din JS) */
+.nucleu-orb.fallback {
+  background:
+    radial-gradient(circle at 33% 28%,
+      #f7e7b0 0%, #e8cc6e 24%, var(--auriu) 50%, #8a6d1e 80%, #4a3a10 100%);
+}
+.nucleu-orb.fallback::after {
+  content: 'GEO';
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem; letter-spacing: 0.15em;
+  color: rgba(26, 20, 5, 0.55);
+}
+
+@keyframes puls-nucleu {
+  0%, 100% {
+    box-shadow:
+      0 0 34px 8px rgba(212, 175, 55, 0.35),
+      0 0 90px 26px rgba(212, 175, 55, 0.16),
+      0 0 170px 50px rgba(212, 175, 55, 0.06);
+  }
+  50% {
+    box-shadow:
+      0 0 50px 14px rgba(212, 175, 55, 0.55),
+      0 0 120px 38px rgba(212, 175, 55, 0.26),
+      0 0 220px 70px rgba(212, 175, 55, 0.1);
+  }
+}
+
+/* aură difuză suplimentară în jurul nucleului */
+.nucleu-aura {
+  position: absolute;
+  inset: -60%;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(212,175,55,0.16) 0%, rgba(212,175,55,0.05) 42%, transparent 70%);
+  animation: respira-aura 6s var(--ease-lent) infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+@keyframes respira-aura {
+  0%, 100% { transform: scale(1);    opacity: 0.8; }
+  50%      { transform: scale(1.14); opacity: 1; }
+}
+
+.nucleu-nume {
+  margin-top: 1.3rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: clamp(1.1rem, 2.6vmin, 1.6rem);
+  letter-spacing: 0.42em;
+  text-indent: 0.42em;
+  text-shadow: 0 0 26px rgba(212, 175, 55, 0.45);
+}
+.nucleu-sub {
+  margin-top: 0.4rem;
+  font-size: clamp(0.6rem, 1.4vmin, 0.76rem);
+  letter-spacing: 0.32em;
+  text-indent: 0.32em;
+  text-transform: uppercase;
+  color: rgba(212, 175, 55, 0.85);
+}
+
+/* Containerul orbitelor umple sistemul → orbitele (%) au o referință reală */
+.orbite {
+  position: absolute;
+  inset: 0;
+}
+
+/* --- ORBITELE --- */
+.orbita {
+  position: absolute;
+  /* inset:0 + margin:auto centrează cercul perfect pe nucleu, fără transform
+     (transform e rezervat rotației orbitei) */
+  inset: 0;
+  margin: auto;
+  width: var(--diam);
+  height: var(--diam);
+  border-radius: 50%;
+  border: 1px solid rgba(245, 243, 238, 0.055);
+  pointer-events: none;                 /* doar planetele sunt interactive */
+  animation: rotire-orbita var(--durata) linear infinite;
+}
+@keyframes rotire-orbita {
+  from { transform: rotate(var(--start)); }
+  to   { transform: rotate(calc(var(--start) + 360deg)); }
+}
+.orbita.invers { animation-direction: reverse; }
+
+/* Oprire lină a orbitei când planeta ei e atinsă/focalizată */
+.orbita:has(.planeta:hover),
+.orbita:has(.planeta:focus-visible),
+.orbita:has(.planeta.activ) { animation-play-state: paused; }
+.orbita:has(.planeta:hover) .contra,
+.orbita:has(.planeta:focus-visible) .contra,
+.orbita:has(.planeta.activ) .contra { animation-play-state: paused; }
+
+/* Punctul de pe cerc unde stă planeta (sus) */
+.satelit {
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translate(-50%, -50%);
+}
+/* Contra-rotirea ține planeta și cardul mereu drepte */
+.contra { animation: contra var(--durata) linear infinite; }
+.orbita.invers .contra { animation-direction: reverse; }
+@keyframes contra {
+  from { transform: rotate(calc(-1 * var(--start))); }
+  to   { transform: rotate(calc(-1 * var(--start) - 360deg)); }
+}
+
+/* --- PLANETELE --- */
+.planeta {
+  position: relative;
+  display: block;
+  width: var(--marime);
+  cursor: pointer;
+  pointer-events: auto;
+  outline: none;
+  /* intrarea: planetele se „trezesc" pe rând (--n din HTML) */
+  opacity: 0;
+  animation: trezire 1.3s var(--ease-lux) forwards;
+  animation-delay: calc(1.4s + var(--n) * 0.3s);
+}
+@keyframes trezire {
+  from { opacity: 0; filter: blur(6px); }
+  to   { opacity: 1; filter: blur(0); }
+}
+
+.planeta img {
+  width: 100%;
+  /* PNG-urile au fundal transparent (alfa gravat) → plutesc natural în cosmos */
+  transition: transform 0.45s var(--ease-lux), filter 0.45s var(--ease-lux);
+  filter: drop-shadow(0 0 14px color-mix(in srgb, var(--culoare) 35%, transparent));
+}
+.planeta:hover img,
+.planeta:focus-visible img,
+.planeta.activ img {
+  transform: scale(1.16);
+  filter: drop-shadow(0 0 26px color-mix(in srgb, var(--culoare) 60%, transparent));
+}
+
+/* Academia MIR — planeta cea mai luminoasă din univers */
+.planeta.regina img {
+  filter: drop-shadow(0 0 22px color-mix(in srgb, var(--culoare) 55%, transparent));
+}
+.planeta.regina:hover img,
+.planeta.regina:focus-visible img,
+.planeta.regina.activ img {
+  filter: drop-shadow(0 0 40px color-mix(in srgb, var(--culoare) 80%, transparent));
+}
+
+/* pulsul de semnalizare la încărcare (câteva bătăi) — pus/scos din JS */
+.planeta.semnal img { animation: semnal-puls 1.1s var(--ease-lent) 3; }
+@keyframes semnal-puls {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.1); }
+}
+
+/* eticheta numelui — ascunsă pe desktop (apare în card), vizibilă pe mobil */
+.planeta-nume { display: none; }
+
+/* --- CARDUL GLASSMORPHISM --- */
+.card {
+  position: absolute;
+  bottom: calc(100% + 14px);
+  left: 50%;
+  width: max-content;
+  max-width: 236px;
+  padding: 0.95rem 1.15rem;
+  border-radius: 14px;
+  text-align: center;
+  background: rgba(10, 10, 16, 0.82);
+  border: 1px solid color-mix(in srgb, var(--culoare) 45%, transparent);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6),
+              0 0 26px color-mix(in srgb, var(--culoare) 14%, transparent);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  transform: translate(-50%, 10px);
+  pointer-events: none;
+  transition: opacity 0.4s var(--ease-lux), transform 0.4s var(--ease-lux);
+  z-index: 30;
+}
+.card h3 {
+  font-size: 0.98rem; font-weight: 500; letter-spacing: 0.04em;
+  color: color-mix(in srgb, var(--culoare) 55%, var(--crem));
+}
+.card p {
+  margin-top: 0.4rem; font-size: 0.74rem; font-weight: 300;
+  line-height: 1.55; color: rgba(245, 243, 238, 0.78);
+}
+.card .card-cta {
+  display: inline-block; margin-top: 0.7rem;
+  font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--auriu-clar);
+}
+.planeta:hover .card,
+.planeta:focus-visible .card,
+.planeta.activ .card { opacity: 1; transform: translate(-50%, 0); }
+
+/* Titlul & indiciul de deasupra portalului */
+.hero-titlu {
+  position: absolute;
+  top: clamp(5rem, 12vh, 8rem);
+  left: 0; right: 0;
+  z-index: 15;
+  pointer-events: none;
+  padding-inline: 1.5rem;
+}
+.hero-titlu h1 {
+  font-size: clamp(1.4rem, 3.4vw, 2.4rem);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+.hero-indiciu {
+  position: absolute;
+  bottom: clamp(3.5rem, 9vh, 6rem);
+  left: 0; right: 0;
+  z-index: 15;
+  font-size: 0.74rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(245, 243, 238, 0.5);
+  pointer-events: none;
+}
+.hero-scroll {
+  position: absolute;
+  bottom: 1.6rem; left: 50%;
+  transform: translateX(-50%);
+  z-index: 15;
+  width: 22px; height: 34px;
+  border: 1px solid rgba(245,243,238,0.3);
+  border-radius: 12px;
+}
+.hero-scroll::before {
+  content: ''; position: absolute; top: 6px; left: 50%;
+  width: 3px; height: 7px; border-radius: 2px;
+  background: var(--auriu-clar);
+  transform: translateX(-50%);
+  animation: scroll-punct 1.8s var(--ease-lent) infinite;
+}
+@keyframes scroll-punct {
+  0% { opacity: 0; transform: translate(-50%, 0); }
+  35% { opacity: 1; }
+  70%, 100% { opacity: 0; transform: translate(-50%, 12px); }
+}
+
+/* ═══════ 6. SECȚIUNI DE SCROLL ═══════ */
+.sectiune { position: relative; padding: clamp(5rem, 12vh, 9rem) 0; }
+.sectiune-centrata { text-align: center; }
+
+.sectiune h2 {
+  font-size: clamp(1.9rem, 4.4vw, 3.2rem);
+  margin-top: 0.8rem;
+}
+.sectiune .lead {
+  margin-top: 1.4rem;
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  max-width: 40ch;
+}
+.sectiune-centrata .lead { margin-inline: auto; }
+
+/* Secțiunea Academia MIR — pinned, cu lumină aurie */
+.mir {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.mir::before {
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(212,175,55,0.1), transparent 70%);
+}
+.mir .pret {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  color: var(--auriu-clar);
+  margin: 0.4rem 0 0.2rem;
+}
+.mir .pret small { font-size: 0.35em; color: rgba(245,243,238,0.5); letter-spacing: 0.1em; }
+
+/* Grila de „metodă" / pași */
+.grila {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.4rem;
+  margin-top: 3rem;
+}
+.pas {
+  padding: 2rem 1.6rem;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(245,243,238,0.07);
+  text-align: left;
+  transition: border-color 0.5s var(--ease-lux), transform 0.5s var(--ease-lux);
+}
+.pas:hover { border-color: rgba(212,175,55,0.35); transform: translateY(-4px); }
+.pas .nr {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem; color: var(--auriu);
+}
+.pas h3 { margin: 0.6rem 0 0.5rem; font-size: 1.15rem; }
+.pas p { font-size: 0.9rem; }
+
+/* Blocul de autoritate / dovadă */
+.dovada {
+  text-align: center;
+}
+.dovada .cifra {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 9vw, 5.5rem);
+  color: var(--auriu-clar);
+  line-height: 1;
+}
+.dovada .cifra-eticheta {
+  margin-top: 0.6rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+  color: rgba(245,243,238,0.7);
+}
+
+/* CTA final — semnătura */
+.final { text-align: center; }
+.final h2 {
+  font-style: italic;
+  font-size: clamp(2.2rem, 6vw, 4.2rem);
+  color: var(--auriu-clar);
+}
+
+/* Banda de planete (pentru paginile interioare) */
+.banda-planeta {
+  display: flex; align-items: center; gap: clamp(1.5rem, 5vw, 4rem);
+  flex-wrap: wrap;
+}
+.banda-planeta img { width: clamp(140px, 26vw, 260px); }
+.banda-planeta.dreapta { flex-direction: row-reverse; }
+
+/* Liste cu bulină aurie */
+.lista-aurie { list-style: none; margin-top: 1.4rem; }
+.lista-aurie li {
+  position: relative; padding-left: 1.7rem; margin-bottom: 0.8rem;
+  font-weight: 300; color: rgba(245,243,238,0.82);
+}
+.lista-aurie li::before {
+  content: ''; position: absolute; left: 0; top: 0.55em;
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--auriu);
+  box-shadow: 0 0 10px rgba(212,175,55,0.6);
+}
+.lista-nu li::before { background: rgba(245,243,238,0.25); box-shadow: none; }
+
+/* Card de conținut generic (pentru pagini) */
+.panou {
+  padding: clamp(1.8rem, 4vw, 3rem);
+  border-radius: 22px;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(245,243,238,0.08);
+}
+
+/* Două coloane */
+.doua-coloane {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(1.4rem, 4vw, 3rem);
+  align-items: center;
+}
+
+/* Formular simplu */
+.formular { display: grid; gap: 1rem; margin-top: 1.6rem; }
+.formular input, .formular textarea {
+  width: 100%;
+  padding: 0.9em 1.1em;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(245,243,238,0.14);
+  border-radius: 12px;
+  color: var(--crem);
+  font-family: inherit; font-size: 0.92rem;
+  transition: border-color 0.4s var(--ease-lux);
+}
+.formular input:focus, .formular textarea:focus {
+  outline: none; border-color: var(--auriu);
+}
+.formular textarea { min-height: 130px; resize: vertical; }
+
+/* ═══════ 7. FOOTER ═══════ */
+.footer {
+  padding: 4rem 0 3rem;
+  border-top: 1px solid rgba(245,243,238,0.07);
+  text-align: center;
+}
+.footer .marca { display: inline-block; margin-bottom: 1rem; }
+.footer-linkuri {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 1.2rem 2rem; margin: 1.4rem 0;
+}
+.footer-linkuri a {
+  font-size: 0.82rem; letter-spacing: 0.08em;
+  color: rgba(245,243,238,0.6);
+  transition: color 0.3s var(--ease-lux);
+}
+.footer-linkuri a:hover { color: var(--auriu-clar); }
+.footer small { color: rgba(245,243,238,0.4); font-size: 0.76rem; }
+
+/* ═══════ 8. ACCESIBILITATE ═══════ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ═══════ 9. MOBIL (< 768px) ═══════ */
+@media (max-width: 767px) {
+  .doar-desktop { display: none; }
+  .doar-mobil { display: inline; }
+
+  /* Portalul se reașază: nucleul sus, planetele într-o constelație-grilă */
+  .hero { min-height: auto; padding: 7.5rem 0 4rem; }
+  .hero-titlu { position: static; margin-bottom: 2rem; }
+  .hero-indiciu, .hero-scroll { position: static; margin-top: 2.5rem; }
+
+  .sistem {
+    width: 100%; height: auto;
+    display: flex; flex-direction: column; align-items: center; gap: 2.5rem;
+  }
+
+  .nucleu { position: static; }
+
+  /* Orbitele nu mai sunt cercuri — devin o grilă de atins cu degetul */
+  .orbite {
+    position: static;
+    inset: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.4rem 1.2rem;
+    width: min(100%, 420px);
+    padding: 0 1.2rem;
+  }
+  .orbita {
+    position: static;
+    width: auto; height: auto;
+    border: none;
+    animation: none;
+    display: flex; justify-content: center;
+  }
+  .satelit { position: static; transform: none; }
+  .contra { animation: none; }
+
+  .planeta {
+    width: auto;
+    display: flex; flex-direction: column; align-items: center; gap: 0.7rem;
+    animation-delay: calc(0.3s + var(--n) * 0.12s);
+  }
+  .planeta img { width: clamp(84px, 30vw, 120px); }
+
+  /* numele mereu vizibil sub planetă */
+  .planeta-nume {
+    display: block;
+    font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+    text-align: center; color: rgba(245,243,238,0.72);
+  }
+
+  /* cardul apare sub planetă (mai natural la atingere) */
+  .card { bottom: auto; top: calc(100% + 10px); max-width: 200px; }
+  .planeta.activ .card { transform: translate(-50%, 0); }
+
+  .banda-planeta, .banda-planeta.dreapta { flex-direction: column; text-align: center; }
+  .pas { text-align: center; }
+}
