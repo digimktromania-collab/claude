@@ -17,6 +17,10 @@
   <div class="fundal-gradient"></div>
   <canvas id="cosmos" aria-hidden="true"></canvas>
 
+  <!-- Lumina care se deschide ca un portal la trecerea hero → manifest
+       (animată de scroll din GSAP; stă în spatele conținutului) -->
+  <div class="portal-lumina" aria-hidden="true"></div>
+
   <!-- ═══════ BARA DE SUS ═══════ -->
   <header class="bara">
     <a href="index.html" class="marca">Universul <b>GEO</b></a>
@@ -169,6 +173,15 @@
     <div class="hero-scroll" aria-hidden="true"></div>
   </section>
 
+  <!-- ═══════ MANIFEST — prima oprire de sub hero (portalul se deschide aici) ═══════ -->
+  <section class="manifest" id="manifest">
+    <div class="container">
+      <p class="eyebrow manifest-linie">Manifest</p>
+      <p class="mare manifest-linie">Nu construim doar afaceri digitale.</p>
+      <p class="mare accent manifest-linie">Construim oameni capabili să își construiască propriul viitor.</p>
+    </div>
+  </section>
+
   <!-- ═══════ SECȚIUNEA ACADEMIA MIR (pinned) ═══════ -->
   <section class="mir" id="mir">
     <div class="container">
@@ -191,8 +204,8 @@
   <section class="sectiune sectiune-centrata">
     <div class="container">
       <p class="eyebrow reveal">Metoda</p>
-      <h2 class="reveal">Nu construim doar afaceri digitale.</h2>
-      <p class="lead reveal">Construim oameni capabili să își construiască propriul viitor.</p>
+      <h2 class="reveal">Un drum construit pas cu pas.</h2>
+      <p class="lead reveal">Patru repere care transformă intenția în direcție, iar direcția în libertate.</p>
 
       <div class="grila">
         <div class="pas reveal">
@@ -286,6 +299,32 @@
       gsap.to('.hero-titlu', {
         yPercent: -40, opacity: 0, ease: 'none',
         scrollTrigger: { trigger: '.hero', start: 'top top', end: '60% top', scrub: true }
+      });
+
+      // ── DESCHIDEREA PORTALULUI ──
+      // Lumina aurie crește din centru pe măsură ce intrăm în manifest…
+      gsap.fromTo('.portal-lumina',
+        { scale: 0.15, opacity: 0 },
+        {
+          scale: 1.1, opacity: 1, ease: 'power2.out',
+          scrollTrigger: { trigger: '.manifest', start: 'top bottom', end: 'top 32%', scrub: true }
+        }
+      );
+      // …apoi se stinge lin, ca și cum am trecut dincolo de prag
+      gsap.to('.portal-lumina', {
+        opacity: 0, scale: 1.9, ease: 'power1.in',
+        scrollTrigger: { trigger: '.manifest', start: 'top 32%', end: 'bottom top', scrub: true }
+      });
+
+      // ── MANIFESTUL ── rândurile urcă din jos, cu fade + stagger elegant
+      gsap.from('.manifest-linie', {
+        yPercent: 60, opacity: 0, duration: 1.1, ease: 'power3.out', stagger: 0.18,
+        scrollTrigger: { trigger: '.manifest', start: 'top 68%' }
+      });
+      // parallax fin: manifestul se ridică ușor mai repede decât fundalul
+      gsap.to('.manifest .container', {
+        yPercent: -12, ease: 'none',
+        scrollTrigger: { trigger: '.manifest', start: 'top bottom', end: 'bottom top', scrub: true }
       });
 
       // Secțiunea Academia MIR — „pinned” cât timp conținutul ei respiră

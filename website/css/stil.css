@@ -657,6 +657,72 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 500; line-heig
   color: var(--auriu-clar);
 }
 
+/* ═══════════════════════════════════════════════════════════
+   SECȚIUNEA MANIFEST — prima oprire de sub hero, un rând mare
+   care „respiră". Ocupă un ecran întreg, centrat.
+   ═══════════════════════════════════════════════════════════ */
+.manifest {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: clamp(4rem, 10vh, 8rem) 0;
+}
+.manifest .container { max-width: 940px; }
+.manifest .mare {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-size: clamp(1.7rem, 4.6vw, 3.4rem);
+  line-height: 1.28;
+  text-wrap: balance;
+}
+.manifest .mare + .mare { margin-top: 0.6rem; }
+/* a doua jumătate a frazei — aurie și italică, ca o promisiune */
+.manifest .accent {
+  color: var(--auriu-clar);
+  font-style: italic;
+}
+.manifest .eyebrow { margin-bottom: 1.8rem; display: inline-block; }
+
+/* ═══════════════════════════════════════════════════════════
+   DESCHIDEREA PORTALULUI — o lumină aurie care se extinde din
+   centru la trecerea hero → manifest. Stă în spatele conținutului
+   (secțiunile sunt transparente), deci nu acoperă niciodată textul.
+   Animația (scale + opacity) e condusă de scroll din GSAP.
+   ═══════════════════════════════════════════════════════════ */
+.portal-lumina {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 130vmax;
+  height: 130vmax;
+  transform: translate(-50%, -50%) scale(0.15);
+  border-radius: 50%;
+  /* miezul cald al portalului, cu cădere lină spre transparent */
+  background: radial-gradient(circle,
+    rgba(240, 223, 160, 0.40) 0%,
+    rgba(212, 175, 55, 0.22) 18%,
+    rgba(212, 175, 55, 0.08) 40%,
+    transparent 64%);
+  opacity: 0;
+  z-index: -1;                 /* deasupra stelelor, sub conținut */
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+/* inelul fin al portalului — dă senzația de „prag" care se deschide */
+.portal-lumina::after {
+  content: '';
+  position: absolute;
+  inset: 34%;
+  border-radius: 50%;
+  border: 1px solid rgba(240, 223, 160, 0.22);
+  box-shadow:
+    0 0 80px rgba(212, 175, 55, 0.22),
+    inset 0 0 80px rgba(212, 175, 55, 0.14);
+}
+
 /* Banda de planete (pentru paginile interioare) */
 .banda-planeta {
   display: flex; align-items: center; gap: clamp(1.5rem, 5vw, 4rem);
