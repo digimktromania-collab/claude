@@ -57,8 +57,16 @@
       <div class="nucleu">
         <div class="nucleu-aura"></div>
         <div class="nucleu-orb">
-          <!-- Când assets/nucleu.png sosește, apare aici; altfel → orb auriu -->
-          <img src="../assets/nucleu.png" alt="Iordache Georgiana — nucleul universului GEO">
+          <!-- Nucleul viu: video (mut, în buclă). Sursele se încearcă în ordine:
+               întâi fișierul local (când e adăugat), apoi clipul din cloud.
+               „poster" = portretul, vizibil instant și ca rezervă dacă video-ul
+               nu pornește. <img> din interior = fallback pentru browsere fără video. -->
+          <video class="nucleu-video" autoplay muted loop playsinline preload="metadata"
+                 poster="../assets/nucleu.png">
+            <source src="../assets/nucleu.mp4" type="video/mp4">
+            <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260506_031045_0e1165dd-ab48-46e3-ad3d-5fe77f217647.mp4" type="video/mp4">
+            <img src="../assets/nucleu.png" alt="Iordache Georgiana — nucleul universului GEO">
+          </video>
         </div>
         <div class="nucleu-nume">GEORGIANA</div>
         <div class="nucleu-sub">Universul GEO</div>

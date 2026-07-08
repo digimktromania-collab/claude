@@ -309,15 +309,24 @@
      ───────────────────────────────────────────────────────────────── */
   function nucleuFallback() {
     const orb = document.querySelector('.nucleu-orb');
-    const img = orb ? orb.querySelector('img') : null;
-    if (!orb || !img) return;
-    img.addEventListener('error', () => {
-      img.remove();
-      orb.classList.add('fallback');
-    });
-    // dacă imaginea s-a încărcat deja din cache dar e „ruptă"
-    if (img.complete && img.naturalWidth === 0) {
-      img.remove(); orb.classList.add('fallback');
+    if (!orb) return;
+    const video = orb.querySelector('video');
+    const pozaDirecta = orb.querySelector(':scope > img');   // doar paginile cu portret static
+
+    // Accesibilitate: la „reduced motion" nu redăm clipul — rămâne posterul (portretul)
+    if (video && reduceMotion) {
+      video.removeAttribute('autoplay');
+      try { video.pause(); } catch (e) {}
+    }
+
+    // Fallback la orbul auriu doar dacă portretul static lipsește (paginile fără video)
+    if (pozaDirecta) {
+      pozaDirecta.addEventListener('error', () => {
+        pozaDirecta.remove(); orb.classList.add('fallback');
+      });
+      if (pozaDirecta.complete && pozaDirecta.naturalWidth === 0) {
+        pozaDirecta.remove(); orb.classList.add('fallback');
+      }
     }
   }
 
