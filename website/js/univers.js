@@ -183,6 +183,35 @@
   }
 
   /* ─────────────────────────────────────────────────────────────────
+     3b. BARA DE PROGRES — o linie aurie fină care crește pe măsură ce
+     derulezi pagina. Prezentă pe toate paginile (creată din cod).
+     ───────────────────────────────────────────────────────────────── */
+  function baraProgres() {
+    const bara = document.createElement('div');
+    bara.className = 'progres';
+    bara.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(bara);
+
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined' && !reduceMotion) {
+      gsap.to(bara, {
+        scaleX: 1, ease: 'none',
+        scrollTrigger: {
+          start: 0,
+          end: () => document.documentElement.scrollHeight - window.innerHeight,
+          scrub: 0.3
+        }
+      });
+    } else {
+      const actualizeaza = () => {
+        const h = document.documentElement.scrollHeight - window.innerHeight;
+        bara.style.transform = 'scaleX(' + (h > 0 ? window.scrollY / h : 0) + ')';
+      };
+      actualizeaza();
+      window.addEventListener('scroll', actualizeaza, { passive: true });
+    }
+  }
+
+  /* ─────────────────────────────────────────────────────────────────
      4. BARA DE SUS — devine „compactă" după ce pagina e derulată
      ───────────────────────────────────────────────────────────────── */
   function baraCompacta() {
@@ -303,6 +332,7 @@
     fundalCosmic();
     scrollFin();
     dezvaluiri();
+    baraProgres();
     baraCompacta();
     meniu();
     planeteTouch();

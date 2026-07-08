@@ -207,23 +207,23 @@
       <h2 class="reveal">Un drum construit pas cu pas.</h2>
       <p class="lead reveal">Patru repere care transformă intenția în direcție, iar direcția în libertate.</p>
 
-      <div class="grila">
-        <div class="pas reveal">
+      <div class="grila grila-metoda">
+        <div class="pas">
           <div class="nr">01</div>
           <h3>Claritate</h3>
           <p>Afli unde ești astăzi și unde vrei să ajungi — fără zgomot, fără presiune.</p>
         </div>
-        <div class="pas reveal">
+        <div class="pas">
           <div class="nr">02</div>
           <h3>Direcție</h3>
           <p>Primești o cale clară, nu zece drumuri paralele care te blochează.</p>
         </div>
-        <div class="pas reveal">
+        <div class="pas">
           <div class="nr">03</div>
           <h3>Construcție</h3>
           <p>Înveți să construiești: marketing, AI, un sistem care lucrează pentru tine.</p>
         </div>
-        <div class="pas reveal">
+        <div class="pas">
           <div class="nr">04</div>
           <h3>Comunitate</h3>
           <p>Nu ești singur. Oameni reali, pe același drum, care cresc împreună.</p>
@@ -287,18 +287,22 @@
       var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (reduce || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
-      // Parallax subtil pe nucleu & sistem la derularea heroului
-      gsap.to('.nucleu', {
-        yPercent: -18, ease: 'none',
+      // ── HERO: SISTEMUL SE RETRAGE „ÎN PORTAL" ──
+      // La derulare, întregul sistem (nucleu + planete) se micșorează, se
+      // estompează și se pierde în lumină — ca și cum trecem dincolo de prag.
+      gsap.to('.sistem', {
+        scale: 0.78, opacity: 0.28, filter: 'blur(4px)', yPercent: -8, ease: 'none',
         scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
       });
-      gsap.to('.orbite', {
-        yPercent: 10, scale: 1.08, opacity: 0.5, ease: 'none',
-        scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
-      });
+      // Titlul urcă mai repede decât sistemul → adâncime prin parallax diferit.
       gsap.to('.hero-titlu', {
-        yPercent: -40, opacity: 0, ease: 'none',
-        scrollTrigger: { trigger: '.hero', start: 'top top', end: '60% top', scrub: true }
+        yPercent: -55, opacity: 0, ease: 'none',
+        scrollTrigger: { trigger: '.hero', start: 'top top', end: '55% top', scrub: true }
+      });
+      // Indiciul și săgeata de scroll se sting imediat ce pleci din hero.
+      gsap.to('.hero-indiciu, .hero-scroll', {
+        opacity: 0, ease: 'none',
+        scrollTrigger: { trigger: '.hero', start: 'top top', end: '25% top', scrub: true }
       });
 
       // ── DESCHIDEREA PORTALULUI ──
@@ -331,6 +335,29 @@
       ScrollTrigger.create({
         trigger: '.mir', start: 'top top', end: '+=60%', pin: true, pinSpacing: true
       });
+
+      // ── CARDURILE METODEI ── intră pe rând: se ridică, se limpezesc din
+      // ceață și cresc ușor la scară — o apariție teatrală, cu stagger.
+      gsap.from('.grila-metoda .pas', {
+        y: 64, opacity: 0, scale: 0.92, filter: 'blur(8px)',
+        duration: 1, ease: 'power3.out', stagger: 0.14,
+        scrollTrigger: { trigger: '.grila-metoda', start: 'top 80%' }
+      });
+
+      // ── NUMĂRĂTOAREA „700+" ── crește de la 0 când intră în ecran.
+      var cifra = document.querySelector('.dovada .cifra');
+      if (cifra) {
+        var stare = { v: 0 };
+        ScrollTrigger.create({
+          trigger: cifra, start: 'top 82%', once: true,
+          onEnter: function () {
+            gsap.to(stare, {
+              v: 700, duration: 2, ease: 'power2.out',
+              onUpdate: function () { cifra.textContent = Math.round(stare.v) + '+'; }
+            });
+          }
+        });
+      }
     };
   </script>
 

@@ -176,6 +176,19 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 500; line-heig
 }
 .marca b { color: var(--auriu); font-weight: 600; }
 
+/* Bara de progres a derulării — o linie aurie fină, sus de tot */
+.progres {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 2px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: linear-gradient(90deg, var(--auriu), var(--auriu-clar));
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.55);
+  z-index: 60;
+  pointer-events: none;
+}
+
 /* Butonul-hamburger care deschide meniul */
 .meniu-buton {
   display: inline-flex;
