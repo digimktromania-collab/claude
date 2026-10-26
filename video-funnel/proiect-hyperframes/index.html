@@ -1,0 +1,1256 @@
+<!doctype html>
+<html lang="ro" data-resolution="portrait">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<script src="assets/gsap.min.js"></script>
+<style>
+@font-face{font-family:'Mont';font-weight:500;font-style:normal;src:url('assets/fonts/montserrat-latin-ext-500-normal.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Mont';font-weight:500;font-style:normal;src:url('assets/fonts/montserrat-latin-500-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Mont';font-weight:700;font-style:normal;src:url('assets/fonts/montserrat-latin-ext-700-normal.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Mont';font-weight:700;font-style:normal;src:url('assets/fonts/montserrat-latin-700-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Mont';font-weight:800;font-style:normal;src:url('assets/fonts/montserrat-latin-ext-800-normal.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Mont';font-weight:800;font-style:normal;src:url('assets/fonts/montserrat-latin-800-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Mont';font-weight:900;font-style:normal;src:url('assets/fonts/montserrat-latin-ext-900-normal.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Mont';font-weight:900;font-style:normal;src:url('assets/fonts/montserrat-latin-900-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Play';font-weight:600;font-style:normal;src:url('assets/fonts/playfair-display-latin-ext-600-normal.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Play';font-weight:600;font-style:normal;src:url('assets/fonts/playfair-display-latin-600-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Play';font-weight:600;font-style:italic;src:url('assets/fonts/playfair-display-latin-ext-600-italic.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Play';font-weight:600;font-style:italic;src:url('assets/fonts/playfair-display-latin-600-italic.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Play';font-weight:700;font-style:normal;src:url('assets/fonts/playfair-display-latin-ext-700-normal.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Play';font-weight:700;font-style:normal;src:url('assets/fonts/playfair-display-latin-700-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Play';font-weight:700;font-style:italic;src:url('assets/fonts/playfair-display-latin-ext-700-italic.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Play';font-weight:700;font-style:italic;src:url('assets/fonts/playfair-display-latin-700-italic.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+:root { --black:#080808; --gold:#D4AF37; --cream:#F5F3EE; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:1080px; height:1920px; overflow:hidden; background:var(--black); }
+#root { position:relative; width:1080px; height:1920px; overflow:hidden; font-family:'Mont'; color:var(--cream); }
+#bg { position:absolute; inset:0; background:var(--black); }
+#vwrap { position:absolute; inset:0; transform-origin:300px 520px; }
+#vid { position:absolute; left:0; top:0; width:1080px; height:1920px; object-fit:cover; }
+#shade { position:absolute; left:0; right:0; bottom:0; height:900px; background:linear-gradient(to bottom, rgba(8,8,8,0), rgba(8,8,8,.55) 55%, rgba(8,8,8,.75)); }
+.slot { position:absolute; left:664px; top:240px; width:384px; z-index:10; }
+.card { background:rgba(8,8,8,.74); border:1.5px solid rgba(212,175,55,.6); border-radius:30px; padding:26px 24px 24px; box-shadow:0 20px 60px rgba(0,0,0,.45); text-align:center; }
+.eb { font-weight:700; font-size:21px; letter-spacing:.24em; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
+.ttl { font-family:'Play'; font-weight:700; font-size:44px; line-height:1.08; color:var(--cream); }
+.ttl b { color:var(--gold); font-style:italic; font-weight:700; }
+.art { margin-top:16px; display:flex; flex-direction:column; align-items:center; }
+.big-q { font-family:'Play'; font-weight:700; font-size:110px; color:var(--gold); line-height:1.1; }
+.stage { position:relative; width:320px; height:300px; }
+.stage > svg { position:absolute; left:10px; top:70px; }
+.ppl { position:absolute; left:10px; top:0px; }
+.badge { position:absolute; left:40px; top:150px; padding:10px 18px; border-radius:40px; font-weight:800; font-size:26px; }
+.badge.red { background:#E5484D; color:#fff; }
+.qm { position:absolute; width:62px; height:62px; border-radius:50%; background:var(--gold); color:#080808; font-weight:900; font-size:42px; line-height:62px; }
+#c3q1 { left:20px; top:110px; } #c3q2 { left:236px; top:96px; }
+.clock { position:absolute; left:220px; top:10px; }
+.steps { display:flex; gap:18px; margin-top:12px; }
+.st { width:90px; height:90px; border-radius:50%; border:4px solid var(--gold); font-family:'Play'; font-weight:700; font-size:54px; line-height:82px; color:var(--gold); }
+.form { width:330px; display:flex; flex-direction:column; gap:14px; text-align:left; }
+.fld { background:#141414; border:2px solid rgba(245,243,238,.35); border-radius:16px; padding:10px 16px; }
+.lbl { display:block; font-size:17px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); }
+.val { display:inline-block; font-size:27px; font-weight:600; color:var(--cream); white-space:nowrap; }
+.btn { background:var(--gold); color:#080808; font-weight:800; font-size:25px; text-align:center; padding:14px; border-radius:40px; }
+.disc { display:flex; gap:10px; margin-top:10px; }
+.pct { width:160px; height:160px; border-radius:50%; background:var(--gold); color:#080808; font-weight:900; font-size:54px; line-height:160px; }
+#p20 { background:var(--cream); }
+.chips { display:flex; flex-direction:column; gap:14px; margin-top:8px; align-items:center; }
+.chip { border:2.5px solid var(--gold); border-radius:50px; padding:10px 34px; font-family:'Play'; font-style:italic; font-weight:700; font-size:44px; color:var(--cream); }
+.motto { font-family:'Play'; font-style:italic; font-weight:700; font-size:40px; color:var(--gold); margin-top:10px; }
+.split { position:absolute; left:0; top:0; width:1080px; height:1920px; z-index:9; pointer-events:none; }
+.panel { position:absolute; left:600px; top:0; width:480px; height:1920px; background:linear-gradient(180deg,#0d0d0d,#080808); border-left:3px solid var(--gold); padding:200px 34px 0 34px; text-align:center; }
+.wipe { position:absolute; left:600px; top:0; width:26px; height:1920px; background:var(--gold); }
+.panel .ttl { font-size:58px; }
+.fwrap { position:relative; margin:18px auto 0; width:300px; }
+.flabel { position:absolute; font-weight:800; font-size:22px; letter-spacing:.16em; text-transform:uppercase; }
+.flabel.top { left:0; right:0; top:60px; color:var(--cream); opacity:.75; }
+.flabel.bot { left:0; right:0; top:440px; color:var(--gold); }
+.rs { position:absolute; left:34px; right:34px; display:flex; align-items:center; justify-content:center; gap:12px; font-weight:800; font-size:27px; background:rgba(212,175,55,.12); border:2px solid var(--gold); border-radius:20px; padding:12px; }
+.rs svg { width:56px; height:auto; } .rs > span:first-child { color:var(--gold); font-size:38px; }
+#r1 { top:830px; } #r2 { top:920px; }
+.exchip { position:absolute; left:34px; right:34px; top:860px; font-family:'Play'; font-style:italic; font-weight:700; font-size:40px; color:var(--gold); }
+.camp { display:flex; justify-content:center; gap:40px; margin-top:60px; }
+.camp > div { display:flex; flex-direction:column; align-items:center; gap:10px; font-weight:800; font-size:26px; }
+.back { margin:70px auto 0; display:flex; flex-direction:column; align-items:center; gap:14px; font-weight:700; font-size:32px; line-height:1.25; }
+.back b { color:var(--gold); }
+.recap { position:absolute; left:30px; right:30px; top:200px; text-align:left; }
+.recap .eb { text-align:center; font-size:24px; margin-bottom:18px; }
+.tier { display:flex; align-items:center; gap:16px; margin:0 auto 14px; border:2px solid rgba(212,175,55,.7); background:rgba(212,175,55,.08); border-radius:18px; padding:12px 16px; }
+#t1 { width:100%; } #t2 { width:94%; } #t3 { width:88%; } #t4 { width:82%; } #t5 { width:76%; background:var(--gold); }
+#t5 .tl, #t5 .ts, #t5 .tn { color:#080808; border-color:#080808; }
+.tn { flex:none; width:46px; height:46px; border-radius:50%; border:3px solid var(--gold); color:var(--gold); font-family:'Play'; font-weight:700; font-size:28px; line-height:40px; text-align:center; }
+.tl { font-family:'Play'; font-weight:700; font-size:32px; color:var(--cream); line-height:1.1; }
+.ts { font-size:19px; font-weight:600; color:rgba(245,243,238,.75); }
+#captions { position:absolute; left:0; top:0; width:1080px; height:1920px; z-index:20; pointer-events:none; }
+.grp { position:absolute; left:50px; right:50px; top:1180px; text-align:center; font-weight:800; line-height:1.25; visibility:hidden; opacity:0; }
+.w { display:inline-block; color:var(--cream); text-shadow:0 3px 0 rgba(0,0,0,.55), 0 6px 22px rgba(0,0,0,.65); margin:0 4px; }
+.w.kw { color:#080808; background:var(--gold); border-radius:14px; padding:0 14px; text-shadow:none; box-shadow:0 8px 24px rgba(0,0,0,.4); }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="102.95" data-width="1080" data-height="1920">
+  <div id="bg"></div>
+  <div id="vwrap">
+    <video id="vid" class="clip" src="assets/clean.mp4" data-start="0" data-duration="102.95" data-track-index="0" data-has-audio="true" data-volume="1" playsinline></video>
+    <div id="shade"></div>
+  </div>
+  <div id="c0" class="clip slot" data-start="0.00" data-duration="3.95" data-track-index="2"><div class="card" id="c0i"><div class="eb">Antreprenor?</div><div class="ttl">Ai un <b>site</b>.</div><div class="art"><div id="c0lap"><svg viewBox="0 0 320 210" width="300"><rect x="45" y="12" width="230" height="148" rx="12" fill="#141414" stroke="#F5F3EE" stroke-width="6"/>
+<rect x="62" y="30" width="196" height="16" rx="5" fill="#D4AF37" opacity=".9"/><rect x="62" y="58" width="90" height="72" rx="8" fill="none" stroke="#D4AF37" stroke-width="4"/>
+<rect x="165" y="60" width="92" height="9" rx="4" fill="#F5F3EE" opacity=".7"/><rect x="165" y="78" width="70" height="9" rx="4" fill="#F5F3EE" opacity=".5"/><rect x="165" y="110" width="66" height="20" rx="10" fill="#D4AF37"/>
+<path d="M18 172 H302 L285 196 H35 Z" fill="#F5F3EE"/></svg></div></div></div></div>
+<div id="c1" class="clip slot" data-start="4.10" data-duration="1.85" data-track-index="2"><div class="card" id="c1i"><div class="eb">Funnel</div><div class="ttl">așa-zisa <b>pâlnie</b></div><div class="art"><div id="c1f"><svg viewBox="0 0 200 200" width="170"><path d="M20 30 H180 L118 105 V170 L82 186 V105 Z" fill="none" stroke="#D4AF37" stroke-width="9" stroke-linejoin="round"/><path d="M45 55 H155" stroke="#F5F3EE" stroke-width="6" opacity=".6"/></svg></div></div></div></div>
+<div id="c2" class="clip slot" data-start="6.85" data-duration="4.90" data-track-index="2"><div class="card" id="c2i"><div class="eb">Ca de obicei</div><div class="ttl">Explicat <b>simplu</b></div><div class="art"><div class="big-q" id="c2q">1·2·3</div></div></div></div>
+<div id="c3" class="clip slot" data-start="12.80" data-duration="9.10" data-track-index="2"><div class="card" id="c3i"><div class="eb">Exemplu</div><div class="ttl">Vizitatori pe <b>site</b></div><div class="art"><div class="stage" id="c3st"><svg viewBox="0 0 320 210" width="300"><rect x="45" y="12" width="230" height="148" rx="12" fill="#141414" stroke="#F5F3EE" stroke-width="6"/>
+<rect x="62" y="30" width="196" height="16" rx="5" fill="#D4AF37" opacity=".9"/><rect x="62" y="58" width="90" height="72" rx="8" fill="none" stroke="#D4AF37" stroke-width="4"/>
+<rect x="165" y="60" width="92" height="9" rx="4" fill="#F5F3EE" opacity=".7"/><rect x="165" y="78" width="70" height="9" rx="4" fill="#F5F3EE" opacity=".5"/><rect x="165" y="110" width="66" height="20" rx="10" fill="#D4AF37"/>
+<path d="M18 172 H302 L285 196 H35 Z" fill="#F5F3EE"/></svg>
+<div class="ppl" id="c3ppl"><svg viewBox="0 0 300 60" width="300"><g transform="translate(40 40) scale(1)"><circle cx="0" cy="-14" r="9" fill="#D4AF37"/><path d="M-15 14 Q0 -8 15 14 Z" fill="#D4AF37"/></g><g transform="translate(90 40) scale(1)"><circle cx="0" cy="-14" r="9" fill="#D4AF37"/><path d="M-15 14 Q0 -8 15 14 Z" fill="#D4AF37"/></g><g transform="translate(140 40) scale(1)"><circle cx="0" cy="-14" r="9" fill="#D4AF37"/><path d="M-15 14 Q0 -8 15 14 Z" fill="#D4AF37"/></g></svg></div>
+<div class="badge red" id="c3x">✕ nu cumpără</div>
+<div class="qm" id="c3q1">?</div><div class="qm" id="c3q2">?</div>
+<div class="clock" id="c3c"><svg viewBox="0 0 100 100" width="84"><circle cx="50" cy="50" r="40" fill="#141414" stroke="#F5F3EE" stroke-width="7"/><path class="hand" d="M50 50 V22" stroke="#D4AF37" stroke-width="7" stroke-linecap="round"/><path d="M50 50 H70" stroke="#F5F3EE" stroke-width="7" stroke-linecap="round"/></svg></div></div></div></div></div>
+<div id="c4" class="clip slot" data-start="31.35" data-duration="3.75" data-track-index="2"><div class="card" id="c4i"><div class="eb">Exemplu</div><div class="ttl">Produse pentru <b>păr</b></div><div class="art"><div id="c4b"><svg viewBox="0 0 320 220" width="300">
+<g class="b1"><rect x="40" y="70" width="70" height="140" rx="16" fill="#1b1b1b" stroke="#F5F3EE" stroke-width="5"/><rect x="58" y="40" width="34" height="32" rx="6" fill="#D4AF37"/><rect x="52" y="120" width="46" height="40" rx="6" fill="#D4AF37" opacity=".85"/></g>
+<g class="b2"><rect x="125" y="40" width="74" height="170" rx="20" fill="#1b1b1b" stroke="#D4AF37" stroke-width="5"/><path d="M147 40 V18 H178 V40" fill="none" stroke="#D4AF37" stroke-width="5"/><path d="M178 22 H200" stroke="#D4AF37" stroke-width="5"/><circle cx="162" cy="125" r="22" fill="none" stroke="#F5F3EE" stroke-width="5"/></g>
+<g class="b3"><rect x="215" y="105" width="80" height="105" rx="14" fill="#1b1b1b" stroke="#F5F3EE" stroke-width="5"/><rect x="210" y="88" width="90" height="22" rx="8" fill="#D4AF37"/><path d="M232 160 H278" stroke="#D4AF37" stroke-width="5"/></g></svg></div></div></div></div>
+<div id="c5" class="clip slot" data-start="35.20" data-duration="4.00" data-track-index="2"><div class="card" id="c5i"><div class="eb">Social media</div><div class="ttl">Sub poza de <b>profil</b></div><div class="art"><div id="c5p"><svg viewBox="0 0 220 300" width="210"><rect x="20" y="6" width="180" height="288" rx="28" fill="#121212" stroke="#F5F3EE" stroke-width="6"/>
+<circle cx="110" cy="80" r="36" fill="none" stroke="#D4AF37" stroke-width="6"/><g transform="translate(110 86) scale(1.2)"><circle cx="0" cy="-14" r="9" fill="#F5F3EE"/><path d="M-15 14 Q0 -8 15 14 Z" fill="#F5F3EE"/></g>
+<rect x="62" y="128" width="96" height="10" rx="5" fill="#F5F3EE" opacity=".7"/><rect x="74" y="148" width="72" height="8" rx="4" fill="#F5F3EE" opacity=".4"/>
+<g class="bio"><rect x="46" y="172" width="128" height="34" rx="17" fill="#D4AF37"/><text x="110" y="195" text-anchor="middle" font-family="Mont" font-weight="800" font-size="16" fill="#080808">🔗 LINK</text></g>
+<g opacity=".5"><rect x="36" y="222" width="46" height="60" rx="6" fill="#F5F3EE" opacity=".3"/><rect x="88" y="222" width="46" height="60" rx="6" fill="#F5F3EE" opacity=".3"/><rect x="140" y="222" width="46" height="60" rx="6" fill="#F5F3EE" opacity=".3"/></g></svg></div></div></div></div>
+<div id="c6" class="clip slot" data-start="39.30" data-duration="4.45" data-track-index="2"><div class="card" id="c6i"><div class="eb">Pasul 1</div><div class="ttl">Un <b>video</b> simplu</div><div class="art"><div id="c6p"><svg viewBox="0 0 220 300" width="200"><rect x="20" y="6" width="180" height="288" rx="28" fill="#121212" stroke="#F5F3EE" stroke-width="6"/>
+<circle class="pl" cx="110" cy="140" r="46" fill="#D4AF37"/><path d="M98 118 L132 140 L98 162 Z" fill="#080808"/>
+<rect x="44" y="236" width="132" height="8" rx="4" fill="#F5F3EE" opacity=".35"/><rect class="prog" x="44" y="236" width="132" height="8" rx="4" fill="#D4AF37"/></svg></div></div></div></div>
+<div id="c7" class="clip slot" data-start="43.80" data-duration="3.15" data-track-index="2"><div class="card" id="c7i"><div class="eb">Ex. de conținut</div><div class="ttl"><b>Bucle</b> definite</div><div class="art"><div id="c7c"><svg viewBox="0 0 300 220" width="290"><path class="curl" d="M60 10 c 34 10 34 30 0 40 c -34 10 -34 30 0 40 c 34 10 34 30 0 40 c -34 10 -34 30 0 40 c 34 10 34 30 0 40" fill="none" stroke="#D4AF37" stroke-width="7" stroke-linecap="round"/><path class="curl" d="M120 10 c 34 10 34 30 0 40 c -34 10 -34 30 0 40 c 34 10 34 30 0 40 c -34 10 -34 30 0 40 c 34 10 34 30 0 40" fill="none" stroke="#F5F3EE" stroke-width="7" stroke-linecap="round"/><path class="curl" d="M180 10 c 34 10 34 30 0 40 c -34 10 -34 30 0 40 c 34 10 34 30 0 40 c -34 10 -34 30 0 40 c 34 10 34 30 0 40" fill="none" stroke="#D4AF37" stroke-width="7" stroke-linecap="round"/><path class="curl" d="M240 10 c 34 10 34 30 0 40 c -34 10 -34 30 0 40 c 34 10 34 30 0 40 c -34 10 -34 30 0 40 c 34 10 34 30 0 40" fill="none" stroke="#F5F3EE" stroke-width="7" stroke-linecap="round"/></svg></div></div></div></div>
+<div id="c8" class="clip slot" data-start="47.00" data-duration="3.30" data-track-index="2"><div class="card" id="c8i"><div class="eb">Sau</div><div class="ttl">Păr <b>fresh</b>, mai mult timp</div><div class="art"><div id="c8h"><svg viewBox="0 0 300 220" width="290"><path class="strand" d="M70 10 C 50 80 95 140 65 210" fill="none" stroke="#F5F3EE" stroke-width="7" stroke-linecap="round"/><path class="strand" d="M110 10 C 90 80 135 140 105 210" fill="none" stroke="#D4AF37" stroke-width="7" stroke-linecap="round"/><path class="strand" d="M150 10 C 130 80 175 140 145 210" fill="none" stroke="#F5F3EE" stroke-width="7" stroke-linecap="round"/><path class="strand" d="M190 10 C 170 80 215 140 185 210" fill="none" stroke="#D4AF37" stroke-width="7" stroke-linecap="round"/><path class="strand" d="M230 10 C 210 80 255 140 225 210" fill="none" stroke="#F5F3EE" stroke-width="7" stroke-linecap="round"/>
+<g class="spark" fill="#D4AF37"><path d="M262 40 l6 16 16 6 -16 6 -6 16 -6 -16 -16 -6 16 -6z"/><path d="M40 150 l4 11 11 4 -11 4 -4 11 -4 -11 -11 -4 11 -4z"/></g></svg></div></div></div></div>
+<div id="c9" class="clip slot" data-start="50.35" data-duration="3.20" data-track-index="2"><div class="card" id="c9i"><div class="eb">Rețeta</div><div class="ttl"><b>3 pași</b> simpli</div><div class="art"><div class="steps"><div class="st" id="s1">1</div><div class="st" id="s2">2</div><div class="st" id="s3">3</div></div></div></div></div>
+<div id="c10" class="clip slot" data-start="53.60" data-duration="1.60" data-track-index="2"><div class="card" id="c10i"><div class="eb">Call to action</div><div class="ttl">Descarcă <b>ghidul gratuit</b></div><div class="art"><div id="c10p"><svg viewBox="0 0 240 260" width="210"><path d="M40 10 H160 L210 60 V250 H40 Z" fill="#141414" stroke="#F5F3EE" stroke-width="6" stroke-linejoin="round"/><path d="M160 10 V60 H210" fill="none" stroke="#F5F3EE" stroke-width="6"/>
+<rect x="62" y="40" width="70" height="30" rx="6" fill="#D4AF37"/><text x="97" y="62" text-anchor="middle" font-family="Mont" font-weight="900" font-size="20" fill="#080808">PDF</text>
+<rect x="62" y="92" width="126" height="9" rx="4" fill="#F5F3EE" opacity=".6"/><rect x="62" y="112" width="100" height="9" rx="4" fill="#F5F3EE" opacity=".4"/><rect x="62" y="132" width="116" height="9" rx="4" fill="#F5F3EE" opacity=".4"/>
+<g class="dl"><circle cx="125" cy="200" r="30" fill="#D4AF37"/><path d="M125 184 V214 M112 202 L125 215 L138 202" stroke="#080808" stroke-width="6" fill="none" stroke-linecap="round"/></g>
+<g class="tag" opacity="0"><path d="M150 150 H222 L236 172 L222 194 H150 Z" fill="#D4AF37"/><text x="190" y="180" text-anchor="middle" font-family="Mont" font-weight="900" font-size="20" fill="#080808">OFERTĂ</text></g></svg></div></div></div></div>
+<div id="c11" class="clip slot" data-start="55.25" data-duration="3.60" data-track-index="2"><div class="card" id="c11i"><div class="eb">Lead</div><div class="ttl">Își lasă <b>datele</b></div><div class="art"><div class="form"><div class="fld"><span class="lbl">E-mail</span><span class="val" id="f1e">ana@exemplu.ro</span></div>
+<div class="fld"><span class="lbl">Telefon</span><span class="val" id="f1p">07xx xxx xxx</span></div><div class="btn" id="f1b">Descarcă ghidul ↓</div></div></div></div></div>
+<div id="c12" class="clip slot" data-start="58.90" data-duration="2.40" data-track-index="2"><div class="card" id="c12i"><div class="eb">În ghid</div><div class="ttl"><b>Oferte</b> cu produsele tale</div><div class="art"><div id="c12p"><svg viewBox="0 0 240 260" width="210"><path d="M40 10 H160 L210 60 V250 H40 Z" fill="#141414" stroke="#F5F3EE" stroke-width="6" stroke-linejoin="round"/><path d="M160 10 V60 H210" fill="none" stroke="#F5F3EE" stroke-width="6"/>
+<rect x="62" y="40" width="70" height="30" rx="6" fill="#D4AF37"/><text x="97" y="62" text-anchor="middle" font-family="Mont" font-weight="900" font-size="20" fill="#080808">PDF</text>
+<rect x="62" y="92" width="126" height="9" rx="4" fill="#F5F3EE" opacity=".6"/><rect x="62" y="112" width="100" height="9" rx="4" fill="#F5F3EE" opacity=".4"/><rect x="62" y="132" width="116" height="9" rx="4" fill="#F5F3EE" opacity=".4"/>
+<g class="dl"><circle cx="125" cy="200" r="30" fill="#D4AF37"/><path d="M125 184 V214 M112 202 L125 215 L138 202" stroke="#080808" stroke-width="6" fill="none" stroke-linecap="round"/></g>
+<g class="tag" opacity="0"><path d="M150 150 H222 L236 172 L222 194 H150 Z" fill="#D4AF37"/><text x="190" y="180" text-anchor="middle" font-family="Mont" font-weight="900" font-size="20" fill="#080808">OFERTĂ</text></g></svg></div></div></div></div>
+<div id="c13" class="clip slot" data-start="61.30" data-duration="6.85" data-track-index="2"><div class="card" id="c13i"><div class="eb">Varianta 2</div><div class="ttl">Video cu tine sau <b>produsul</b></div><div class="art"><div class="row2"><div id="c13p"><svg viewBox="0 0 220 300" width="200"><rect x="20" y="6" width="180" height="288" rx="28" fill="#121212" stroke="#F5F3EE" stroke-width="6"/>
+<circle class="pl" cx="110" cy="140" r="46" fill="#D4AF37"/><path d="M98 118 L132 140 L98 162 Z" fill="#080808"/>
+<rect x="44" y="236" width="132" height="8" rx="4" fill="#F5F3EE" opacity=".35"/><rect class="prog" x="44" y="236" width="132" height="8" rx="4" fill="#D4AF37"/></svg></div></div></div></div></div>
+<div id="c14" class="clip slot" data-start="68.20" data-duration="3.70" data-track-index="2"><div class="card" id="c14i"><div class="eb">Prima comandă</div><div class="ttl"><b>Reducere</b></div><div class="art"><div class="disc"><div class="pct" id="p10">-10%</div><div class="pct" id="p20">-20%</div></div></div></div></div>
+<div id="c15" class="clip slot" data-start="71.95" data-duration="3.85" data-track-index="2"><div class="card" id="c15i"><div class="eb">Înregistrare</div><div class="ttl">E-mail + <b>telefon</b></div><div class="art"><div class="form"><div class="fld"><span class="lbl">E-mail</span><span class="val" id="f2e">ana@exemplu.ro</span></div>
+<div class="fld"><span class="lbl">Telefon</span><span class="val" id="f2p">07xx xxx xxx</span></div><div class="btn" id="f2b">Vreau reducerea</div></div></div></div></div>
+<div id="c16" class="clip slot" data-start="90.35" data-duration="2.65" data-track-index="2"><div class="card" id="c16i"><div class="eb">Acum e rândul tău</div><div class="ttl">Pune-l în <b>practică</b> ✓</div><div class="art"><div class="big-q" id="c16k">✓</div></div></div></div>
+<div id="c17" class="clip slot" data-start="93.05" data-duration="3.25" data-track-index="2"><div class="card" id="c17i"><div class="eb">Te aștept</div><div class="ttl">Să fii…</div><div class="art"><div class="chips"><div class="chip" id="k1">digital</div><div class="chip" id="k2">geo</div><div class="chip" id="k3">deșteaptă</div></div></div></div></div>
+<div id="c18" class="clip slot" data-start="96.35" data-duration="4.25" data-track-index="2"><div class="card" id="c18i"><div class="eb">Alătură-te</div><div class="ttl">Comunitatea <b>MIR</b></div><div class="art"><div id="c18c"><svg viewBox="0 0 300 240" width="290"><g stroke="#D4AF37" stroke-width="3" opacity=".7" class="links">
+<line x1="150" y1="120" x2="245" y2="120"/><line x1="150" y1="120" x2="197" y2="202"/><line x1="150" y1="120" x2="102" y2="202"/><line x1="150" y1="120" x2="55" y2="120"/><line x1="150" y1="120" x2="103" y2="38"/><line x1="150" y1="120" x2="198" y2="38"/></g>
+<g transform="translate(150 128) scale(1.5)"><circle cx="0" cy="-14" r="9" fill="#D4AF37"/><path d="M-15 14 Q0 -8 15 14 Z" fill="#D4AF37"/></g><g class="cp"><g transform="translate(245.0 128.0) scale(1.1)"><circle cx="0" cy="-14" r="9" fill="#F5F3EE"/><path d="M-15 14 Q0 -8 15 14 Z" fill="#F5F3EE"/></g></g><g class="cp"><g transform="translate(197.49979853089184 210.27252967743658) scale(1.1)"><circle cx="0" cy="-14" r="9" fill="#F5F3EE"/><path d="M-15 14 Q0 -8 15 14 Z" fill="#F5F3EE"/></g></g><g class="cp"><g transform="translate(102.4995970626382 210.27218072221174) scale(1.1)"><circle cx="0" cy="-14" r="9" fill="#F5F3EE"/><path d="M-15 14 Q0 -8 15 14 Z" fill="#F5F3EE"/></g></g><g class="cp"><g transform="translate(55.00000000256357 127.99930209103042) scale(1.1)"><circle cx="0" cy="-14" r="9" fill="#F5F3EE"/><path d="M-15 14 Q0 -8 15 14 Z" fill="#F5F3EE"/></g></g><g class="cp"><g transform="translate(102.50080587814168 45.72712137177879) scale(1.1)"><circle cx="0" cy="-14" r="9" fill="#F5F3EE"/><path d="M-15 14 Q0 -8 15 14 Z" fill="#F5F3EE"/></g></g><g class="cp"><g transform="translate(197.50100734126818 45.72816823745332) scale(1.1)"><circle cx="0" cy="-14" r="9" fill="#F5F3EE"/><path d="M-15 14 Q0 -8 15 14 Z" fill="#F5F3EE"/></g></g></svg></div><div class="motto" id="c18m">Deșteaptă-te, române!</div></div></div></div>
+<div id="c19" class="clip slot" data-start="100.65" data-duration="2.30" data-track-index="2"><div class="card" id="c19i"><div class="eb">Link</div><div class="ttl">Sub poza mea de <b>profil</b> ↑</div><div class="art"><div id="c19p"><svg viewBox="0 0 220 300" width="210"><rect x="20" y="6" width="180" height="288" rx="28" fill="#121212" stroke="#F5F3EE" stroke-width="6"/>
+<circle cx="110" cy="80" r="36" fill="none" stroke="#D4AF37" stroke-width="6"/><g transform="translate(110 86) scale(1.2)"><circle cx="0" cy="-14" r="9" fill="#F5F3EE"/><path d="M-15 14 Q0 -8 15 14 Z" fill="#F5F3EE"/></g>
+<rect x="62" y="128" width="96" height="10" rx="5" fill="#F5F3EE" opacity=".7"/><rect x="74" y="148" width="72" height="8" rx="4" fill="#F5F3EE" opacity=".4"/>
+<g class="bio"><rect x="46" y="172" width="128" height="34" rx="17" fill="#D4AF37"/><text x="110" y="195" text-anchor="middle" font-family="Mont" font-weight="800" font-size="16" fill="#080808">🔗 LINK</text></g>
+<g opacity=".5"><rect x="36" y="222" width="46" height="60" rx="6" fill="#F5F3EE" opacity=".3"/><rect x="88" y="222" width="46" height="60" rx="6" fill="#F5F3EE" opacity=".3"/><rect x="140" y="222" width="46" height="60" rx="6" fill="#F5F3EE" opacity=".3"/></g></svg></div></div></div></div>
+<div id="sp1" class="clip split" data-start="21.85" data-duration="9.45" data-track-index="3" data-layout-allow-overflow><div class="wipe" id="sp1w"></div><div class="panel" id="sp1i"><div class="eb">Aici intervine</div><div class="ttl">Funnel-ul</div>
+<div class="fwrap"><svg viewBox="0 0 380 560" width="300" id="fbig">
+<path d="M20 70 H360 L232 300 V470 L148 510 V300 Z" fill="rgba(212,175,55,.08)" stroke="#D4AF37" stroke-width="7" stroke-linejoin="round"/>
+<path d="M70 120 H310" stroke="#F5F3EE" stroke-width="3" opacity=".35"/><path d="M118 200 H262" stroke="#F5F3EE" stroke-width="3" opacity=".35"/>
+<g class="fp" id="fp0"><g transform="translate(60 30) scale(1.5)"><circle cx="0" cy="-14" r="9" fill="#F5F3EE"/><path d="M-15 14 Q0 -8 15 14 Z" fill="#F5F3EE"/></g></g><g class="fp" id="fp1"><g transform="translate(112 30) scale(1.5)"><circle cx="0" cy="-14" r="9" fill="#F5F3EE"/><path d="M-15 14 Q0 -8 15 14 Z" fill="#F5F3EE"/></g></g><g class="fp" id="fp2"><g transform="translate(164 30) scale(1.5)"><circle cx="0" cy="-14" r="9" fill="#F5F3EE"/><path d="M-15 14 Q0 -8 15 14 Z" fill="#F5F3EE"/></g></g><g class="fp" id="fp3"><g transform="translate(216 30) scale(1.5)"><circle cx="0" cy="-14" r="9" fill="#F5F3EE"/><path d="M-15 14 Q0 -8 15 14 Z" fill="#F5F3EE"/></g></g><g class="fp" id="fp4"><g transform="translate(268 30) scale(1.5)"><circle cx="0" cy="-14" r="9" fill="#F5F3EE"/><path d="M-15 14 Q0 -8 15 14 Z" fill="#F5F3EE"/></g></g><g class="fp" id="fp5"><g transform="translate(320 30) scale(1.5)"><circle cx="0" cy="-14" r="9" fill="#F5F3EE"/><path d="M-15 14 Q0 -8 15 14 Z" fill="#F5F3EE"/></g></g>
+<g id="fout" opacity="0"><g transform="translate(190 535) scale(1.6)"><circle cx="0" cy="-14" r="9" fill="#D4AF37"/><path d="M-15 14 Q0 -8 15 14 Z" fill="#D4AF37"/></g></g></svg><div class="flabel top">vizitatori</div><div class="flabel bot" id="fbl">clienți ✓</div></div>
+<div class="reasons"><div class="rs" id="r1"><span>↺</span> un motiv să revină</div><div class="rs" id="r2"><svg viewBox="0 0 120 100" width="110"><path d="M8 14 H26 L40 66 H96 L108 30 H32" fill="none" stroke="#D4AF37" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="46" cy="84" r="8" fill="#D4AF37"/><circle cx="90" cy="84" r="8" fill="#D4AF37"/></svg><span>un motiv să cumpere</span></div></div><div class="exchip" id="x1">→ un exemplu</div></div></div>
+<div id="sp2" class="clip split" data-start="75.80" data-duration="14.50" data-track-index="3" data-layout-allow-overflow><div class="wipe" id="sp2w"></div><div class="panel" id="sp2i"><div id="s2t"><div class="eb">Și iată</div><div class="ttl">Campania</div></div>
+<div class="camp"><div id="m1"><svg viewBox="0 0 120 90" width="120"><rect x="6" y="6" width="108" height="78" rx="12" fill="#141414" stroke="#D4AF37" stroke-width="6"/><path d="M10 12 L60 52 L110 12" fill="none" stroke="#D4AF37" stroke-width="6"/></svg><span>E-mail</span></div><div id="m2"><svg viewBox="0 0 110 110" width="110"><path d="M55 8 a46 46 0 1 1 -24 85 l-22 8 8 -21 a46 46 0 0 1 38 -72z" fill="#25D366"/><path d="M40 34 c-4 6 -2 16 8 26 10 10 20 13 26 8 l4 -6 -10 -6 -5 5 c-5 -2 -11 -8 -13 -13 l5 -5 -6 -10z" fill="#fff"/></svg><span>WhatsApp</span></div></div>
+<div class="back" id="bk"><svg viewBox="0 0 120 100" width="110"><path d="M8 14 H26 L40 66 H96 L108 30 H32" fill="none" stroke="#D4AF37" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="46" cy="84" r="8" fill="#D4AF37"/><circle cx="90" cy="84" r="8" fill="#D4AF37"/></svg><span>revin pe site<br>și <b>cumpără</b></span></div>
+<div class="recap" id="rc"><div class="eb">Asta e pâlnia</div>
+<div class="tier" id="t1"><div class="tn">1</div><div><div class="tl">Conținut</div><div class="ts">video simplu, util</div></div></div><div class="tier" id="t2"><div class="tn">2</div><div><div class="tl">Magnet</div><div class="ts">ghid gratuit / -10–20%</div></div></div><div class="tier" id="t3"><div class="tn">3</div><div><div class="tl">Contact</div><div class="ts">e-mail + telefon</div></div></div><div class="tier" id="t4"><div class="tn">4</div><div><div class="tl">Campanie</div><div class="ts">e-mail / WhatsApp</div></div></div><div class="tier" id="t5"><div class="tn">5</div><div><div class="tl">Vânzare</div><div class="ts">clientul revine ✓</div></div></div></div></div></div>
+  <div id="captions" class="clip" data-start="0" data-duration="102.95" data-track-index="4" data-track-kind="captions" data-layout-allow-caption-zone data-layout-allow-overlap>
+  <div id="g0" class="grp" style="font-size:66px"><span id="w0" class="w">Ești</span> <span id="w1" class="w">antreprenor,</span></div>
+<div id="g1" class="grp" style="font-size:66px"><span id="w2" class="w">ai</span> <span id="w3" class="w">un</span> <span id="w4" class="w kw">site</span></div>
+<div id="g2" class="grp" style="font-size:66px"><span id="w5" class="w">și</span> <span id="w6" class="w">poate</span> <span id="w7" class="w">te</span></div>
+<div id="g3" class="grp" style="font-size:66px"><span id="w8" class="w">gândești</span> <span id="w9" class="w">că</span> <span id="w10" class="w">nu</span></div>
+<div id="g4" class="grp" style="font-size:66px"><span id="w11" class="w">îți</span> <span id="w12" class="w">trebuie</span> <span id="w13" class="w">un</span></div>
+<div id="g5" class="grp" style="font-size:66px"><span id="w14" class="w kw">funnel,</span></div>
+<div id="g6" class="grp" style="font-size:66px"><span id="w15" class="w">așa-zisa</span> <span id="w16" class="w kw">pâlnie.</span></div>
+<div id="g7" class="grp" style="font-size:66px"><span id="w17" class="w">Ca</span> <span id="w18" class="w">de</span> <span id="w19" class="w">obicei,</span></div>
+<div id="g8" class="grp" style="font-size:66px"><span id="w20" class="w">îți</span> <span id="w21" class="w">voi</span> <span id="w22" class="w">explica</span></div>
+<div id="g9" class="grp" style="font-size:66px"><span id="w23" class="w">în</span> <span id="w24" class="w">cuvinte</span> <span id="w25" class="w">foarte</span></div>
+<div id="g10" class="grp" style="font-size:66px"><span id="w26" class="w">simple</span> <span id="w27" class="w">cum</span> <span id="w28" class="w">ar</span></div>
+<div id="g11" class="grp" style="font-size:66px"><span id="w29" class="w">putea</span> <span id="w30" class="w">să</span> <span id="w31" class="w">arate</span></div>
+<div id="g12" class="grp" style="font-size:66px"><span id="w32" class="w">un</span> <span id="w33" class="w kw">funnel</span> <span id="w34" class="w">pentru</span></div>
+<div id="g13" class="grp" style="font-size:66px"><span id="w35" class="w">tine,</span></div>
+<div id="g14" class="grp" style="font-size:66px"><span id="w36" class="w">antreprenor.</span></div>
+<div id="g15" class="grp" style="font-size:66px"><span id="w37" class="w">Să</span> <span id="w38" class="w">presupunem</span> <span id="w39" class="w">că</span></div>
+<div id="g16" class="grp" style="font-size:66px"><span id="w40" class="w">tu</span> <span id="w41" class="w">ai</span> <span id="w42" class="w">un</span></div>
+<div id="g17" class="grp" style="font-size:66px"><span id="w43" class="w kw">site.</span></div>
+<div id="g18" class="grp" style="font-size:58px"><span id="w44" class="w">Persoanele</span> <span id="w45" class="w">intră</span> <span id="w46" class="w">și</span></div>
+<div id="g19" class="grp" style="font-size:66px"><span id="w47" class="w">nu</span> <span id="w48" class="w">achiziționează</span></div>
+<div id="g20" class="grp" style="font-size:66px"><span id="w49" class="w">imediat</span> <span id="w50" class="w">pentru</span> <span id="w51" class="w">că</span></div>
+<div id="g21" class="grp" style="font-size:66px"><span id="w52" class="w">fie</span> <span id="w53" class="w">nu</span> <span id="w54" class="w">au</span></div>
+<div id="g22" class="grp" style="font-size:58px"><span id="w55" class="w">înțeles</span> <span id="w56" class="w">foarte</span> <span id="w57" class="w">bine</span></div>
+<div id="g23" class="grp" style="font-size:66px"><span id="w58" class="w">produsul,</span></div>
+<div id="g24" class="grp" style="font-size:66px"><span id="w59" class="w">descrierea,</span></div>
+<div id="g25" class="grp" style="font-size:66px"><span id="w60" class="w">nu</span> <span id="w61" class="w">au</span> <span id="w62" class="w">chef,</span></div>
+<div id="g26" class="grp" style="font-size:66px"><span id="w63" class="w">timp</span> <span id="w64" class="w">să</span> <span id="w65" class="w">citească.</span></div>
+<div id="g27" class="grp" style="font-size:66px"><span id="w66" class="w">Aici</span> <span id="w67" class="w">intervine</span></div>
+<div id="g28" class="grp" style="font-size:66px"><span id="w68" class="w kw">funnel-ul.</span></div>
+<div id="g29" class="grp" style="font-size:66px"><span id="w69" class="w">Tu</span> <span id="w70" class="w">le</span> <span id="w71" class="w">dai</span></div>
+<div id="g30" class="grp" style="font-size:66px"><span id="w72" class="w">un</span> <span id="w73" class="w">motiv</span> <span id="w74" class="w">să</span></div>
+<div id="g31" class="grp" style="font-size:66px"><span id="w75" class="w">se</span> <span id="w76" class="w">întoarcă</span> <span id="w77" class="w">pe</span></div>
+<div id="g32" class="grp" style="font-size:66px"><span id="w78" class="w kw">site-ul</span> <span id="w79" class="w">tău.</span></div>
+<div id="g33" class="grp" style="font-size:66px"><span id="w80" class="w">Le</span> <span id="w81" class="w">dai</span> <span id="w82" class="w">un</span></div>
+<div id="g34" class="grp" style="font-size:58px"><span id="w83" class="w">motiv</span> <span id="w84" class="w">să</span> <span id="w85" class="w">achiziționeze</span></div>
+<div id="g35" class="grp" style="font-size:66px"><span id="w86" class="w">ceva</span> <span id="w87" class="w">și</span> <span id="w88" class="w">în</span></div>
+<div id="g36" class="grp" style="font-size:66px"><span id="w89" class="w">cazul</span> <span id="w90" class="w">ăsta</span> <span id="w91" class="w">facem</span></div>
+<div id="g37" class="grp" style="font-size:66px"><span id="w92" class="w">un</span> <span id="w93" class="w">exemplu.</span></div>
+<div id="g38" class="grp" style="font-size:66px"><span id="w94" class="w">Să</span> <span id="w95" class="w">spunem</span> <span id="w96" class="w">că</span></div>
+<div id="g39" class="grp" style="font-size:66px"><span id="w97" class="w">ai</span> <span id="w98" class="w">un</span> <span id="w99" class="w kw">site</span></div>
+<div id="g40" class="grp" style="font-size:66px"><span id="w100" class="w">cu</span> <span id="w101" class="w">produse</span> <span id="w102" class="w">pentru</span></div>
+<div id="g41" class="grp" style="font-size:58px"><span id="w103" class="w">îngrijirea</span> <span id="w104" class="w">părului.</span></div>
+<div id="g42" class="grp" style="font-size:66px"><span id="w105" class="w">Aici,</span></div>
+<div id="g43" class="grp" style="font-size:66px"><span id="w106" class="w">în</span> <span id="w107" class="w">social</span> <span id="w108" class="w">media,</span></div>
+<div id="g44" class="grp" style="font-size:66px"><span id="w109" class="w kw">funnel-ul</span> <span id="w110" class="w">tău</span> <span id="w111" class="w">ar</span></div>
+<div id="g45" class="grp" style="font-size:66px"><span id="w112" class="w">putea</span> <span id="w113" class="w">să</span> <span id="w114" class="w">fie</span></div>
+<div id="g46" class="grp" style="font-size:66px"><span id="w115" class="w">sub</span> <span id="w116" class="w">poza</span> <span id="w117" class="w">de</span></div>
+<div id="g47" class="grp" style="font-size:66px"><span id="w118" class="w">profil,</span></div>
+<div id="g48" class="grp" style="font-size:66px"><span id="w119" class="w">să</span> <span id="w120" class="w">ai</span> <span id="w121" class="w">un</span></div>
+<div id="g49" class="grp" style="font-size:66px"><span id="w122" class="w">simplu</span> <span id="w123" class="w">video</span> <span id="w124" class="w">în</span></div>
+<div id="g50" class="grp" style="font-size:66px"><span id="w125" class="w">care</span> <span id="w126" class="w">explici</span> <span id="w127" class="w">cum</span></div>
+<div id="g51" class="grp" style="font-size:66px"><span id="w128" class="w">să-și</span> <span id="w129" class="w">îngrijească</span></div>
+<div id="g52" class="grp" style="font-size:58px"><span id="w130" class="w">părul</span> <span id="w131" class="w">persoanele</span> <span id="w132" class="w">care</span></div>
+<div id="g53" class="grp" style="font-size:66px"><span id="w133" class="w">au</span> <span id="w134" class="w">bucle</span> <span id="w135" class="w">foarte</span></div>
+<div id="g54" class="grp" style="font-size:66px"><span id="w136" class="w">definite</span> <span id="w137" class="w">sau</span> <span id="w138" class="w">cum</span></div>
+<div id="g55" class="grp" style="font-size:66px"><span id="w139" class="w">să</span> <span id="w140" class="w">ai</span> <span id="w141" class="w">un</span></div>
+<div id="g56" class="grp" style="font-size:66px"><span id="w142" class="w">păr</span> <span id="w143" class="w">care</span> <span id="w144" class="w">nu</span></div>
+<div id="g57" class="grp" style="font-size:66px"><span id="w145" class="w">se</span> <span id="w146" class="w">îngrașă</span> <span id="w147" class="w">rapid,</span></div>
+<div id="g58" class="grp" style="font-size:66px"><span id="w148" class="w">ceva</span> <span id="w149" class="w">de</span> <span id="w150" class="w">genul.</span></div>
+<div id="g59" class="grp" style="font-size:66px"><span id="w151" class="w">În</span> <span id="w152" class="w">trei</span> <span id="w153" class="w">pași</span></div>
+<div id="g60" class="grp" style="font-size:66px"><span id="w154" class="w">simpli.</span></div>
+<div id="g61" class="grp" style="font-size:66px"><span id="w155" class="w">Și</span> <span id="w156" class="w">la</span> <span id="w157" class="w">sfârșit</span></div>
+<div id="g62" class="grp" style="font-size:66px"><span id="w158" class="w">le</span> <span id="w159" class="w">spui</span> <span id="w160" class="w">dacă</span></div>
+<div id="g63" class="grp" style="font-size:66px"><span id="w161" class="w">te</span> <span id="w162" class="w">interesează,</span></div>
+<div id="g64" class="grp" style="font-size:66px"><span id="w163" class="w">descarcă</span> <span id="w164" class="w kw">ghidul</span></div>
+<div id="g65" class="grp" style="font-size:66px"><span id="w165" class="w kw">gratuit.</span></div>
+<div id="g66" class="grp" style="font-size:66px"><span id="w166" class="w">Persoana</span> <span id="w167" class="w">își</span> <span id="w168" class="w">lasă</span></div>
+<div id="g67" class="grp" style="font-size:66px"><span id="w169" class="w kw">e-mail-ul,</span></div>
+<div id="g68" class="grp" style="font-size:58px"><span id="w170" class="w">numărul</span> <span id="w171" class="w">de</span> <span id="w172" class="w">telefon,</span></div>
+<div id="g69" class="grp" style="font-size:66px"><span id="w173" class="w">descarcă</span> <span id="w174" class="w kw">ghidul</span></div>
+<div id="g70" class="grp" style="font-size:58px"><span id="w175" class="w kw">gratuit</span> <span id="w176" class="w">unde</span> <span id="w177" class="w">găsește</span></div>
+<div id="g71" class="grp" style="font-size:66px"><span id="w178" class="w">și</span> <span id="w179" class="w">oferte</span> <span id="w180" class="w">cu</span></div>
+<div id="g72" class="grp" style="font-size:66px"><span id="w181" class="w">produsele</span> <span id="w182" class="w">tale</span> <span id="w183" class="w">sau</span></div>
+<div id="g73" class="grp" style="font-size:66px"><span id="w184" class="w kw">funnel-ul</span> <span id="w185" class="w">ar</span> <span id="w186" class="w">putea</span></div>
+<div id="g74" class="grp" style="font-size:66px"><span id="w187" class="w">să</span> <span id="w188" class="w">fie</span> <span id="w189" class="w">pur</span></div>
+<div id="g75" class="grp" style="font-size:66px"><span id="w190" class="w">și</span> <span id="w191" class="w">simplu</span> <span id="w192" class="w">din</span></div>
+<div id="g76" class="grp" style="font-size:66px"><span id="w193" class="w">nou</span> <span id="w194" class="w">un</span> <span id="w195" class="w">video</span></div>
+<div id="g77" class="grp" style="font-size:66px"><span id="w196" class="w">cu</span> <span id="w197" class="w">tine</span> <span id="w198" class="w">sau</span></div>
+<div id="g78" class="grp" style="font-size:66px"><span id="w199" class="w">cu</span> <span id="w200" class="w">produsul</span> <span id="w201" class="w">tău</span></div>
+<div id="g79" class="grp" style="font-size:66px"><span id="w202" class="w">în</span> <span id="w203" class="w">care</span> <span id="w204" class="w">este</span></div>
+<div id="g80" class="grp" style="font-size:58px"><span id="w205" class="w">explicat</span> <span id="w206" class="w">produsul</span> <span id="w207" class="w">și</span></div>
+<div id="g81" class="grp" style="font-size:66px"><span id="w208" class="w">dacă</span> <span id="w209" class="w">vor</span> <span id="w210" class="w">o</span></div>
+<div id="g82" class="grp" style="font-size:66px"><span id="w211" class="w kw">reducere</span> <span id="w212" class="w">de</span> <span id="w213" class="w kw">zece,</span></div>
+<div id="g83" class="grp" style="font-size:66px"><span id="w214" class="w kw">douăzeci</span> <span id="w215" class="w">la</span> <span id="w216" class="w kw">sută</span></div>
+<div id="g84" class="grp" style="font-size:66px"><span id="w217" class="w">pe</span> <span id="w218" class="w">prima</span> <span id="w219" class="w">comandă,</span></div>
+<div id="g85" class="grp" style="font-size:66px"><span id="w220" class="w">să</span> <span id="w221" class="w">se</span> <span id="w222" class="w">înregistreze</span></div>
+<div id="g86" class="grp" style="font-size:66px"><span id="w223" class="w">și</span> <span id="w224" class="w">să</span> <span id="w225" class="w">lase</span></div>
+<div id="g87" class="grp" style="font-size:58px"><span id="w226" class="w">normalul</span> <span id="w227" class="w kw">email-ul</span> <span id="w228" class="w">și</span></div>
+<div id="g88" class="grp" style="font-size:58px"><span id="w229" class="w">numărul</span> <span id="w230" class="w">de</span> <span id="w231" class="w">telefon.</span></div>
+<div id="g89" class="grp" style="font-size:66px"><span id="w232" class="w">Și</span> <span id="w233" class="w">iată</span> <span id="w234" class="w">că</span></div>
+<div id="g90" class="grp" style="font-size:66px"><span id="w235" class="w">poate</span> <span id="w236" class="w">porni</span> <span id="w237" class="w">și</span></div>
+<div id="g91" class="grp" style="font-size:66px"><span id="w238" class="w">o</span> <span id="w239" class="w kw">campanie</span> <span id="w240" class="w">de</span></div>
+<div id="g92" class="grp" style="font-size:66px"><span id="w241" class="w kw">e-mail</span> <span id="w242" class="w">sau</span> <span id="w243" class="w">o</span></div>
+<div id="g93" class="grp" style="font-size:58px"><span id="w244" class="w kw">campanie</span> <span id="w245" class="w">de</span> <span id="w246" class="w kw">WhatsApp</span></div>
+<div id="g94" class="grp" style="font-size:66px"><span id="w247" class="w">și</span> <span id="w248" class="w">le</span> <span id="w249" class="w">dai</span></div>
+<div id="g95" class="grp" style="font-size:66px"><span id="w250" class="w">un</span> <span id="w251" class="w">motiv</span> <span id="w252" class="w">să</span></div>
+<div id="g96" class="grp" style="font-size:66px"><span id="w253" class="w">reintre</span> <span id="w254" class="w">în</span> <span id="w255" class="w kw">site-ul</span></div>
+<div id="g97" class="grp" style="font-size:66px"><span id="w256" class="w">tău,</span></div>
+<div id="g98" class="grp" style="font-size:66px"><span id="w257" class="w">dar</span> <span id="w258" class="w">de</span> <span id="w259" class="w">data</span></div>
+<div id="g99" class="grp" style="font-size:58px"><span id="w260" class="w">asta</span> <span id="w261" class="w">să</span> <span id="w262" class="w">achiziționeze</span></div>
+<div id="g100" class="grp" style="font-size:66px"><span id="w263" class="w">informații.</span></div>
+<div id="g101" class="grp" style="font-size:66px"><span id="w264" class="w">Ăsta</span> <span id="w265" class="w">este</span> <span id="w266" class="w kw">pâlnia.</span></div>
+<div id="g102" class="grp" style="font-size:58px"><span id="w267" class="w">Ăsta</span> <span id="w268" class="w">este</span> <span id="w269" class="w kw">funnel-ul</span></div>
+<div id="g103" class="grp" style="font-size:66px"><span id="w270" class="w">în</span> <span id="w271" class="w">modul</span> <span id="w272" class="w">cel</span></div>
+<div id="g104" class="grp" style="font-size:58px"><span id="w273" class="w">mai</span> <span id="w274" class="w">simplu</span> <span id="w275" class="w">explicat,</span></div>
+<div id="g105" class="grp" style="font-size:66px"><span id="w276" class="w">ca</span> <span id="w277" class="w">tu</span> <span id="w278" class="w">să</span></div>
+<div id="g106" class="grp" style="font-size:66px"><span id="w279" class="w">înțelegi</span> <span id="w280" class="w">și</span> <span id="w281" class="w">poate</span></div>
+<div id="g107" class="grp" style="font-size:66px"><span id="w282" class="w">să-l</span> <span id="w283" class="w">pui</span> <span id="w284" class="w">și</span></div>
+<div id="g108" class="grp" style="font-size:66px"><span id="w285" class="w">în</span> <span id="w286" class="w">practică,</span></div>
+<div id="g109" class="grp" style="font-size:66px"><span id="w287" class="w">de</span> <span id="w288" class="w">ce</span> <span id="w289" class="w">nu?</span></div>
+<div id="g110" class="grp" style="font-size:66px"><span id="w290" class="w">Te</span> <span id="w291" class="w">aștept</span> <span id="w292" class="w">oricum</span></div>
+<div id="g111" class="grp" style="font-size:66px"><span id="w293" class="w">să</span> <span id="w294" class="w">fii</span> <span id="w295" class="w">digital,</span></div>
+<div id="g112" class="grp" style="font-size:66px"><span id="w296" class="w">să</span> <span id="w297" class="w">fii</span> <span id="w298" class="w">geo,</span></div>
+<div id="g113" class="grp" style="font-size:66px"><span id="w299" class="w">să</span> <span id="w300" class="w">fii</span> <span id="w301" class="w">deșteaptă,</span></div>
+<div id="g114" class="grp" style="font-size:66px"><span id="w302" class="w">române,</span></div>
+<div id="g115" class="grp" style="font-size:66px"><span id="w303" class="w">să</span> <span id="w304" class="w">faci</span> <span id="w305" class="w">parte</span></div>
+<div id="g116" class="grp" style="font-size:58px"><span id="w306" class="w">din</span> <span id="w307" class="w kw">comunitatea</span> <span id="w308" class="w kw">Mir.</span></div>
+<div id="g117" class="grp" style="font-size:58px"><span id="w309" class="w">Acea</span> <span id="w310" class="w">Deșteaptă-te,</span></div>
+<div id="g118" class="grp" style="font-size:66px"><span id="w311" class="w">române!</span></div>
+<div id="g119" class="grp" style="font-size:66px"><span id="w312" class="w">O</span> <span id="w313" class="w">găsești</span> <span id="w314" class="w">și</span></div>
+<div id="g120" class="grp" style="font-size:66px"><span id="w315" class="w">sub</span> <span id="w316" class="w">poza</span> <span id="w317" class="w">mea</span></div>
+<div id="g121" class="grp" style="font-size:66px"><span id="w318" class="w">de</span> <span id="w319" class="w">profil.</span></div>
+  </div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+tl.to("#c0i",{y:-40,opacity:0,duration:.3,ease:"power2.in"},3.63);
+tl.fromTo("#c0lap",{opacity:0,y:30},{opacity:1,y:0,duration:.4,ease:"power3.out"},1.66);
+tl.fromTo("#c1i",{x:90,opacity:0,scale:.96},{x:0,opacity:1,scale:1,duration:.45,ease:"power3.out"},4.10);
+tl.to("#c1i",{y:-40,opacity:0,duration:.3,ease:"power2.in"},5.63);
+tl.fromTo("#c1f",{scale:.4,rotation:-12,opacity:0},{scale:1,rotation:0,opacity:1,duration:.5,ease:"back.out(2)"},4.16);
+tl.fromTo("#c2i",{x:90,opacity:0,scale:.96},{x:0,opacity:1,scale:1,duration:.45,ease:"power3.out"},6.85);
+tl.to("#c2i",{y:-40,opacity:0,duration:.3,ease:"power2.in"},11.43);
+tl.fromTo("#c2q",{opacity:0,scale:.6},{opacity:1,scale:1,duration:.45,ease:"back.out(2)"},8.08);
+tl.fromTo("#c3i",{x:90,opacity:0,scale:.96},{x:0,opacity:1,scale:1,duration:.45,ease:"power3.out"},12.80);
+tl.to("#c3i",{y:-40,opacity:0,duration:.3,ease:"power2.in"},21.58);
+tl.fromTo("#c3ppl",{x:-220,opacity:0},{x:0,opacity:1,duration:.9,ease:"power2.out"},13.68);
+tl.fromTo("#c3x",{scale:0,opacity:0},{scale:1,opacity:1,duration:.35,ease:"back.out(2.5)"},15.04);
+tl.to("#c3x",{opacity:0,duration:.2},17.32);
+tl.fromTo("#c3q1",{scale:0,opacity:0},{scale:1,opacity:1,duration:.3,ease:"back.out(3)"},17.52);
+tl.fromTo("#c3q2",{scale:0,opacity:0},{scale:1,opacity:1,duration:.3,ease:"back.out(3)"},18.48);
+tl.to(["#c3q1","#c3q2"],{opacity:0,duration:.2},19.650000000000002);
+tl.fromTo("#c3c",{scale:0,opacity:0},{scale:1,opacity:1,duration:.35,ease:"back.out(2.5)"},20.41);
+tl.fromTo("#c3c .hand",{rotation:0},{rotation:300,svgOrigin:"50 50",duration:1.4,ease:"none"},20.41);
+tl.fromTo("#c4i",{x:90,opacity:0,scale:.96},{x:0,opacity:1,scale:1,duration:.45,ease:"power3.out"},31.35);
+tl.to("#c4i",{y:-40,opacity:0,duration:.3,ease:"power2.in"},34.78);
+tl.fromTo(["#c4b .b1","#c4b .b2","#c4b .b3"],{y:60,opacity:0},{y:0,opacity:1,stagger:.15,duration:.45,ease:"back.out(1.8)"},33.21);
+tl.fromTo("#c5i",{x:90,opacity:0,scale:.96},{x:0,opacity:1,scale:1,duration:.45,ease:"power3.out"},35.20);
+tl.to("#c5i",{y:-40,opacity:0,duration:.3,ease:"power2.in"},38.88);
+tl.fromTo("#c5p .bio",{scale:.6,opacity:0,transformOrigin:"50% 50%"},{scale:1,opacity:1,duration:.4,ease:"back.out(3)"},38.09);tl.to("#c5p .bio",{scale:1.12,duration:.25,yoyo:true,repeat:3,transformOrigin:"50% 50%"},38.540000000000006);
+tl.fromTo("#c6i",{x:90,opacity:0,scale:.96},{x:0,opacity:1,scale:1,duration:.45,ease:"power3.out"},39.30);
+tl.to("#c6i",{y:-40,opacity:0,duration:.3,ease:"power2.in"},43.43);
+tl.fromTo("#c6p .pl",{scale:0,transformOrigin:"50% 50%"},{scale:1,duration:.4,ease:"back.out(3)"},40.4);tl.fromTo("#c6p .prog",{scaleX:0,transformOrigin:"0 50%"},{scaleX:1,duration:4,ease:"none"},40.4);
+tl.fromTo("#c7i",{x:90,opacity:0,scale:.96},{x:0,opacity:1,scale:1,duration:.45,ease:"power3.out"},43.80);
+tl.to("#c7i",{y:-40,opacity:0,duration:.3,ease:"power2.in"},46.63);
+tl.fromTo("#c7c .curl",{opacity:0,y:20},{opacity:1,y:0,stagger:.12,duration:.5,ease:"power2.out"},44.78);
+tl.fromTo("#c8i",{x:90,opacity:0,scale:.96},{x:0,opacity:1,scale:1,duration:.45,ease:"power3.out"},47.00);
+tl.to("#c8i",{y:-40,opacity:0,duration:.3,ease:"power2.in"},49.98);
+tl.fromTo("#c8h .strand",{opacity:0,y:-20},{opacity:1,y:0,stagger:.08,duration:.4},47.66);tl.fromTo("#c8h .spark",{scale:0,transformOrigin:"50% 50%"},{scale:1,duration:.4,ease:"back.out(3)"},49.2);
+tl.fromTo("#c9i",{x:90,opacity:0,scale:.96},{x:0,opacity:1,scale:1,duration:.45,ease:"power3.out"},50.35);
+tl.to("#c9i",{y:-40,opacity:0,duration:.3,ease:"power2.in"},53.23);
+tl.fromTo(["#s1","#s2","#s3"],{scale:0,opacity:0},{scale:1,opacity:1,stagger:.18,duration:.4,ease:"back.out(2.5)"},50.56);
+tl.fromTo("#c10i",{x:90,opacity:0,scale:.96},{x:0,opacity:1,scale:1,duration:.45,ease:"power3.out"},53.60);
+tl.to("#c10i",{y:-40,opacity:0,duration:.3,ease:"power2.in"},54.88);
+tl.fromTo("#c10p .dl",{y:-20,opacity:0},{y:0,opacity:1,duration:.35,ease:"bounce.out"},53.68);
+tl.fromTo("#c11i",{x:90,opacity:0,scale:.96},{x:0,opacity:1,scale:1,duration:.45,ease:"power3.out"},55.25);
+tl.to("#c11i",{y:-40,opacity:0,duration:.3,ease:"power2.in"},58.53);
+tl.fromTo("#f1e",{clipPath:"inset(0 100% 0 0)"},{clipPath:"inset(0 0% 0 0)",duration:.6,ease:"steps(14)"},56.12);
+tl.fromTo("#f1p",{clipPath:"inset(0 100% 0 0)"},{clipPath:"inset(0 0% 0 0)",duration:.6,ease:"steps(12)"},56.8);
+tl.fromTo("#f1b",{scale:1},{scale:.92,duration:.12,yoyo:true,repeat:1},57.52);
+tl.fromTo("#c12i",{x:90,opacity:0,scale:.96},{x:0,opacity:1,scale:1,duration:.45,ease:"power3.out"},58.90);
+tl.to("#c12i",{y:-40,opacity:0,duration:.3,ease:"power2.in"},60.98);
+tl.fromTo("#c12p .tag",{opacity:0,x:30},{opacity:1,x:0,duration:.4,ease:"back.out(2)"},59.88);
+tl.fromTo("#c13i",{x:90,opacity:0,scale:.96},{x:0,opacity:1,scale:1,duration:.45,ease:"power3.out"},61.30);
+tl.to("#c13i",{y:-40,opacity:0,duration:.3,ease:"power2.in"},67.83);
+tl.fromTo("#c13p .pl",{scale:0,transformOrigin:"50% 50%"},{scale:1,duration:.4,ease:"back.out(3)"},64.28);tl.fromTo("#c13p .prog",{scaleX:0,transformOrigin:"0 50%"},{scaleX:1,duration:5,ease:"none"},64.28);
+tl.fromTo("#c14i",{x:90,opacity:0,scale:.96},{x:0,opacity:1,scale:1,duration:.45,ease:"power3.out"},68.20);
+tl.to("#c14i",{y:-40,opacity:0,duration:.3,ease:"power2.in"},71.58);
+tl.fromTo("#p10",{scale:0,rotation:-20},{scale:1,rotation:-6,duration:.45,ease:"back.out(2.5)"},69.51);
+tl.fromTo("#p20",{scale:0,rotation:20},{scale:1,rotation:6,duration:.45,ease:"back.out(2.5)"},69.86);
+tl.fromTo("#c15i",{x:90,opacity:0,scale:.96},{x:0,opacity:1,scale:1,duration:.45,ease:"power3.out"},71.95);
+tl.to("#c15i",{y:-40,opacity:0,duration:.3,ease:"power2.in"},75.48);
+tl.fromTo("#f2e",{clipPath:"inset(0 100% 0 0)"},{clipPath:"inset(0 0% 0 0)",duration:.6,ease:"steps(14)"},74.18);
+tl.fromTo("#f2p",{clipPath:"inset(0 100% 0 0)"},{clipPath:"inset(0 0% 0 0)",duration:.6,ease:"steps(12)"},75.0);
+tl.fromTo("#c16i",{x:90,opacity:0,scale:.96},{x:0,opacity:1,scale:1,duration:.45,ease:"power3.out"},90.35);
+tl.to("#c16i",{y:-40,opacity:0,duration:.3,ease:"power2.in"},92.68);
+tl.fromTo("#c16k",{scale:0,rotation:-30},{scale:1,rotation:0,duration:.5,ease:"back.out(3)"},91.96000000000001);
+tl.fromTo("#c17i",{x:90,opacity:0,scale:.96},{x:0,opacity:1,scale:1,duration:.45,ease:"power3.out"},93.05);
+tl.to("#c17i",{y:-40,opacity:0,duration:.3,ease:"power2.in"},95.98);
+tl.fromTo("#k1",{x:60,opacity:0},{x:0,opacity:1,duration:.3,ease:"back.out(2)"},94.3);tl.fromTo("#k2",{x:60,opacity:0},{x:0,opacity:1,duration:.3,ease:"back.out(2)"},95.02);tl.fromTo("#k3",{x:60,opacity:0},{x:0,opacity:1,duration:.3,ease:"back.out(2)"},95.58);
+tl.fromTo("#c18i",{x:90,opacity:0,scale:.96},{x:0,opacity:1,scale:1,duration:.45,ease:"power3.out"},96.35);
+tl.to("#c18i",{y:-40,opacity:0,duration:.3,ease:"power2.in"},100.28);
+tl.fromTo("#c18c .cp",{scale:0,opacity:0,transformOrigin:"50% 50%"},{scale:1,opacity:1,stagger:.12,duration:.35,ease:"back.out(2)"},97.1);
+tl.fromTo("#c18c .links line",{opacity:0},{opacity:1,stagger:.12,duration:.3},97.3);
+tl.fromTo("#c18m",{opacity:0,y:20},{opacity:1,y:0,duration:.5,ease:"power3.out"},99.03);
+tl.fromTo("#c19i",{x:90,opacity:0,scale:.96},{x:0,opacity:1,scale:1,duration:.45,ease:"power3.out"},100.65);
+tl.to("#c19i",{y:-40,opacity:0,duration:.3,ease:"power2.in"},102.63);
+tl.to("#c19p .bio",{scale:1.12,duration:.3,yoyo:true,repeat:2,transformOrigin:"50% 50%"},102.01);
+tl.fromTo("#sp1w",{x:470},{x:-30,duration:.45,ease:"power3.inOut"},21.85);
+tl.fromTo("#sp1i",{clipPath:"inset(0 0 0 100%)"},{clipPath:"inset(0 0 0 0%)",duration:.45,ease:"power3.inOut"},21.85);
+tl.to("#vwrap",{x:-60,duration:.5,ease:"power3.inOut"},21.85);
+tl.to("#sp1w",{opacity:0,duration:.2},22.35);
+tl.to("#sp1i",{clipPath:"inset(0 100% 0 0)",duration:.4,ease:"power3.inOut"},30.88);
+tl.to("#vwrap",{x:0,duration:.45,ease:"power3.inOut"},30.88);
+tl.fromTo("#fp0",{y:0,x:0,opacity:1},{y:230,x:110,opacity:0,duration:1.2,ease:"power2.in"},22.90);tl.fromTo("#fp1",{y:0,x:0,opacity:1},{y:260,x:66,opacity:0,duration:1.2,ease:"power2.in"},23.08);tl.fromTo("#fp2",{y:0,x:0,opacity:1},{y:230,x:22,opacity:1,duration:1.2,ease:"power2.in"},23.26);tl.fromTo("#fp3",{y:0,x:0,opacity:1},{y:260,x:-22,opacity:1,duration:1.2,ease:"power2.in"},23.44);tl.fromTo("#fp4",{y:0,x:0,opacity:1},{y:230,x:-66,opacity:0,duration:1.2,ease:"power2.in"},23.62);tl.fromTo("#fp5",{y:0,x:0,opacity:1},{y:260,x:-110,opacity:0,duration:1.2,ease:"power2.in"},23.80);
+tl.fromTo("#fout",{opacity:0,y:-40},{opacity:1,y:0,duration:.5,ease:"back.out(2)"},24.3);
+tl.fromTo("#fbl",{opacity:0,y:10},{opacity:1,y:0,duration:.4},24.4);
+tl.fromTo("#r1",{opacity:0,x:60},{opacity:1,x:0,duration:.4,ease:"power3.out"},24.63);
+tl.fromTo("#r2",{opacity:0,x:60},{opacity:1,x:0,duration:.4,ease:"power3.out"},27.509999999999998);
+tl.to(["#r1","#r2"],{opacity:0,duration:.25},29.63);
+tl.fromTo("#x1",{opacity:0,scale:.6},{opacity:1,scale:1,duration:.4,ease:"back.out(2.5)"},29.93);
+tl.fromTo("#sp2w",{x:470},{x:-30,duration:.45,ease:"power3.inOut"},75.80);
+tl.fromTo("#sp2i",{clipPath:"inset(0 0 0 100%)"},{clipPath:"inset(0 0 0 0%)",duration:.45,ease:"power3.inOut"},75.80);
+tl.to("#vwrap",{x:-60,duration:.5,ease:"power3.inOut"},75.80);
+tl.to("#sp2w",{opacity:0,duration:.2},76.30);
+tl.to("#sp2i",{clipPath:"inset(0 100% 0 0)",duration:.4,ease:"power3.inOut"},89.88);
+tl.to("#vwrap",{x:0,duration:.45,ease:"power3.inOut"},89.88);
+tl.fromTo("#m1",{opacity:0,y:40,scale:.7},{opacity:1,y:0,scale:1,duration:.45,ease:"back.out(2.2)"},77.48);
+tl.fromTo("#m2",{opacity:0,y:40,scale:.7},{opacity:1,y:0,scale:1,duration:.45,ease:"back.out(2.2)"},79.42);
+tl.fromTo("#bk",{opacity:0,x:60},{opacity:1,x:0,duration:.45,ease:"power3.out"},81.1);
+tl.to(["#m1","#m2","#bk"],{opacity:0,y:-30,duration:.3,ease:"power2.in"},84.99000000000001);
+tl.fromTo("#s2t",{opacity:1},{opacity:0,duration:.25},84.99000000000001);
+tl.fromTo("#rc",{opacity:0},{opacity:1,duration:.2},85.29);
+tl.fromTo("#t1",{opacity:0,x:50},{opacity:1,x:0,duration:.35,ease:"power3.out"},85.34);tl.fromTo("#t2",{opacity:0,x:50},{opacity:1,x:0,duration:.35,ease:"power3.out"},85.89);tl.fromTo("#t3",{opacity:0,x:50},{opacity:1,x:0,duration:.35,ease:"power3.out"},86.44);tl.fromTo("#t4",{opacity:0,x:50},{opacity:1,x:0,duration:.35,ease:"power3.out"},86.99);tl.fromTo("#t5",{opacity:0,x:50},{opacity:1,x:0,duration:.35,ease:"power3.out"},87.54);
+tl.fromTo("#vwrap",{scale:1},{scale:1.06,duration:5.6,ease:"sine.inOut"},0);tl.to("#vwrap",{scale:1,duration:.4,ease:"power2.out"},5.95);
+tl.to("#vwrap",{scale:1.1,duration:.25,ease:"power3.out"},5.95).to("#vwrap",{scale:1,duration:.5,ease:"power2.inOut"},6.5);
+tl.to("#vwrap",{scale:1.07,duration:3.6,ease:"sine.inOut"},35.21).to("#vwrap",{scale:1,duration:.4},39.2);
+tl.to("#vwrap",{scale:1.12,duration:.2,ease:"power3.out"},68.95).to("#vwrap",{scale:1,duration:.6,ease:"power2.inOut"},70.16);
+tl.to("#vwrap",{scale:1.08,duration:6,ease:"sine.inOut"},93.1);
+tl.fromTo("#w0",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},0.12);
+tl.to("#w0",{color:"#D4AF37",duration:.06},0.16).to("#w0",{color:"#F5F3EE",duration:.12},0.72);
+tl.fromTo("#w1",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},0.68);
+tl.to("#w1",{color:"#D4AF37",duration:.06},0.72).to("#w1",{color:"#F5F3EE",duration:.12},1.36);
+tl.set("#g0",{visibility:"visible",opacity:1},0.10);
+tl.to("#g0",{opacity:0,duration:.1,ease:"power2.in"},1.18).set("#g0",{visibility:"hidden"},1.28);
+tl.fromTo("#w2",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},1.32);
+tl.to("#w2",{color:"#D4AF37",duration:.06},1.36).to("#w2",{color:"#F5F3EE",duration:.12},1.60);
+tl.fromTo("#w3",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},1.56);
+tl.to("#w3",{color:"#D4AF37",duration:.06},1.60).to("#w3",{color:"#F5F3EE",duration:.12},1.76);
+tl.fromTo("#w4",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},1.72);
+tl.set("#g1",{visibility:"visible",opacity:1},1.28);
+tl.to("#g1",{opacity:0,duration:.1,ease:"power2.in"},1.90).set("#g1",{visibility:"hidden"},2.00);
+tl.fromTo("#w5",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},2.04);
+tl.to("#w5",{color:"#D4AF37",duration:.06},2.08).to("#w5",{color:"#F5F3EE",duration:.12},2.24);
+tl.fromTo("#w6",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},2.20);
+tl.to("#w6",{color:"#D4AF37",duration:.06},2.24).to("#w6",{color:"#F5F3EE",duration:.12},2.48);
+tl.fromTo("#w7",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},2.44);
+tl.to("#w7",{color:"#D4AF37",duration:.06},2.48).to("#w7",{color:"#F5F3EE",duration:.12},2.64);
+tl.set("#g2",{visibility:"visible",opacity:1},2.00);
+tl.to("#g2",{opacity:0,duration:.1,ease:"power2.in"},2.46).set("#g2",{visibility:"hidden"},2.56);
+tl.fromTo("#w8",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},2.60);
+tl.to("#w8",{color:"#D4AF37",duration:.06},2.64).to("#w8",{color:"#F5F3EE",duration:.12},3.12);
+tl.fromTo("#w9",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},3.08);
+tl.to("#w9",{color:"#D4AF37",duration:.06},3.12).to("#w9",{color:"#F5F3EE",duration:.12},3.22);
+tl.fromTo("#w10",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},3.16);
+tl.to("#w10",{color:"#D4AF37",duration:.06},3.20).to("#w10",{color:"#F5F3EE",duration:.12},3.52);
+tl.set("#g3",{visibility:"visible",opacity:1},2.56);
+tl.to("#g3",{opacity:0,duration:.1,ease:"power2.in"},3.34).set("#g3",{visibility:"hidden"},3.44);
+tl.fromTo("#w11",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},3.48);
+tl.to("#w11",{color:"#D4AF37",duration:.06},3.52).to("#w11",{color:"#F5F3EE",duration:.12},3.62);
+tl.fromTo("#w12",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},3.48);
+tl.to("#w12",{color:"#D4AF37",duration:.06},3.52).to("#w12",{color:"#F5F3EE",duration:.12},4.00);
+tl.fromTo("#w13",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},3.96);
+tl.to("#w13",{color:"#D4AF37",duration:.06},4.00).to("#w13",{color:"#F5F3EE",duration:.12},4.16);
+tl.set("#g4",{visibility:"visible",opacity:1},3.44);
+tl.to("#g4",{opacity:0,duration:.1,ease:"power2.in"},3.98).set("#g4",{visibility:"hidden"},4.08);
+tl.fromTo("#w14",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},4.12);
+tl.set("#g5",{visibility:"visible",opacity:1},4.08);
+tl.to("#g5",{opacity:0,duration:.1,ease:"power2.in"},4.54).set("#g5",{visibility:"hidden"},4.64);
+tl.fromTo("#w15",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},4.68);
+tl.to("#w15",{color:"#D4AF37",duration:.06},4.72).to("#w15",{color:"#F5F3EE",duration:.12},5.04);
+tl.fromTo("#w16",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},5.00);
+tl.set("#g6",{visibility:"visible",opacity:1},4.64);
+tl.to("#g6",{opacity:0,duration:.1,ease:"power2.in"},5.82).set("#g6",{visibility:"hidden"},5.92);
+tl.fromTo("#w17",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},5.96);
+tl.to("#w17",{color:"#D4AF37",duration:.06},6.00).to("#w17",{color:"#F5F3EE",duration:.12},6.24);
+tl.fromTo("#w18",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},6.20);
+tl.to("#w18",{color:"#D4AF37",duration:.06},6.24).to("#w18",{color:"#F5F3EE",duration:.12},6.34);
+tl.fromTo("#w19",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},6.28);
+tl.to("#w19",{color:"#D4AF37",duration:.06},6.32).to("#w19",{color:"#F5F3EE",duration:.12},6.88);
+tl.set("#g7",{visibility:"visible",opacity:1},5.92);
+tl.to("#g7",{opacity:0,duration:.1,ease:"power2.in"},6.70).set("#g7",{visibility:"hidden"},6.80);
+tl.fromTo("#w20",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},6.84);
+tl.to("#w20",{color:"#D4AF37",duration:.06},6.88).to("#w20",{color:"#F5F3EE",duration:.12},6.98);
+tl.fromTo("#w21",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},6.84);
+tl.to("#w21",{color:"#D4AF37",duration:.06},6.88).to("#w21",{color:"#F5F3EE",duration:.12},7.04);
+tl.fromTo("#w22",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},7.00);
+tl.to("#w22",{color:"#D4AF37",duration:.06},7.04).to("#w22",{color:"#F5F3EE",duration:.12},7.36);
+tl.set("#g8",{visibility:"visible",opacity:1},6.80);
+tl.to("#g8",{opacity:0,duration:.1,ease:"power2.in"},7.18).set("#g8",{visibility:"hidden"},7.28);
+tl.fromTo("#w23",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},7.32);
+tl.to("#w23",{color:"#D4AF37",duration:.06},7.36).to("#w23",{color:"#F5F3EE",duration:.12},7.46);
+tl.fromTo("#w24",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},7.40);
+tl.to("#w24",{color:"#D4AF37",duration:.06},7.44).to("#w24",{color:"#F5F3EE",duration:.12},7.84);
+tl.fromTo("#w25",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},7.80);
+tl.to("#w25",{color:"#D4AF37",duration:.06},7.84).to("#w25",{color:"#F5F3EE",duration:.12},8.08);
+tl.set("#g9",{visibility:"visible",opacity:1},7.28);
+tl.to("#g9",{opacity:0,duration:.1,ease:"power2.in"},7.90).set("#g9",{visibility:"hidden"},8.00);
+tl.fromTo("#w26",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},8.04);
+tl.to("#w26",{color:"#D4AF37",duration:.06},8.08).to("#w26",{color:"#F5F3EE",duration:.12},8.48);
+tl.fromTo("#w27",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},8.44);
+tl.to("#w27",{color:"#D4AF37",duration:.06},8.48).to("#w27",{color:"#F5F3EE",duration:.12},8.72);
+tl.fromTo("#w28",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},8.68);
+tl.to("#w28",{color:"#D4AF37",duration:.06},8.72).to("#w28",{color:"#F5F3EE",duration:.12},8.88);
+tl.set("#g10",{visibility:"visible",opacity:1},8.00);
+tl.to("#g10",{opacity:0,duration:.1,ease:"power2.in"},8.70).set("#g10",{visibility:"hidden"},8.80);
+tl.fromTo("#w29",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},8.84);
+tl.to("#w29",{color:"#D4AF37",duration:.06},8.88).to("#w29",{color:"#F5F3EE",duration:.12},9.20);
+tl.fromTo("#w30",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},9.16);
+tl.to("#w30",{color:"#D4AF37",duration:.06},9.20).to("#w30",{color:"#F5F3EE",duration:.12},9.36);
+tl.fromTo("#w31",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},9.32);
+tl.to("#w31",{color:"#D4AF37",duration:.06},9.36).to("#w31",{color:"#F5F3EE",duration:.12},9.87);
+tl.set("#g11",{visibility:"visible",opacity:1},8.80);
+tl.to("#g11",{opacity:0,duration:.1,ease:"power2.in"},9.74).set("#g11",{visibility:"hidden"},9.84);
+tl.fromTo("#w32",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},9.88);
+tl.to("#w32",{color:"#D4AF37",duration:.06},9.92).to("#w32",{color:"#F5F3EE",duration:.12},10.16);
+tl.fromTo("#w33",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},10.12);
+tl.fromTo("#w34",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},10.60);
+tl.to("#w34",{color:"#D4AF37",duration:.06},10.64).to("#w34",{color:"#F5F3EE",duration:.12},10.96);
+tl.set("#g12",{visibility:"visible",opacity:1},9.84);
+tl.to("#g12",{opacity:0,duration:.1,ease:"power2.in"},10.78).set("#g12",{visibility:"hidden"},10.88);
+tl.fromTo("#w35",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},10.92);
+tl.to("#w35",{color:"#D4AF37",duration:.06},10.96).to("#w35",{color:"#F5F3EE",duration:.12},11.20);
+tl.set("#g13",{visibility:"visible",opacity:1},10.88);
+tl.to("#g13",{opacity:0,duration:.1,ease:"power2.in"},11.02).set("#g13",{visibility:"hidden"},11.12);
+tl.fromTo("#w36",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},11.16);
+tl.to("#w36",{color:"#D4AF37",duration:.06},11.20).to("#w36",{color:"#F5F3EE",duration:.12},11.84);
+tl.set("#g14",{visibility:"visible",opacity:1},11.12);
+tl.to("#g14",{opacity:0,duration:.1,ease:"power2.in"},11.66).set("#g14",{visibility:"hidden"},11.76);
+tl.fromTo("#w37",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},11.80);
+tl.to("#w37",{color:"#D4AF37",duration:.06},11.84).to("#w37",{color:"#F5F3EE",duration:.12},12.08);
+tl.fromTo("#w38",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},12.04);
+tl.to("#w38",{color:"#D4AF37",duration:.06},12.08).to("#w38",{color:"#F5F3EE",duration:.12},12.72);
+tl.fromTo("#w39",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},12.68);
+tl.to("#w39",{color:"#D4AF37",duration:.06},12.72).to("#w39",{color:"#F5F3EE",duration:.12},12.88);
+tl.set("#g15",{visibility:"visible",opacity:1},11.76);
+tl.to("#g15",{opacity:0,duration:.1,ease:"power2.in"},12.70).set("#g15",{visibility:"hidden"},12.80);
+tl.fromTo("#w40",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},12.84);
+tl.to("#w40",{color:"#D4AF37",duration:.06},12.88).to("#w40",{color:"#F5F3EE",duration:.12},13.04);
+tl.fromTo("#w41",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},13.00);
+tl.to("#w41",{color:"#D4AF37",duration:.06},13.04).to("#w41",{color:"#F5F3EE",duration:.12},13.20);
+tl.fromTo("#w42",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},13.16);
+tl.to("#w42",{color:"#D4AF37",duration:.06},13.20).to("#w42",{color:"#F5F3EE",duration:.12},13.36);
+tl.set("#g16",{visibility:"visible",opacity:1},12.80);
+tl.to("#g16",{opacity:0,duration:.1,ease:"power2.in"},13.18).set("#g16",{visibility:"hidden"},13.28);
+tl.fromTo("#w43",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},13.32);
+tl.set("#g17",{visibility:"visible",opacity:1},13.28);
+tl.to("#g17",{opacity:0,duration:.1,ease:"power2.in"},13.50).set("#g17",{visibility:"hidden"},13.60);
+tl.fromTo("#w44",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},13.64);
+tl.to("#w44",{color:"#D4AF37",duration:.06},13.68).to("#w44",{color:"#F5F3EE",duration:.12},14.24);
+tl.fromTo("#w45",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},14.20);
+tl.to("#w45",{color:"#D4AF37",duration:.06},14.24).to("#w45",{color:"#F5F3EE",duration:.12},14.72);
+tl.fromTo("#w46",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},14.68);
+tl.to("#w46",{color:"#D4AF37",duration:.06},14.72).to("#w46",{color:"#F5F3EE",duration:.12},14.88);
+tl.set("#g18",{visibility:"visible",opacity:1},13.60);
+tl.to("#g18",{opacity:0,duration:.1,ease:"power2.in"},14.70).set("#g18",{visibility:"hidden"},14.80);
+tl.fromTo("#w47",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},14.84);
+tl.to("#w47",{color:"#D4AF37",duration:.06},14.88).to("#w47",{color:"#F5F3EE",duration:.12},15.04);
+tl.fromTo("#w48",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},15.00);
+tl.to("#w48",{color:"#D4AF37",duration:.06},15.04).to("#w48",{color:"#F5F3EE",duration:.12},15.84);
+tl.set("#g19",{visibility:"visible",opacity:1},14.80);
+tl.to("#g19",{opacity:0,duration:.1,ease:"power2.in"},15.66).set("#g19",{visibility:"hidden"},15.76);
+tl.fromTo("#w49",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},15.80);
+tl.to("#w49",{color:"#D4AF37",duration:.06},15.84).to("#w49",{color:"#F5F3EE",duration:.12},16.24);
+tl.fromTo("#w50",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},16.20);
+tl.to("#w50",{color:"#D4AF37",duration:.06},16.24).to("#w50",{color:"#F5F3EE",duration:.12},16.48);
+tl.fromTo("#w51",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},16.44);
+tl.to("#w51",{color:"#D4AF37",duration:.06},16.48).to("#w51",{color:"#F5F3EE",duration:.12},16.72);
+tl.set("#g20",{visibility:"visible",opacity:1},15.76);
+tl.to("#g20",{opacity:0,duration:.1,ease:"power2.in"},16.54).set("#g20",{visibility:"hidden"},16.64);
+tl.fromTo("#w52",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},16.68);
+tl.to("#w52",{color:"#D4AF37",duration:.06},16.72).to("#w52",{color:"#F5F3EE",duration:.12},17.07);
+tl.fromTo("#w53",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},17.16);
+tl.to("#w53",{color:"#D4AF37",duration:.06},17.20).to("#w53",{color:"#F5F3EE",duration:.12},17.36);
+tl.fromTo("#w54",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},17.32);
+tl.to("#w54",{color:"#D4AF37",duration:.06},17.36).to("#w54",{color:"#F5F3EE",duration:.12},17.52);
+tl.set("#g21",{visibility:"visible",opacity:1},16.64);
+tl.to("#g21",{opacity:0,duration:.1,ease:"power2.in"},17.34).set("#g21",{visibility:"hidden"},17.44);
+tl.fromTo("#w55",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},17.48);
+tl.to("#w55",{color:"#D4AF37",duration:.06},17.52).to("#w55",{color:"#F5F3EE",duration:.12},18.00);
+tl.fromTo("#w56",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},17.96);
+tl.to("#w56",{color:"#D4AF37",duration:.06},18.00).to("#w56",{color:"#F5F3EE",duration:.12},18.24);
+tl.fromTo("#w57",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},18.20);
+tl.to("#w57",{color:"#D4AF37",duration:.06},18.24).to("#w57",{color:"#F5F3EE",duration:.12},18.48);
+tl.set("#g22",{visibility:"visible",opacity:1},17.44);
+tl.to("#g22",{opacity:0,duration:.1,ease:"power2.in"},18.30).set("#g22",{visibility:"hidden"},18.40);
+tl.fromTo("#w58",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},18.44);
+tl.to("#w58",{color:"#D4AF37",duration:.06},18.48).to("#w58",{color:"#F5F3EE",duration:.12},19.04);
+tl.set("#g23",{visibility:"visible",opacity:1},18.40);
+tl.to("#g23",{opacity:0,duration:.1,ease:"power2.in"},18.86).set("#g23",{visibility:"hidden"},18.96);
+tl.fromTo("#w59",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},19.00);
+tl.to("#w59",{color:"#D4AF37",duration:.06},19.04).to("#w59",{color:"#F5F3EE",duration:.12},19.85);
+tl.set("#g24",{visibility:"visible",opacity:1},18.96);
+tl.to("#g24",{opacity:0,duration:.1,ease:"power2.in"},19.67).set("#g24",{visibility:"hidden"},19.77);
+tl.fromTo("#w60",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},19.81);
+tl.to("#w60",{color:"#D4AF37",duration:.06},19.85).to("#w60",{color:"#F5F3EE",duration:.12},20.17);
+tl.fromTo("#w61",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},20.13);
+tl.to("#w61",{color:"#D4AF37",duration:.06},20.17).to("#w61",{color:"#F5F3EE",duration:.12},20.41);
+tl.fromTo("#w62",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},20.37);
+tl.to("#w62",{color:"#D4AF37",duration:.06},20.41).to("#w62",{color:"#F5F3EE",duration:.12},20.81);
+tl.set("#g25",{visibility:"visible",opacity:1},19.77);
+tl.to("#g25",{opacity:0,duration:.1,ease:"power2.in"},20.63).set("#g25",{visibility:"hidden"},20.73);
+tl.fromTo("#w63",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},20.77);
+tl.to("#w63",{color:"#D4AF37",duration:.06},20.81).to("#w63",{color:"#F5F3EE",duration:.12},21.13);
+tl.fromTo("#w64",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},21.09);
+tl.to("#w64",{color:"#D4AF37",duration:.06},21.13).to("#w64",{color:"#F5F3EE",duration:.12},21.29);
+tl.fromTo("#w65",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},21.25);
+tl.to("#w65",{color:"#D4AF37",duration:.06},21.29).to("#w65",{color:"#F5F3EE",duration:.12},21.96);
+tl.set("#g26",{visibility:"visible",opacity:1},20.73);
+tl.to("#g26",{opacity:0,duration:.1,ease:"power2.in"},21.83).set("#g26",{visibility:"hidden"},21.93);
+tl.fromTo("#w66",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},21.97);
+tl.to("#w66",{color:"#D4AF37",duration:.06},22.01).to("#w66",{color:"#F5F3EE",duration:.12},22.36);
+tl.fromTo("#w67",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},22.37);
+tl.to("#w67",{color:"#D4AF37",duration:.06},22.41).to("#w67",{color:"#F5F3EE",duration:.12},22.89);
+tl.set("#g27",{visibility:"visible",opacity:1},21.93);
+tl.to("#g27",{opacity:0,duration:.1,ease:"power2.in"},22.71).set("#g27",{visibility:"hidden"},22.81);
+tl.fromTo("#w68",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},22.85);
+tl.set("#g28",{visibility:"visible",opacity:1},22.81);
+tl.to("#g28",{opacity:0,duration:.1,ease:"power2.in"},23.35).set("#g28",{visibility:"hidden"},23.45);
+tl.fromTo("#w69",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},23.49);
+tl.to("#w69",{color:"#D4AF37",duration:.06},23.53).to("#w69",{color:"#F5F3EE",duration:.12},23.69);
+tl.fromTo("#w70",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},23.65);
+tl.to("#w70",{color:"#D4AF37",duration:.06},23.69).to("#w70",{color:"#F5F3EE",duration:.12},23.85);
+tl.fromTo("#w71",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},23.81);
+tl.to("#w71",{color:"#D4AF37",duration:.06},23.85).to("#w71",{color:"#F5F3EE",duration:.12},24.09);
+tl.set("#g29",{visibility:"visible",opacity:1},23.45);
+tl.to("#g29",{opacity:0,duration:.1,ease:"power2.in"},23.91).set("#g29",{visibility:"hidden"},24.01);
+tl.fromTo("#w72",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},24.05);
+tl.to("#w72",{color:"#D4AF37",duration:.06},24.09).to("#w72",{color:"#F5F3EE",duration:.12},24.19);
+tl.fromTo("#w73",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},24.13);
+tl.to("#w73",{color:"#D4AF37",duration:.06},24.17).to("#w73",{color:"#F5F3EE",duration:.12},24.49);
+tl.fromTo("#w74",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},24.45);
+tl.to("#w74",{color:"#D4AF37",duration:.06},24.49).to("#w74",{color:"#F5F3EE",duration:.12},24.59);
+tl.set("#g30",{visibility:"visible",opacity:1},24.01);
+tl.to("#g30",{opacity:0,duration:.1,ease:"power2.in"},24.39).set("#g30",{visibility:"hidden"},24.49);
+tl.fromTo("#w75",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},24.53);
+tl.to("#w75",{color:"#D4AF37",duration:.06},24.57).to("#w75",{color:"#F5F3EE",duration:.12},24.73);
+tl.fromTo("#w76",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},24.69);
+tl.to("#w76",{color:"#D4AF37",duration:.06},24.73).to("#w76",{color:"#F5F3EE",duration:.12},25.21);
+tl.fromTo("#w77",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},25.17);
+tl.to("#w77",{color:"#D4AF37",duration:.06},25.21).to("#w77",{color:"#F5F3EE",duration:.12},25.31);
+tl.set("#g31",{visibility:"visible",opacity:1},24.49);
+tl.to("#g31",{opacity:0,duration:.1,ease:"power2.in"},25.11).set("#g31",{visibility:"hidden"},25.21);
+tl.fromTo("#w78",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},25.25);
+tl.fromTo("#w79",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},25.65);
+tl.to("#w79",{color:"#D4AF37",duration:.06},25.69).to("#w79",{color:"#F5F3EE",duration:.12},26.44);
+tl.set("#g32",{visibility:"visible",opacity:1},25.21);
+tl.to("#g32",{opacity:0,duration:.1,ease:"power2.in"},26.31).set("#g32",{visibility:"hidden"},26.41);
+tl.fromTo("#w80",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},26.45);
+tl.to("#w80",{color:"#D4AF37",duration:.06},26.49).to("#w80",{color:"#F5F3EE",duration:.12},26.73);
+tl.fromTo("#w81",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},26.69);
+tl.to("#w81",{color:"#D4AF37",duration:.06},26.73).to("#w81",{color:"#F5F3EE",duration:.12},27.05);
+tl.fromTo("#w82",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},27.01);
+tl.to("#w82",{color:"#D4AF37",duration:.06},27.05).to("#w82",{color:"#F5F3EE",duration:.12},27.15);
+tl.set("#g33",{visibility:"visible",opacity:1},26.41);
+tl.to("#g33",{opacity:0,duration:.1,ease:"power2.in"},26.95).set("#g33",{visibility:"hidden"},27.05);
+tl.fromTo("#w83",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},27.09);
+tl.to("#w83",{color:"#D4AF37",duration:.06},27.13).to("#w83",{color:"#F5F3EE",duration:.12},27.37);
+tl.fromTo("#w84",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},27.33);
+tl.to("#w84",{color:"#D4AF37",duration:.06},27.37).to("#w84",{color:"#F5F3EE",duration:.12},27.61);
+tl.fromTo("#w85",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},27.57);
+tl.to("#w85",{color:"#D4AF37",duration:.06},27.61).to("#w85",{color:"#F5F3EE",duration:.12},28.33);
+tl.set("#g34",{visibility:"visible",opacity:1},27.05);
+tl.to("#g34",{opacity:0,duration:.1,ease:"power2.in"},28.15).set("#g34",{visibility:"hidden"},28.25);
+tl.fromTo("#w86",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},28.29);
+tl.to("#w86",{color:"#D4AF37",duration:.06},28.33).to("#w86",{color:"#F5F3EE",duration:.12},28.81);
+tl.fromTo("#w87",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},28.77);
+tl.to("#w87",{color:"#D4AF37",duration:.06},28.81).to("#w87",{color:"#F5F3EE",duration:.12},29.05);
+tl.fromTo("#w88",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},29.01);
+tl.to("#w88",{color:"#D4AF37",duration:.06},29.05).to("#w88",{color:"#F5F3EE",duration:.12},29.15);
+tl.set("#g35",{visibility:"visible",opacity:1},28.25);
+tl.to("#g35",{opacity:0,duration:.1,ease:"power2.in"},28.95).set("#g35",{visibility:"hidden"},29.05);
+tl.fromTo("#w89",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},29.09);
+tl.to("#w89",{color:"#D4AF37",duration:.06},29.13).to("#w89",{color:"#F5F3EE",duration:.12},29.53);
+tl.fromTo("#w90",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},29.49);
+tl.to("#w90",{color:"#D4AF37",duration:.06},29.53).to("#w90",{color:"#F5F3EE",duration:.12},29.93);
+tl.fromTo("#w91",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},29.89);
+tl.to("#w91",{color:"#D4AF37",duration:.06},29.93).to("#w91",{color:"#F5F3EE",duration:.12},30.49);
+tl.set("#g36",{visibility:"visible",opacity:1},29.05);
+tl.to("#g36",{opacity:0,duration:.1,ease:"power2.in"},30.31).set("#g36",{visibility:"hidden"},30.41);
+tl.fromTo("#w92",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},30.45);
+tl.to("#w92",{color:"#D4AF37",duration:.06},30.49).to("#w92",{color:"#F5F3EE",duration:.12},30.73);
+tl.fromTo("#w93",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},30.69);
+tl.to("#w93",{color:"#D4AF37",duration:.06},30.73).to("#w93",{color:"#F5F3EE",duration:.12},31.37);
+tl.set("#g37",{visibility:"visible",opacity:1},30.41);
+tl.to("#g37",{opacity:0,duration:.1,ease:"power2.in"},31.19).set("#g37",{visibility:"hidden"},31.29);
+tl.fromTo("#w94",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},31.33);
+tl.to("#w94",{color:"#D4AF37",duration:.06},31.37).to("#w94",{color:"#F5F3EE",duration:.12},31.61);
+tl.fromTo("#w95",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},31.57);
+tl.to("#w95",{color:"#D4AF37",duration:.06},31.61).to("#w95",{color:"#F5F3EE",duration:.12},32.01);
+tl.fromTo("#w96",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},31.97);
+tl.to("#w96",{color:"#D4AF37",duration:.06},32.01).to("#w96",{color:"#F5F3EE",duration:.12},32.25);
+tl.set("#g38",{visibility:"visible",opacity:1},31.29);
+tl.to("#g38",{opacity:0,duration:.1,ease:"power2.in"},32.07).set("#g38",{visibility:"hidden"},32.17);
+tl.fromTo("#w97",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},32.21);
+tl.to("#w97",{color:"#D4AF37",duration:.06},32.25).to("#w97",{color:"#F5F3EE",duration:.12},32.49);
+tl.fromTo("#w98",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},32.45);
+tl.to("#w98",{color:"#D4AF37",duration:.06},32.49).to("#w98",{color:"#F5F3EE",duration:.12},32.65);
+tl.fromTo("#w99",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},32.61);
+tl.set("#g39",{visibility:"visible",opacity:1},32.17);
+tl.to("#g39",{opacity:0,duration:.1,ease:"power2.in"},32.87).set("#g39",{visibility:"hidden"},32.97);
+tl.fromTo("#w100",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},33.01);
+tl.to("#w100",{color:"#D4AF37",duration:.06},33.05).to("#w100",{color:"#F5F3EE",duration:.12},33.21);
+tl.fromTo("#w101",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},33.17);
+tl.to("#w101",{color:"#D4AF37",duration:.06},33.21).to("#w101",{color:"#F5F3EE",duration:.12},33.61);
+tl.fromTo("#w102",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},33.57);
+tl.to("#w102",{color:"#D4AF37",duration:.06},33.61).to("#w102",{color:"#F5F3EE",duration:.12},33.85);
+tl.set("#g40",{visibility:"visible",opacity:1},32.97);
+tl.to("#g40",{opacity:0,duration:.1,ease:"power2.in"},33.67).set("#g40",{visibility:"hidden"},33.77);
+tl.fromTo("#w103",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},33.81);
+tl.to("#w103",{color:"#D4AF37",duration:.06},33.85).to("#w103",{color:"#F5F3EE",duration:.12},34.57);
+tl.fromTo("#w104",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},34.53);
+tl.to("#w104",{color:"#D4AF37",duration:.06},34.57).to("#w104",{color:"#F5F3EE",duration:.12},35.21);
+tl.set("#g41",{visibility:"visible",opacity:1},33.77);
+tl.to("#g41",{opacity:0,duration:.1,ease:"power2.in"},35.03).set("#g41",{visibility:"hidden"},35.13);
+tl.fromTo("#w105",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},35.17);
+tl.to("#w105",{color:"#D4AF37",duration:.06},35.21).to("#w105",{color:"#F5F3EE",duration:.12},35.53);
+tl.set("#g42",{visibility:"visible",opacity:1},35.13);
+tl.to("#g42",{opacity:0,duration:.1,ease:"power2.in"},35.35).set("#g42",{visibility:"hidden"},35.45);
+tl.fromTo("#w106",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},35.49);
+tl.to("#w106",{color:"#D4AF37",duration:.06},35.53).to("#w106",{color:"#F5F3EE",duration:.12},35.69);
+tl.fromTo("#w107",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},35.65);
+tl.to("#w107",{color:"#D4AF37",duration:.06},35.69).to("#w107",{color:"#F5F3EE",duration:.12},36.01);
+tl.fromTo("#w108",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},35.97);
+tl.to("#w108",{color:"#D4AF37",duration:.06},36.01).to("#w108",{color:"#F5F3EE",duration:.12},36.49);
+tl.set("#g43",{visibility:"visible",opacity:1},35.45);
+tl.to("#g43",{opacity:0,duration:.1,ease:"power2.in"},36.31).set("#g43",{visibility:"hidden"},36.41);
+tl.fromTo("#w109",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},36.45);
+tl.fromTo("#w110",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},36.93);
+tl.to("#w110",{color:"#D4AF37",duration:.06},36.97).to("#w110",{color:"#F5F3EE",duration:.12},37.29);
+tl.fromTo("#w111",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},37.25);
+tl.to("#w111",{color:"#D4AF37",duration:.06},37.29).to("#w111",{color:"#F5F3EE",duration:.12},37.45);
+tl.set("#g44",{visibility:"visible",opacity:1},36.41);
+tl.to("#g44",{opacity:0,duration:.1,ease:"power2.in"},37.27).set("#g44",{visibility:"hidden"},37.37);
+tl.fromTo("#w112",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},37.41);
+tl.to("#w112",{color:"#D4AF37",duration:.06},37.45).to("#w112",{color:"#F5F3EE",duration:.12},37.77);
+tl.fromTo("#w113",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},37.73);
+tl.to("#w113",{color:"#D4AF37",duration:.06},37.77).to("#w113",{color:"#F5F3EE",duration:.12},37.87);
+tl.fromTo("#w114",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},37.81);
+tl.to("#w114",{color:"#D4AF37",duration:.06},37.85).to("#w114",{color:"#F5F3EE",duration:.12},38.09);
+tl.set("#g45",{visibility:"visible",opacity:1},37.37);
+tl.to("#g45",{opacity:0,duration:.1,ease:"power2.in"},37.79).set("#g45",{visibility:"hidden"},37.89);
+tl.fromTo("#w115",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},37.93);
+tl.to("#w115",{color:"#D4AF37",duration:.06},37.97).to("#w115",{color:"#F5F3EE",duration:.12},38.09);
+tl.fromTo("#w116",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},38.05);
+tl.to("#w116",{color:"#D4AF37",duration:.06},38.09).to("#w116",{color:"#F5F3EE",duration:.12},38.57);
+tl.fromTo("#w117",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},38.53);
+tl.to("#w117",{color:"#D4AF37",duration:.06},38.57).to("#w117",{color:"#F5F3EE",duration:.12},38.73);
+tl.set("#g46",{visibility:"visible",opacity:1},37.89);
+tl.to("#g46",{opacity:0,duration:.1,ease:"power2.in"},38.55).set("#g46",{visibility:"hidden"},38.65);
+tl.fromTo("#w118",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},38.69);
+tl.to("#w118",{color:"#D4AF37",duration:.06},38.73).to("#w118",{color:"#F5F3EE",duration:.12},39.28);
+tl.set("#g47",{visibility:"visible",opacity:1},38.65);
+tl.to("#g47",{opacity:0,duration:.1,ease:"power2.in"},39.10).set("#g47",{visibility:"hidden"},39.20);
+tl.fromTo("#w119",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},39.24);
+tl.to("#w119",{color:"#D4AF37",duration:.06},39.28).to("#w119",{color:"#F5F3EE",duration:.12},39.60);
+tl.fromTo("#w120",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},39.56);
+tl.to("#w120",{color:"#D4AF37",duration:.06},39.60).to("#w120",{color:"#F5F3EE",duration:.12},39.84);
+tl.fromTo("#w121",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},39.80);
+tl.to("#w121",{color:"#D4AF37",duration:.06},39.84).to("#w121",{color:"#F5F3EE",duration:.12},40.00);
+tl.set("#g48",{visibility:"visible",opacity:1},39.20);
+tl.to("#g48",{opacity:0,duration:.1,ease:"power2.in"},39.82).set("#g48",{visibility:"hidden"},39.92);
+tl.fromTo("#w122",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},39.96);
+tl.to("#w122",{color:"#D4AF37",duration:.06},40.00).to("#w122",{color:"#F5F3EE",duration:.12},40.40);
+tl.fromTo("#w123",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},40.36);
+tl.to("#w123",{color:"#D4AF37",duration:.06},40.40).to("#w123",{color:"#F5F3EE",duration:.12},40.96);
+tl.fromTo("#w124",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},40.92);
+tl.to("#w124",{color:"#D4AF37",duration:.06},40.96).to("#w124",{color:"#F5F3EE",duration:.12},41.12);
+tl.set("#g49",{visibility:"visible",opacity:1},39.92);
+tl.to("#g49",{opacity:0,duration:.1,ease:"power2.in"},40.94).set("#g49",{visibility:"hidden"},41.04);
+tl.fromTo("#w125",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},41.08);
+tl.to("#w125",{color:"#D4AF37",duration:.06},41.12).to("#w125",{color:"#F5F3EE",duration:.12},41.44);
+tl.fromTo("#w126",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},41.40);
+tl.to("#w126",{color:"#D4AF37",duration:.06},41.44).to("#w126",{color:"#F5F3EE",duration:.12},41.92);
+tl.fromTo("#w127",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},41.88);
+tl.to("#w127",{color:"#D4AF37",duration:.06},41.92).to("#w127",{color:"#F5F3EE",duration:.12},42.27);
+tl.set("#g50",{visibility:"visible",opacity:1},41.04);
+tl.to("#g50",{opacity:0,duration:.1,ease:"power2.in"},42.14).set("#g50",{visibility:"hidden"},42.24);
+tl.fromTo("#w128",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},42.28);
+tl.to("#w128",{color:"#D4AF37",duration:.06},42.32).to("#w128",{color:"#F5F3EE",duration:.12},42.72);
+tl.fromTo("#w129",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},42.68);
+tl.to("#w129",{color:"#D4AF37",duration:.06},42.72).to("#w129",{color:"#F5F3EE",duration:.12},43.44);
+tl.set("#g51",{visibility:"visible",opacity:1},42.24);
+tl.to("#g51",{opacity:0,duration:.1,ease:"power2.in"},43.26).set("#g51",{visibility:"hidden"},43.36);
+tl.fromTo("#w130",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},43.40);
+tl.to("#w130",{color:"#D4AF37",duration:.06},43.44).to("#w130",{color:"#F5F3EE",duration:.12},43.84);
+tl.fromTo("#w131",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},43.80);
+tl.to("#w131",{color:"#D4AF37",duration:.06},43.84).to("#w131",{color:"#F5F3EE",duration:.12},44.40);
+tl.fromTo("#w132",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},44.36);
+tl.to("#w132",{color:"#D4AF37",duration:.06},44.40).to("#w132",{color:"#F5F3EE",duration:.12},44.64);
+tl.set("#g52",{visibility:"visible",opacity:1},43.36);
+tl.to("#g52",{opacity:0,duration:.1,ease:"power2.in"},44.46).set("#g52",{visibility:"hidden"},44.56);
+tl.fromTo("#w133",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},44.60);
+tl.to("#w133",{color:"#D4AF37",duration:.06},44.64).to("#w133",{color:"#F5F3EE",duration:.12},44.88);
+tl.fromTo("#w134",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},44.84);
+tl.to("#w134",{color:"#D4AF37",duration:.06},44.88).to("#w134",{color:"#F5F3EE",duration:.12},45.68);
+tl.fromTo("#w135",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},45.64);
+tl.to("#w135",{color:"#D4AF37",duration:.06},45.68).to("#w135",{color:"#F5F3EE",duration:.12},46.03);
+tl.set("#g53",{visibility:"visible",opacity:1},44.56);
+tl.to("#g53",{opacity:0,duration:.1,ease:"power2.in"},45.98).set("#g53",{visibility:"hidden"},46.08);
+tl.fromTo("#w136",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},46.12);
+tl.to("#w136",{color:"#D4AF37",duration:.06},46.16).to("#w136",{color:"#F5F3EE",duration:.12},46.80);
+tl.fromTo("#w137",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},46.76);
+tl.to("#w137",{color:"#D4AF37",duration:.06},46.80).to("#w137",{color:"#F5F3EE",duration:.12},47.12);
+tl.fromTo("#w138",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},47.08);
+tl.to("#w138",{color:"#D4AF37",duration:.06},47.12).to("#w138",{color:"#F5F3EE",duration:.12},47.28);
+tl.set("#g54",{visibility:"visible",opacity:1},46.08);
+tl.to("#g54",{opacity:0,duration:.1,ease:"power2.in"},47.10).set("#g54",{visibility:"hidden"},47.20);
+tl.fromTo("#w139",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},47.24);
+tl.to("#w139",{color:"#D4AF37",duration:.06},47.28).to("#w139",{color:"#F5F3EE",duration:.12},47.44);
+tl.fromTo("#w140",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},47.40);
+tl.to("#w140",{color:"#D4AF37",duration:.06},47.44).to("#w140",{color:"#F5F3EE",duration:.12},47.68);
+tl.fromTo("#w141",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},47.64);
+tl.to("#w141",{color:"#D4AF37",duration:.06},47.68).to("#w141",{color:"#F5F3EE",duration:.12},47.78);
+tl.set("#g55",{visibility:"visible",opacity:1},47.20);
+tl.to("#g55",{opacity:0,duration:.1,ease:"power2.in"},47.58).set("#g55",{visibility:"hidden"},47.68);
+tl.fromTo("#w142",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},47.72);
+tl.to("#w142",{color:"#D4AF37",duration:.06},47.76).to("#w142",{color:"#F5F3EE",duration:.12},48.11);
+tl.fromTo("#w143",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},48.12);
+tl.to("#w143",{color:"#D4AF37",duration:.06},48.16).to("#w143",{color:"#F5F3EE",duration:.12},48.48);
+tl.fromTo("#w144",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},48.44);
+tl.to("#w144",{color:"#D4AF37",duration:.06},48.48).to("#w144",{color:"#F5F3EE",duration:.12},48.58);
+tl.set("#g56",{visibility:"visible",opacity:1},47.68);
+tl.to("#g56",{opacity:0,duration:.1,ease:"power2.in"},48.38).set("#g56",{visibility:"hidden"},48.48);
+tl.fromTo("#w145",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},48.52);
+tl.to("#w145",{color:"#D4AF37",duration:.06},48.56).to("#w145",{color:"#F5F3EE",duration:.12},48.72);
+tl.fromTo("#w146",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},48.68);
+tl.to("#w146",{color:"#D4AF37",duration:.06},48.72).to("#w146",{color:"#F5F3EE",duration:.12},49.20);
+tl.fromTo("#w147",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},49.16);
+tl.to("#w147",{color:"#D4AF37",duration:.06},49.20).to("#w147",{color:"#F5F3EE",duration:.12},49.60);
+tl.set("#g57",{visibility:"visible",opacity:1},48.48);
+tl.to("#g57",{opacity:0,duration:.1,ease:"power2.in"},49.42).set("#g57",{visibility:"hidden"},49.52);
+tl.fromTo("#w148",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},49.56);
+tl.to("#w148",{color:"#D4AF37",duration:.06},49.60).to("#w148",{color:"#F5F3EE",duration:.12},49.84);
+tl.fromTo("#w149",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},49.80);
+tl.to("#w149",{color:"#D4AF37",duration:.06},49.84).to("#w149",{color:"#F5F3EE",duration:.12},49.94);
+tl.fromTo("#w150",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},49.88);
+tl.to("#w150",{color:"#D4AF37",duration:.06},49.92).to("#w150",{color:"#F5F3EE",duration:.12},50.40);
+tl.set("#g58",{visibility:"visible",opacity:1},49.52);
+tl.to("#g58",{opacity:0,duration:.1,ease:"power2.in"},50.22).set("#g58",{visibility:"hidden"},50.32);
+tl.fromTo("#w151",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},50.36);
+tl.to("#w151",{color:"#D4AF37",duration:.06},50.40).to("#w151",{color:"#F5F3EE",duration:.12},50.56);
+tl.fromTo("#w152",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},50.52);
+tl.to("#w152",{color:"#D4AF37",duration:.06},50.56).to("#w152",{color:"#F5F3EE",duration:.12},50.80);
+tl.fromTo("#w153",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},50.76);
+tl.to("#w153",{color:"#D4AF37",duration:.06},50.80).to("#w153",{color:"#F5F3EE",duration:.12},51.12);
+tl.set("#g59",{visibility:"visible",opacity:1},50.32);
+tl.to("#g59",{opacity:0,duration:.1,ease:"power2.in"},50.94).set("#g59",{visibility:"hidden"},51.04);
+tl.fromTo("#w154",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},51.08);
+tl.to("#w154",{color:"#D4AF37",duration:.06},51.12).to("#w154",{color:"#F5F3EE",duration:.12},51.52);
+tl.set("#g60",{visibility:"visible",opacity:1},51.04);
+tl.to("#g60",{opacity:0,duration:.1,ease:"power2.in"},51.34).set("#g60",{visibility:"hidden"},51.44);
+tl.fromTo("#w155",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},51.48);
+tl.to("#w155",{color:"#D4AF37",duration:.06},51.52).to("#w155",{color:"#F5F3EE",duration:.12},51.76);
+tl.fromTo("#w156",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},51.72);
+tl.to("#w156",{color:"#D4AF37",duration:.06},51.76).to("#w156",{color:"#F5F3EE",duration:.12},52.00);
+tl.fromTo("#w157",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},51.96);
+tl.to("#w157",{color:"#D4AF37",duration:.06},52.00).to("#w157",{color:"#F5F3EE",duration:.12},52.32);
+tl.set("#g61",{visibility:"visible",opacity:1},51.44);
+tl.to("#g61",{opacity:0,duration:.1,ease:"power2.in"},52.14).set("#g61",{visibility:"hidden"},52.24);
+tl.fromTo("#w158",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},52.28);
+tl.to("#w158",{color:"#D4AF37",duration:.06},52.32).to("#w158",{color:"#F5F3EE",duration:.12},52.48);
+tl.fromTo("#w159",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},52.44);
+tl.to("#w159",{color:"#D4AF37",duration:.06},52.48).to("#w159",{color:"#F5F3EE",duration:.12},52.72);
+tl.fromTo("#w160",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},52.68);
+tl.to("#w160",{color:"#D4AF37",duration:.06},52.72).to("#w160",{color:"#F5F3EE",duration:.12},52.96);
+tl.set("#g62",{visibility:"visible",opacity:1},52.24);
+tl.to("#g62",{opacity:0,duration:.1,ease:"power2.in"},52.78).set("#g62",{visibility:"hidden"},52.88);
+tl.fromTo("#w161",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},52.92);
+tl.to("#w161",{color:"#D4AF37",duration:.06},52.96).to("#w161",{color:"#F5F3EE",duration:.12},53.12);
+tl.fromTo("#w162",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},53.08);
+tl.to("#w162",{color:"#D4AF37",duration:.06},53.12).to("#w162",{color:"#F5F3EE",duration:.12},53.68);
+tl.set("#g63",{visibility:"visible",opacity:1},52.88);
+tl.to("#g63",{opacity:0,duration:.1,ease:"power2.in"},53.50).set("#g63",{visibility:"hidden"},53.60);
+tl.fromTo("#w163",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},53.64);
+tl.to("#w163",{color:"#D4AF37",duration:.06},53.68).to("#w163",{color:"#F5F3EE",duration:.12},54.24);
+tl.fromTo("#w164",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},54.20);
+tl.set("#g64",{visibility:"visible",opacity:1},53.60);
+tl.to("#g64",{opacity:0,duration:.1,ease:"power2.in"},54.46).set("#g64",{visibility:"hidden"},54.56);
+tl.fromTo("#w165",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},54.60);
+tl.set("#g65",{visibility:"visible",opacity:1},54.56);
+tl.to("#g65",{opacity:0,duration:.1,ease:"power2.in"},55.10).set("#g65",{visibility:"hidden"},55.20);
+tl.fromTo("#w166",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},55.24);
+tl.to("#w166",{color:"#D4AF37",duration:.06},55.28).to("#w166",{color:"#F5F3EE",duration:.12},55.76);
+tl.fromTo("#w167",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},55.72);
+tl.to("#w167",{color:"#D4AF37",duration:.06},55.76).to("#w167",{color:"#F5F3EE",duration:.12},55.86);
+tl.fromTo("#w168",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},55.72);
+tl.to("#w168",{color:"#D4AF37",duration:.06},55.76).to("#w168",{color:"#F5F3EE",duration:.12},56.32);
+tl.set("#g66",{visibility:"visible",opacity:1},55.20);
+tl.to("#g66",{opacity:0,duration:.1,ease:"power2.in"},56.14).set("#g66",{visibility:"hidden"},56.24);
+tl.fromTo("#w169",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},56.28);
+tl.set("#g67",{visibility:"visible",opacity:1},56.24);
+tl.to("#g67",{opacity:0,duration:.1,ease:"power2.in"},56.62).set("#g67",{visibility:"hidden"},56.72);
+tl.fromTo("#w170",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},56.76);
+tl.to("#w170",{color:"#D4AF37",duration:.06},56.80).to("#w170",{color:"#F5F3EE",duration:.12},57.04);
+tl.fromTo("#w171",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},57.00);
+tl.to("#w171",{color:"#D4AF37",duration:.06},57.04).to("#w171",{color:"#F5F3EE",duration:.12},57.14);
+tl.fromTo("#w172",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},57.08);
+tl.to("#w172",{color:"#D4AF37",duration:.06},57.12).to("#w172",{color:"#F5F3EE",duration:.12},57.52);
+tl.set("#g68",{visibility:"visible",opacity:1},56.72);
+tl.to("#g68",{opacity:0,duration:.1,ease:"power2.in"},57.34).set("#g68",{visibility:"hidden"},57.44);
+tl.fromTo("#w173",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},57.48);
+tl.to("#w173",{color:"#D4AF37",duration:.06},57.52).to("#w173",{color:"#F5F3EE",duration:.12},58.00);
+tl.fromTo("#w174",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},57.96);
+tl.set("#g69",{visibility:"visible",opacity:1},57.44);
+tl.to("#g69",{opacity:0,duration:.1,ease:"power2.in"},58.14).set("#g69",{visibility:"hidden"},58.24);
+tl.fromTo("#w175",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},58.28);
+tl.fromTo("#w176",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},58.88);
+tl.to("#w176",{color:"#D4AF37",duration:.06},58.92).to("#w176",{color:"#F5F3EE",duration:.12},59.24);
+tl.fromTo("#w177",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},59.20);
+tl.to("#w177",{color:"#D4AF37",duration:.06},59.24).to("#w177",{color:"#F5F3EE",duration:.12},59.72);
+tl.set("#g70",{visibility:"visible",opacity:1},58.24);
+tl.to("#g70",{opacity:0,duration:.1,ease:"power2.in"},59.54).set("#g70",{visibility:"hidden"},59.64);
+tl.fromTo("#w178",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},59.68);
+tl.to("#w178",{color:"#D4AF37",duration:.06},59.72).to("#w178",{color:"#F5F3EE",duration:.12},59.88);
+tl.fromTo("#w179",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},59.84);
+tl.to("#w179",{color:"#D4AF37",duration:.06},59.88).to("#w179",{color:"#F5F3EE",duration:.12},60.36);
+tl.fromTo("#w180",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},60.32);
+tl.to("#w180",{color:"#D4AF37",duration:.06},60.36).to("#w180",{color:"#F5F3EE",duration:.12},60.52);
+tl.set("#g71",{visibility:"visible",opacity:1},59.64);
+tl.to("#g71",{opacity:0,duration:.1,ease:"power2.in"},60.34).set("#g71",{visibility:"hidden"},60.44);
+tl.fromTo("#w181",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},60.48);
+tl.to("#w181",{color:"#D4AF37",duration:.06},60.52).to("#w181",{color:"#F5F3EE",duration:.12},61.00);
+tl.fromTo("#w182",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},60.96);
+tl.to("#w182",{color:"#D4AF37",duration:.06},61.00).to("#w182",{color:"#F5F3EE",duration:.12},61.32);
+tl.fromTo("#w183",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},61.28);
+tl.to("#w183",{color:"#D4AF37",duration:.06},61.32).to("#w183",{color:"#F5F3EE",duration:.12},61.64);
+tl.set("#g72",{visibility:"visible",opacity:1},60.44);
+tl.to("#g72",{opacity:0,duration:.1,ease:"power2.in"},61.46).set("#g72",{visibility:"hidden"},61.56);
+tl.fromTo("#w184",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},61.60);
+tl.fromTo("#w185",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},62.08);
+tl.to("#w185",{color:"#D4AF37",duration:.06},62.12).to("#w185",{color:"#F5F3EE",duration:.12},62.22);
+tl.fromTo("#w186",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},62.16);
+tl.to("#w186",{color:"#D4AF37",duration:.06},62.20).to("#w186",{color:"#F5F3EE",duration:.12},62.52);
+tl.set("#g73",{visibility:"visible",opacity:1},61.56);
+tl.to("#g73",{opacity:0,duration:.1,ease:"power2.in"},62.34).set("#g73",{visibility:"hidden"},62.44);
+tl.fromTo("#w187",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},62.48);
+tl.to("#w187",{color:"#D4AF37",duration:.06},62.52).to("#w187",{color:"#F5F3EE",duration:.12},62.62);
+tl.fromTo("#w188",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},62.56);
+tl.to("#w188",{color:"#D4AF37",duration:.06},62.60).to("#w188",{color:"#F5F3EE",duration:.12},62.84);
+tl.fromTo("#w189",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},62.80);
+tl.to("#w189",{color:"#D4AF37",duration:.06},62.84).to("#w189",{color:"#F5F3EE",duration:.12},63.00);
+tl.set("#g74",{visibility:"visible",opacity:1},62.44);
+tl.to("#g74",{opacity:0,duration:.1,ease:"power2.in"},62.82).set("#g74",{visibility:"hidden"},62.92);
+tl.fromTo("#w190",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},62.96);
+tl.to("#w190",{color:"#D4AF37",duration:.06},63.00).to("#w190",{color:"#F5F3EE",duration:.12},63.16);
+tl.fromTo("#w191",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},63.12);
+tl.to("#w191",{color:"#D4AF37",duration:.06},63.16).to("#w191",{color:"#F5F3EE",duration:.12},63.64);
+tl.fromTo("#w192",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},63.60);
+tl.to("#w192",{color:"#D4AF37",duration:.06},63.64).to("#w192",{color:"#F5F3EE",duration:.12},63.88);
+tl.set("#g75",{visibility:"visible",opacity:1},62.92);
+tl.to("#g75",{opacity:0,duration:.1,ease:"power2.in"},63.70).set("#g75",{visibility:"hidden"},63.80);
+tl.fromTo("#w193",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},63.84);
+tl.to("#w193",{color:"#D4AF37",duration:.06},63.88).to("#w193",{color:"#F5F3EE",duration:.12},64.12);
+tl.fromTo("#w194",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},64.08);
+tl.to("#w194",{color:"#D4AF37",duration:.06},64.12).to("#w194",{color:"#F5F3EE",duration:.12},64.28);
+tl.fromTo("#w195",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},64.24);
+tl.to("#w195",{color:"#D4AF37",duration:.06},64.28).to("#w195",{color:"#F5F3EE",duration:.12},64.60);
+tl.set("#g76",{visibility:"visible",opacity:1},63.80);
+tl.to("#g76",{opacity:0,duration:.1,ease:"power2.in"},64.42).set("#g76",{visibility:"hidden"},64.52);
+tl.fromTo("#w196",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},64.56);
+tl.to("#w196",{color:"#D4AF37",duration:.06},64.60).to("#w196",{color:"#F5F3EE",duration:.12},64.76);
+tl.fromTo("#w197",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},64.72);
+tl.to("#w197",{color:"#D4AF37",duration:.06},64.76).to("#w197",{color:"#F5F3EE",duration:.12},65.32);
+tl.fromTo("#w198",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},65.28);
+tl.to("#w198",{color:"#D4AF37",duration:.06},65.32).to("#w198",{color:"#F5F3EE",duration:.12},65.56);
+tl.set("#g77",{visibility:"visible",opacity:1},64.52);
+tl.to("#g77",{opacity:0,duration:.1,ease:"power2.in"},65.38).set("#g77",{visibility:"hidden"},65.48);
+tl.fromTo("#w199",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},65.52);
+tl.to("#w199",{color:"#D4AF37",duration:.06},65.56).to("#w199",{color:"#F5F3EE",duration:.12},65.72);
+tl.fromTo("#w200",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},65.68);
+tl.to("#w200",{color:"#D4AF37",duration:.06},65.72).to("#w200",{color:"#F5F3EE",duration:.12},66.12);
+tl.fromTo("#w201",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},66.08);
+tl.to("#w201",{color:"#D4AF37",duration:.06},66.12).to("#w201",{color:"#F5F3EE",duration:.12},66.36);
+tl.set("#g78",{visibility:"visible",opacity:1},65.48);
+tl.to("#g78",{opacity:0,duration:.1,ease:"power2.in"},66.18).set("#g78",{visibility:"hidden"},66.28);
+tl.fromTo("#w202",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},66.32);
+tl.to("#w202",{color:"#D4AF37",duration:.06},66.36).to("#w202",{color:"#F5F3EE",duration:.12},66.52);
+tl.fromTo("#w203",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},66.48);
+tl.to("#w203",{color:"#D4AF37",duration:.06},66.52).to("#w203",{color:"#F5F3EE",duration:.12},66.76);
+tl.fromTo("#w204",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},66.72);
+tl.to("#w204",{color:"#D4AF37",duration:.06},66.76).to("#w204",{color:"#F5F3EE",duration:.12},67.00);
+tl.set("#g79",{visibility:"visible",opacity:1},66.28);
+tl.to("#g79",{opacity:0,duration:.1,ease:"power2.in"},66.82).set("#g79",{visibility:"hidden"},66.92);
+tl.fromTo("#w205",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},66.96);
+tl.to("#w205",{color:"#D4AF37",duration:.06},67.00).to("#w205",{color:"#F5F3EE",duration:.12},67.64);
+tl.fromTo("#w206",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},67.60);
+tl.to("#w206",{color:"#D4AF37",duration:.06},67.64).to("#w206",{color:"#F5F3EE",duration:.12},68.20);
+tl.fromTo("#w207",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},68.16);
+tl.to("#w207",{color:"#D4AF37",duration:.06},68.20).to("#w207",{color:"#F5F3EE",duration:.12},68.36);
+tl.set("#g80",{visibility:"visible",opacity:1},66.92);
+tl.to("#g80",{opacity:0,duration:.1,ease:"power2.in"},68.18).set("#g80",{visibility:"hidden"},68.28);
+tl.fromTo("#w208",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},68.32);
+tl.to("#w208",{color:"#D4AF37",duration:.06},68.36).to("#w208",{color:"#F5F3EE",duration:.12},68.60);
+tl.fromTo("#w209",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},68.56);
+tl.to("#w209",{color:"#D4AF37",duration:.06},68.60).to("#w209",{color:"#F5F3EE",duration:.12},68.92);
+tl.fromTo("#w210",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},68.88);
+tl.to("#w210",{color:"#D4AF37",duration:.06},68.92).to("#w210",{color:"#F5F3EE",duration:.12},69.02);
+tl.set("#g81",{visibility:"visible",opacity:1},68.28);
+tl.to("#g81",{opacity:0,duration:.1,ease:"power2.in"},68.82).set("#g81",{visibility:"hidden"},68.92);
+tl.fromTo("#w211",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},68.96);
+tl.fromTo("#w212",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},69.44);
+tl.to("#w212",{color:"#D4AF37",duration:.06},69.48).to("#w212",{color:"#F5F3EE",duration:.12},69.58);
+tl.fromTo("#w213",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},69.52);
+tl.set("#g82",{visibility:"visible",opacity:1},68.92);
+tl.to("#g82",{opacity:0,duration:.1,ease:"power2.in"},69.68).set("#g82",{visibility:"hidden"},69.78);
+tl.fromTo("#w214",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},69.82);
+tl.fromTo("#w215",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},70.12);
+tl.to("#w215",{color:"#D4AF37",duration:.06},70.16).to("#w215",{color:"#F5F3EE",duration:.12},70.46);
+tl.fromTo("#w216",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},70.42);
+tl.set("#g83",{visibility:"visible",opacity:1},69.78);
+tl.to("#g83",{opacity:0,duration:.1,ease:"power2.in"},70.58).set("#g83",{visibility:"hidden"},70.68);
+tl.fromTo("#w217",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},70.72);
+tl.to("#w217",{color:"#D4AF37",duration:.06},70.76).to("#w217",{color:"#F5F3EE",duration:.12},71.11);
+tl.fromTo("#w218",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},71.12);
+tl.to("#w218",{color:"#D4AF37",duration:.06},71.16).to("#w218",{color:"#F5F3EE",duration:.12},71.48);
+tl.fromTo("#w219",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},71.44);
+tl.to("#w219",{color:"#D4AF37",duration:.06},71.48).to("#w219",{color:"#F5F3EE",duration:.12},71.96);
+tl.set("#g84",{visibility:"visible",opacity:1},70.68);
+tl.to("#g84",{opacity:0,duration:.1,ease:"power2.in"},71.78).set("#g84",{visibility:"hidden"},71.88);
+tl.fromTo("#w220",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},71.92);
+tl.to("#w220",{color:"#D4AF37",duration:.06},71.96).to("#w220",{color:"#F5F3EE",duration:.12},72.12);
+tl.fromTo("#w221",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},72.08);
+tl.to("#w221",{color:"#D4AF37",duration:.06},72.12).to("#w221",{color:"#F5F3EE",duration:.12},72.28);
+tl.fromTo("#w222",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},72.24);
+tl.to("#w222",{color:"#D4AF37",duration:.06},72.28).to("#w222",{color:"#F5F3EE",duration:.12},73.00);
+tl.set("#g85",{visibility:"visible",opacity:1},71.88);
+tl.to("#g85",{opacity:0,duration:.1,ease:"power2.in"},72.82).set("#g85",{visibility:"hidden"},72.92);
+tl.fromTo("#w223",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},72.96);
+tl.to("#w223",{color:"#D4AF37",duration:.06},73.00).to("#w223",{color:"#F5F3EE",duration:.12},73.16);
+tl.fromTo("#w224",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},73.12);
+tl.to("#w224",{color:"#D4AF37",duration:.06},73.16).to("#w224",{color:"#F5F3EE",duration:.12},73.32);
+tl.fromTo("#w225",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},73.28);
+tl.to("#w225",{color:"#D4AF37",duration:.06},73.32).to("#w225",{color:"#F5F3EE",duration:.12},73.80);
+tl.set("#g86",{visibility:"visible",opacity:1},72.92);
+tl.to("#g86",{opacity:0,duration:.1,ease:"power2.in"},73.62).set("#g86",{visibility:"hidden"},73.72);
+tl.fromTo("#w226",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},73.76);
+tl.to("#w226",{color:"#D4AF37",duration:.06},73.80).to("#w226",{color:"#F5F3EE",duration:.12},74.28);
+tl.fromTo("#w227",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},74.24);
+tl.fromTo("#w228",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},74.80);
+tl.to("#w228",{color:"#D4AF37",duration:.06},74.84).to("#w228",{color:"#F5F3EE",duration:.12},75.00);
+tl.set("#g87",{visibility:"visible",opacity:1},73.72);
+tl.to("#g87",{opacity:0,duration:.1,ease:"power2.in"},74.82).set("#g87",{visibility:"hidden"},74.92);
+tl.fromTo("#w229",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},74.96);
+tl.to("#w229",{color:"#D4AF37",duration:.06},75.00).to("#w229",{color:"#F5F3EE",duration:.12},75.32);
+tl.fromTo("#w230",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},75.28);
+tl.to("#w230",{color:"#D4AF37",duration:.06},75.32).to("#w230",{color:"#F5F3EE",duration:.12},75.42);
+tl.fromTo("#w231",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},75.36);
+tl.to("#w231",{color:"#D4AF37",duration:.06},75.40).to("#w231",{color:"#F5F3EE",duration:.12},75.75);
+tl.set("#g88",{visibility:"visible",opacity:1},74.92);
+tl.to("#g88",{opacity:0,duration:.1,ease:"power2.in"},75.70).set("#g88",{visibility:"hidden"},75.80);
+tl.fromTo("#w232",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},75.84);
+tl.to("#w232",{color:"#D4AF37",duration:.06},75.88).to("#w232",{color:"#F5F3EE",duration:.12},76.12);
+tl.fromTo("#w233",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},76.08);
+tl.to("#w233",{color:"#D4AF37",duration:.06},76.12).to("#w233",{color:"#F5F3EE",duration:.12},76.44);
+tl.fromTo("#w234",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},76.40);
+tl.to("#w234",{color:"#D4AF37",duration:.06},76.44).to("#w234",{color:"#F5F3EE",duration:.12},76.60);
+tl.set("#g89",{visibility:"visible",opacity:1},75.80);
+tl.to("#g89",{opacity:0,duration:.1,ease:"power2.in"},76.42).set("#g89",{visibility:"hidden"},76.52);
+tl.fromTo("#w235",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},76.56);
+tl.to("#w235",{color:"#D4AF37",duration:.06},76.60).to("#w235",{color:"#F5F3EE",duration:.12},76.84);
+tl.fromTo("#w236",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},76.80);
+tl.to("#w236",{color:"#D4AF37",duration:.06},76.84).to("#w236",{color:"#F5F3EE",duration:.12},77.24);
+tl.fromTo("#w237",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},77.20);
+tl.to("#w237",{color:"#D4AF37",duration:.06},77.24).to("#w237",{color:"#F5F3EE",duration:.12},77.40);
+tl.set("#g90",{visibility:"visible",opacity:1},76.52);
+tl.to("#g90",{opacity:0,duration:.1,ease:"power2.in"},77.22).set("#g90",{visibility:"hidden"},77.32);
+tl.fromTo("#w238",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},77.36);
+tl.to("#w238",{color:"#D4AF37",duration:.06},77.40).to("#w238",{color:"#F5F3EE",duration:.12},77.50);
+tl.fromTo("#w239",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},77.44);
+tl.fromTo("#w240",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},77.84);
+tl.to("#w240",{color:"#D4AF37",duration:.06},77.88).to("#w240",{color:"#F5F3EE",duration:.12},78.46);
+tl.set("#g91",{visibility:"visible",opacity:1},77.32);
+tl.to("#g91",{opacity:0,duration:.1,ease:"power2.in"},77.87).set("#g91",{visibility:"hidden"},77.97);
+tl.fromTo("#w241",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},78.01);
+tl.fromTo("#w242",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},78.42);
+tl.to("#w242",{color:"#D4AF37",duration:.06},78.46).to("#w242",{color:"#F5F3EE",duration:.12},78.85);
+tl.fromTo("#w243",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},78.82);
+tl.to("#w243",{color:"#D4AF37",duration:.06},78.86).to("#w243",{color:"#F5F3EE",duration:.12},78.96);
+tl.set("#g92",{visibility:"visible",opacity:1},77.97);
+tl.to("#g92",{opacity:0,duration:.1,ease:"power2.in"},78.68).set("#g92",{visibility:"hidden"},78.78);
+tl.fromTo("#w244",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},78.82);
+tl.fromTo("#w245",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},79.22);
+tl.to("#w245",{color:"#D4AF37",duration:.06},79.26).to("#w245",{color:"#F5F3EE",duration:.12},79.42);
+tl.fromTo("#w246",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},79.38);
+tl.set("#g93",{visibility:"visible",opacity:1},78.78);
+tl.to("#g93",{opacity:0,duration:.1,ease:"power2.in"},79.80).set("#g93",{visibility:"hidden"},79.90);
+tl.fromTo("#w247",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},79.94);
+tl.to("#w247",{color:"#D4AF37",duration:.06},79.98).to("#w247",{color:"#F5F3EE",duration:.12},80.08);
+tl.fromTo("#w248",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},80.02);
+tl.to("#w248",{color:"#D4AF37",duration:.06},80.06).to("#w248",{color:"#F5F3EE",duration:.12},80.22);
+tl.fromTo("#w249",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},80.18);
+tl.to("#w249",{color:"#D4AF37",duration:.06},80.22).to("#w249",{color:"#F5F3EE",duration:.12},80.46);
+tl.set("#g94",{visibility:"visible",opacity:1},79.90);
+tl.to("#g94",{opacity:0,duration:.1,ease:"power2.in"},80.28).set("#g94",{visibility:"hidden"},80.38);
+tl.fromTo("#w250",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},80.42);
+tl.to("#w250",{color:"#D4AF37",duration:.06},80.46).to("#w250",{color:"#F5F3EE",duration:.12},80.56);
+tl.fromTo("#w251",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},80.50);
+tl.to("#w251",{color:"#D4AF37",duration:.06},80.54).to("#w251",{color:"#F5F3EE",duration:.12},80.86);
+tl.fromTo("#w252",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},80.82);
+tl.to("#w252",{color:"#D4AF37",duration:.06},80.86).to("#w252",{color:"#F5F3EE",duration:.12},81.10);
+tl.set("#g95",{visibility:"visible",opacity:1},80.38);
+tl.to("#g95",{opacity:0,duration:.1,ease:"power2.in"},80.92).set("#g95",{visibility:"hidden"},81.02);
+tl.fromTo("#w253",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},81.06);
+tl.to("#w253",{color:"#D4AF37",duration:.06},81.10).to("#w253",{color:"#F5F3EE",duration:.12},81.66);
+tl.fromTo("#w254",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},81.62);
+tl.to("#w254",{color:"#D4AF37",duration:.06},81.66).to("#w254",{color:"#F5F3EE",duration:.12},81.76);
+tl.fromTo("#w255",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},81.70);
+tl.set("#g96",{visibility:"visible",opacity:1},81.02);
+tl.to("#g96",{opacity:0,duration:.1,ease:"power2.in"},81.96).set("#g96",{visibility:"hidden"},82.06);
+tl.fromTo("#w256",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},82.10);
+tl.to("#w256",{color:"#D4AF37",duration:.06},82.14).to("#w256",{color:"#F5F3EE",duration:.12},82.38);
+tl.set("#g97",{visibility:"visible",opacity:1},82.06);
+tl.to("#g97",{opacity:0,duration:.1,ease:"power2.in"},82.20).set("#g97",{visibility:"hidden"},82.30);
+tl.fromTo("#w257",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},82.34);
+tl.to("#w257",{color:"#D4AF37",duration:.06},82.38).to("#w257",{color:"#F5F3EE",duration:.12},82.54);
+tl.fromTo("#w258",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},82.50);
+tl.to("#w258",{color:"#D4AF37",duration:.06},82.54).to("#w258",{color:"#F5F3EE",duration:.12},82.70);
+tl.fromTo("#w259",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},82.66);
+tl.to("#w259",{color:"#D4AF37",duration:.06},82.70).to("#w259",{color:"#F5F3EE",duration:.12},82.94);
+tl.set("#g98",{visibility:"visible",opacity:1},82.30);
+tl.to("#g98",{opacity:0,duration:.1,ease:"power2.in"},82.76).set("#g98",{visibility:"hidden"},82.86);
+tl.fromTo("#w260",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},82.90);
+tl.to("#w260",{color:"#D4AF37",duration:.06},82.94).to("#w260",{color:"#F5F3EE",duration:.12},83.18);
+tl.fromTo("#w261",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},83.14);
+tl.to("#w261",{color:"#D4AF37",duration:.06},83.18).to("#w261",{color:"#F5F3EE",duration:.12},83.34);
+tl.fromTo("#w262",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},83.30);
+tl.to("#w262",{color:"#D4AF37",duration:.06},83.34).to("#w262",{color:"#F5F3EE",duration:.12},84.33);
+tl.set("#g99",{visibility:"visible",opacity:1},82.86);
+tl.to("#g99",{opacity:0,duration:.1,ease:"power2.in"},84.28).set("#g99",{visibility:"hidden"},84.38);
+tl.fromTo("#w263",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},84.42);
+tl.to("#w263",{color:"#D4AF37",duration:.06},84.46).to("#w263",{color:"#F5F3EE",duration:.12},85.34);
+tl.set("#g100",{visibility:"visible",opacity:1},84.38);
+tl.to("#g100",{opacity:0,duration:.1,ease:"power2.in"},85.16).set("#g100",{visibility:"hidden"},85.26);
+tl.fromTo("#w264",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},85.30);
+tl.to("#w264",{color:"#D4AF37",duration:.06},85.34).to("#w264",{color:"#F5F3EE",duration:.12},85.74);
+tl.fromTo("#w265",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},85.70);
+tl.to("#w265",{color:"#D4AF37",duration:.06},85.74).to("#w265",{color:"#F5F3EE",duration:.12},85.98);
+tl.fromTo("#w266",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},85.94);
+tl.set("#g101",{visibility:"visible",opacity:1},85.26);
+tl.to("#g101",{opacity:0,duration:.1,ease:"power2.in"},86.44).set("#g101",{visibility:"hidden"},86.54);
+tl.fromTo("#w267",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},86.58);
+tl.to("#w267",{color:"#D4AF37",duration:.06},86.62).to("#w267",{color:"#F5F3EE",duration:.12},86.97);
+tl.fromTo("#w268",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},86.98);
+tl.to("#w268",{color:"#D4AF37",duration:.06},87.02).to("#w268",{color:"#F5F3EE",duration:.12},87.26);
+tl.fromTo("#w269",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},87.22);
+tl.set("#g102",{visibility:"visible",opacity:1},86.54);
+tl.to("#g102",{opacity:0,duration:.1,ease:"power2.in"},88.20).set("#g102",{visibility:"hidden"},88.30);
+tl.fromTo("#w270",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},88.34);
+tl.to("#w270",{color:"#D4AF37",duration:.06},88.38).to("#w270",{color:"#F5F3EE",duration:.12},88.54);
+tl.fromTo("#w271",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},88.50);
+tl.to("#w271",{color:"#D4AF37",duration:.06},88.54).to("#w271",{color:"#F5F3EE",duration:.12},88.94);
+tl.fromTo("#w272",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},88.90);
+tl.to("#w272",{color:"#D4AF37",duration:.06},88.94).to("#w272",{color:"#F5F3EE",duration:.12},89.18);
+tl.set("#g103",{visibility:"visible",opacity:1},88.30);
+tl.to("#g103",{opacity:0,duration:.1,ease:"power2.in"},89.00).set("#g103",{visibility:"hidden"},89.10);
+tl.fromTo("#w273",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},89.14);
+tl.to("#w273",{color:"#D4AF37",duration:.06},89.18).to("#w273",{color:"#F5F3EE",duration:.12},89.34);
+tl.fromTo("#w274",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},89.30);
+tl.to("#w274",{color:"#D4AF37",duration:.06},89.34).to("#w274",{color:"#F5F3EE",duration:.12},89.82);
+tl.fromTo("#w275",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},89.78);
+tl.to("#w275",{color:"#D4AF37",duration:.06},89.82).to("#w275",{color:"#F5F3EE",duration:.12},90.38);
+tl.set("#g104",{visibility:"visible",opacity:1},89.10);
+tl.to("#g104",{opacity:0,duration:.1,ease:"power2.in"},90.20).set("#g104",{visibility:"hidden"},90.30);
+tl.fromTo("#w276",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},90.34);
+tl.to("#w276",{color:"#D4AF37",duration:.06},90.38).to("#w276",{color:"#F5F3EE",duration:.12},90.62);
+tl.fromTo("#w277",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},90.58);
+tl.to("#w277",{color:"#D4AF37",duration:.06},90.62).to("#w277",{color:"#F5F3EE",duration:.12},90.78);
+tl.fromTo("#w278",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},90.74);
+tl.to("#w278",{color:"#D4AF37",duration:.06},90.78).to("#w278",{color:"#F5F3EE",duration:.12},90.88);
+tl.set("#g105",{visibility:"visible",opacity:1},90.30);
+tl.to("#g105",{opacity:0,duration:.1,ease:"power2.in"},90.68).set("#g105",{visibility:"hidden"},90.78);
+tl.fromTo("#w279",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},90.82);
+tl.to("#w279",{color:"#D4AF37",duration:.06},90.86).to("#w279",{color:"#F5F3EE",duration:.12},91.26);
+tl.fromTo("#w280",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},91.22);
+tl.to("#w280",{color:"#D4AF37",duration:.06},91.26).to("#w280",{color:"#F5F3EE",duration:.12},91.42);
+tl.fromTo("#w281",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},91.38);
+tl.to("#w281",{color:"#D4AF37",duration:.06},91.42).to("#w281",{color:"#F5F3EE",duration:.12},91.58);
+tl.set("#g106",{visibility:"visible",opacity:1},90.78);
+tl.to("#g106",{opacity:0,duration:.1,ease:"power2.in"},91.40).set("#g106",{visibility:"hidden"},91.50);
+tl.fromTo("#w282",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},91.54);
+tl.to("#w282",{color:"#D4AF37",duration:.06},91.58).to("#w282",{color:"#F5F3EE",duration:.12},91.72);
+tl.fromTo("#w283",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},91.68);
+tl.to("#w283",{color:"#D4AF37",duration:.06},91.72).to("#w283",{color:"#F5F3EE",duration:.12},91.86);
+tl.fromTo("#w284",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},91.82);
+tl.to("#w284",{color:"#D4AF37",duration:.06},91.86).to("#w284",{color:"#F5F3EE",duration:.12},91.98);
+tl.set("#g107",{visibility:"visible",opacity:1},91.50);
+tl.to("#g107",{opacity:0,duration:.1,ease:"power2.in"},91.80).set("#g107",{visibility:"hidden"},91.90);
+tl.fromTo("#w285",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},91.94);
+tl.to("#w285",{color:"#D4AF37",duration:.06},91.98).to("#w285",{color:"#F5F3EE",duration:.12},92.08);
+tl.fromTo("#w286",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},92.02);
+tl.to("#w286",{color:"#D4AF37",duration:.06},92.06).to("#w286",{color:"#F5F3EE",duration:.12},92.46);
+tl.set("#g108",{visibility:"visible",opacity:1},91.90);
+tl.to("#g108",{opacity:0,duration:.1,ease:"power2.in"},92.28).set("#g108",{visibility:"hidden"},92.38);
+tl.fromTo("#w287",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},92.42);
+tl.to("#w287",{color:"#D4AF37",duration:.06},92.46).to("#w287",{color:"#F5F3EE",duration:.12},92.62);
+tl.fromTo("#w288",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},92.58);
+tl.to("#w288",{color:"#D4AF37",duration:.06},92.62).to("#w288",{color:"#F5F3EE",duration:.12},92.78);
+tl.fromTo("#w289",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},92.74);
+tl.to("#w289",{color:"#D4AF37",duration:.06},92.78).to("#w289",{color:"#F5F3EE",duration:.12},93.10);
+tl.set("#g109",{visibility:"visible",opacity:1},92.38);
+tl.to("#g109",{opacity:0,duration:.1,ease:"power2.in"},92.92).set("#g109",{visibility:"hidden"},93.02);
+tl.fromTo("#w290",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},93.06);
+tl.to("#w290",{color:"#D4AF37",duration:.06},93.10).to("#w290",{color:"#F5F3EE",duration:.12},93.34);
+tl.fromTo("#w291",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},93.30);
+tl.to("#w291",{color:"#D4AF37",duration:.06},93.34).to("#w291",{color:"#F5F3EE",duration:.12},93.74);
+tl.fromTo("#w292",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},93.70);
+tl.to("#w292",{color:"#D4AF37",duration:.06},93.74).to("#w292",{color:"#F5F3EE",duration:.12},94.06);
+tl.set("#g110",{visibility:"visible",opacity:1},93.02);
+tl.to("#g110",{opacity:0,duration:.1,ease:"power2.in"},93.88).set("#g110",{visibility:"hidden"},93.98);
+tl.fromTo("#w293",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},94.02);
+tl.to("#w293",{color:"#D4AF37",duration:.06},94.06).to("#w293",{color:"#F5F3EE",duration:.12},94.16);
+tl.fromTo("#w294",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},94.10);
+tl.to("#w294",{color:"#D4AF37",duration:.06},94.14).to("#w294",{color:"#F5F3EE",duration:.12},94.30);
+tl.fromTo("#w295",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},94.26);
+tl.to("#w295",{color:"#D4AF37",duration:.06},94.30).to("#w295",{color:"#F5F3EE",duration:.12},94.70);
+tl.set("#g111",{visibility:"visible",opacity:1},93.98);
+tl.to("#g111",{opacity:0,duration:.1,ease:"power2.in"},94.52).set("#g111",{visibility:"hidden"},94.62);
+tl.fromTo("#w296",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},94.66);
+tl.to("#w296",{color:"#D4AF37",duration:.06},94.70).to("#w296",{color:"#F5F3EE",duration:.12},94.86);
+tl.fromTo("#w297",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},94.82);
+tl.to("#w297",{color:"#D4AF37",duration:.06},94.86).to("#w297",{color:"#F5F3EE",duration:.12},95.02);
+tl.fromTo("#w298",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},94.98);
+tl.to("#w298",{color:"#D4AF37",duration:.06},95.02).to("#w298",{color:"#F5F3EE",duration:.12},95.34);
+tl.set("#g112",{visibility:"visible",opacity:1},94.62);
+tl.to("#g112",{opacity:0,duration:.1,ease:"power2.in"},95.16).set("#g112",{visibility:"hidden"},95.26);
+tl.fromTo("#w299",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},95.30);
+tl.to("#w299",{color:"#D4AF37",duration:.06},95.34).to("#w299",{color:"#F5F3EE",duration:.12},95.44);
+tl.fromTo("#w300",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},95.38);
+tl.to("#w300",{color:"#D4AF37",duration:.06},95.42).to("#w300",{color:"#F5F3EE",duration:.12},95.58);
+tl.fromTo("#w301",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},95.54);
+tl.to("#w301",{color:"#D4AF37",duration:.06},95.58).to("#w301",{color:"#F5F3EE",duration:.12},95.90);
+tl.set("#g113",{visibility:"visible",opacity:1},95.26);
+tl.to("#g113",{opacity:0,duration:.1,ease:"power2.in"},95.80).set("#g113",{visibility:"hidden"},95.90);
+tl.fromTo("#w302",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},95.94);
+tl.to("#w302",{color:"#D4AF37",duration:.06},95.98).to("#w302",{color:"#F5F3EE",duration:.12},96.38);
+tl.set("#g114",{visibility:"visible",opacity:1},95.90);
+tl.to("#g114",{opacity:0,duration:.1,ease:"power2.in"},96.20).set("#g114",{visibility:"hidden"},96.30);
+tl.fromTo("#w303",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},96.34);
+tl.to("#w303",{color:"#D4AF37",duration:.06},96.38).to("#w303",{color:"#F5F3EE",duration:.12},96.54);
+tl.fromTo("#w304",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},96.50);
+tl.to("#w304",{color:"#D4AF37",duration:.06},96.54).to("#w304",{color:"#F5F3EE",duration:.12},96.70);
+tl.fromTo("#w305",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},96.66);
+tl.to("#w305",{color:"#D4AF37",duration:.06},96.70).to("#w305",{color:"#F5F3EE",duration:.12},96.94);
+tl.set("#g115",{visibility:"visible",opacity:1},96.30);
+tl.to("#g115",{opacity:0,duration:.1,ease:"power2.in"},96.76).set("#g115",{visibility:"hidden"},96.86);
+tl.fromTo("#w306",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},96.90);
+tl.to("#w306",{color:"#D4AF37",duration:.06},96.94).to("#w306",{color:"#F5F3EE",duration:.12},97.10);
+tl.fromTo("#w307",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},97.06);
+tl.fromTo("#w308",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},97.97);
+tl.set("#g116",{visibility:"visible",opacity:1},96.86);
+tl.to("#g116",{opacity:0,duration:.1,ease:"power2.in"},98.47).set("#g116",{visibility:"hidden"},98.57);
+tl.fromTo("#w309",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},98.61);
+tl.to("#w309",{color:"#D4AF37",duration:.06},98.65).to("#w309",{color:"#F5F3EE",duration:.12},99.13);
+tl.fromTo("#w310",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},99.09);
+tl.to("#w310",{color:"#D4AF37",duration:.06},99.13).to("#w310",{color:"#F5F3EE",duration:.12},100.12);
+tl.set("#g117",{visibility:"visible",opacity:1},98.57);
+tl.to("#g117",{opacity:0,duration:.1,ease:"power2.in"},99.99).set("#g117",{visibility:"hidden"},100.09);
+tl.fromTo("#w311",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},100.13);
+tl.to("#w311",{color:"#D4AF37",duration:.06},100.17).to("#w311",{color:"#F5F3EE",duration:.12},101.13);
+tl.set("#g118",{visibility:"visible",opacity:1},100.09);
+tl.to("#g118",{opacity:0,duration:.1,ease:"power2.in"},100.95).set("#g118",{visibility:"hidden"},101.05);
+tl.fromTo("#w312",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},101.09);
+tl.to("#w312",{color:"#D4AF37",duration:.06},101.13).to("#w312",{color:"#F5F3EE",duration:.12},101.37);
+tl.fromTo("#w313",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},101.33);
+tl.to("#w313",{color:"#D4AF37",duration:.06},101.37).to("#w313",{color:"#F5F3EE",duration:.12},101.77);
+tl.fromTo("#w314",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},101.73);
+tl.to("#w314",{color:"#D4AF37",duration:.06},101.77).to("#w314",{color:"#F5F3EE",duration:.12},101.93);
+tl.set("#g119",{visibility:"visible",opacity:1},101.05);
+tl.to("#g119",{opacity:0,duration:.1,ease:"power2.in"},101.75).set("#g119",{visibility:"hidden"},101.85);
+tl.fromTo("#w315",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},101.89);
+tl.to("#w315",{color:"#D4AF37",duration:.06},101.93).to("#w315",{color:"#F5F3EE",duration:.12},102.03);
+tl.fromTo("#w316",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},101.97);
+tl.to("#w316",{color:"#D4AF37",duration:.06},102.01).to("#w316",{color:"#F5F3EE",duration:.12},102.33);
+tl.fromTo("#w317",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},102.29);
+tl.to("#w317",{color:"#D4AF37",duration:.06},102.33).to("#w317",{color:"#F5F3EE",duration:.12},102.49);
+tl.set("#g120",{visibility:"visible",opacity:1},101.85);
+tl.to("#g120",{opacity:0,duration:.1,ease:"power2.in"},102.31).set("#g120",{visibility:"hidden"},102.41);
+tl.fromTo("#w318",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},102.45);
+tl.to("#w318",{color:"#D4AF37",duration:.06},102.49).to("#w318",{color:"#F5F3EE",duration:.12},102.59);
+tl.fromTo("#w319",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},102.53);
+tl.to("#w319",{color:"#D4AF37",duration:.06},102.57).to("#w319",{color:"#F5F3EE",duration:.12},103.16);
+tl.set("#g121",{visibility:"visible",opacity:1},102.41);
+tl.to("#g121",{opacity:0,duration:.1,ease:"power2.in"},102.80).set("#g121",{visibility:"hidden"},102.90);
+window.__timelines = window.__timelines || {};
+window.__timelines["main"] = tl;
+</script>
+</body>
+</html>
