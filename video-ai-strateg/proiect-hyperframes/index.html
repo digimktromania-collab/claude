@@ -104,6 +104,7 @@ html, body { width:1080px; height:1920px; overflow:hidden; background:var(--blac
 .tile { display:flex; flex-direction:column; align-items:center; gap:10px; border:2px solid rgba(245,243,238,.35); border-radius:24px; padding:20px; }
 .tile .tl { font-family:'Play'; font-weight:700; font-size:40px; }
 .tile.gold { border-color:var(--gold); background:rgba(212,175,55,.1); } .tile b { color:var(--gold); font-style:italic; }
+#leak { position:absolute; inset:0; z-index:8; pointer-events:none; overflow:hidden; }.lk { position:absolute; left:-300px; top:-200px; width:1680px; height:2320px; opacity:0; background:linear-gradient(105deg, rgba(255,226,170,0) 30%, rgba(255,214,140,.24) 45%, rgba(255,244,220,.36) 50%, rgba(255,214,140,.24) 55%, rgba(255,226,170,0) 70%); mix-blend-mode:soft-light; }
 #captions { position:absolute; left:0; top:0; width:1080px; height:1920px; z-index:20; pointer-events:none; }
 .grp { position:absolute; left:50px; right:50px; top:1250px; text-align:center; font-weight:800; line-height:1.25; visibility:hidden; opacity:0; }
 .w { display:inline-block; color:var(--cream); background:rgba(8,8,8,.72); border-radius:14px; padding:0 14px; margin:4px 2px; box-shadow:0 8px 24px rgba(0,0,0,.35); }
@@ -111,10 +112,10 @@ html, body { width:1080px; height:1920px; overflow:hidden; background:var(--blac
 </style>
 </head>
 <body>
-<div id="root" data-composition-id="main" data-start="0" data-duration="54.13" data-width="1080" data-height="1920">
+<div id="root" data-composition-id="main" data-start="0" data-duration="53.9" data-width="1080" data-height="1920">
   <div id="bg"></div>
   <div id="vwrap">
-    <video id="vid" class="clip" src="assets/clean.mp4" data-start="0" data-duration="54.13" data-track-index="0" data-has-audio="true" data-volume="1" playsinline></video>
+    <video id="vid" class="clip" src="assets/clean.mp4" data-start="0" data-duration="53.9" data-track-index="0" data-has-audio="true" data-volume="1" playsinline></video>
     <div id="shade"></div>
   </div>
   <div id="c0" class="clip slot" data-start="0.00" data-duration="4.25" data-track-index="2"><div class="card" id="c0i"><div class="eb">Înainte să-i ceri AI-ului</div><div class="ttl">Încă <b>30</b> de idei?</div><div class="art"><div class="aiwrap"><svg viewBox="0 0 200 200" width="150"><rect x="45" y="45" width="110" height="110" rx="20" fill="#141414" stroke="#D4AF37" stroke-width="7"/>
@@ -135,7 +136,7 @@ html, body { width:1080px; height:1920px; overflow:hidden; background:var(--blac
 <rect class="pa" x="146" y="50" width="110" height="12" rx="6" fill="#D4AF37" opacity="1"/><rect class="pa" x="146" y="80" width="92" height="12" rx="6" fill="#F5F3EE" opacity="0.55"/><rect class="pa" x="146" y="110" width="74" height="12" rx="6" fill="#F5F3EE" opacity="0.55"/><rect class="pa" x="146" y="140" width="56" height="12" rx="6" fill="#F5F3EE" opacity="0.55"/>
 <rect x="40" y="152" width="80" height="22" rx="11" fill="#D4AF37"/></svg></div></div></div></div>
 <div id="c6" class="clip slot" data-start="46.19" data-duration="2.21" data-track-index="2"><div class="card" id="c6i"><div class="eb">Întrebarea mea</div><div class="ttl">Tu cum folosești <b>AI</b>?</div><div class="art"><div id="c6q"><svg viewBox="0 0 200 170" width="190"><path d="M20 20 H180 V120 H80 L40 155 V120 H20 Z" fill="#141414" stroke="#D4AF37" stroke-width="7" stroke-linejoin="round"/><text x="100" y="95" text-anchor="middle" font-family="Play" font-weight="700" font-size="76" fill="#D4AF37">?</text></svg></div></div></div></div>
-<div id="c7" class="clip slot" data-start="48.45" data-duration="5.68" data-track-index="2"><div class="card" id="c7i"><div class="eb">Te aștept</div><div class="ttl">Comunitatea <b>digitală</b></div><div class="art"><div id="c7c"><svg viewBox="0 0 300 240" width="290"><g stroke="#D4AF37" stroke-width="3" opacity=".7" class="links">
+<div id="c7" class="clip slot" data-start="48.45" data-duration="5.45" data-track-index="2"><div class="card" id="c7i"><div class="eb">Te aștept</div><div class="ttl">Comunitatea <b>digitală</b></div><div class="art"><div id="c7c"><svg viewBox="0 0 300 240" width="290"><g stroke="#D4AF37" stroke-width="3" opacity=".7" class="links">
 <line x1="150" y1="120" x2="245" y2="120"/><line x1="150" y1="120" x2="197" y2="202"/><line x1="150" y1="120" x2="102" y2="202"/><line x1="150" y1="120" x2="55" y2="120"/><line x1="150" y1="120" x2="103" y2="38"/><line x1="150" y1="120" x2="198" y2="38"/></g>
 <g transform="translate(150 128) scale(1.5)"><circle cx="0" cy="-14" r="9" fill="#D4AF37"/><path d="M-15 14 Q0 -8 15 14 Z" fill="#D4AF37"/></g><g class="cp"><g transform="translate(245.0 128.0) scale(1.1)"><circle cx="0" cy="-14" r="9" fill="#F5F3EE"/><path d="M-15 14 Q0 -8 15 14 Z" fill="#F5F3EE"/></g></g><g class="cp"><g transform="translate(197.49979853089184 210.27252967743658) scale(1.1)"><circle cx="0" cy="-14" r="9" fill="#F5F3EE"/><path d="M-15 14 Q0 -8 15 14 Z" fill="#F5F3EE"/></g></g><g class="cp"><g transform="translate(102.4995970626382 210.27218072221174) scale(1.1)"><circle cx="0" cy="-14" r="9" fill="#F5F3EE"/><path d="M-15 14 Q0 -8 15 14 Z" fill="#F5F3EE"/></g></g><g class="cp"><g transform="translate(55.00000000256357 127.99930209103042) scale(1.1)"><circle cx="0" cy="-14" r="9" fill="#F5F3EE"/><path d="M-15 14 Q0 -8 15 14 Z" fill="#F5F3EE"/></g></g><g class="cp"><g transform="translate(102.50080587814168 45.72712137177879) scale(1.1)"><circle cx="0" cy="-14" r="9" fill="#F5F3EE"/><path d="M-15 14 Q0 -8 15 14 Z" fill="#F5F3EE"/></g></g><g class="cp"><g transform="translate(197.50100734126818 45.72816823745332) scale(1.1)"><circle cx="0" cy="-14" r="9" fill="#F5F3EE"/><path d="M-15 14 Q0 -8 15 14 Z" fill="#F5F3EE"/></g></g></svg></div><div class="motto" id="c7m">Deșteaptă-te, române!</div></div></div></div>
 <div id="sp1" class="clip split" data-start="17.05" data-duration="10.95" data-track-index="3" data-layout-allow-overflow><div class="wipe" id="sp1w"></div><div class="panel" id="sp1i"><div class="eb">Construiește</div><div class="ttl">Traseul</div>
@@ -152,7 +153,42 @@ html, body { width:1080px; height:1920px; overflow:hidden; background:var(--blac
 <div class="tier" id="h1"><div class="tn">✓</div><div><div class="tl">să proiectezi traseul</div></div></div><div class="tier" id="h2"><div class="tn">✓</div><div><div class="tl">să redactezi mesajele</div></div></div></div>
 <div id="sC" class="stg"><div class="eb">Tu verifici mereu</div>
 <div class="tier" id="v1"><div class="tn">✓</div><div><div class="tl">se potrivesc ție?</div></div></div><div class="tier" id="v2"><div class="tn">✓</div><div><div class="tl">dar audienței tale?</div></div></div></div></div></div>
-  <div id="captions" class="clip" data-start="0" data-duration="54.13" data-track-index="4" data-track-kind="captions" data-layout-allow-caption-zone data-layout-allow-overlap>
+<audio id="sfx0" src="assets/sfx/pop.mp3" data-start="2.393" data-volume="0.16" data-track-index="6"></audio>
+<audio id="sfx1" src="assets/sfx/whoosh-hi.mp3" data-start="4.388" data-volume="0.16" data-track-index="7"></audio>
+<audio id="sfx2" src="assets/sfx/pop.mp3" data-start="5.353" data-volume="0.2" data-track-index="8"></audio>
+<audio id="sfx3" src="assets/sfx/pop.mp3" data-start="6.153" data-volume="0.14" data-track-index="6"></audio>
+<audio id="sfx4" src="assets/sfx/whoosh.mp3" data-start="8.121" data-volume="0.16" data-track-index="7"></audio>
+<audio id="sfx5" src="assets/sfx/whoosh-lo.mp3" data-start="10.683" data-volume="0.16" data-track-index="8"></audio>
+<audio id="sfx6" src="assets/sfx/typing.mp3" data-start="11.893" data-volume="0.12" data-track-index="6"></audio>
+<audio id="sfx7" src="assets/sfx/pop.mp3" data-start="12.073" data-volume="0.18" data-track-index="7"></audio>
+<audio id="sfx8" src="assets/sfx/pop.mp3" data-start="14.233" data-volume="0.18" data-track-index="8"></audio>
+<audio id="sfx9" src="assets/sfx/pop.mp3" data-start="15.273" data-volume="0.16" data-track-index="6"></audio>
+<audio id="sfx10" src="assets/sfx/whoosh-cinematic.mp3" data-start="14.830" data-volume="0.22" data-track-index="7"></audio>
+<audio id="sfx11" src="assets/sfx/pop.mp3" data-start="19.133" data-volume="0.2" data-track-index="8"></audio>
+<audio id="sfx12" src="assets/sfx/pop.mp3" data-start="20.493" data-volume="0.2" data-track-index="6"></audio>
+<audio id="sfx13" src="assets/sfx/click-soft.mp3" data-start="22.220" data-volume="0.2" data-track-index="7"></audio>
+<audio id="sfx14" src="assets/sfx/click-soft.mp3" data-start="23.660" data-volume="0.2" data-track-index="8"></audio>
+<audio id="sfx15" src="assets/sfx/click-soft.mp3" data-start="26.300" data-volume="0.2" data-track-index="6"></audio>
+<audio id="sfx16" src="assets/sfx/whoosh-lo.mp3" data-start="27.623" data-volume="0.14" data-track-index="7"></audio>
+<audio id="sfx17" src="assets/sfx/whoosh-hi.mp3" data-start="28.138" data-volume="0.16" data-track-index="8"></audio>
+<audio id="sfx18" src="assets/sfx/pop.mp3" data-start="29.133" data-volume="0.16" data-track-index="6"></audio>
+<audio id="sfx19" src="assets/sfx/pop.mp3" data-start="30.413" data-volume="0.16" data-track-index="7"></audio>
+<audio id="sfx20" src="assets/sfx/pop.mp3" data-start="31.693" data-volume="0.22" data-track-index="8"></audio>
+<audio id="sfx21" src="assets/sfx/whoosh-cinematic.mp3" data-start="30.030" data-volume="0.22" data-track-index="6"></audio>
+<audio id="sfx22" src="assets/sfx/pop.mp3" data-start="33.853" data-volume="0.18" data-track-index="7"></audio>
+<audio id="sfx23" src="assets/sfx/impact-bass-1.mp3" data-start="35.100" data-volume="0.24" data-track-index="8"></audio>
+<audio id="sfx24" src="assets/sfx/click-soft.mp3" data-start="36.950" data-volume="0.2" data-track-index="6"></audio>
+<audio id="sfx25" src="assets/sfx/click-soft.mp3" data-start="38.150" data-volume="0.2" data-track-index="7"></audio>
+<audio id="sfx26" src="assets/sfx/click-soft.mp3" data-start="41.430" data-volume="0.2" data-track-index="8"></audio>
+<audio id="sfx27" src="assets/sfx/click-soft.mp3" data-start="43.030" data-volume="0.2" data-track-index="6"></audio>
+<audio id="sfx28" src="assets/sfx/whoosh-lo.mp3" data-start="44.523" data-volume="0.14" data-track-index="7"></audio>
+<audio id="sfx29" src="assets/sfx/whoosh.mp3" data-start="45.021" data-volume="0.16" data-track-index="8"></audio>
+<audio id="sfx30" src="assets/sfx/whoosh-lo.mp3" data-start="46.233" data-volume="0.16" data-track-index="6"></audio>
+<audio id="sfx31" src="assets/sfx/pop.mp3" data-start="46.503" data-volume="0.2" data-track-index="7"></audio>
+<audio id="sfx32" src="assets/sfx/whoosh-hi.mp3" data-start="48.538" data-volume="0.16" data-track-index="8"></audio>
+<audio id="sfx33" src="assets/sfx/sparkle.mp3" data-start="50.976" data-volume="0.2" data-track-index="6"></audio>
+<div id="leak" class="clip" data-start="0" data-duration="53.9" data-track-index="5" data-layout-ignore><div class="lk" id="lk0"></div><div class="lk" id="lk1"></div><div class="lk" id="lk2"></div><div class="lk" id="lk3"></div><div class="lk" id="lk4"></div><div class="lk" id="lk5"></div></div>
+  <div id="captions" class="clip" data-start="0" data-duration="53.9" data-track-index="4" data-track-kind="captions" data-layout-allow-caption-zone data-layout-allow-overlap>
   <div id="g0" class="grp" style="font-size:66px"><span id="w0" class="w">Înainte</span> <span id="w1" class="w">să-i</span> <span id="w2" class="w">ceri</span></div>
 <div id="g1" class="grp" style="font-size:66px"><span id="w3" class="w kw">inteligenței</span></div>
 <div id="g2" class="grp" style="font-size:66px"><span id="w4" class="w kw">artificiale</span> <span id="w5" class="w">încă</span></div>
@@ -251,7 +287,7 @@ tl.fromTo("#c6i",{x:90,opacity:0,scale:.96},{x:0,opacity:1,scale:1,duration:.45,
 tl.to("#c6i",{y:-40,opacity:0,duration:.3,ease:"power2.in"},48.08);
 tl.fromTo("#c6q",{scale:0,rotation:-15},{scale:1,rotation:0,duration:.45,ease:"back.out(2.5)"},46.59);
 tl.fromTo("#c7i",{x:90,opacity:0,scale:.96},{x:0,opacity:1,scale:1,duration:.45,ease:"power3.out"},48.45);
-tl.to("#c7i",{y:-40,opacity:0,duration:.3,ease:"power2.in"},53.81);
+tl.to("#c7i",{y:-40,opacity:0,duration:.3,ease:"power2.in"},53.58);
 tl.fromTo("#c7c .cp",{scale:0,opacity:0,transformOrigin:"50% 50%"},{scale:1,opacity:1,stagger:.12,duration:.35,ease:"back.out(2)"},49.71);
 tl.fromTo("#c7c .links line",{opacity:0},{opacity:1,stagger:.12,duration:.3},49.910000000000004);
 tl.fromTo("#c7m",{opacity:0,y:20},{opacity:1,y:0,duration:.5,ease:"power3.out"},50.97);
@@ -288,6 +324,12 @@ tl.to("#vwrap",{scale:1.1,duration:.25,ease:"power3.out"},8.03).to("#vwrap",{sca
 tl.to("#vwrap",{scale:1.08,duration:.3,ease:"power3.out"},34.690000000000005).to("#vwrap",{scale:1,duration:.6,ease:"power2.inOut"},35.980000000000004);
 tl.to("#vwrap",{scale:1.1,duration:.25,ease:"power3.out"},46.14).to("#vwrap",{scale:1,duration:.5,ease:"power2.inOut"},48.27);
 tl.to("#vwrap",{scale:1.06,duration:5,ease:"sine.inOut"},48.43);
+tl.fromTo("#lk0",{x:-1100,opacity:0},{x:1100,duration:1.0,ease:"sine.inOut"},3.80);tl.fromTo("#lk0",{opacity:0},{opacity:1,duration:.3,ease:"sine.out"},3.80);tl.to("#lk0",{opacity:0,duration:.35,ease:"sine.in"},4.45);
+tl.fromTo("#lk1",{x:-1100,opacity:0},{x:1100,duration:1.0,ease:"sine.inOut"},7.55);tl.fromTo("#lk1",{opacity:0},{opacity:1,duration:.3,ease:"sine.out"},7.55);tl.to("#lk1",{opacity:0,duration:.35,ease:"sine.in"},8.20);
+tl.fromTo("#lk2",{x:-1100,opacity:0},{x:1100,duration:1.0,ease:"sine.inOut"},10.14);tl.fromTo("#lk2",{opacity:0},{opacity:1,duration:.3,ease:"sine.out"},10.14);tl.to("#lk2",{opacity:0,duration:.35,ease:"sine.in"},10.79);
+tl.fromTo("#lk3",{x:-1100,opacity:0},{x:1100,duration:1.0,ease:"sine.inOut"},27.55);tl.fromTo("#lk3",{opacity:0},{opacity:1,duration:.3,ease:"sine.out"},27.55);tl.to("#lk3",{opacity:0,duration:.35,ease:"sine.in"},28.20);
+tl.fromTo("#lk4",{x:-1100,opacity:0},{x:1100,duration:1.0,ease:"sine.inOut"},44.45);tl.fromTo("#lk4",{opacity:0},{opacity:1,duration:.3,ease:"sine.out"},44.45);tl.to("#lk4",{opacity:0,duration:.35,ease:"sine.in"},45.10);
+tl.fromTo("#lk5",{x:-1100,opacity:0},{x:1100,duration:1.0,ease:"sine.inOut"},47.95);tl.fromTo("#lk5",{opacity:0},{opacity:1,duration:.3,ease:"sine.out"},47.95);tl.to("#lk5",{opacity:0,duration:.35,ease:"sine.in"},48.60);
 tl.fromTo("#w0",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},0.12);
 tl.to("#w0",{color:"#D4AF37",duration:.06},0.16).to("#w0",{color:"#F5F3EE",duration:.12},0.64);
 tl.fromTo("#w1",{opacity:0,y:18,scale:.82},{opacity:1,y:0,scale:1,duration:.16,ease:"back.out(2.2)"},0.60);

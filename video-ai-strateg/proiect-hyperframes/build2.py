@@ -6,7 +6,7 @@ W = json.load(open(f"{S}/work2/words.json"))
 fix = {}
 for i, (s, e) in fix.items():
     W[i]["s"], W[i]["e"] = s, e
-DUR = 54.13
+DUR = 53.9
 T = lambda i: W[i]["s"]
 
 def norm(w):
@@ -202,6 +202,15 @@ js.append(f'tl.to("#vwrap",{{scale:1.1,duration:.25,ease:"power3.out"}},{T(26)-.
 js.append(f'tl.to("#vwrap",{{scale:1.08,duration:.3,ease:"power3.out"}},{T(111)-.05}).to("#vwrap",{{scale:1,duration:.6,ease:"power2.inOut"}},{T(114)+.6});')
 js.append(f'tl.to("#vwrap",{{scale:1.1,duration:.25,ease:"power3.out"}},{T(143)-.05}).to("#vwrap",{{scale:1,duration:.5,ease:"power2.inOut"}},{T(149)});')
 js.append(f'tl.to("#vwrap",{{scale:1.06,duration:5,ease:"sine.inOut"}},{T(150)});')
+OUT = f"{S}/hf/ai"
+EXTRA_SFX = [("pop", T(6), .16), ("pop", T(16), .2), ("pop", T(18), .14), ("typing", T(42) - .3, .12),
+  ("pop", T(42), .18), ("pop", T(50), .18), ("pop", T(54), .16), ("pop", T(69), .2), ("pop", T(73), .2),
+  ("click-soft", T(77), .2), ("click-soft", T(82), .2), ("click-soft", T(91), .2),
+  ("pop", T(97), .16), ("pop", T(100), .16), ("pop", T(102), .22), ("pop", T(108), .18),
+  ("impact-bass-1", T(113), .24), ("click-soft", T(119), .2), ("click-soft", T(122), .2),
+  ("click-soft", T(133), .2), ("click-soft", T(138), .2), ("pop", T(145), .2), ("sparkle", T(159) - .1, .2)]
+LEAKS = [4.3, 8.05, 10.64, 28.05, 44.95, 48.45]
+exec(open(f"{S}/fx.py").read())
 fonts = []
 for fam, base, weights, styles in [("Mont", "montserrat", [500, 700, 800, 900], ["normal"]), ("Play", "playfair-display", [600, 700], ["normal", "italic"])]:
     for w in weights:
@@ -300,6 +309,7 @@ html, body {{ width:1080px; height:1920px; overflow:hidden; background:var(--bla
 .tile {{ display:flex; flex-direction:column; align-items:center; gap:10px; border:2px solid rgba(245,243,238,.35); border-radius:24px; padding:20px; }}
 .tile .tl {{ font-family:'Play'; font-weight:700; font-size:40px; }}
 .tile.gold {{ border-color:var(--gold); background:rgba(212,175,55,.1); }} .tile b {{ color:var(--gold); font-style:italic; }}
+{LEAK_CSS}
 #captions {{ position:absolute; left:0; top:0; width:1080px; height:1920px; z-index:20; pointer-events:none; }}
 .grp {{ position:absolute; left:50px; right:50px; top:1250px; text-align:center; font-weight:800; line-height:1.25; visibility:hidden; opacity:0; }}
 .w {{ display:inline-block; color:var(--cream); background:rgba(8,8,8,.72); border-radius:14px; padding:0 14px; margin:4px 2px; box-shadow:0 8px 24px rgba(0,0,0,.35); }}

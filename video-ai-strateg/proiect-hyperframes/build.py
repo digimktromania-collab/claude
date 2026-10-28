@@ -217,6 +217,17 @@ js.append(f'tl.to("#vwrap",{{scale:1.07,duration:3.6,ease:"sine.inOut"}},{T(105)
 js.append(f'tl.to("#vwrap",{{scale:1.12,duration:.2,ease:"power3.out"}},{T(211)-.05}).to("#vwrap",{{scale:1,duration:.6,ease:"power2.inOut"}},{T(214)+.3});')
 js.append(f'tl.to("#vwrap",{{scale:1.08,duration:6,ease:"sine.inOut"}},{T(290)});')
 
+OUT = f"{S}/hf/funnel"
+EXTRA_SFX = [("pop", T(48), .2), ("pop", T(55), .16), ("pop", T(62), .16), ("pop", 24.3, .18),
+  ("pop", T(76) - .1, .16), ("pop", T(85) - .1, .16), ("pop", T(101), .16), ("pop", T(116), .18),
+  ("sparkle", T(147), .16), ("pop", T(152), .18), ("pop", T(152) + .36, .16), ("pop", T(163), .18),
+  ("typing", T(169) - .2, .14), ("pop", T(179), .18), ("pop", T(213) - .05, .22), ("pop", T(214), .22),
+  ("typing", T(227) - .1, .14), ("pop", T(239), .18), ("pop", T(246), .18), ("pop", T(253), .16),
+  ("impact-bass-1", T(264) - .05, .24)] + [("click-soft", T(264) + i * .55, .2) for i in range(5)] + [
+  ("pop", T(286) - .1, .18), ("pop", T(295), .16), ("pop", T(298), .16), ("pop", T(301), .16),
+  ("sparkle", T(310) - .1, .2)]
+LEAKS = [6.0, 11.84, 31.35, 35.2, 39.3, 50.35, 53.6, 61.3, 68.2, 90.35, 96.35]
+exec(open(f"{S}/fx.py").read())
 fonts = []
 for fam, base, weights, styles in [("Mont", "montserrat", [500, 700, 800, 900], ["normal"]), ("Play", "playfair-display", [600, 700], ["normal", "italic"])]:
     for w in weights:
@@ -292,6 +303,7 @@ html, body {{ width:1080px; height:1920px; overflow:hidden; background:var(--bla
 .tn {{ flex:none; width:46px; height:46px; border-radius:50%; border:3px solid var(--gold); color:var(--gold); font-family:'Play'; font-weight:700; font-size:28px; line-height:40px; text-align:center; }}
 .tl {{ font-family:'Play'; font-weight:700; font-size:32px; color:var(--cream); line-height:1.1; }}
 .ts {{ font-size:19px; font-weight:600; color:rgba(245,243,238,.75); }}
+{LEAK_CSS}
 #captions {{ position:absolute; left:0; top:0; width:1080px; height:1920px; z-index:20; pointer-events:none; }}
 .grp {{ position:absolute; left:50px; right:50px; top:1180px; text-align:center; font-weight:800; line-height:1.25; visibility:hidden; opacity:0; }}
 .w {{ display:inline-block; color:var(--cream); text-shadow:0 3px 0 rgba(0,0,0,.55), 0 6px 22px rgba(0,0,0,.65); margin:0 4px; }}
