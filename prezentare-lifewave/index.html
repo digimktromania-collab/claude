@@ -431,29 +431,26 @@ section.in .coins i{animation:coin .5s var(--ease) forwards;animation-delay:calc
 <section id="retail">
   <div class="wrap">
     <div class="kick rv">Profit din vânzare · Customer Premium</div>
-    <h2 class="rv" style="--d:1">Câștig fix pe fiecare produs. <em>Nimic ascuns.</em></h2>
-    <div class="calc" style="margin-top:24px">
-      <div class="card rv" style="--d:2">
-        <div class="grid g2" style="gap:12px">
-          <div class="kpi" style="border-color:rgba(255,201,77,.4)"><div class="k">X39 · X49</div><div class="v gold">€19</div><div class="sub">profit / pachet</div></div>
-          <div class="kpi"><div class="k">Celelalte patch-uri</div><div class="v gold">≈ €9,50</div><div class="sub">profit / pachet</div></div>
-        </div>
-        <div class="fld" style="margin-top:18px"><label>Produs</label><select id="rP"><option value="19">X39 / X49 — €19 / pachet</option><option value="9.5">Alte patch-uri — ≈ €9,50 / pachet</option></select></div>
-        <div class="fld"><label>Pachete vândute pe lună <b id="rNv">5</b></label><input type="range" id="rN" min="0" max="50" value="5"></div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="tab" data-n="5">5 × X39</button><button class="tab" data-n="10">10 × X39</button><button class="tab" data-n="20">20 × X39</button></div>
-      </div>
-      <div class="card out rv" style="--d:3">
-        <div id="rOut"></div>
-        <div class="kick" style="font-size:11px;margin:14px 0 6px">Customer Premium — crește odată cu volumul clienților</div>
-        <div style="display:flex;align-items:flex-end;gap:10px;height:120px">
-          <div style="flex:1;text-align:center"><div style="height:30px;border-radius:10px 10px 0 0;background:linear-gradient(#5cc8ff,#2f7bf0)"></div><b class="num" style="font-size:24px">5%</b></div>
-          <div style="flex:1;text-align:center"><div style="height:58px;border-radius:10px 10px 0 0;background:linear-gradient(#5cc8ff,#2f7bf0)"></div><b class="num" style="font-size:24px">10%</b></div>
-          <div style="flex:1;text-align:center"><div style="height:96px;border-radius:10px 10px 0 0;background:linear-gradient(#ffe08a,#c9a227)"></div><b class="num gold" style="font-size:24px">20%</b></div>
-        </div>
-        <p class="sub" style="font-size:13px;margin-top:8px">Cu cât clienții tăi comandă mai mult, cu atât procentul e mai mare. Se adaugă peste profitul fix. Totul se plătește <b>săptămânal</b>.</p>
-      </div>
+    <h2 class="rv" style="--d:1">Câștig din fiecare comandă. <em>Nimic ascuns.</em></h2>
+    <div class="grid g3 rv" style="--d:2;margin-top:22px">
+      <div class="card tier" data-t="0"><div class="k sub">Treapta 1</div><div class="num" style="font-size:44px;font-weight:800">5%</div><div class="sub">300 – 599 QV clienți / lună</div></div>
+      <div class="card tier" data-t="1"><div class="k sub">Treapta 2</div><div class="num" style="font-size:44px;font-weight:800">10%</div><div class="sub">600 – 1.199 QV clienți / lună</div></div>
+      <div class="card tier" data-t="2"><div class="k sub">Treapta 3</div><div class="num gold" style="font-size:44px;font-weight:800">20%</div><div class="sub">1.200+ QV clienți / lună</div></div>
     </div>
-    <p class="disc">Valori orientative în €. Sumele exacte pe produs se găsesc în Back Office.</p>
+    <div class="calc" style="margin-top:18px">
+      <div class="card rv" style="--d:3">
+        <div class="fld"><label>Pachete comandate de clienți / lună <b id="rNv">10</b></label><input type="range" id="rN" min="0" max="40" value="10"></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px"><button class="tab" data-n="5">5 × X39</button><button class="tab" data-n="10">10 × X39</button><button class="tab" data-n="16">16 × X39</button></div>
+        <div class="grid g3" style="gap:10px">
+          <div class="fld" style="margin:0"><label>Preț / pachet (€)</label><input type="number" id="rPr" value="89" min="0"></div>
+          <div class="fld" style="margin:0"><label>QV / pachet</label><input type="number" id="rQv" value="77" min="0"></div>
+          <div class="fld" style="margin:0"><label>Profit fix / pachet (€)</label><input type="number" id="rPf" value="19" min="0" step="0.5"></div>
+        </div>
+        <div class="fld" style="margin-top:12px"><label>Premium calculat pe</label><select id="rBase"><option value="qv">QV (ca în exemplul oficial LifeWave)</option><option value="eur">Valoarea comenzii în €</option></select></div>
+      </div>
+      <div class="card out rv" style="--d:4" id="rOut"></div>
+    </div>
+    <p class="disc">Implicit: X39 = €89 · 77 QV · €19 profit fix. Pentru alte produse modifică valorile. Exemplu ilustrativ.</p>
   </div>
 </section>
 
@@ -881,11 +878,19 @@ function sim(){const r=R[+sRank.value],lv=+sLv.value,pay=+sPay.value,cp=+sCp.val
 sRank.addEventListener('change',()=>{simGens();sim();});
 
 /* ================= RETAIL ================= */
-const eur=v=>'€'+v.toLocaleString('ro-RO',{minimumFractionDigits:v%1?2:0,maximumFractionDigits:2});
-function retail(){const per=+rP.value,n=+rN.value,m=per*n;rNv.textContent=n;
- rOut.innerHTML=`<div class="line"><span>${n} pachete × ${eur(per)}</span><b>${eur(m)}</b></div><div class="line"><span>≈ pe săptămână (plată săptămânală)</span><b>${eur(Math.round(m/4.33*100)/100)}</b></div><div class="line tot"><span>Profit din vânzare / lună</span><b>${eur(m)}</b></div><div class="line"><span>≈ pe an</span><b class="gold">${eur(m*12)}</b></div>`;}
-rP.onchange=retail;rN.oninput=retail;
-document.querySelectorAll('#retail .tab').forEach(b=>b.onclick=()=>{rP.value='19';rN.value=b.dataset.n;retail();});
+const eur=v=>'€'+(Math.round(v*100)/100).toLocaleString('ro-RO',{minimumFractionDigits:(Math.round(v*100)%100)?2:0,maximumFractionDigits:2});
+function retail(){const n=+rN.value,pr=+rPr.value,qv=+rQv.value,pf=+rPf.value,base=rBase.value;rNv.textContent=n;
+ const Q=n*qv,V=n*pr,t=Q>=1200?2:Q>=600?1:Q>=300?0:-1,pct=[5,10,20][t]||0;
+ document.querySelectorAll('#retail .tier').forEach(c=>{const on=+c.dataset.t===t;c.style.borderColor=on?'var(--gold)':'';c.style.boxShadow=on?'0 0 0 1px var(--gold),0 10px 30px rgba(255,201,77,.15)':'';});
+ const prem=(base==='qv'?Q:V)*pct/100,ret=n*pf,tot=prem+ret;
+ rOut.innerHTML=`<div class="line"><span>Volum clienți</span><b>${nf(Q)} QV · ${eur(V)}</b></div>
+ <div class="line"><span>Profit fix: ${n} × ${eur(pf)}</span><b>${eur(ret)}</b></div>
+ <div class="line"><span>Customer Premium: ${base==='qv'?nf(Q)+' QV':eur(V)} × ${pct}%</span><b>${eur(prem)}</b></div>
+ ${t<0?'<div class="warn">Customer Premium începe de la 300 QV de la clienți pe lună.</div>':''}
+ <div class="line tot"><span>Total / lună</span><b>${eur(tot)}</b></div>
+ <div class="line"><span>≈ pe săptămână (plată săptămânală)</span><b>${eur(tot/4.33)}</b></div>`;}
+['rN','rPr','rQv','rPf','rBase'].forEach(id=>document.getElementById(id).addEventListener('input',retail));
+document.querySelectorAll('#retail .tab').forEach(b=>b.onclick=()=>{rPr.value=89;rQv.value=77;rPf.value=19;rN.value=b.dataset.n;retail();});
 retail();
 
 /* ================= RENDER ================= */
