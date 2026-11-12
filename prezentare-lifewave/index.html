@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Noul Plan de Compensare</title>
+<title>Planul de Compensare</title>
 <meta name="description" content="Prezentarea noului plan de compensare LifeWave — explicat simplu, cu exemple și calculator.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,11 +27,11 @@ button,input,select{font:inherit;color:inherit}
   background:radial-gradient(1200px 700px at 85% 10%,rgba(92,200,255,.18),transparent 60%),
              radial-gradient(900px 600px at 0% 100%,rgba(47,123,240,.22),transparent 60%),
              linear-gradient(160deg,var(--navy) 0%,var(--deep) 70%)}
-.bg svg{position:absolute;left:-10%;width:120%;bottom:-6%;height:60%;opacity:.55}
-.wave{animation:drift 18s ease-in-out infinite alternate}
-.wave.w2{animation-duration:24s;animation-direction:alternate-reverse}
-.wave.w3{animation-duration:30s}
-@keyframes drift{from{transform:translateX(-4%)}to{transform:translateX(4%)}}
+.orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.35;animation:float 22s ease-in-out infinite alternate}
+.o1{width:460px;height:460px;background:#2f7bf0;left:-120px;top:20%}
+.o2{width:380px;height:380px;background:#5cc8ff;right:-100px;top:-80px;animation-duration:28s;opacity:.25}
+.o3{width:300px;height:300px;background:#c9a227;right:20%;bottom:-140px;animation-duration:34s;opacity:.12}
+@keyframes float{from{transform:translate(0,0) scale(1)}to{transform:translate(60px,-40px) scale(1.15)}}
 
 /* ---------- header ---------- */
 header{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;
@@ -243,7 +243,7 @@ section.in .mm .c{opacity:1;transform:none}
 .dbl{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
 @media(max-width:800px){.dbl{grid-template-columns:1fr}}
 .dbl .card{text-align:center}
-.dbl .was{text-decoration:line-through;color:var(--muted);font-size:20px}
+.dbl .was{color:var(--muted);font-size:22px;font-family:Outfit;font-weight:600}
 .dbl .now{font-family:'Outfit';font-size:46px;font-weight:800;color:var(--gold);line-height:1.1}
 .timeline{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;margin-top:26px;position:relative}
 .timeline:before{content:"";position:absolute;top:22px;left:8%;right:8%;height:3px;background:linear-gradient(90deg,var(--green),var(--sky),var(--gold));border-radius:2px}
@@ -310,14 +310,7 @@ section.in .coins i{animation:coin .5s var(--ease) forwards;animation-delay:calc
 <body>
 
 <div class="bg" aria-hidden="true">
-  <svg viewBox="0 0 1440 400" preserveAspectRatio="none">
-    <defs>
-      <linearGradient id="wg" x1="0" x2="1"><stop offset="0" stop-color="#2f7bf0" stop-opacity="0"/><stop offset=".5" stop-color="#5cc8ff"/><stop offset="1" stop-color="#2f7bf0" stop-opacity="0"/></linearGradient>
-    </defs>
-    <path class="wave" d="M0 260 C 240 160, 480 340, 720 240 S 1200 140, 1440 230" stroke="url(#wg)" stroke-width="2.5" fill="none"/>
-    <path class="wave w2" d="M0 300 C 300 220, 520 380, 760 290 S 1180 210, 1440 290" stroke="url(#wg)" stroke-width="1.5" fill="none" opacity=".7"/>
-    <path class="wave w3" d="M0 220 C 260 120, 560 300, 820 200 S 1240 120, 1440 180" stroke="url(#wg)" stroke-width="1" fill="none" opacity=".5"/>
-  </svg>
+  <i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i>
 </div>
 
 <header>
@@ -348,8 +341,8 @@ section.in .coins i{animation:coin .5s var(--ease) forwards;animation-delay:calc
       <span class="wm mir" style="display:none"><svg viewBox="0 0 64 32" width="44" height="22" aria-hidden="true"><defs><linearGradient id="glb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff1b8"/><stop offset=".45" stop-color="#e3a91c"/><stop offset="1" stop-color="#8a5a00"/></linearGradient></defs><path d="M32 16c-6-8-11-12-17-12C8 4 4 9 4 16s4 12 11 12c6 0 11-4 17-12s11-12 17-12c7 0 11 5 11 12s-4 12-11 12c-6 0-11-4-17-12z" fill="none" stroke="url(#glb)" stroke-width="5" stroke-linecap="round"/></svg>MIR</span>
     </div>
     <div class="kick rv" style="--d:1">Prezentare de business</div>
-    <h1 class="rv" style="--d:2">Noul Plan<span>de Compensare</span></h1>
-    <p class="lead rv" style="--d:3">Mai simplu. Mai rapid la primii bani. Mai generos cu liderii. Explicat pas cu pas — pentru cei care abia încep și pentru cei care construiesc deja echipe mari.</p>
+    <h1 class="rv" style="--d:2">Planul<span>de Compensare</span></h1>
+    <p class="lead rv" style="--d:3">Simplu. Transparent. Cu venituri plătite săptămânal — de la primul client până la construirea unei echipe de lideri.</p>
     <div class="tagline rv" style="--d:4"><span>✦ Simplificat</span><span>✦ Bonus binar de la Manager</span><span>✦ Match 20% pe Gen 1</span><span>✦ Bonusuri dublate în 8 săptămâni</span></div>
   </div>
   <div class="hint"><i></i>Derulează sau apasă →</div>
@@ -358,9 +351,9 @@ section.in .coins i{animation:coin .5s var(--ease) forwards;animation-delay:calc
 <!-- 2. OBIECTIVE -->
 <section>
   <div class="wrap">
-    <div class="kick rv">De ce un plan nou?</div>
+    <div class="kick rv">Filozofia planului</div>
     <h2 class="rv" style="--d:1">Simplifică. <em>Simplifică.</em> Simplifică.</h2>
-    <p class="lead rv" style="--d:2">Planul a fost construit împreună cu un comitet de lideri din teren și echipa LifeWave. Patru obiective clare:</p>
+    <p class="lead rv" style="--d:2">Un plan construit împreună cu lideri din teren și echipa LifeWave, pe patru principii:</p>
     <div class="grid g4" style="margin-top:30px">
       <div class="card rv" style="--d:3"><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 12h16M4 6h16M4 18h10"/></svg></div><h3>Mai simplu</h3><p class="lead" style="font-size:15px">Mai puține cerințe, reguli mai clare, ușor de explicat oricui.</p></div>
       <div class="card rv" style="--d:4"><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 20l6-6 4 4 6-10"/><path d="M14 8h6v6"/></svg></div><h3>Avansare în rang</h3><p class="lead" style="font-size:15px">Treptele „Success Pathway" sunt mai ușor de urcat.</p></div>
@@ -368,24 +361,22 @@ section.in .coins i{animation:coin .5s var(--ease) forwards;animation-delay:calc
       <div class="card rv" style="--d:6"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h3>Câștiguri mai mari</h3><p class="lead" style="font-size:15px">Oportunități de câștig mai puternice în mai multe părți ale planului.</p></div>
     </div>
   </div>
-  <div class="foot"><span>Be the Light.</span><span>LIFEWAVE</span></div>
 </section>
 
 <!-- 3. DICTIONAR -->
 <section>
   <div class="wrap">
-    <div class="kick rv">Dicționar pentru începători</div>
+    <div class="kick rv">Termeni cheie</div>
     <h2 class="rv" style="--d:1">7 cuvinte care <em>explică tot planul</em></h2>
     <div class="grid g3" style="margin-top:28px">
       <div class="card rv" style="--d:2"><span class="pill p-same">PV</span><h3 style="margin:10px 0 6px">Volum Personal</h3><p class="lead" style="font-size:14.5px;margin:0">Punctele din comenzile tale personale. Ex.: 75 PV te menține activ ca Manager.</p></div>
       <div class="card rv" style="--d:3"><span class="pill p-same">BV</span><h3 style="margin:10px 0 6px">Volum de Bonus</h3><p class="lead" style="font-size:14.5px;margin:0">„Monedele" pe care se calculează bonusurile. Fiecare produs vândut aduce BV.</p></div>
       <div class="card rv" style="--d:4"><span class="pill p-same">QDV</span><h3 style="margin:10px 0 6px">Volumul echipei</h3><p class="lead" style="font-size:14.5px;margin:0">Volumul care te califică pentru rang. Maxim 50% poate veni dintr-o singură linie.</p></div>
       <div class="card rv" style="--d:5"><span class="pill p-same">Binary Balancing</span><h3 style="margin:10px 0 6px">Echilibrul binar</h3><p class="lead" style="font-size:14.5px;margin:0">Volum minim pe partea mai mică a binarului, cerut de la Director în sus.</p></div>
-      <div class="card rv" style="--d:6"><span class="pill p-same">OL2L</span><h3 style="margin:10px 0 6px">În afara celor mai mari 2 linii</h3><p class="lead" style="font-size:14.5px;margin:0">Volum venit din afara celor 2 linii mari. Acum cerut doar de la Executive în sus.</p></div>
+      <div class="card rv" style="--d:6"><span class="pill p-same">OL2L</span><h3 style="margin:10px 0 6px">În afara celor mai mari 2 linii</h3><p class="lead" style="font-size:14.5px;margin:0">Volum venit din afara celor 2 linii mari. Cerut de la rangul Executive în sus.</p></div>
       <div class="card rv" style="--d:7"><span class="pill p-new">Nivel ≠ Generație</span><h3 style="margin:10px 0 6px">Nivel vs. Generație</h3><p class="lead" style="font-size:14.5px;margin:0"><b>Nivel</b> = cine e direct sub tine. <b>Generație</b> = următorul <i>lider calificat</i> pe acea linie, oricât de jos ar fi.</p></div>
     </div>
   </div>
-  <div class="foot"><span>Be the Light.</span><span>LIFEWAVE</span></div>
 </section>
 
 <!-- 4. PLANUL 10-10-20-20 -->
@@ -397,31 +388,10 @@ section.in .coins i{animation:coin .5s var(--ease) forwards;animation-delay:calc
       <div class="card rv" style="--d:2"><div class="num"><span data-count="10">0</span>%</div><h3>Echipa personală</h3><p>Bonus de 10% pe volumul partenerilor înscriși de tine (și al clienților lor), de la rangul Manager.</p><div class="cap">+ Bonusuri de introducere produs</div></div>
       <div class="card rv" style="--d:3"><div class="num"><span data-count="10">0</span>%+</div><h3>Echipa binară</h3><p>10–13% pe volumul piciorului mai mic, începând de la 1-Star Manager.</p><div class="cap">Până la <span class="money" data-usd="25000">$25.000</span> / săptămână</div></div>
       <div class="card rv" style="--d:4"><div class="num"><span data-count="20">0</span>%</div><h3>Bonus de leadership</h3><p>Mentor Matching de 20% pe câștigurile liderilor tăi, de la rangul Director.</p><div class="cap">Până la <span class="money" data-usd="5000">$5.000</span> / persoană</div></div>
-      <div class="card rv" style="--d:5"><div class="num"><span data-count="20">0</span>%</div><h3>Bonus clienți</h3><p>Până la 20% Customer Premium pe comenzile clienților tăi. Neschimbat.</p><div class="cap">Din prima zi</div></div>
+      <div class="card rv" style="--d:5"><div class="num"><span data-count="20">0</span>%</div><h3>Bonus clienți</h3><p>Customer Premium care crește în trepte odată cu volumul clienților tăi: 5% → 10% → 20%.</p><div class="cap">+ profit fix pe fiecare produs</div></div>
     </div>
     <p class="disc rv" style="--d:6">Exemplele de câștig sunt strict ilustrative. LifeWave nu garantează câștiguri; rezultatele depind de efortul, abilitățile fiecăruia și de condițiile pieței. Vezi Earnings Disclosure Statement în Back Office.</p>
   </div>
-  <div class="foot"><span>Be the Light.</span><span>LIFEWAVE</span></div>
-</section>
-
-<!-- 5. CE S-A SCHIMBAT -->
-<section>
-  <div class="wrap">
-    <div class="kick rv">Pe scurt</div>
-    <h2 class="rv" style="--d:1">Ce s-a <em>schimbat</em>?</h2>
-    <div class="chg" style="margin-top:24px">
-      <div class="row rv" style="--d:2"><span class="n">1</span><div><div class="t">Profit din vânzarea cu amănuntul</div></div><span class="pill p-same">Neschimbat</span></div>
-      <div class="row rv" style="--d:2"><span class="n">2</span><div><div class="t">Customer Premium (până la 20%)</div></div><span class="pill p-same">Neschimbat</span></div>
-      <div class="row rv" style="--d:3"><span class="n">3</span><div><div class="t">Bonus de introducere produs</div></div><span class="pill p-same">Neschimbat</span></div>
-      <div class="row rv" style="--d:3"><span class="n">4</span><div><div class="t">Level Earnings Bonus</div><div class="s">Un singur nivel, dar 10% (în loc de 3–7%) de la 1-Star Manager</div></div><span class="pill p-new">Îmbunătățit</span></div>
-      <div class="row rv" style="--d:4"><span class="n">5</span><div><div class="t">Binary Bonus</div><div class="s">Eligibil de la 1-Star Manager · rate 10–13% · plafon pe rang</div></div><span class="pill p-new">Îmbunătățit</span></div>
-      <div class="row rv" style="--d:4"><span class="n">6</span><div><div class="t">Mentor Matching</div><div class="s">20% pe Gen 1 de la 1-Star Director (înainte 5%) · până la 6 generații</div></div><span class="pill p-new">Îmbunătățit</span></div>
-      <div class="row rv" style="--d:5"><span class="n">7</span><div><div class="t">Business Launch Bonus</div></div><span class="pill p-del">Eliminat</span></div>
-      <div class="row rv" style="--d:5"><span class="n">8</span><div><div class="t">Rank Advancement Bonus</div><div class="s">Începe de la 2-Star Manager + <b>Fast Start: dublu în primele 8 săptămâni</b></div></div><span class="pill p-new">Nou: Fast Start</span></div>
-      <div class="row rv" style="--d:6"><span class="n">9</span><div><div class="t">Quarterly Leadership Pool</div><div class="s">Acțiuni suplimentare pentru rangurile Presidential</div></div><span class="pill p-new">Îmbunătățit</span></div>
-    </div>
-  </div>
-  <div class="foot"><span>Be the Light.</span><span>LIFEWAVE</span></div>
 </section>
 
 <!-- 6. SUCCESS PATHWAY -->
@@ -433,7 +403,7 @@ section.in .coins i{animation:coin .5s var(--ease) forwards;animation-delay:calc
       <div class="ladder rv" style="--d:2" id="ladder"></div>
       <div class="card detail rv" style="--d:3" id="rankDetail"></div>
     </div>
-    <p class="disc">Verde = cerință redusă în planul nou (tăiat cu roșu = valoarea veche). „Volume Legs" au fost eliminate complet. Max. 110 PV pot veni din cumpărături personale (exclusiv APAC).</p>
+    <p class="disc">QDV: maximum 50% din volumul necesar poate veni dintr-o singură linie. Max. 110 PV pot veni din cumpărături personale (exclusiv APAC).</p>
   </div>
 </section>
 
@@ -445,7 +415,7 @@ section.in .coins i{animation:coin .5s var(--ease) forwards;animation-delay:calc
     <div class="grid g3 q3" style="margin-top:26px">
       <div class="card rv" style="--d:2"><div class="ico"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div><h4>Cum te califici?</h4><p>Un client înscris personal de tine plasează o comandă.</p></div>
       <div class="card rv" style="--d:3"><div class="ico"><svg viewBox="0 0 24 24"><path d="M6 8h12l-1 12H7z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg></div><h4>Ce trebuie să faci?</h4><p>Împărtășești produsele LifeWave și creezi vânzări către clienți.</p></div>
-      <div class="card rv" style="--d:4"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h4>Cum plătește?</h4><p>Profit din vânzare + până la <b class="gold">20% Customer Premium</b> pe comenzile clienților.</p></div>
+      <div class="card rv" style="--d:4"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h4>Cum plătește?</h4><p><b class="gold">Profit fix</b> pe fiecare produs vândut + <b class="gold">Customer Premium</b> de până la 20%.</p></div>
     </div>
     <div class="rv" style="--d:5;display:flex;align-items:center;justify-content:center;gap:clamp(10px,3vw,40px);margin-top:40px;flex-wrap:wrap">
       <div class="node"><div class="av me"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg></div><div class="nm">TU</div></div>
@@ -455,7 +425,36 @@ section.in .coins i{animation:coin .5s var(--ease) forwards;animation-delay:calc
       <div class="node"><div class="av" style="border-color:var(--gold)"><svg viewBox="0 0 24 24" style="stroke:var(--gold)"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div class="nm gold">PROFIT</div><div class="sub">+ până la 20% premium</div></div>
     </div>
   </div>
-  <div class="foot"><span>Be the Light.</span><span>LIFEWAVE</span></div>
+</section>
+
+<!-- 7b. RETAIL PROFIT -->
+<section id="retail">
+  <div class="wrap">
+    <div class="kick rv">Profit din vânzare · Customer Premium</div>
+    <h2 class="rv" style="--d:1">Câștig fix pe fiecare produs. <em>Nimic ascuns.</em></h2>
+    <div class="calc" style="margin-top:24px">
+      <div class="card rv" style="--d:2">
+        <div class="grid g2" style="gap:12px">
+          <div class="kpi" style="border-color:rgba(255,201,77,.4)"><div class="k">X39 · X49</div><div class="v gold">€19</div><div class="sub">profit / pachet</div></div>
+          <div class="kpi"><div class="k">Celelalte patch-uri</div><div class="v gold">≈ €9,50</div><div class="sub">profit / pachet</div></div>
+        </div>
+        <div class="fld" style="margin-top:18px"><label>Produs</label><select id="rP"><option value="19">X39 / X49 — €19 / pachet</option><option value="9.5">Alte patch-uri — ≈ €9,50 / pachet</option></select></div>
+        <div class="fld"><label>Pachete vândute pe lună <b id="rNv">5</b></label><input type="range" id="rN" min="0" max="50" value="5"></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="tab" data-n="5">5 × X39</button><button class="tab" data-n="10">10 × X39</button><button class="tab" data-n="20">20 × X39</button></div>
+      </div>
+      <div class="card out rv" style="--d:3">
+        <div id="rOut"></div>
+        <div class="kick" style="font-size:11px;margin:14px 0 6px">Customer Premium — crește odată cu volumul clienților</div>
+        <div style="display:flex;align-items:flex-end;gap:10px;height:120px">
+          <div style="flex:1;text-align:center"><div style="height:30px;border-radius:10px 10px 0 0;background:linear-gradient(#5cc8ff,#2f7bf0)"></div><b class="num" style="font-size:24px">5%</b></div>
+          <div style="flex:1;text-align:center"><div style="height:58px;border-radius:10px 10px 0 0;background:linear-gradient(#5cc8ff,#2f7bf0)"></div><b class="num" style="font-size:24px">10%</b></div>
+          <div style="flex:1;text-align:center"><div style="height:96px;border-radius:10px 10px 0 0;background:linear-gradient(#ffe08a,#c9a227)"></div><b class="num gold" style="font-size:24px">20%</b></div>
+        </div>
+        <p class="sub" style="font-size:13px;margin-top:8px">Cu cât clienții tăi comandă mai mult, cu atât procentul e mai mare. Se adaugă peste profitul fix. Totul se plătește <b>săptămânal</b>.</p>
+      </div>
+    </div>
+    <p class="disc">Valori orientative în €. Sumele exacte pe produs se găsesc în Back Office.</p>
+  </div>
 </section>
 
 <!-- 8. LEVEL EARNINGS EXEMPLU -->
@@ -528,9 +527,9 @@ section.in .coins i{animation:coin .5s var(--ease) forwards;animation-delay:calc
     <div class="kick rv">Binary Bonus</div>
     <h2 class="rv" style="--d:1">Procentul și plafonul <em>cresc odată cu rangul</em></h2>
     <div class="scroll-x rv" style="--d:2;margin-top:20px">
-      <table class="tbl" id="binTbl"><thead><tr><th>Rang plătit</th><th>Procent</th><th>Înainte</th><th>Plafon săptămânal</th></tr></thead><tbody></tbody></table>
+      <table class="tbl" id="binTbl"><thead><tr><th>Rang plătit</th><th>Procent</th><th>Plafon săptămânal</th></tr></thead><tbody></tbody></table>
     </div>
-    <p class="disc">Nou: 1-Star și 2-Star Manager câștigă acum bonus binar (înainte, nimic). Plafoanele în € conform prezentării oficiale.</p>
+    <p class="disc">Bonusul binar începe de la primul rang de Manager. Apasă $ / € sus pentru plafoanele în euro.</p>
   </div>
 </section>
 
@@ -639,7 +638,7 @@ section.in .coins i{animation:coin .5s var(--ease) forwards;animation-delay:calc
     <h2 class="rv" style="--d:1">Procentele de match <em>se extind odată cu rangul</em></h2>
     <p class="lead rv" style="--d:2">Fiecare rang nou deschide o generație mai adâncă și un match maxim mai mare per persoană.</p>
     <div class="scroll-x rv" style="--d:3;margin-top:20px"><div class="mm" id="mmTbl"></div></div>
-    <p class="disc">Înainte: Gen 1 era 5% la 1-Star Director. Acum: 20% de la primul rang de Director.</p>
+    <p class="disc">Match-ul se calculează pe câștigurile Level Earnings + Binary Bonus ale liderilor din fiecare generație.</p>
   </div>
 </section>
 
@@ -653,20 +652,20 @@ section.in .coins i{animation:coin .5s var(--ease) forwards;animation-delay:calc
     <div class="scroll-x rv" style="--d:4;margin-top:22px">
       <table class="tbl" id="rabTbl"><thead><tr><th>Rang</th><th>Total bonus</th><th>Partea 1 (la titlu)</th><th>Partea 2 (după 4 săpt.)</th></tr></thead><tbody></tbody></table>
     </div>
-    <p class="disc">Bonusurile de avansare pentru rangurile Presidential au fost eliminate; în schimb, Presidential primește acțiuni noi în Leadership Pool.</p>
+    <p class="disc">Rangurile Presidential sunt recompensate prin acțiuni în Quarterly Leadership Pool.</p>
   </div>
 </section>
 
 <!-- 18. DUBLAT -->
 <section>
   <div class="wrap">
-    <div class="kick rv">Nou · Fast Start</div>
-    <h2 class="rv" style="--d:1">Bonusuri <em>DUBLATE</em> pentru partenerii noi</h2>
+    <div class="kick rv">Fast Start</div>
+    <h2 class="rv" style="--d:1">Bonusuri <em>DUBLATE</em> în primele 8 săptămâni</h2>
     <p class="lead rv" style="--d:2">Dacă atingi rangul în primele <b>8 săptămâni</b>, bonusul se dublează.</p>
     <div class="dbl">
-      <div class="card rv" style="--d:3"><div class="sub">2-Star Manager</div><div class="was money" data-usd="100">$100</div><div class="now money" data-usd="200">$200</div></div>
-      <div class="card rv" style="--d:4"><div class="sub">3-Star Manager</div><div class="was money" data-usd="250">$250</div><div class="now money" data-usd="500">$500</div></div>
-      <div class="card rv" style="--d:5"><div class="sub">1-Star Director</div><div class="was money" data-usd="500">$500</div><div class="now money" data-usd="1000">$1.000</div></div>
+      <div class="card rv" style="--d:3"><div class="sub">2-Star Manager</div><div class="sub" style="margin-top:6px">standard</div><div class="was money" data-usd="100">$100</div><div class="sub" style="color:var(--green);font-weight:700">Fast Start</div><div class="now money" data-usd="200">$200</div></div>
+      <div class="card rv" style="--d:4"><div class="sub">3-Star Manager</div><div class="sub" style="margin-top:6px">standard</div><div class="was money" data-usd="250">$250</div><div class="sub" style="color:var(--green);font-weight:700">Fast Start</div><div class="now money" data-usd="500">$500</div></div>
+      <div class="card rv" style="--d:5"><div class="sub">1-Star Director</div><div class="sub" style="margin-top:6px">standard</div><div class="was money" data-usd="500">$500</div><div class="sub" style="color:var(--green);font-weight:700">Fast Start</div><div class="now money" data-usd="1000">$1.000</div></div>
     </div>
     <div class="timeline rv" style="--d:6">
       <div class="tl"><div class="d">0</div><p><b>Te înscrii.</b> Ceasul de 8 săptămâni pornește.</p></div>
@@ -682,7 +681,7 @@ section.in .coins i{animation:coin .5s var(--ease) forwards;animation-delay:calc
   <div class="wrap">
     <div class="kick rv">Câștigul 6 · Quarterly Leadership Pool</div>
     <h2 class="rv" style="--d:1">Acțiuni în plus pentru <em>liderii de top</em></h2>
-    <p class="lead rv" style="--d:2">Condițiile de eligibilitate rămân aceleași. Acțiuni se câștigă pentru: creșterea volumului total al echipei, echipe de înscriere de 100k și — <b class="green">NOU</b> — pentru fiecare săptămână plătită ca Presidential:</p>
+    <p class="lead rv" style="--d:2">Liderii Presidential primesc acțiuni dintr-un fond trimestrial pentru: creșterea volumului total al echipei, echipe de înscriere de 100k+ și pentru fiecare săptămână plătită ca Presidential:</p>
     <div class="shares">
       <div class="card rv" style="--d:3"><div class="sub">1-Star Presidential</div><div class="num">1</div><div class="sub">acțiune</div><div class="coins" data-n="1"></div></div>
       <div class="card rv" style="--d:4"><div class="sub">2-Star Presidential</div><div class="num">5</div><div class="sub">acțiuni</div><div class="coins" data-n="5"></div></div>
@@ -706,7 +705,7 @@ section.in .coins i{animation:coin .5s var(--ease) forwards;animation-delay:calc
     <h2 class="rv" style="--d:1">Cât poate câștiga <em>un Manager, un Director, un Executive?</em></h2>
     <div class="tabs rv" style="--d:2" id="ptabs"></div>
     <div class="prof rv" style="--d:3" id="pbody"></div>
-    <p class="disc">Primele două exemple urmează exemplele oficiale prezentate de LifeWave; al treilea e construit pe regulile planului, cu volume presupuse. Nu reprezintă câștiguri tipice sau garantate. Vezi Earnings Disclosure Statement în Back Office.</p>
+    <p class="disc">Primele două scenarii urmează exemplele oficiale LifeWave; al treilea e construit pe regulile planului, cu volume presupuse. Nu reprezintă câștiguri tipice sau garantate. Vezi Earnings Disclosure Statement în Back Office.</p>
   </div>
 </section>
 
@@ -751,11 +750,10 @@ section.in .coins i{animation:coin .5s var(--ease) forwards;animation-delay:calc
   <div class="wrap">
     <div class="kick rv">Pasul următor</div>
     <h2 class="rv" style="--d:1">Fii <em>Lumina.</em></h2>
-    <p class="lead rv" style="--d:2">Un plan mai simplu înseamnă că oricine îl poate explica — și oricine poate începe. Primul pas: un client. Al doilea: un partener. Al treilea: îi ajuți să facă la fel.</p>
+    <p class="lead rv" style="--d:2">Un plan simplu înseamnă că oricine îl poate explica — și oricine poate începe. Primul pas: un client. Al doilea: un partener. Al treilea: îi ajuți să facă la fel.</p>
     <div class="cta rv" style="--d:3"><span>① <b>Clienți</b> → profit + 20% premium</span><span>② <b>Parteneri</b> → 10% Level + Binary</span><span>③ <b>Lideri</b> → 20% Mentor Match</span><span>④ <b>Ranguri</b> → bonusuri dublate</span></div>
     <p class="disc rv" style="--d:4">Pentru detaliile complete consultă LifeWave Compensation Guide. Exemplele de câștig incluse sunt oferite exclusiv în scop ilustrativ. LifeWave nu garantează că vreun Brand Partner va câștiga anumite sume; succesul depinde de efortul individual, abilități și condițiile actuale de piață. Vezi Earnings Disclosure Statement în Back Office.</p>
   </div>
-  <div class="foot"><span>Be the Light.</span><span>LIFEWAVE</span></div>
 </section>
 
 </main>
@@ -793,7 +791,7 @@ document.getElementById('cur').onclick=e=>{EUR=!EUR;e.target.textContent=EUR?'�
 /* ================= SUCCESS PATHWAY ================= */
 const lad=document.getElementById('ladder'),det=document.getElementById('rankDetail');
 R.forEach((r,i)=>{const b=document.createElement('button');b.className='step';b.innerHTML=`<span class="dot" style="color:${T[r.t]};background:${T[r.t]}"></span><span class="lb">${r.n}</span><span class="st">${r.pv} PV</span>`;b.onclick=()=>showRank(i);lad.appendChild(b);});
-function kpi(k,v,old){const c=old!=null&&old!==v;return `<div class="kpi ${c?'chg':''}"><div class="k">${k}</div><div class="v">${v?nf(v):'—'}${c?`<span class="old">${old?nf(old):'—'}</span>`:''}</div></div>`;}
+function kpi(k,v,old){const c=false;return `<div class="kpi ${c?'chg':''}"><div class="k">${k}</div><div class="v">${v?nf(v):'—'}${c?`<span class="old">${old?nf(old):'—'}</span>`:''}</div></div>`;}
 let curRank=4;
 function showRank(i){curRank=i;[...lad.children].forEach((c,j)=>c.classList.toggle('act',j===i));const r=R[i];
  const e=[];
@@ -805,11 +803,11 @@ function showRank(i){curRank=i;[...lad.children].forEach((c,j)=>c.classList.togg
  e.push(`<div>Customer Premium: <b>până la 20%</b></div>`);
  det.innerHTML=`<div class="tier" style="color:${T[r.t]}">${r.tier}</div><h3>${r.n}</h3>
  <div class="kpis">${kpi('PV',r.pv,r.pvO)}${kpi('QDV echipă',r.qdv,r.qdvO)}${kpi('OL2L',r.ol,r.olO)}${kpi('Binary Balancing',r.bb,r.bbO)}</div>
- ${r.vlO?`<div class="warn" style="margin-bottom:14px">🎉 „Volume Legs" (${r.vlO}) — <b>ELIMINAT</b>. Nu mai e nevoie de linii de volum.</div>`:''}
+ 
  <div class="kick" style="font-size:11px;margin:6px 0 10px">Ce câștigi la acest rang</div><div class="earn">${e.join('')}</div>`;}
 
 /* ================= BINARY TABEL ================= */
-function binTable(){document.querySelector('#binTbl tbody').innerHTML=R.slice(1).map(r=>`<tr><td><span class="tdot" style="background:${T[r.t]}"></span>${r.n}</td><td><div class="rate"><i style="width:${r.bin*9}px"></i><b class="green">${r.bin}%</b></div></td><td class="sub">${r.binOld?r.binOld+'%':'—'}</td><td><b class="gold">${money(r.cap)}</b></td></tr>`).join('');}
+function binTable(){document.querySelector('#binTbl tbody').innerHTML=R.slice(1).map(r=>`<tr><td><span class="tdot" style="background:${T[r.t]}"></span>${r.n}</td><td><div class="rate"><i style="width:${r.bin*9}px"></i><b class="green">${r.bin}%</b></div></td><td><b class="gold">${money(r.cap)}</b></td></tr>`).join('');}
 
 /* ================= CALCULATOR BINAR ================= */
 const bRank=document.getElementById('bRank');
@@ -881,6 +879,14 @@ function sim(){const r=R[+sRank.value],lv=+sLv.value,pay=+sPay.value,cp=+sCp.val
  <p class="disc" style="margin-top:6px">Simulare educativă bazată pe procentele planului. Nu este o garanție de câștig.</p>`;}
 ['sLv','sPay','sCp'].forEach(id=>document.getElementById(id).addEventListener('input',sim));
 sRank.addEventListener('change',()=>{simGens();sim();});
+
+/* ================= RETAIL ================= */
+const eur=v=>'€'+v.toLocaleString('ro-RO',{minimumFractionDigits:v%1?2:0,maximumFractionDigits:2});
+function retail(){const per=+rP.value,n=+rN.value,m=per*n;rNv.textContent=n;
+ rOut.innerHTML=`<div class="line"><span>${n} pachete × ${eur(per)}</span><b>${eur(m)}</b></div><div class="line"><span>≈ pe săptămână (plată săptămânală)</span><b>${eur(Math.round(m/4.33*100)/100)}</b></div><div class="line tot"><span>Profit din vânzare / lună</span><b>${eur(m)}</b></div><div class="line"><span>≈ pe an</span><b class="gold">${eur(m*12)}</b></div>`;}
+rP.onchange=retail;rN.oninput=retail;
+document.querySelectorAll('#retail .tab').forEach(b=>b.onclick=()=>{rP.value='19';rN.value=b.dataset.n;retail();});
+retail();
 
 /* ================= RENDER ================= */
 function renderAll(){showRank(curRank);binTable();calcBin();matches();mmTable();rab();profiles();simGens();sim();
