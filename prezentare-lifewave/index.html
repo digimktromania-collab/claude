@@ -67,7 +67,7 @@ section.in .rv{opacity:1;transform:none}
 .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px;backdrop-filter:blur(6px)}
 .grid{display:grid;gap:18px}
 .g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)}
-@media(max-width:900px){.g2,.g3,.g4{grid-template-columns:1fr}}
+@media(max-width:900px){.g2,.g3,.g4{grid-template-columns:1fr}[style*='grid-template-columns:1fr 1.1fr 1fr']{grid-template-columns:1fr!important}}
 .pill{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;border-radius:999px}
 .p-new{background:rgba(47,216,122,.15);color:var(--green);border:1px solid rgba(47,216,122,.35)}
 .p-same{background:rgba(160,200,255,.1);color:var(--muted);border:1px solid var(--line)}
@@ -604,6 +604,23 @@ section.in .coins i{animation:coin .5s var(--ease) forwards;animation-delay:calc
   </div>
 </section>
 
+<!-- 14b. MATCH SIMPLU -->
+<section>
+  <div class="wrap">
+    <div class="kick rv">Mentor Matching · Exemplu simplu</div>
+    <h2 class="rv" style="--d:1">Pe măsură ce liderii avansează, <em>apar noi generații</em></h2>
+    <div class="node rv" style="--d:2;margin-top:16px"><div class="av me"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg></div><div class="nm">TU</div><div class="sub">2-Star Director · 110 PV</div></div>
+    <div class="rv" style="--d:3;display:grid;grid-template-columns:1fr 1.1fr 1fr;gap:18px;align-items:center;margin-top:22px">
+      <div class="mcol"><div class="av sm lead"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg></div><b>Mihai</b><span class="sub">Gen 1 · 1-Star Director</span><span class="chip"><span class="money" data-usd="1000"></span> × 20% = <span class="money gold" data-usd="200"></span></span><i class="vline"></i>
+        <div class="av sm lead"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg></div><b>Toma</b><span class="sub">Gen 2 · acum 1-Star Director</span><span class="chip"><span class="money" data-usd="1000"></span> × 15% = <span class="money gold" data-usd="150"></span></span></div>
+      <div class="total" style="margin:0;border-radius:24px;padding:28px"><small>MENTOR MATCHING ILUSTRAT</small><div style="font-size:.7em;font-weight:500"><span class="money" data-usd="200"></span> + <span class="money" data-usd="150"></span> + <span class="money" data-usd="100"></span></div><div style="font-size:1.8em">= <span class="money gold" data-usd="450"></span></div></div>
+      <div class="mcol"><div class="av sm lead"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg></div><b>Sara</b><span class="sub">Gen 1 · acum 1-Star Director</span><span class="chip"><span class="money" data-usd="500"></span> × 20% = <span class="money gold" data-usd="100"></span></span><i class="vline"></i>
+        <div class="av sm lead"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg></div><b>Sofia</b><span class="sub">acum Gen 2 · 3-Star Director</span><span class="chip" style="opacity:.6">inclusă în exemplul următor</span></div>
+    </div>
+    <p class="disc">LEB + BB = câștigurile din Level Earnings + Binary Bonus ale liderului. Exemplu ilustrativ.</p>
+  </div>
+</section>
+
 <!-- 15. MENTOR - CAT CASTIGI -->
 <section>
   <div class="wrap">
@@ -890,7 +907,7 @@ document.addEventListener('keydown',e=>{if(/INPUT|SELECT/.test(e.target.tagName)
 function toggleFS(){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen?.();}
 document.getElementById('fs').onclick=toggleFS;
 
-renderAll();upd();
+refreshMoney();renderAll();upd();
 </script>
 </body>
 </html>
