@@ -280,7 +280,7 @@ ScaledBorderAndShadow: yes
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Cap,{font},{size},{cream},{gold},{black},&H80080808,-1,0,0,0,100,100,1,0,1,{max(3, size // 14)},{max(1, size // 30)},2,{round(W*0.1)},{round(W*0.1)},{marg_v},1
+Style: Cap,{font},{size},{cream},{gold},{black},&H60080808,-1,0,0,0,100,100,1,0,1,{max(4, size // 9)},{max(2, size // 22)},2,{round(W*0.1)},{round(W*0.1)},{marg_v},1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
