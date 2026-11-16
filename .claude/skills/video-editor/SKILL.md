@@ -21,6 +21,12 @@ Do not skip these even if the request looks obvious. If she already answered in 
 - All work happens on the copy. Never write, rename or re-encode the original.
 - Save every finished video **next to the original** with a new name: `<original name> - <platform> edit.mp4` (e.g. `Lansare colier - Reels edit.mp4`). `render` never overwrites; it adds ` v2`, ` v3`.
 
+## Lip-sync check (learned the hard way)
+- `prep` warns when the video and audio streams differ in length (> 0.3 s). WhatsApp/phone exports often drift: in sync at the start, voice ahead of the lips by the end.
+- Verify by eye: mouth close-up contact sheet at the start and the end vs Whisper word times (lips moving after the voice has ended = drift). Also check that "here is the image" lines land when the image appears.
+- Linear drift: retime the VIDEO to the audio clock (`setpts=PTS*audio_dur/video_dur` before `fps=`), never stretch the voice; scale any times measured on the video by the same factor. Tell her the original has the same drift.
+- Always convert variable-frame-rate sources to constant fps (`fps=30`) before zooms/overlays, or sync slips.
+
 ## Rule 3: Whisper every word, cut retakes and pauses
 1. `ve.py transcribe source.mp4 --out <work>/words.json [--lang ro|en]` gives every word with start/end time, plus `transcript.txt`.
 2. `ve.py plan <work>/words.json --out <work>/keep.json`:

@@ -66,6 +66,13 @@ def cmd_prep(a):
     dst = work / ("source" + src.suffix.lower())
     shutil.copy2(src, dst)
     (work / "ORIGINAL_PATH.txt").write_text(str(src))
+    streams = json.loads(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "stream=codec_type,duration",
+                                         "-of", "json", str(dst)], capture_output=True, text=True).stdout)["streams"]
+    durs = {x["codec_type"]: float(x.get("duration", 0) or 0) for x in streams}
+    if durs.get("video") and durs.get("audio") and abs(durs["video"] - durs["audio"]) > 0.3:
+        print(f"WARNING A/V LENGTH MISMATCH: video {durs['video']:.2f}s vs audio {durs['audio']:.2f}s. "
+              f"Likely lip-sync drift (common in WhatsApp exports). Check lips at start AND end; if drift is linear, "
+              f"retime video with setpts=PTS*{durs['audio'] / durs['video']:.6f} (voice untouched).")
     print(json.dumps({"work": str(work), "copy": str(dst), "original": str(src), **probe(dst)}, indent=2))
 
 
