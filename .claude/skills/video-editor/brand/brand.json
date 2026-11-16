@@ -1,0 +1,20 @@
+{
+  "_note": "Saved once from the director's answers (Nov 2026). Do not ask for colors or fonts again; only change this if the director says so.",
+  "source": "Website index.html (Universul Iordache Georgiana) + director confirmation",
+  "colors": {
+    "primary": "#D4AF37",
+    "primary_name": "gold (brand signature)",
+    "secondary": "#080808",
+    "secondary_name": "cosmic black",
+    "text": "#F5F3EE",
+    "text_name": "warm cream"
+  },
+  "fonts": {
+    "captions": "Montserrat",
+    "captions_file": "fonts/Montserrat-Bold.ttf",
+    "titles": "Playfair Display",
+    "titles_file": "fonts/PlayfairDisplay-SemiBold.ttf"
+  },
+  "caption_style": "Montserrat Bold, cream text with a thin cosmic-black outline; the word being spoken turns gold and pops slightly. 2-3 words per line on vertical, up to 5 on wide.",
+  "voice": "Calm, warm, premium; Romanian or English. Luxury feel - nothing abrupt (the site uses slow, soft easing)."
+}
