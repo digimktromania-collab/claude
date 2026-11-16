@@ -75,15 +75,25 @@ def cmd_transcribe(a):
     work = Path(a.out).parent
     wav = work / "audio16k.wav"
     sh(["ffmpeg", "-y", "-v", "error", "-i", a.video, "-vn", "-ac", "1", "-ar", "16000", wav])
+    import numpy as np
+    raw = subprocess.run(["ffmpeg", "-v", "error", "-i", str(wav), "-f", "f32le", "-ac", "1", "-ar", "16000", "-"],
+                         check=True, capture_output=True).stdout
+    audio = np.frombuffer(raw, np.float32)  # pass samples directly (avoids PyAV version issues)
     model = WhisperModel(a.model, device="cpu", compute_type="int8")
-    segs, info = model.transcribe(str(wav), word_timestamps=True, vad_filter=False,
+    segs, info = model.transcribe(audio, word_timestamps=True, vad_filter=False,
                                   language=a.lang, condition_on_previous_text=False,
                                   task="transcribe")
     out, lines = [], []
     for s in segs:
         words = [{"w": w.word.strip(), "s": round(w.start, 3), "e": round(w.end, 3), "p": round(w.probability, 2)}
                  for w in (s.words or []) if w.word.strip()]
-        out.append({"s": round(s.start, 3), "e": round(s.end, 3), "text": s.text.strip(), "words": words})
+        merged = []
+        for w in words:  # Whisper splits Romanian clitics: "scuză" + "-mă" -> "scuză-mă"
+            if merged and w["w"].startswith("-"):
+                merged[-1]["w"] += w["w"]; merged[-1]["e"] = w["e"]
+            else:
+                merged.append(w)
+        out.append({"s": round(s.start, 3), "e": round(s.end, 3), "text": s.text.strip(), "words": merged})
         lines.append(f"[{s.start:7.2f} - {s.end:7.2f}] {s.text.strip()}")
     Path(a.out).write_text(json.dumps({"language": info.language, "segments": out}, ensure_ascii=False, indent=1))
     (work / "transcript.txt").write_text("\n".join(lines))
@@ -108,6 +118,9 @@ def sentences(data):
 
 def cmd_plan(a):
     data = json.loads(Path(a.words).read_text())
+    manual = [w for sg in data["segments"] for w in sg["words"] if w.get("cut")]
+    for sg in data["segments"]:
+        sg["words"] = [w for w in sg["words"] if not w.get("cut")]
     sents = sentences(data)
     drop, reasons = set(), {}
     text = [" ".join(w["w"] for w in s) for s in sents]
@@ -148,13 +161,34 @@ def cmd_plan(a):
             segs[-1]["last"] = w["e"]
         else:
             segs.append({"first": w["s"], "last": w["e"]})
+    every = sorted([w for x in sents for w in x] + manual, key=lambda w: w["s"])
+    starts = [w["s"] for w in every]
+    ends = [w["e"] for w in every]
     keep = []
     for s in segs:
-        st, en = max(0.0, s["first"] - a.pad), s["last"] + a.pad
+        prev_e = max([e for e in ends if e <= s["first"] + 1e-3] or [0.0])
+        next_s = min([b for b in starts if b >= s["last"] - 1e-3] or [1e9])
+        st = max(0.0, s["first"] - a.pad, prev_e if prev_e < s["first"] else 0.0)
+        en = min(s["last"] + a.pad, next_s if next_s > s["last"] else 1e9)
         if keep and st <= keep[-1][1]:
             keep[-1][1] = en
         else:
             keep.append([round(st, 3), round(en, 3)])
+    if a.audio:  # also remove real silences inside kept pieces (Whisper can stretch a word over a pause)
+        log = subprocess.run(["ffmpeg", "-hide_banner", "-i", a.audio, "-af", f"silencedetect=n={a.noise}dB:d={a.pause}",
+                              "-f", "null", "-"], capture_output=True, text=True).stderr
+        sil = list(zip(map(float, re.findall(r"silence_start: ([\d.]+)", log)),
+                       map(float, re.findall(r"silence_end: ([\d.]+)", log))))
+        for ss, se in sil:
+            new = []
+            for k0, k1 in keep:
+                c0, c1 = ss + a.pad, se - a.pad
+                if c1 - c0 > 0.05 and c0 < k1 and c1 > k0:
+                    if c0 > k0 + 0.05: new.append([k0, round(c0, 3)])
+                    if c1 < k1 - 0.05: new.append([round(c1, 3), k1])
+                else:
+                    new.append([k0, k1])
+            keep = new
     allw = [w for s in sents for w in s]
     split_cands = [{"at": round((x["e"] + y["s"]) / 2, 2), "silence": round(y["s"] - x["e"], 2)}
                    for x, y in zip(allw, allw[1:]) if y["s"] - x["e"] >= a.split_gap]
@@ -370,6 +404,8 @@ def main():
     x = sp.add_parser("plan"); x.add_argument("words"); x.add_argument("--out", required=True)
     x.add_argument("--pause", type=float, default=0.5); x.add_argument("--pad", type=float, default=0.12)
     x.add_argument("--split-gap", type=float, default=4.0)
+    x.add_argument("--audio", help="audio/video file: also cut real silences found by silencedetect")
+    x.add_argument("--noise", type=float, default=-32, help="silence threshold in dB for --audio")
     x = sp.add_parser("analyze"); x.add_argument("video")
     x = sp.add_parser("split"); x.add_argument("video"); x.add_argument("--at", required=True); x.add_argument("--outdir", required=True)
     x = sp.add_parser("render"); x.add_argument("video"); x.add_argument("--out", required=True)
