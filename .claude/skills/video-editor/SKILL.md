@@ -25,6 +25,7 @@ Do not skip these even if the request looks obvious. If she already answered in 
 - `prep` warns when the video and audio streams differ in length (> 0.3 s). WhatsApp/phone exports often drift: in sync at the start, voice ahead of the lips by the end.
 - Verify by eye: mouth close-up contact sheet at the start and the end vs Whisper word times (lips moving after the voice has ended = drift). Also check that "here is the image" lines land when the image appears.
 - Linear drift: retime the VIDEO to the audio clock (`setpts=PTS*audio_dur/video_dur` before `fps=`), never stretch the voice; scale any times measured on the video by the same factor. Tell her the original has the same drift.
+- Drift you can't measure reliably (lip-vs-voice estimates disagree between windows) -> don't guess a retime. Cover that stretch: heavily blurred + darkened video underneath (motion stays, lips unreadable), a branded recap infographic on top (e.g. "3 pași"), her voice and captions continue. She approved this as the fallback.
 - Always convert variable-frame-rate sources to constant fps (`fps=30`) before zooms/overlays, or sync slips.
 
 ## Rule 3: Whisper every word, cut retakes and pauses
