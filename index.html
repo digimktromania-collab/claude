@@ -672,7 +672,7 @@
           <p class="form-msg" id="form-msg" role="alert" aria-live="assertive"></p>
           <p class="form-note">Îți scriem doar lucruri frumoase și utile. Te poți dezabona oricând.</p>
         </form>
-        <button class="linklike" type="button" id="test-skip" hidden>Mod test: intră fără email</button>
+        <button class="btn btn-ghost btn-block" style="margin-top:12px" type="button" id="test-skip" hidden>Previzualizare: intră fără email</button>
       </div>
 
       <div class="thanks" id="entry-thanks" hidden>
@@ -900,7 +900,10 @@
 
     /* ───────── Stare & utilitare ───────── */
     var params = new URLSearchParams(location.search);
-    var TEST_MODE = params.get("test") === "1";
+    /* Cât timp ID-ul Formspree nu e completat, pagina rulează în previzualizare:
+       toate ferestrele deschise + intrare fără email. */
+    var NOT_CONFIGURED = FORMSPREE_ENDPOINT.indexOf("YOUR_FORM_ID") !== -1;
+    var TEST_MODE = params.get("test") === "1" || NOT_CONFIGURED;
     var KEY_SIGNED = "castel24_inscris";
     var KEY_OPENED = "castel24_deschise";
     var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -1234,7 +1237,7 @@
       var unlockedCount = 0;
       for (var d = 1; d <= 24; d++) if (isUnlocked(d)) unlockedCount++;
       if (TEST_MODE) {
-        status.textContent = "Mod test activ · toate ferestrele sunt deschise";
+        status.textContent = NOT_CONFIGURED ? "Previzualizare · toate ferestrele sunt deschise" : "Mod test activ · toate ferestrele sunt deschise";
       } else if (unlockedCount === 0) {
         status.textContent = "Prima lumină se aprinde pe 1 decembrie";
       } else {
