@@ -142,7 +142,7 @@
       width: 100%;
       max-width: 440px;
       margin: 10px auto 0;
-      aspect-ratio: 360 / 640;
+      aspect-ratio: 360 / 720;
     }
     .castle svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 
@@ -170,48 +170,72 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 1px;
       border: 2px solid var(--gold);
       border-radius: 50% 50% 8% 8% / 38% 38% 6% 6%;
-      font-family: var(--sans);
-      font-weight: 600;
-      font-size: clamp(.86rem, 4vw, 1rem);
+      font-family: var(--serif);
+      font-weight: 700;
       line-height: 1;
       color: var(--text-strong);
       cursor: pointer;
       -webkit-tap-highlight-color: transparent;
       touch-action: manipulation;
-      transition: transform .2s ease, filter .3s ease, background .4s ease;
+      transition: transform .2s ease, filter .7s ease;
       overflow: hidden;
     }
-    .win:active { transform: scale(.94); }
-    .win:focus-visible {
-      outline: 3px solid var(--gold-deep);
-      outline-offset: 3px;
-    }
-    .win .num { position: relative; z-index: 1; }
-    .win .mini { position: relative; z-index: 1; width: 11px; height: 11px; }
-
-    /* încuiată */
-    .win.is-locked {
-      background: linear-gradient(180deg, #EFE5D2 0%, #E3D5BB 100%);
-      border-color: #D3BD90;
-      color: #6B5640;
-      filter: saturate(.7);
-    }
-    .win.is-locked::before,
-    .win.is-locked::after {
+    /* ferestruică cu cercevele */
+    .win::before, .win::after {
       content: "";
       position: absolute;
-      background: rgba(201, 162, 75, .28);
+      background: rgba(190, 150, 70, .3);
+      pointer-events: none;
     }
-    .win.is-locked::before { left: 50%; top: 0; bottom: 0; width: 1.5px; transform: translateX(-50%); }
-    .win.is-locked::after  { top: 52%; left: 0; right: 0; height: 1.5px; }
+    .win::before { left: 50%; top: 0; bottom: 0; width: 1.5px; transform: translateX(-50%); }
+    .win::after  { top: 40%; left: 0; right: 0; height: 1.5px; }
+    .win:active { transform: scale(.94); }
+    .win:focus-visible { outline: 3px solid var(--gold-deep); outline-offset: 3px; }
+
+    /* medalionul rotund cu numărul */
+    .win .num {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      place-items: center;
+      width: 66%;
+      max-width: 30px;
+      margin-top: 34%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      font-size: clamp(1rem, 4.6vw, 1.2rem);
+      font-variant-numeric: lining-nums;
+      background: radial-gradient(circle at 40% 35%, #FFFFFB, #F7EBD0);
+      border: 1.5px solid var(--gold);
+      box-shadow: 0 1px 4px rgba(150, 115, 50, .3);
+    }
+    .win .mini {
+      position: absolute;
+      z-index: 1;
+      top: 9%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 11px;
+      height: 11px;
+    }
+
+    /* încuiată: perdele trase, lumina stinsă */
+    .win.is-locked {
+      background:
+        linear-gradient(90deg, rgba(214, 190, 140, .55) 0 16%, transparent 16% 84%, rgba(214, 190, 140, .55) 84%),
+        linear-gradient(180deg, #EFE5D2 0%, #E2D3B7 100%);
+      border-color: #D3BD90;
+      filter: saturate(.75);
+    }
     .win.is-locked .mini { color: #8A7356; }
 
-    /* deblocată, încă nedeschisă */
+    /* deblocată: lumină caldă care pulsează */
     .win.is-unlocked {
-      background: radial-gradient(circle at 50% 42%, #FFF9E6 0%, #F8E3A6 55%, #EBC873 100%);
+      background:
+        linear-gradient(90deg, rgba(222, 180, 100, .45) 0 14%, transparent 14% 86%, rgba(222, 180, 100, .45) 86%),
+        radial-gradient(circle at 50% 42%, #FFF9E6 0%, #F8E3A6 55%, #EBC873 100%);
       animation: pulse 2.6s ease-in-out infinite;
     }
     .win.is-today { animation-duration: 1.7s; }
@@ -220,10 +244,11 @@
       50%      { box-shadow: 0 0 20px 7px rgba(240, 205, 120, .9), inset 0 0 12px rgba(255, 255, 255, .9); }
     }
 
-    /* deschisă – rămâne aprinsă */
+    /* deschisă: rămâne aprinsă */
     .win.is-opened {
-      background: radial-gradient(circle at 50% 40%, #FFFEF7 0%, #FCEBB4 50%, #F0CE78 100%);
-      box-shadow: 0 0 16px 5px rgba(244, 214, 130, .8), inset 0 0 12px rgba(255, 255, 255, .9);
+      background:
+        linear-gradient(90deg, rgba(232, 196, 120, .4) 0 12%, transparent 12% 88%, rgba(232, 196, 120, .4) 88%),
+        radial-gradient(circle at 50% 40%, #FFFEF7 0%, #FCEBB4 50%, #F0CE78 100%);
       animation: glowSoft 4s ease-in-out infinite;
     }
     .win.is-opened .mini { color: var(--gold-deep); }
@@ -232,8 +257,23 @@
       50%      { box-shadow: 0 0 22px 8px rgba(248, 222, 150, .95), inset 0 0 14px rgba(255, 255, 255, 1); }
     }
 
-    .win-24 { font-family: var(--serif); font-size: clamp(1.6rem, 8vw, 2.1rem); font-weight: 700; gap: 3px; }
-    .win-24 .mini { width: 16px; height: 16px; }
+    /* aprinderea pe rând a luminilor */
+    .win.off {
+      animation: none !important;
+      box-shadow: none !important;
+      filter: brightness(.86) saturate(.45);
+    }
+
+    .win-24 .num { margin-top: 22%; width: 52%; max-width: 46px; font-size: clamp(1.5rem, 7.4vw, 2rem); }
+    .win-24 .mini { width: 16px; height: 16px; top: 16%; }
+
+    /* beculețele din ghirlande */
+    .castle .bulb { opacity: 0; }
+    .castle.lights-on .bulb {
+      animation: bulbOn .6s ease var(--on, 0s) forwards, bulbTw var(--tw, 2.6s) ease-in-out calc(var(--on, 0s) + .6s) infinite;
+    }
+    @keyframes bulbOn { to { opacity: 1; } }
+    @keyframes bulbTw { 0%, 100% { opacity: 1; } 50% { opacity: .4; } }
 
     .notice {
       margin: 14px auto 0;
@@ -914,7 +954,7 @@
       }
     })();
 
-    /* ───────── Geometria castelului (unități viewBox 360×640) ───────── */
+    /* ───────── Geometria castelului (unități viewBox 360×720) ───────── */
     var WINDOWS = [];
     (function layout() {
       var i;
@@ -940,6 +980,7 @@
       var s = "";
       for (var x = x1; x + 12 <= x2 + 0.1; x += step) {
         s += '<rect x="' + x + '" y="' + y + '" width="13" height="14" rx="1.5" fill="url(#wall)" stroke="#D5BC8A" stroke-width="1.2"/>';
+        s += '<rect x="' + (x - 1) + '" y="' + (y - 2.5) + '" width="15" height="4.5" rx="2.2" fill="#FFFEFA"/>';
       }
       return s;
     }
@@ -953,34 +994,110 @@
       return d + "Z";
     }
 
+    var SNOW = "#FFFEFA", SAGE = "#A3B088", SAGE_D = "#8C9C72", ROSE = "#C76A5E";
+    var bulbIdx = 0;
+
+    function bulb(cx, cy, color, r) {
+      var on = (0.25 + bulbIdx * 0.03).toFixed(2);
+      var tw = (1.8 + Math.random() * 1.8).toFixed(2);
+      bulbIdx++;
+      return '<g class="bulb" style="--on:' + on + 's;--tw:' + tw + 's">' +
+        '<circle cx="' + cx + '" cy="' + cy + '" r="' + (r || 2.4) * 2.6 + '" fill="url(#bulbGlow)"/>' +
+        '<circle cx="' + cx + '" cy="' + cy + '" r="' + (r || 2.4) + '" fill="' + color + '"/></g>';
+    }
+    var BULB_COLORS = ["#FFF3C8", "#EFC86E", "#F1B3A4", "#FBE7A8"];
+
+    function snowLedge(x, y, w) {
+      var n = Math.max(3, Math.round(w / 12)), seg = w / n, d = "M" + x + "," + (y + 1.5);
+      for (var i = 0; i < n; i++) d += " q" + (seg / 2).toFixed(2) + "," + (i % 2 ? 4 : 5.5) + " " + seg.toFixed(2) + ",0";
+      d += " L" + (x + w) + "," + (y - 2.5) + " Q" + (x + w / 2) + "," + (y - 4.5) + " " + x + "," + (y - 2.5) + " Z";
+      return '<path d="' + d + '" fill="' + SNOW + '" stroke="#EEE4D0" stroke-width=".6"/>';
+    }
+    function snowCap(cx, apexY, depth, hw) {
+      var n = 4, seg = 2 * hw / n, d = "M" + cx + "," + apexY + " L" + (cx + hw) + "," + (apexY + depth);
+      for (var i = 0; i < n; i++) d += " q" + (-seg / 2).toFixed(2) + "," + (i % 2 ? 3 : 5) + " " + (-seg).toFixed(2) + ",0";
+      return '<path d="' + d + ' Z" fill="' + SNOW + '" stroke="#EEE4D0" stroke-width=".6"/>';
+    }
+    function garland(x1, x2, y, n, depth) {
+      var step = (x2 - x1) / n, d = "M" + x1 + "," + y, s = "", i;
+      for (i = 0; i < n; i++) d += " Q" + (x1 + step * (i + .5)).toFixed(1) + "," + (y + depth * 2) + " " + (x1 + step * (i + 1)).toFixed(1) + "," + y;
+      s += '<path d="' + d + '" fill="none" stroke="' + SAGE + '" stroke-width="3.4" stroke-linecap="round"/>';
+      s += '<path d="' + d + '" fill="none" stroke="' + SAGE_D + '" stroke-width="1.6" stroke-dasharray="1 3" stroke-linecap="round"/>';
+      for (i = 0; i <= n; i++) s += '<circle cx="' + (x1 + step * i).toFixed(1) + '" cy="' + y + '" r="1.8" fill="#C9A24B"/>';
+      for (i = 0; i < n; i++) s += bulb((x1 + step * (i + .5)).toFixed(1), y + depth, BULB_COLORS[i % 4]);
+      return s;
+    }
+    function bow(cx, cy, k) {
+      k = k || 1;
+      return '<g transform="translate(' + cx + ',' + cy + ') scale(' + k + ')">' +
+        '<path d="M0,0 C-5,-7 -13,-6 -11,0 C-10,4 -4,3 0,0Z M0,0 C5,-7 13,-6 11,0 C10,4 4,3 0,0Z" fill="' + ROSE + '" stroke="#B25A4F" stroke-width=".6"/>' +
+        '<path d="M-1,1 L-6,10 L-3,9 L-2,11Z M1,1 L6,10 L3,9 L2,11Z" fill="' + ROSE + '"/>' +
+        '<circle r="2.2" fill="#B25A4F"/></g>';
+    }
+    function tree(cx, baseY) {
+      var s = '<rect x="' + (cx - 3) + '" y="' + (baseY - 9) + '" width="6" height="9" fill="#B89466"/>';
+      [[22, 8, 34], [17, 28, 30], [12, 48, 28]].forEach(function (l) {
+        var hw = l[0], by = baseY - l[1], ty = by - l[2];
+        s += '<polygon points="' + (cx - hw) + ',' + by + ' ' + (cx + hw) + ',' + by + ' ' + cx + ',' + ty + '" fill="' + SAGE + '" stroke="' + SAGE_D + '" stroke-width=".8" stroke-linejoin="round"/>';
+        var d = "M" + (cx - hw) + "," + by, seg = 2 * hw / 4;
+        for (var i = 0; i < 4; i++) d += " q" + seg / 2 + ",-5 " + seg + ",0";
+        s += '<path d="' + d + ' L' + (cx + hw - 3) + ',' + (by - 4) + ' L' + (cx - hw + 3) + ',' + (by - 4) + 'Z" fill="' + SNOW + '"/>';
+      });
+      s += snowCap(cx, baseY - 76, 9, 4);
+      s += bulb(cx - 8, baseY - 20, "#FFF3C8", 1.8) + bulb(cx + 9, baseY - 30, "#F1B3A4", 1.8) + bulb(cx - 4, baseY - 45, "#EFC86E", 1.8) + bulb(cx + 5, baseY - 58, "#FFF3C8", 1.8);
+      s += '<path d="' + starPath(cx, baseY - 80, 6, 2.6) + '" fill="#D9B24F"/>';
+      return s;
+    }
+    function gift(x, y, w, h, ribbon) {
+      return '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" rx="1.5" fill="#FBF3E2" stroke="#D9C08A" stroke-width=".8"/>' +
+        '<rect x="' + (x + w / 2 - 1.5) + '" y="' + y + '" width="3" height="' + h + '" fill="' + ribbon + '"/>' +
+        '<rect x="' + x + '" y="' + (y + h / 2 - 1.2) + '" width="' + w + '" height="2.4" fill="' + ribbon + '"/>' +
+        '<path d="M' + (x + w / 2) + ',' + y + ' c-4,-5 -8,-1 0,0 c4,-5 8,-1 0,0" fill="none" stroke="' + ribbon + '" stroke-width="1.6"/>';
+    }
+    function lantern(x) {
+      return bulb(x, 646, "#FFF1C2", 5) +
+        '<path d="M' + (x + (x < 180 ? -10 : 10)) + ',632 H' + x + ' V636" fill="none" stroke="#B8913E" stroke-width="1.6"/>' +
+        '<path d="M' + (x - 6) + ',640 L' + x + ',635 L' + (x + 6) + ',640Z" fill="#C9A24B"/>' +
+        '<rect x="' + (x - 5) + '" y="640" width="10" height="13" rx="1.5" fill="#FCE8A8" stroke="#B8913E" stroke-width="1.2"/>' +
+        '<rect x="' + (x - 6) + '" y="653" width="12" height="3" rx="1" fill="#C9A24B"/>';
+    }
+    function oculus(cx, cy) {
+      var s = '<circle cx="' + cx + '" cy="' + cy + '" r="14" fill="url(#doorLight)" stroke="#C9A24B" stroke-width="1.4"/>';
+      s += '<path d="M' + cx + ',' + (cy - 14) + 'V' + (cy + 14) + 'M' + (cx - 14) + ',' + cy + 'H' + (cx + 14) + '" stroke="#D9BC7C" stroke-width="1"/>';
+      s += '<circle cx="' + cx + '" cy="' + cy + '" r="16" fill="none" stroke="' + SAGE + '" stroke-width="4.5"/>';
+      s += '<circle cx="' + cx + '" cy="' + cy + '" r="16" fill="none" stroke="' + SAGE_D + '" stroke-width="2" stroke-dasharray="1 3"/>';
+      for (var k = 0; k < 6; k++) {
+        var a = k * Math.PI / 3 + .3;
+        s += '<circle cx="' + (cx + 16 * Math.cos(a)).toFixed(1) + '" cy="' + (cy + 16 * Math.sin(a)).toFixed(1) + '" r="1.6" fill="' + ROSE + '"/>';
+      }
+      return s + bow(cx, cy + 16, .7);
+    }
+
     function castleSVG() {
-      var s = '<svg viewBox="0 0 360 640" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet">';
+      bulbIdx = 0;
+      var s = '<svg viewBox="0 0 360 720" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet">';
       s += '<defs>' +
-        '<linearGradient id="wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6EBD6"/><stop offset="1" stop-color="#E8D6B5"/></linearGradient>' +
-        '<linearGradient id="towerWall" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#EBDABB"/><stop offset=".5" stop-color="#F7EDD9"/><stop offset="1" stop-color="#E6D2AE"/></linearGradient>' +
+        '<linearGradient id="wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7EDDA"/><stop offset="1" stop-color="#EAD9BA"/></linearGradient>' +
+        '<linearGradient id="towerWall" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#EBDABB"/><stop offset=".5" stop-color="#F8EFDD"/><stop offset="1" stop-color="#E6D2AE"/></linearGradient>' +
         '<linearGradient id="roof" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F0D893"/><stop offset=".55" stop-color="#D9B661"/><stop offset="1" stop-color="#C9A24B"/></linearGradient>' +
         '<linearGradient id="trim" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E9CD86"/><stop offset="1" stop-color="#C9A24B"/></linearGradient>' +
-        '<radialGradient id="ground" cx="50%" cy="30%" r="60%"><stop offset="0" stop-color="#F6E7C3"/><stop offset="1" stop-color="#EAD8B4" stop-opacity="0"/></radialGradient>' +
+        '<linearGradient id="doorLight" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFF6D8"/><stop offset="1" stop-color="#F0CD7A"/></linearGradient>' +
+        '<radialGradient id="bulbGlow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#FFF6D2" stop-opacity=".95"/><stop offset="1" stop-color="#F4DE9C" stop-opacity="0"/></radialGradient>' +
         '<radialGradient id="halo" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#FFF6D6"/><stop offset=".45" stop-color="#F4DE9C" stop-opacity=".8"/><stop offset="1" stop-color="#F4E2A8" stop-opacity="0"/></radialGradient>' +
         '<radialGradient id="castleGlow" cx="50%" cy="55%" r="55%"><stop offset="0" stop-color="#FCEFC8" stop-opacity=".9"/><stop offset="1" stop-color="#FBF6EC" stop-opacity="0"/></radialGradient>' +
         '</defs>';
 
-      // aură în spatele castelului + pământ
-      s += '<ellipse cx="180" cy="380" rx="200" ry="300" fill="url(#castleGlow)"/>';
-      s += '<ellipse cx="180" cy="626" rx="205" ry="20" fill="url(#ground)"/>';
+      s += '<ellipse cx="180" cy="420" rx="200" ry="330" fill="url(#castleGlow)"/>';
 
-      // corpul principal (etajele 1–3)
-      s += '<rect x="14" y="340" width="332" height="272" fill="url(#wall)" stroke="#D5BC8A" stroke-width="1.5"/>';
+      // corpul principal (parter + etajele 1–3)
+      s += '<rect x="14" y="340" width="332" height="358" fill="url(#wall)" stroke="#D5BC8A" stroke-width="1.5"/>';
       s += merlons(14, 346, 328, 22.2);
-      // texturi discrete de piatră
-      var stones = [[40,435,22],[150,437,18],[270,436,24],[90,526,20],[210,527,22],[320,528,14],[60,346,16],[300,346,18],[180,346,14]];
-      stones.forEach(function (p) {
+      [[40,437,22],[150,439,18],[270,438,24],[90,528,20],[210,529,22],[320,530,14],[60,350,16],[300,350,18],[40,680,20],[300,676,22]].forEach(function (p) {
         s += '<path d="M' + p[0] + ',' + p[1] + 'h' + p[2] + '" stroke="#D9C49A" stroke-width="1" opacity=".55"/>';
       });
-      // cornișe aurii
-      s += '<rect x="8" y="426" width="344" height="6" rx="3" fill="url(#trim)"/>';
-      s += '<rect x="8" y="516" width="344" height="6" rx="3" fill="url(#trim)"/>';
-      s += '<rect x="6" y="606" width="348" height="14" rx="4" fill="url(#trim)" opacity=".85"/>';
+      [426, 516, 606].forEach(function (y) {
+        s += '<rect x="8" y="' + y + '" width="344" height="7" rx="3" fill="url(#trim)"/>' + snowLedge(8, y, 344);
+      });
 
       // turnulețe laterale
       [[10, 27], [316, 333]].forEach(function (t) {
@@ -988,27 +1105,66 @@
         s += '<rect x="' + x + '" y="286" width="34" height="56" fill="url(#towerWall)" stroke="#D5BC8A" stroke-width="1.2"/>';
         s += '<rect x="' + (cx - 3) + '" y="300" width="6" height="20" rx="3" fill="#F2DB9E" stroke="#C9A24B" stroke-width=".8"/>';
         s += '<polygon points="' + (x - 6) + ',290 ' + (x + 40) + ',290 ' + cx + ',226" fill="url(#roof)" stroke="#C29A42" stroke-width="1"/>';
+        s += snowCap(cx, 226, 16, 6.5) + snowLedge(x - 6, 291, 46);
         s += '<line x1="' + cx + '" y1="226" x2="' + cx + '" y2="206" stroke="#C29A42" stroke-width="1.5"/>';
-        s += '<path d="M' + cx + ',207 l14,5 l-14,5z" fill="#E3C77F"/>';
+        s += '<path d="M' + cx + ',207 l14,5 l-14,5z" fill="' + ROSE + '" opacity=".85"/>';
       });
 
       // turnul înalt
       s += '<rect x="122" y="108" width="116" height="146" fill="url(#towerWall)" stroke="#D5BC8A" stroke-width="1.5"/>';
       s += '<polygon points="106,114 254,114 180,40" fill="url(#roof)" stroke="#C29A42" stroke-width="1.2"/>';
       s += '<path d="M130,114 L180,48 M230,114 L180,48" stroke="#F4E2A8" stroke-width="1" opacity=".7"/>';
-      s += '<rect x="104" y="108" width="152" height="9" rx="4" fill="url(#trim)"/>';
+      s += snowCap(180, 40, 20, 20);
+      s += '<rect x="104" y="108" width="152" height="9" rx="4" fill="url(#trim)"/>' + snowLedge(104, 108, 152);
+      s += garland(122, 238, 118, 4, 6);
 
       // etajul 4
       s += '<rect x="46" y="250" width="268" height="92" fill="url(#wall)" stroke="#D5BC8A" stroke-width="1.5"/>';
       s += merlons(46, 122, 238, 21) + merlons(240, 314, 238, 21);
-      s += '<rect x="42" y="336" width="276" height="6" rx="3" fill="url(#trim)"/>';
+      s += '<rect x="42" y="336" width="276" height="6" rx="3" fill="url(#trim)"/>' + snowLedge(42, 336, 276);
 
-      // rame și pervazuri pentru fiecare fereastră
+      // ghirlande cu beculețe
+      s += garland(46, 314, 343, 10, 4.5);
+      s += garland(14, 346, 434, 12, 4.5);
+      s += garland(14, 346, 524, 12, 4.5);
+      s += garland(14, 346, 614, 12, 5);
+
+      // rame, zăpadă pe arcade, pervazuri
       WINDOWS.forEach(function (w) {
-        var p = w.day === 24 ? 5 : 3.5;
+        var p = w.day === 24 ? 5 : 3.5, r = w.w / 2, cx = w.x + r, cy = w.y + r, R = r + p + 1.5;
         s += '<path d="' + arch(w.x - p, w.y - p, w.w + 2 * p, w.h + p) + '" fill="#EBD7AC" stroke="#C9A24B" stroke-width="1.2"/>';
-        s += '<rect x="' + (w.x - p - 2) + '" y="' + (w.y + w.h) + '" width="' + (w.w + 2 * p + 4) + '" height="4" rx="2" fill="url(#trim)"/>';
+        var a1 = -155 * Math.PI / 180, a2 = -25 * Math.PI / 180;
+        s += '<path d="M' + (cx + R * Math.cos(a1)).toFixed(1) + ',' + (cy + R * Math.sin(a1)).toFixed(1) +
+             ' A' + R + ',' + R + ' 0 0 1 ' + (cx + R * Math.cos(a2)).toFixed(1) + ',' + (cy + R * Math.sin(a2)).toFixed(1) +
+             '" fill="none" stroke="' + SNOW + '" stroke-width="' + (w.day === 24 ? 4.5 : 3.4) + '" stroke-linecap="round"/>';
+        s += '<rect x="' + (w.x - p - 2) + '" y="' + (w.y + w.h) + '" width="' + (w.w + 2 * p + 4) + '" height="5" rx="2" fill="url(#trim)"/>';
+        s += '<rect x="' + (w.x - p - 1) + '" y="' + (w.y + w.h - .5) + '" width="' + (w.w + 2 * p + 2) + '" height="2.6" rx="1.3" fill="' + SNOW + '"/>';
       });
+      s += bow(180, 131, 1.15);
+
+      // parterul: ușa, copertina, felinare, ferestre rotunde
+      s += oculus(78, 652) + oculus(282, 652);
+      s += lantern(128) + lantern(232);
+      s += '<path d="' + arch(150, 626, 60, 72) + '" fill="#EBD7AC" stroke="#C9A24B" stroke-width="1.2"/>';
+      s += '<path d="' + arch(154, 630, 52, 68) + '" fill="url(#doorLight)" stroke="#B8913E" stroke-width="1.2"/>';
+      s += '<path d="M180,632 V698 M158,664 H202" stroke="#D2B06A" stroke-width="1"/>';
+      s += '<rect x="160" y="672" width="14" height="20" rx="2" fill="none" stroke="#D2B06A"/><rect x="186" y="672" width="14" height="20" rx="2" fill="none" stroke="#D2B06A"/>';
+      s += '<circle cx="180" cy="652" r="11" fill="none" stroke="' + SAGE + '" stroke-width="5"/><circle cx="180" cy="652" r="11" fill="none" stroke="' + SAGE_D + '" stroke-width="2" stroke-dasharray="1 3"/>';
+      [0.4, 1.4, 2.5, 3.6, 4.6].forEach(function (a) { s += '<circle cx="' + (180 + 11 * Math.cos(a)).toFixed(1) + '" cy="' + (652 + 11 * Math.sin(a)).toFixed(1) + '" r="1.8" fill="' + ROSE + '"/>'; });
+      s += bow(180, 662, .8);
+      s += '<path d="M138,624 Q180,590 222,624 Z" fill="url(#roof)" stroke="#C29A42" stroke-width="1"/>';
+      s += '<path d="M138,624 q5,5 10.5,0 q5,5 10.5,0 q5,5 10.5,0 q5,5 10.5,0 q5,5 10.5,0 q5,5 10.5,0 q5,5 10.5,0 q5,5 10.5,0" fill="none" stroke="#B8913E" stroke-width="1"/>';
+      s += '<path d="M146,612 Q180,588 214,612 Q180,596 146,612Z" fill="' + SNOW + '"/>';
+      s += '<rect x="142" y="698" width="76" height="5" rx="2" fill="url(#trim)"/>';
+
+      // soclu și zăpadă la bază
+      s += '<rect x="6" y="694" width="348" height="9" rx="4" fill="url(#trim)" opacity=".9"/>';
+      s += '<ellipse cx="180" cy="707" rx="186" ry="11" fill="' + SNOW + '" stroke="#EEE4D0" stroke-width=".8"/>';
+
+      // brazi și cadouri
+      s += gift(44, 688, 16, 15, ROSE) + gift(61, 694, 12, 10, "#C9A24B");
+      s += gift(300, 688, 16, 15, ROSE) + gift(287, 694, 12, 10, "#C9A24B");
+      s += tree(24, 706) + tree(336, 706);
 
       // steaua de pe turn
       s += '<circle class="star-halo" cx="180" cy="24" r="24" fill="url(#halo)"/>';
@@ -1027,9 +1183,9 @@
       var b = el("button", "win" + (w.day === 24 ? " win-24" : ""));
       b.type = "button";
       b.style.left = (w.x / 360 * 100) + "%";
-      b.style.top = (w.y / 640 * 100) + "%";
+      b.style.top = (w.y / 720 * 100) + "%";
       b.style.width = (w.w / 360 * 100) + "%";
-      b.style.height = (w.h / 640 * 100) + "%";
+      b.style.height = (w.h / 720 * 100) + "%";
       b.dataset.day = w.day;
       b.addEventListener("click", function () { onWindow(w.day, b); });
       castle.appendChild(b);
@@ -1356,6 +1512,7 @@
     function hideEntry() {
       entry.classList.add("hidden");
       $("app").removeAttribute("inert");
+      lightUp();
       var c = $("castle").getBoundingClientRect();
       if (!reduceMotion) setTimeout(function () { particles(c.left + c.width / 2, c.top + 40, 26, 160, 1100); }, 350);
     }
@@ -1399,10 +1556,25 @@
     $("enter-castle").addEventListener("click", hideEntry);
     $("test-skip").addEventListener("click", hideEntry);
 
+    /* Luminile se aprind una câte una */
+    function lightUp() {
+      var list = WINDOWS.map(function (w) { return winButtons[w.day]; })
+        .filter(function (b) { return !b.classList.contains("is-locked"); });
+      list.forEach(function (b) { b.classList.add("off"); });
+      castle.classList.remove("lights-on");
+      void castle.offsetWidth;
+      castle.classList.add("lights-on");
+      list.forEach(function (b, i) {
+        setTimeout(function () { b.classList.remove("off"); }, reduceMotion ? 0 : 500 + i * 110);
+      });
+    }
+
     /* ───────── Pornire ───────── */
     renderWindows();
     if (load(KEY_SIGNED) !== "1") {
       showEntry();
+    } else {
+      lightUp();
     }
 
     // Dacă pagina rămâne deschisă peste noapte, aprinde fereastra nouă
