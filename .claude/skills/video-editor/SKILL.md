@@ -36,6 +36,11 @@ Do not skip these even if the request looks obvious. If she already answered in 
    - Every pause **longer than 0.5 s** is cut (0.12 s breathing room kept each side).
 3. **Read the plan's CUT lines and the transcript yourself.** The script is a first pass. Use judgment: if an earlier take was clearly better (clean, complete) and the later one stumbles, swap them by editing `keep.json` segments. Keep meaning intact; never cut mid-word.
 
+## When she sends her script
+- Use her script as the caption TEXT and Whisper only for TIMING: align script words onto Whisper words (difflib on accent-stripped tokens; equal/same-length blocks map 1:1, others spread over the Whisper span). Fixes names (ChatGPT), diacritics and her slogan in one go.
+- The script also tells you where graphics go: a card per "Pasul N" timed to the word, chips for lists she says out loud, a recap of all steps before the sign-off, CTA from the description (e.g. "Promptul e în descriere" + "Urmărește-mă").
+- Keep CTA text off light clothing (white collar): put it low, on dark areas, with a scrim.
+
 ## Rule 4: One recording, several videos → split
 If the transcript shows several separate videos (long silences in `split_candidates`, "next video", "video two", a new intro/topic), confirm the split points with her, then `ve.py split source.mp4 --at t1,t2 --outdir <work>/parts` and edit each part as its own video (each gets its own file next to the original: `<name> - part 1 Reels edit.mp4`).
 
