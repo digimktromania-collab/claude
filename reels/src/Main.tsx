@@ -1,56 +1,61 @@
 import React from "react";
-import { AbsoluteFill, getInputProps, interpolate, useCurrentFrame } from "remotion";
+import { AbsoluteFill, useCurrentFrame } from "remotion";
 import { Captions } from "./Captions";
 import { Cuts } from "./Cuts";
-import { FaceFog, faceAt } from "./FaceFog";
-import { ACCENT, FPS, TL } from "./lib";
-import { Scenes } from "./Scenes";
+import { FullGraphics, PanelGraphics } from "./Graphics";
+import { faceAt, PANEL_H, splitOffset, splitProgress, zoomAt } from "./layout";
+import { ACCENT, TL } from "./lib";
 import { Sound } from "./Sound";
 
-/** Punch-in zoom: 106% / 110% alternating on important phrases, snapping in over 3 frames. */
-const useZoom = () => {
-  const frame = useCurrentFrame();
-  const t = frame / FPS;
-  const z = TL.zooms.find((p) => t >= p.start && t < p.end);
-  if (!z) return 1;
-  const sinceIn = (t - z.start) * FPS;
-  const untilOut = (z.end - t) * FPS;
-  const k = Math.min(
-    interpolate(sinceIn, [0, 3], [0, 1], { extrapolateRight: "clamp" }),
-    interpolate(untilOut, [0, 3], [0, 1], { extrapolateRight: "clamp" }),
-  );
-  // slow creep while the phrase lasts keeps it alive
-  const creep = 1 + 0.008 * Math.min(1, sinceIn / 60);
-  return (1 + (z.scale - 1) * k) * creep;
-};
+const PAPER_BG = "#F4F0E8";
 
 const ProgressBar: React.FC = () => {
   const frame = useCurrentFrame();
   const p = frame / (TL.durationInFrames - 1);
-  return (
-    <div style={{ position: "absolute", left: 0, top: 0, height: 10, width: `${p * 100}%`, background: ACCENT, boxShadow: `0 0 18px ${ACCENT}` }} />
-  );
+  return <div style={{ position: "absolute", left: 0, top: 0, height: 10, width: `${p * 100}%`, background: ACCENT }} />;
 };
 
 export const Main: React.FC = () => {
   const frame = useCurrentFrame();
-  const zoom = useZoom();
+  const p = splitProgress(frame);
   const [cx, cy] = faceAt(frame);
+  const zoom = 1 + (zoomAt(frame) - 1) * (1 - p);
+  const ty = splitOffset(frame) * p;
   return (
     <AbsoluteFill style={{ backgroundColor: "#000" }}>
+      {/* the footage: full screen, or pushed down into the lower window */}
       <AbsoluteFill
         style={{
-          transform: `scale(${zoom})`,
+          transform: `translateY(${ty}px) scale(${zoom})`,
           transformOrigin: `${cx}px ${cy}px`,
-          filter: "contrast(1.07) saturate(1.12) brightness(1.02)",
+          filter: "contrast(1.06) saturate(1.1) brightness(1.02)",
         }}
       >
         <Cuts />
-        {getInputProps().noFog ? null : <FaceFog />}
       </AbsoluteFill>
-      {/* vignette */}
-      <AbsoluteFill style={{ background: "radial-gradient(ellipse 80% 70% at 50% 45%, transparent 60%, rgba(0,0,0,0.38) 100%)" }} />
-      <Scenes />
+      <AbsoluteFill style={{ background: "radial-gradient(ellipse 85% 70% at 50% 45%, transparent 62%, rgba(0,0,0,0.32) 100%)" }} />
+
+      {/* graphics for full-screen moments: only above the head or on the chest */}
+      <FullGraphics />
+
+      {/* graphics panel (split screen) slides down from the top */}
+      <div style={{ position: "absolute", left: 0, top: 0, width: 1080, height: PANEL_H, transform: `translateY(${(p - 1) * (PANEL_H + 20)}px)` }}>
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: PAPER_BG,
+            backgroundImage: "radial-gradient(rgba(31,30,29,0.10) 2px, transparent 2px)",
+            backgroundSize: "34px 34px",
+            boxShadow: "0 18px 40px rgba(0,0,0,0.35)",
+            overflow: "hidden",
+          }}
+        >
+          <PanelGraphics />
+        </div>
+        <div style={{ position: "absolute", left: 0, right: 0, bottom: -8, height: 8, background: ACCENT }} />
+      </div>
+
       <Captions />
       <ProgressBar />
       <Sound />
