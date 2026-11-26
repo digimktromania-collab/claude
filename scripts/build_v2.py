@@ -154,22 +154,32 @@ zooms = []
 for n, nm in enumerate(["hook_launch", "hook_free", "simple", "cta", "outro"]):
     zooms.append(dict(start=B[nm]["start"], end=B[nm]["end"], scale=1.06 if n % 2 == 0 else 1.10))
 
-# SFX
-sfx = [dict(t=0.0, type="whoosh"), dict(t=S["hook"]["free"], type="pop")]
+# SFX: every sound means something on screen
+sfx = [dict(t=0.0, type="whoosh"), dict(t=0.12, type="sting"), dict(t=S["hook"]["free"], type="success")]
 for m in modes[1:]: sfx.append(dict(t=m["start"], type="whoosh"))
-sfx += [dict(t=S["ideas"]["two"], type="pop"),
-        dict(t=S["app1"]["start"], type="whoosh"), dict(t=S["app1"]["fb"], type="pop"), dict(t=S["app1"]["tt"], type="pop"),
-        dict(t=S["app1"]["ig"], type="pop"), dict(t=S["app2"]["start"], type="whoosh"), dict(t=S["app2"]["clock"], type="pop"),
-        dict(t=S["notif"]["banner"], type="ding"), dict(t=S["share"]["start"], type="whoosh"), dict(t=S["share"]["people"], type="pop"),
-        dict(t=S["how"]["send"], type="click"), dict(t=S["how"]["s2"], type="whoosh"), dict(t=S["how"]["s3"], type="whoosh"),
-        dict(t=S["how"]["dots"], type="click"), dict(t=S["how"]["install"], type="click"), dict(t=S["how"]["install"] + 0.1, type="pop"),
-        dict(t=S["recap"]["second"], type="pop"), dict(t=S["simple"]["kid"], type="pop"),
-        dict(t=S["cta"]["comments"], type="pop"), dict(t=S["outro"]["wake"], type="whoosh"), dict(t=S["outro"]["ro"], type="ding")]
-sfx = sorted([dict(t=round(e["t"], 3), type=e["type"]) for e in sfx], key=lambda e: e["t"])
+sfx += [dict(t=S["ideas"]["two"], type="pop"), dict(t=S["ideas"]["two"] + 0.17, type="pop"),
+        dict(t=S["app1"]["start"], type="whoosh"),
+        dict(t=S["app1"]["prompt"] + 0.25, type="typing", dur=S["app1"]["ig"] - S["app1"]["prompt"] - 0.25),
+        dict(t=S["app1"]["fb"], type="pop"), dict(t=S["app1"]["tt"], type="pop"), dict(t=S["app1"]["ig"], type="pop"),
+        dict(t=S["app2"]["start"], type="whoosh"),
+        dict(t=S["app2"]["prompt"] + 0.25, type="typing", dur=S["app2"]["clock"] - S["app2"]["prompt"] - 0.25),
+        dict(t=S["app2"]["clock"], type="pop"),
+        dict(t=S["notif"]["start"], type="whoosh"), dict(t=S["notif"]["banner"], type="notify"),
+        dict(t=S["share"]["start"], type="whoosh"), dict(t=S["share"]["btn"], type="mouseclick")]
+sfx += [dict(t=S["share"]["people"] + k * 0.1, type="pop") for k in range(4)]
+sfx += [dict(t=S["how"]["s1"] + 0.15, type="typing", dur=S["how"]["send"] - S["how"]["s1"] - 0.25),
+        dict(t=S["how"]["send"], type="send"), dict(t=S["how"]["s2"], type="whoosh"), dict(t=S["how"]["s3"], type="whoosh"),
+        dict(t=S["how"]["dots"], type="mouseclick"), dict(t=S["how"]["install"], type="mouseclick"),
+        dict(t=S["how"]["install"] + 0.12, type="success"),
+        dict(t=S["recap"]["start"], type="pop"), dict(t=S["recap"]["second"], type="success"),
+        dict(t=S["simple"]["kid"], type="pop"), dict(t=S["cta"]["comments"] - 0.13, type="notify"),
+        dict(t=S["outro"]["digital"], type="pop"), dict(t=S["outro"]["geo"], type="pop"),
+        dict(t=S["outro"]["wake"], type="whoosh"), dict(t=S["outro"]["ro"], type="sting")]
+sfx = sorted([dict(t=round(e["t"], 3), type=e["type"], dur=round(e.get("dur", 0), 3)) for e in sfx], key=lambda e: e["t"])
 # drop near-duplicates (same type within 0.25s)
 dd = []
 for e in sfx:
-    if dd and dd[-1]["type"] == e["type"] and e["t"] - dd[-1]["t"] < 0.25: continue
+    if dd and dd[-1]["type"] == e["type"] and e["t"] - dd[-1]["t"] < 0.08: continue
     dd.append(e)
 sfx = dd
 

@@ -47,3 +47,36 @@ mus=lp(mus,0.25)  # warm it up
 crack=np.zeros(N); idx=rng.integers(0,N,400); crack[idx]=rng.standard_normal(400)*0.3
 mus+=lp(crack,0.4)+0.004*rng.standard_normal(N)
 save('lofi.wav',mus)
+
+# ---------------- v2: meaningful sound design ----------------
+def tone(f, d, decay, a=1.0):
+    tt = t(d); return a * np.sin(2 * np.pi * f * tt) * np.exp(-tt * decay)
+def place(buf, x, at):
+    s = int(at * SR); buf[s:s + len(x)] += x[:max(0, len(buf) - s)]; return buf
+def mf2(m): return 440 * 2 ** ((m - 69) / 12)
+# brand sting: bright rising arpeggio + shimmer
+b = np.zeros(int(SR * 1.6))
+for k, m in enumerate([72, 76, 79, 84]):
+    n = tone(mf2(m), 1.3, 3.2) + 0.35 * tone(mf2(m) * 2, 1.3, 5) + 0.15 * tone(mf2(m) * 3, 1.3, 7)
+    place(b, n * (1 - np.exp(-t(1.3) * 300)), k * 0.075)
+save('sting.wav', b)
+# success: two quick bright notes up
+s2 = np.zeros(int(SR * 0.9)); place(s2, tone(mf2(79), 0.8, 6) + 0.3 * tone(mf2(91), 0.8, 9), 0); place(s2, tone(mf2(84), 0.8, 5) + 0.3 * tone(mf2(96), 0.8, 8), 0.09)
+save('success.wav', s2)
+# notification: soft two-tone glass chime
+nt = np.zeros(int(SR * 1.2)); place(nt, tone(988, 1.0, 4) + 0.4 * tone(1976, 1.0, 7), 0); place(nt, tone(1319, 1.0, 3.5) + 0.4 * tone(2637, 1.0, 7), 0.13)
+save('notify.wav', nt)
+# mouse click: two tiny transients (press + release)
+mc = np.zeros(int(SR * 0.12)); hit = lambda: lp(rng.standard_normal(int(SR * 0.012)), 0.7) * np.exp(-t(0.012) * 500) + 0.5 * np.sin(2 * np.pi * 3400 * t(0.012)) * np.exp(-t(0.012) * 400)
+place(mc, hit(), 0); place(mc, 0.6 * hit(), 0.065)
+save('mouseclick.wav', mc)
+# send: short upward swoosh
+d = 0.32; tt = t(d); n = rng.standard_normal(len(tt)); sw = lp(n, 0.03 + 0.5 * (tt / d) ** 2) * np.sin(np.pi * tt / d) ** 1.2
+f = 400 * 6 ** (tt / d); sw += 0.25 * np.sin(2 * np.pi * np.cumsum(f) / SR) * np.sin(np.pi * tt / d)
+save('send.wav', sw)
+# typing: 3s of irregular soft key clicks (loopable)
+ty = np.zeros(int(SR * 3.0)); pos = 0.02
+while pos < 2.95:
+    k = lp(rng.standard_normal(int(SR * 0.02)), 0.45 + 0.2 * rng.random()) * np.exp(-t(0.02) * 260) * (0.6 + 0.4 * rng.random())
+    place(ty, k, pos); pos += 0.055 + 0.06 * rng.random()
+save('typing.wav', ty)

@@ -4,16 +4,22 @@ import { interpolate, Sequence, staticFile } from "remotion";
 import { FPS, TL } from "./lib";
 
 /**
- * Gains are relative to the voice (normalised to -14 LUFS).
- * SFX: measured peak loudness of each file, scaled to sit 18 dB under the voice peaks.
- * Music: -28 dB under the voice while she speaks, opens up to -20 dB in gaps (ducking).
+ * Gains relative to the voice (normalised to -14 LUFS), from each file's measured peak loudness.
+ * Utility sounds sit 18 dB under the voice; the signature moments (Claude Apps sting,
+ * notification, success) sit 14 dB under so they read clearly; typing sits ~24 dB under.
  */
 const SFX_GAIN: Record<string, number> = {
-  whoosh: 0.143,
+  whoosh: 0.11,
   pop: 0.076,
   click: 0.219,
   ding: 0.075,
   riser: 0.126,
+  sting: 0.15,
+  success: 0.13,
+  notify: 0.13,
+  mouseclick: 0.28,
+  send: 0.122,
+  typing: 0.19,
 };
 const MUSIC_DUCKED = 0.083; // -28 dB vs voice
 const MUSIC_OPEN = 0.21; // -20 dB vs voice (only in gaps)
@@ -27,6 +33,8 @@ const distToSpeech = (t: number) => {
   }
   return d;
 };
+
+type Sfx = { t: number; type: string; dur: number };
 
 export const Sound: React.FC = () => {
   const total = TL.durationInFrames;
@@ -50,11 +58,23 @@ export const Sound: React.FC = () => {
           return duck * fade;
         }}
       />
-      {TL.sfx.map((e, i) => (
-        <Sequence key={i} name={`SFX ${e.type}`} from={Math.round(e.t * FPS)} durationInFrames={e.type === "riser" ? 40 : 45}>
-          <Audio src={staticFile(`sfx/${e.type}.wav`)} volume={SFX_GAIN[e.type]} />
-        </Sequence>
-      ))}
+      {(TL.sfx as Sfx[]).map((e, i) => {
+        const looped = e.dur > 0;
+        const frames = looped ? Math.max(1, Math.round(e.dur * FPS)) : 50;
+        return (
+          <Sequence key={i} name={`SFX ${e.type}`} from={Math.round(e.t * FPS)} durationInFrames={frames}>
+            <Audio
+              src={staticFile(`sfx/${e.type}.wav`)}
+              loop={looped}
+              volume={(fr) =>
+                looped
+                  ? SFX_GAIN[e.type] * interpolate(fr, [0, 3, frames - 4, frames], [0, 1, 1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" })
+                  : SFX_GAIN[e.type]
+              }
+            />
+          </Sequence>
+        );
+      })}
     </>
   );
 };
