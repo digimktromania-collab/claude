@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
+import { AbsoluteFill, getInputProps, interpolate, useCurrentFrame } from "remotion";
 import { Captions } from "./Captions";
 import { Cuts } from "./Cuts";
 import { FaceFog, faceAt } from "./FaceFog";
@@ -46,7 +46,7 @@ export const Main: React.FC = () => {
         }}
       >
         <Cuts />
-        <FaceFog />
+        {getInputProps().noFog ? null : <FaceFog />}
       </AbsoluteFill>
       {/* vignette */}
       <AbsoluteFill style={{ background: "radial-gradient(ellipse 80% 70% at 50% 45%, transparent 60%, rgba(0,0,0,0.38) 100%)" }} />
