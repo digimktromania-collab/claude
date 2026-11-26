@@ -1,0 +1,1283 @@
+{
+ "language": "ro",
+ "words": [
+  {
+   "text": "Bună!",
+   "start": 0.0,
+   "end": 0.64,
+   "prob": 0.988
+  },
+  {
+   "text": "Vestea",
+   "start": 0.64,
+   "end": 1.08,
+   "prob": 0.996
+  },
+  {
+   "text": "zilei",
+   "start": 1.08,
+   "end": 1.34,
+   "prob": 0.997
+  },
+  {
+   "text": "de",
+   "start": 1.34,
+   "end": 1.36,
+   "prob": 0.007
+  },
+  {
+   "text": "inteligență",
+   "start": 1.36,
+   "end": 1.96,
+   "prob": 0.974
+  },
+  {
+   "text": "artificială.",
+   "start": 1.96,
+   "end": 2.66,
+   "prob": 1.0
+  },
+  {
+   "text": "O",
+   "start": 2.7,
+   "end": 2.9,
+   "prob": 0.999
+  },
+  {
+   "text": "veste",
+   "start": 2.9,
+   "end": 3.12,
+   "prob": 0.99
+  },
+  {
+   "text": "extraordinară",
+   "start": 3.12,
+   "end": 3.74,
+   "prob": 0.999
+  },
+  {
+   "text": "dat",
+   "start": 3.74,
+   "end": 3.86,
+   "prob": 0.447
+  },
+  {
+   "text": "fiindcă",
+   "start": 3.86,
+   "end": 4.24,
+   "prob": 0.916
+  },
+  {
+   "text": "o",
+   "start": 4.24,
+   "end": 4.32,
+   "prob": 0.999
+  },
+  {
+   "text": "poți",
+   "start": 4.32,
+   "end": 4.48,
+   "prob": 0.999
+  },
+  {
+   "text": "folosi",
+   "start": 4.48,
+   "end": 4.76,
+   "prob": 1.0
+  },
+  {
+   "text": "și",
+   "start": 4.76,
+   "end": 4.88,
+   "prob": 1.0
+  },
+  {
+   "text": "cu",
+   "start": 4.88,
+   "end": 5.06,
+   "prob": 1.0
+  },
+  {
+   "text": "planul",
+   "start": 5.06,
+   "end": 5.36,
+   "prob": 0.999
+  },
+  {
+   "text": "gratuit.",
+   "start": 5.36,
+   "end": 5.66,
+   "prob": 0.999
+  },
+  {
+   "text": "Claude",
+   "start": 5.96,
+   "end": 6.28,
+   "prob": 0.58
+  },
+  {
+   "text": "tocmai",
+   "start": 6.28,
+   "end": 6.68,
+   "prob": 0.821
+  },
+  {
+   "text": "ce",
+   "start": 6.68,
+   "end": 6.76,
+   "prob": 0.859
+  },
+  {
+   "text": "a",
+   "start": 6.76,
+   "end": 6.84,
+   "prob": 0.401
+  },
+  {
+   "text": "lansat",
+   "start": 6.84,
+   "end": 7.16,
+   "prob": 1.0
+  },
+  {
+   "text": "Claude",
+   "start": 7.16,
+   "end": 7.74,
+   "prob": 0.812
+  },
+  {
+   "text": "Apps.",
+   "start": 7.74,
+   "end": 8.04,
+   "prob": 0.82
+  },
+  {
+   "text": "Înainte",
+   "start": 8.76,
+   "end": 9.22,
+   "prob": 1.0
+  },
+  {
+   "text": "de",
+   "start": 9.22,
+   "end": 9.3,
+   "prob": 1.0
+  },
+  {
+   "text": "a",
+   "start": 9.3,
+   "end": 9.38,
+   "prob": 0.999
+  },
+  {
+   "text": "-ți",
+   "start": 9.38,
+   "end": 9.42,
+   "prob": 0.977
+  },
+  {
+   "text": "spune",
+   "start": 9.42,
+   "end": 9.72,
+   "prob": 0.998
+  },
+  {
+   "text": "cum",
+   "start": 9.72,
+   "end": 9.88,
+   "prob": 1.0
+  },
+  {
+   "text": "să",
+   "start": 9.88,
+   "end": 10.0,
+   "prob": 0.999
+  },
+  {
+   "text": "faci",
+   "start": 10.0,
+   "end": 10.24,
+   "prob": 0.999
+  },
+  {
+   "text": "acest",
+   "start": 10.24,
+   "end": 10.44,
+   "prob": 1.0
+  },
+  {
+   "text": "lucru,",
+   "start": 10.44,
+   "end": 10.9,
+   "prob": 1.0
+  },
+  {
+   "text": "îți",
+   "start": 10.92,
+   "end": 11.04,
+   "prob": 1.0
+  },
+  {
+   "text": "dau",
+   "start": 11.04,
+   "end": 11.16,
+   "prob": 1.0
+  },
+  {
+   "text": "câteva",
+   "start": 11.16,
+   "end": 11.48,
+   "prob": 1.0
+  },
+  {
+   "text": "idei,",
+   "start": 11.48,
+   "end": 11.88,
+   "prob": 1.0
+  },
+  {
+   "text": "două",
+   "start": 11.88,
+   "end": 12.42,
+   "prob": 0.999
+  },
+  {
+   "text": "aplicații",
+   "start": 12.42,
+   "end": 12.92,
+   "prob": 1.0
+  },
+  {
+   "text": "foarte",
+   "start": 12.92,
+   "end": 13.08,
+   "prob": 0.989
+  },
+  {
+   "text": "simple.",
+   "start": 13.08,
+   "end": 13.56,
+   "prob": 0.998
+  },
+  {
+   "text": "Aplicația",
+   "start": 13.98,
+   "end": 14.44,
+   "prob": 0.999
+  },
+  {
+   "text": "1.",
+   "start": 14.44,
+   "end": 14.64,
+   "prob": 0.994
+  },
+  {
+   "text": "Pentru",
+   "start": 14.92,
+   "end": 15.38,
+   "prob": 1.0
+  },
+  {
+   "text": "că",
+   "start": 15.38,
+   "end": 15.44,
+   "prob": 1.0
+  },
+  {
+   "text": "o",
+   "start": 15.44,
+   "end": 15.56,
+   "prob": 0.999
+  },
+  {
+   "text": "poți",
+   "start": 15.56,
+   "end": 15.7,
+   "prob": 1.0
+  },
+  {
+   "text": "face",
+   "start": 15.7,
+   "end": 15.92,
+   "prob": 1.0
+  },
+  {
+   "text": "și",
+   "start": 15.92,
+   "end": 16.1,
+   "prob": 1.0
+  },
+  {
+   "text": "cu",
+   "start": 16.1,
+   "end": 16.24,
+   "prob": 1.0
+  },
+  {
+   "text": "un",
+   "start": 16.24,
+   "end": 16.32,
+   "prob": 1.0
+  },
+  {
+   "text": "simplu",
+   "start": 16.32,
+   "end": 16.7,
+   "prob": 1.0
+  },
+  {
+   "text": "prompt.",
+   "start": 16.7,
+   "end": 16.92,
+   "prob": 0.995
+  },
+  {
+   "text": "Crează",
+   "start": 17.5,
+   "end": 17.96,
+   "prob": 0.986
+  },
+  {
+   "text": "o",
+   "start": 17.96,
+   "end": 18.06,
+   "prob": 1.0
+  },
+  {
+   "text": "aplicație",
+   "start": 18.06,
+   "end": 18.68,
+   "prob": 1.0
+  },
+  {
+   "text": "care",
+   "start": 18.68,
+   "end": 18.86,
+   "prob": 0.984
+  },
+  {
+   "text": "să",
+   "start": 18.86,
+   "end": 19.02,
+   "prob": 0.991
+  },
+  {
+   "text": "o",
+   "start": 19.02,
+   "end": 19.14,
+   "prob": 0.999
+  },
+  {
+   "text": "am",
+   "start": 19.14,
+   "end": 19.32,
+   "prob": 0.975
+  },
+  {
+   "text": "pe",
+   "start": 19.32,
+   "end": 19.48,
+   "prob": 0.999
+  },
+  {
+   "text": "desktop",
+   "start": 19.48,
+   "end": 19.84,
+   "prob": 1.0
+  },
+  {
+   "text": "pentru",
+   "start": 19.84,
+   "end": 20.76,
+   "prob": 0.891
+  },
+  {
+   "text": "a",
+   "start": 20.76,
+   "end": 21.04,
+   "prob": 1.0
+  },
+  {
+   "text": "redimensiona",
+   "start": 21.04,
+   "end": 21.82,
+   "prob": 0.998
+  },
+  {
+   "text": "pozele",
+   "start": 21.82,
+   "end": 22.34,
+   "prob": 0.998
+  },
+  {
+   "text": "pentru",
+   "start": 22.34,
+   "end": 22.88,
+   "prob": 1.0
+  },
+  {
+   "text": "Facebook,",
+   "start": 22.88,
+   "end": 23.4,
+   "prob": 1.0
+  },
+  {
+   "text": "TikTok",
+   "start": 23.54,
+   "end": 23.76,
+   "prob": 0.998
+  },
+  {
+   "text": "și",
+   "start": 23.76,
+   "end": 24.06,
+   "prob": 1.0
+  },
+  {
+   "text": "Instagram.",
+   "start": 24.06,
+   "end": 24.42,
+   "prob": 1.0
+  },
+  {
+   "text": "Aplicația",
+   "start": 24.42,
+   "end": 25.32,
+   "prob": 0.438
+  },
+  {
+   "text": "2.",
+   "start": 25.32,
+   "end": 25.32,
+   "prob": 0.03
+  },
+  {
+   "text": "Crează",
+   "start": 25.88,
+   "end": 26.34,
+   "prob": 0.803
+  },
+  {
+   "text": "o",
+   "start": 26.34,
+   "end": 26.42,
+   "prob": 0.997
+  },
+  {
+   "text": "aplicație",
+   "start": 26.42,
+   "end": 27.06,
+   "prob": 0.999
+  },
+  {
+   "text": "care",
+   "start": 27.06,
+   "end": 27.34,
+   "prob": 0.982
+  },
+  {
+   "text": "să",
+   "start": 27.34,
+   "end": 27.5,
+   "prob": 0.982
+  },
+  {
+   "text": "mi",
+   "start": 27.5,
+   "end": 27.62,
+   "prob": 0.186
+  },
+  {
+   "text": "-aducă",
+   "start": 27.62,
+   "end": 27.86,
+   "prob": 0.921
+  },
+  {
+   "text": "aminte",
+   "start": 27.86,
+   "end": 28.28,
+   "prob": 1.0
+  },
+  {
+   "text": "în",
+   "start": 28.28,
+   "end": 28.66,
+   "prob": 0.886
+  },
+  {
+   "text": "fiecare",
+   "start": 28.66,
+   "end": 28.94,
+   "prob": 1.0
+  },
+  {
+   "text": "zi",
+   "start": 28.94,
+   "end": 29.28,
+   "prob": 1.0
+  },
+  {
+   "text": "să",
+   "start": 29.28,
+   "end": 29.42,
+   "prob": 0.987
+  },
+  {
+   "text": "postez",
+   "start": 29.42,
+   "end": 29.84,
+   "prob": 0.993
+  },
+  {
+   "text": "în",
+   "start": 29.84,
+   "end": 30.02,
+   "prob": 0.993
+  },
+  {
+   "text": "TikTok",
+   "start": 30.02,
+   "end": 30.22,
+   "prob": 0.986
+  },
+  {
+   "text": "la",
+   "start": 30.22,
+   "end": 30.5,
+   "prob": 1.0
+  },
+  {
+   "text": "ora",
+   "start": 30.5,
+   "end": 30.7,
+   "prob": 0.998
+  },
+  {
+   "text": "18",
+   "start": 30.7,
+   "end": 31.18,
+   "prob": 0.999
+  },
+  {
+   "text": "sau",
+   "start": 31.18,
+   "end": 31.84,
+   "prob": 0.797
+  },
+  {
+   "text": "când",
+   "start": 31.84,
+   "end": 32.32,
+   "prob": 1.0
+  },
+  {
+   "text": "vrei",
+   "start": 32.32,
+   "end": 32.56,
+   "prob": 1.0
+  },
+  {
+   "text": "tu.",
+   "start": 32.56,
+   "end": 32.74,
+   "prob": 1.0
+  },
+  {
+   "text": "Această",
+   "start": 33.18,
+   "end": 33.64,
+   "prob": 0.976
+  },
+  {
+   "text": "aplicație",
+   "start": 33.64,
+   "end": 34.08,
+   "prob": 1.0
+  },
+  {
+   "text": "îți",
+   "start": 34.08,
+   "end": 34.18,
+   "prob": 0.997
+  },
+  {
+   "text": "va",
+   "start": 34.18,
+   "end": 34.26,
+   "prob": 1.0
+  },
+  {
+   "text": "trimite",
+   "start": 34.26,
+   "end": 34.52,
+   "prob": 0.998
+  },
+  {
+   "text": "notificare",
+   "start": 34.52,
+   "end": 35.24,
+   "prob": 1.0
+  },
+  {
+   "text": "și",
+   "start": 35.24,
+   "end": 35.42,
+   "prob": 1.0
+  },
+  {
+   "text": "nu",
+   "start": 35.42,
+   "end": 35.54,
+   "prob": 1.0
+  },
+  {
+   "text": "numai.",
+   "start": 35.54,
+   "end": 35.84,
+   "prob": 1.0
+  },
+  {
+   "text": "Bineînțeles",
+   "start": 35.88,
+   "end": 36.26,
+   "prob": 1.0
+  },
+  {
+   "text": "că",
+   "start": 36.26,
+   "end": 36.48,
+   "prob": 1.0
+  },
+  {
+   "text": "poți",
+   "start": 36.48,
+   "end": 36.74,
+   "prob": 0.999
+  },
+  {
+   "text": "să",
+   "start": 36.74,
+   "end": 36.88,
+   "prob": 0.999
+  },
+  {
+   "text": "o",
+   "start": 36.88,
+   "end": 36.94,
+   "prob": 0.992
+  },
+  {
+   "text": "share",
+   "start": 36.94,
+   "end": 37.66,
+   "prob": 0.814
+  },
+  {
+   "text": "-uiești,",
+   "start": 37.66,
+   "end": 38.02,
+   "prob": 0.866
+  },
+  {
+   "text": "să",
+   "start": 38.1,
+   "end": 38.12,
+   "prob": 0.998
+  },
+  {
+   "text": "o",
+   "start": 38.12,
+   "end": 38.18,
+   "prob": 0.979
+  },
+  {
+   "text": "împărtășești",
+   "start": 38.18,
+   "end": 38.74,
+   "prob": 0.998
+  },
+  {
+   "text": "cu",
+   "start": 38.74,
+   "end": 38.88,
+   "prob": 1.0
+  },
+  {
+   "text": "cine",
+   "start": 38.88,
+   "end": 39.1,
+   "prob": 1.0
+  },
+  {
+   "text": "vrei",
+   "start": 39.1,
+   "end": 39.32,
+   "prob": 1.0
+  },
+  {
+   "text": "tu,",
+   "start": 39.32,
+   "end": 39.46,
+   "prob": 1.0
+  },
+  {
+   "text": "poate",
+   "start": 39.5,
+   "end": 39.8,
+   "prob": 1.0
+  },
+  {
+   "text": "și",
+   "start": 39.8,
+   "end": 39.92,
+   "prob": 1.0
+  },
+  {
+   "text": "cu",
+   "start": 39.92,
+   "end": 40.06,
+   "prob": 1.0
+  },
+  {
+   "text": "membrii",
+   "start": 40.06,
+   "end": 40.56,
+   "prob": 0.994
+  },
+  {
+   "text": "team",
+   "start": 40.56,
+   "end": 40.94,
+   "prob": 0.73
+  },
+  {
+   "text": "-ului",
+   "start": 40.94,
+   "end": 41.16,
+   "prob": 0.972
+  },
+  {
+   "text": "tău.",
+   "start": 41.16,
+   "end": 41.36,
+   "prob": 1.0
+  },
+  {
+   "text": "Aș",
+   "start": 41.44,
+   "end": 41.56,
+   "prob": 0.552
+  },
+  {
+   "text": "lucrul",
+   "start": 41.56,
+   "end": 41.88,
+   "prob": 0.794
+  },
+  {
+   "text": "ăsta.",
+   "start": 41.88,
+   "end": 42.16,
+   "prob": 0.999
+  },
+  {
+   "text": "Întâi",
+   "start": 42.26,
+   "end": 42.64,
+   "prob": 0.994
+  },
+  {
+   "text": "și",
+   "start": 42.64,
+   "end": 42.74,
+   "prob": 0.98
+  },
+  {
+   "text": "întâi",
+   "start": 42.74,
+   "end": 43.02,
+   "prob": 0.988
+  },
+  {
+   "text": "creezi",
+   "start": 43.02,
+   "end": 43.64,
+   "prob": 0.979
+  },
+  {
+   "text": "promptul,",
+   "start": 43.64,
+   "end": 44.16,
+   "prob": 0.966
+  },
+  {
+   "text": "îi",
+   "start": 44.2,
+   "end": 44.3,
+   "prob": 0.998
+  },
+  {
+   "text": "trimiți",
+   "start": 44.3,
+   "end": 44.68,
+   "prob": 0.997
+  },
+  {
+   "text": "acest",
+   "start": 44.68,
+   "end": 45.06,
+   "prob": 0.874
+  },
+  {
+   "text": "prompt,",
+   "start": 45.06,
+   "end": 45.26,
+   "prob": 1.0
+  },
+  {
+   "text": "această",
+   "start": 45.4,
+   "end": 45.76,
+   "prob": 1.0
+  },
+  {
+   "text": "comandă,",
+   "start": 45.76,
+   "end": 46.26,
+   "prob": 1.0
+  },
+  {
+   "text": "după",
+   "start": 46.3,
+   "end": 46.48,
+   "prob": 1.0
+  },
+  {
+   "text": "care",
+   "start": 46.48,
+   "end": 46.74,
+   "prob": 1.0
+  },
+  {
+   "text": "când",
+   "start": 46.74,
+   "end": 47.06,
+   "prob": 0.856
+  },
+  {
+   "text": "a",
+   "start": 47.06,
+   "end": 47.12,
+   "prob": 1.0
+  },
+  {
+   "text": "terminat,",
+   "start": 47.12,
+   "end": 47.64,
+   "prob": 1.0
+  },
+  {
+   "text": "este",
+   "start": 47.64,
+   "end": 48.04,
+   "prob": 0.969
+  },
+  {
+   "text": "de",
+   "start": 48.04,
+   "end": 48.26,
+   "prob": 0.382
+  },
+  {
+   "text": "ajuns,",
+   "start": 48.26,
+   "end": 48.62,
+   "prob": 0.997
+  },
+  {
+   "text": "el",
+   "start": 48.62,
+   "end": 48.78,
+   "prob": 0.995
+  },
+  {
+   "text": "lucrează",
+   "start": 48.78,
+   "end": 49.92,
+   "prob": 0.999
+  },
+  {
+   "text": "în",
+   "start": 49.92,
+   "end": 50.02,
+   "prob": 1.0
+  },
+  {
+   "text": "artefact.",
+   "start": 50.02,
+   "end": 50.52,
+   "prob": 0.976
+  },
+  {
+   "text": "Când",
+   "start": 50.52,
+   "end": 51.22,
+   "prob": 0.577
+  },
+  {
+   "text": "a",
+   "start": 51.22,
+   "end": 51.32,
+   "prob": 0.889
+  },
+  {
+   "text": "terminat,",
+   "start": 51.32,
+   "end": 51.76,
+   "prob": 0.997
+  },
+  {
+   "text": "faci",
+   "start": 51.76,
+   "end": 52.02,
+   "prob": 0.997
+  },
+  {
+   "text": "click",
+   "start": 52.02,
+   "end": 52.14,
+   "prob": 0.872
+  },
+  {
+   "text": "pe",
+   "start": 52.14,
+   "end": 52.26,
+   "prob": 0.991
+  },
+  {
+   "text": "cele",
+   "start": 52.26,
+   "end": 52.42,
+   "prob": 0.987
+  },
+  {
+   "text": "trei",
+   "start": 52.42,
+   "end": 52.66,
+   "prob": 0.842
+  },
+  {
+   "text": "butoane",
+   "start": 52.66,
+   "end": 53.12,
+   "prob": 0.998
+  },
+  {
+   "text": "și",
+   "start": 53.12,
+   "end": 53.84,
+   "prob": 0.937
+  },
+  {
+   "text": "apeși",
+   "start": 53.84,
+   "end": 54.54,
+   "prob": 0.987
+  },
+  {
+   "text": "pe",
+   "start": 54.54,
+   "end": 54.58,
+   "prob": 0.981
+  },
+  {
+   "text": "Install",
+   "start": 54.58,
+   "end": 55.12,
+   "prob": 0.39
+  },
+  {
+   "text": "App.",
+   "start": 55.12,
+   "end": 55.54,
+   "prob": 0.739
+  },
+  {
+   "text": "Crează",
+   "start": 56.0,
+   "end": 56.44,
+   "prob": 0.857
+  },
+  {
+   "text": "app,",
+   "start": 56.44,
+   "end": 56.58,
+   "prob": 0.705
+  },
+  {
+   "text": "install",
+   "start": 56.78,
+   "end": 57.14,
+   "prob": 0.277
+  },
+  {
+   "text": "app.",
+   "start": 57.14,
+   "end": 57.4,
+   "prob": 0.177
+  },
+  {
+   "text": "Este",
+   "start": 57.68,
+   "end": 57.92,
+   "prob": 0.995
+  },
+  {
+   "text": "foarte,",
+   "start": 57.92,
+   "end": 58.22,
+   "prob": 0.999
+  },
+  {
+   "text": "foarte",
+   "start": 58.28,
+   "end": 58.48,
+   "prob": 1.0
+  },
+  {
+   "text": "simplu",
+   "start": 58.48,
+   "end": 59.12,
+   "prob": 1.0
+  },
+  {
+   "text": "și,",
+   "start": 59.12,
+   "end": 59.24,
+   "prob": 0.502
+  },
+  {
+   "text": "la",
+   "start": 59.32,
+   "end": 59.36,
+   "prob": 0.908
+  },
+  {
+   "text": "adevăr,",
+   "start": 59.36,
+   "end": 59.56,
+   "prob": 0.988
+  },
+  {
+   "text": "și",
+   "start": 59.56,
+   "end": 59.66,
+   "prob": 0.546
+  },
+  {
+   "text": "pentru",
+   "start": 59.66,
+   "end": 59.84,
+   "prob": 0.999
+  },
+  {
+   "text": "un",
+   "start": 59.84,
+   "end": 59.96,
+   "prob": 0.989
+  },
+  {
+   "text": "copil",
+   "start": 59.96,
+   "end": 60.28,
+   "prob": 1.0
+  },
+  {
+   "text": "de",
+   "start": 60.28,
+   "end": 60.38,
+   "prob": 1.0
+  },
+  {
+   "text": "5",
+   "start": 60.38,
+   "end": 60.76,
+   "prob": 0.743
+  },
+  {
+   "text": "ani.",
+   "start": 60.76,
+   "end": 61.02,
+   "prob": 0.999
+  },
+  {
+   "text": "Vreau",
+   "start": 61.22,
+   "end": 61.52,
+   "prob": 0.878
+  },
+  {
+   "text": "să",
+   "start": 61.52,
+   "end": 61.6,
+   "prob": 0.999
+  },
+  {
+   "text": "te",
+   "start": 61.6,
+   "end": 61.66,
+   "prob": 0.729
+  },
+  {
+   "text": "întorci",
+   "start": 61.66,
+   "end": 61.88,
+   "prob": 0.836
+  },
+  {
+   "text": "în",
+   "start": 61.88,
+   "end": 62.0,
+   "prob": 0.988
+  },
+  {
+   "text": "comentarii",
+   "start": 62.0,
+   "end": 62.48,
+   "prob": 0.999
+  },
+  {
+   "text": "să",
+   "start": 62.48,
+   "end": 62.6,
+   "prob": 0.97
+  },
+  {
+   "text": "îmi",
+   "start": 62.6,
+   "end": 62.78,
+   "prob": 0.886
+  },
+  {
+   "text": "spui",
+   "start": 62.78,
+   "end": 63.08,
+   "prob": 1.0
+  },
+  {
+   "text": "ce",
+   "start": 63.08,
+   "end": 63.16,
+   "prob": 1.0
+  },
+  {
+   "text": "ai",
+   "start": 63.16,
+   "end": 63.28,
+   "prob": 0.999
+  },
+  {
+   "text": "realizat",
+   "start": 63.28,
+   "end": 63.86,
+   "prob": 1.0
+  },
+  {
+   "text": "și",
+   "start": 63.86,
+   "end": 64.06,
+   "prob": 0.997
+  },
+  {
+   "text": "ce",
+   "start": 64.06,
+   "end": 64.22,
+   "prob": 1.0
+  },
+  {
+   "text": "idei",
+   "start": 64.22,
+   "end": 64.54,
+   "prob": 0.983
+  },
+  {
+   "text": "de",
+   "start": 64.54,
+   "end": 64.6,
+   "prob": 1.0
+  },
+  {
+   "text": "aplicație",
+   "start": 64.6,
+   "end": 65.1,
+   "prob": 0.996
+  },
+  {
+   "text": "ai",
+   "start": 65.1,
+   "end": 65.2,
+   "prob": 0.988
+  },
+  {
+   "text": "tu.",
+   "start": 65.2,
+   "end": 65.34,
+   "prob": 1.0
+  },
+  {
+   "text": "Nu",
+   "start": 67.74,
+   "end": 68.18,
+   "prob": 0.995
+  },
+  {
+   "text": "uita,",
+   "start": 68.18,
+   "end": 68.5,
+   "prob": 0.999
+  },
+  {
+   "text": "fii",
+   "start": 68.58,
+   "end": 68.96,
+   "prob": 0.878
+  },
+  {
+   "text": "digital,",
+   "start": 68.96,
+   "end": 69.3,
+   "prob": 0.997
+  },
+  {
+   "text": "fii",
+   "start": 69.5,
+   "end": 69.96,
+   "prob": 0.996
+  },
+  {
+   "text": "geo,",
+   "start": 69.96,
+   "end": 70.14,
+   "prob": 0.923
+  },
+  {
+   "text": "fii",
+   "start": 70.32,
+   "end": 70.6,
+   "prob": 0.992
+  },
+  {
+   "text": "deșteaptăte",
+   "start": 70.6,
+   "end": 71.38,
+   "prob": 0.894
+  },
+  {
+   "text": "române!",
+   "start": 71.38,
+   "end": 72.32,
+   "prob": 0.954
+  }
+ ]
+}

@@ -1,0 +1,1686 @@
+{
+ "language": "ro",
+ "model": "whisper large-v3 (faster-whisper, int8)",
+ "words": [
+  {
+   "text": "Bună!",
+   "start": 0.0,
+   "end": 0.64,
+   "outStart": 0.0,
+   "outEnd": 0.34,
+   "keyword": false
+  },
+  {
+   "text": "Vestea",
+   "start": 0.64,
+   "end": 1.08,
+   "outStart": 0.34,
+   "outEnd": 0.78,
+   "keyword": false
+  },
+  {
+   "text": "zilei",
+   "start": 1.08,
+   "end": 1.34,
+   "outStart": 0.78,
+   "outEnd": 1.04,
+   "keyword": false
+  },
+  {
+   "text": "de",
+   "start": 1.34,
+   "end": 1.36,
+   "outStart": 1.04,
+   "outEnd": 1.06,
+   "keyword": false
+  },
+  {
+   "text": "inteligență",
+   "start": 1.36,
+   "end": 1.96,
+   "outStart": 1.06,
+   "outEnd": 1.66,
+   "keyword": true
+  },
+  {
+   "text": "artificială.",
+   "start": 1.96,
+   "end": 2.66,
+   "outStart": 1.66,
+   "outEnd": 2.36,
+   "keyword": true
+  },
+  {
+   "text": "O",
+   "start": 2.7,
+   "end": 2.9,
+   "outStart": 2.4,
+   "outEnd": 2.6,
+   "keyword": false
+  },
+  {
+   "text": "veste",
+   "start": 2.9,
+   "end": 3.12,
+   "outStart": 2.6,
+   "outEnd": 2.82,
+   "keyword": false
+  },
+  {
+   "text": "extraordinară",
+   "start": 3.12,
+   "end": 3.74,
+   "outStart": 2.82,
+   "outEnd": 3.44,
+   "keyword": true
+  },
+  {
+   "text": "dat",
+   "start": 3.74,
+   "end": 3.86,
+   "outStart": 3.44,
+   "outEnd": 3.56,
+   "keyword": false
+  },
+  {
+   "text": "fiind",
+   "start": 3.86,
+   "end": 4.088,
+   "outStart": 3.56,
+   "outEnd": 3.788,
+   "keyword": false
+  },
+  {
+   "text": "că",
+   "start": 4.088,
+   "end": 4.24,
+   "outStart": 3.788,
+   "outEnd": 3.94,
+   "keyword": false
+  },
+  {
+   "text": "o",
+   "start": 4.24,
+   "end": 4.32,
+   "outStart": 3.94,
+   "outEnd": 4.02,
+   "keyword": false
+  },
+  {
+   "text": "poți",
+   "start": 4.32,
+   "end": 4.48,
+   "outStart": 4.02,
+   "outEnd": 4.18,
+   "keyword": false
+  },
+  {
+   "text": "folosi",
+   "start": 4.48,
+   "end": 4.76,
+   "outStart": 4.18,
+   "outEnd": 4.46,
+   "keyword": false
+  },
+  {
+   "text": "și",
+   "start": 4.76,
+   "end": 4.88,
+   "outStart": 4.46,
+   "outEnd": 4.58,
+   "keyword": false
+  },
+  {
+   "text": "cu",
+   "start": 4.88,
+   "end": 5.06,
+   "outStart": 4.58,
+   "outEnd": 4.76,
+   "keyword": false
+  },
+  {
+   "text": "planul",
+   "start": 5.06,
+   "end": 5.36,
+   "outStart": 4.76,
+   "outEnd": 5.06,
+   "keyword": false
+  },
+  {
+   "text": "gratuit.",
+   "start": 5.36,
+   "end": 5.66,
+   "outStart": 5.06,
+   "outEnd": 5.36,
+   "keyword": true
+  },
+  {
+   "text": "Claude",
+   "start": 5.96,
+   "end": 6.28,
+   "outStart": 5.66,
+   "outEnd": 5.98,
+   "keyword": false
+  },
+  {
+   "text": "tocmai",
+   "start": 6.28,
+   "end": 6.68,
+   "outStart": 5.98,
+   "outEnd": 6.38,
+   "keyword": false
+  },
+  {
+   "text": "ce",
+   "start": 6.68,
+   "end": 6.76,
+   "outStart": 6.38,
+   "outEnd": 6.46,
+   "keyword": false
+  },
+  {
+   "text": "a",
+   "start": 6.76,
+   "end": 6.84,
+   "outStart": 6.46,
+   "outEnd": 6.54,
+   "keyword": false
+  },
+  {
+   "text": "lansat",
+   "start": 6.84,
+   "end": 7.16,
+   "outStart": 6.54,
+   "outEnd": 6.86,
+   "keyword": false
+  },
+  {
+   "text": "Claude",
+   "start": 7.16,
+   "end": 7.74,
+   "outStart": 6.86,
+   "outEnd": 7.207,
+   "keyword": false
+  },
+  {
+   "text": "Apps.",
+   "start": 7.74,
+   "end": 8.04,
+   "outStart": 7.207,
+   "outEnd": 7.507,
+   "keyword": true
+  },
+  {
+   "text": "Înainte",
+   "start": 8.76,
+   "end": 9.22,
+   "outStart": 7.567,
+   "outEnd": 7.987,
+   "keyword": false
+  },
+  {
+   "text": "de",
+   "start": 9.22,
+   "end": 9.3,
+   "outStart": 7.987,
+   "outEnd": 8.067,
+   "keyword": false
+  },
+  {
+   "text": "a-ți",
+   "start": 9.3,
+   "end": 9.42,
+   "outStart": 8.067,
+   "outEnd": 8.187,
+   "keyword": false
+  },
+  {
+   "text": "spune",
+   "start": 9.42,
+   "end": 9.72,
+   "outStart": 8.187,
+   "outEnd": 8.487,
+   "keyword": false
+  },
+  {
+   "text": "cum",
+   "start": 9.72,
+   "end": 9.88,
+   "outStart": 8.487,
+   "outEnd": 8.647,
+   "keyword": false
+  },
+  {
+   "text": "să",
+   "start": 9.88,
+   "end": 10.0,
+   "outStart": 8.647,
+   "outEnd": 8.767,
+   "keyword": false
+  },
+  {
+   "text": "faci",
+   "start": 10.0,
+   "end": 10.24,
+   "outStart": 8.767,
+   "outEnd": 9.007,
+   "keyword": false
+  },
+  {
+   "text": "acest",
+   "start": 10.24,
+   "end": 10.44,
+   "outStart": 9.007,
+   "outEnd": 9.207,
+   "keyword": false
+  },
+  {
+   "text": "lucru,",
+   "start": 10.44,
+   "end": 10.9,
+   "outStart": 9.207,
+   "outEnd": 9.667,
+   "keyword": false
+  },
+  {
+   "text": "îți",
+   "start": 10.92,
+   "end": 11.04,
+   "outStart": 9.687,
+   "outEnd": 9.807,
+   "keyword": false
+  },
+  {
+   "text": "dau",
+   "start": 11.04,
+   "end": 11.16,
+   "outStart": 9.807,
+   "outEnd": 9.927,
+   "keyword": false
+  },
+  {
+   "text": "câteva",
+   "start": 11.16,
+   "end": 11.48,
+   "outStart": 9.927,
+   "outEnd": 10.247,
+   "keyword": false
+  },
+  {
+   "text": "idei,",
+   "start": 11.48,
+   "end": 11.88,
+   "outStart": 10.247,
+   "outEnd": 10.647,
+   "keyword": false
+  },
+  {
+   "text": "două",
+   "start": 11.88,
+   "end": 12.42,
+   "outStart": 10.647,
+   "outEnd": 11.187,
+   "keyword": false
+  },
+  {
+   "text": "aplicații",
+   "start": 12.42,
+   "end": 12.92,
+   "outStart": 11.187,
+   "outEnd": 11.687,
+   "keyword": false
+  },
+  {
+   "text": "foarte",
+   "start": 12.92,
+   "end": 13.08,
+   "outStart": 11.687,
+   "outEnd": 11.847,
+   "keyword": false
+  },
+  {
+   "text": "simple.",
+   "start": 13.08,
+   "end": 13.56,
+   "outStart": 11.847,
+   "outEnd": 12.327,
+   "keyword": true
+  },
+  {
+   "text": "Aplicația",
+   "start": 13.98,
+   "end": 14.44,
+   "outStart": 12.48,
+   "outEnd": 12.94,
+   "keyword": false
+  },
+  {
+   "text": "1.",
+   "start": 14.44,
+   "end": 14.64,
+   "outStart": 12.94,
+   "outEnd": 13.14,
+   "keyword": false
+  },
+  {
+   "text": "Pentru",
+   "start": 14.92,
+   "end": 15.38,
+   "outStart": 13.367,
+   "outEnd": 13.58,
+   "keyword": false
+  },
+  {
+   "text": "că",
+   "start": 15.38,
+   "end": 15.44,
+   "outStart": 13.58,
+   "outEnd": 13.64,
+   "keyword": false
+  },
+  {
+   "text": "o",
+   "start": 15.44,
+   "end": 15.56,
+   "outStart": 13.64,
+   "outEnd": 13.76,
+   "keyword": false
+  },
+  {
+   "text": "poți",
+   "start": 15.56,
+   "end": 15.7,
+   "outStart": 13.76,
+   "outEnd": 13.9,
+   "keyword": false
+  },
+  {
+   "text": "face",
+   "start": 15.7,
+   "end": 15.92,
+   "outStart": 13.9,
+   "outEnd": 14.12,
+   "keyword": false
+  },
+  {
+   "text": "și",
+   "start": 15.92,
+   "end": 16.1,
+   "outStart": 14.12,
+   "outEnd": 14.3,
+   "keyword": false
+  },
+  {
+   "text": "cu",
+   "start": 16.1,
+   "end": 16.24,
+   "outStart": 14.3,
+   "outEnd": 14.44,
+   "keyword": false
+  },
+  {
+   "text": "un",
+   "start": 16.24,
+   "end": 16.32,
+   "outStart": 14.44,
+   "outEnd": 14.52,
+   "keyword": false
+  },
+  {
+   "text": "simplu",
+   "start": 16.32,
+   "end": 16.7,
+   "outStart": 14.52,
+   "outEnd": 14.9,
+   "keyword": true
+  },
+  {
+   "text": "prompt.",
+   "start": 16.7,
+   "end": 16.92,
+   "outStart": 14.9,
+   "outEnd": 15.12,
+   "keyword": true
+  },
+  {
+   "text": "Creează",
+   "start": 17.5,
+   "end": 17.96,
+   "outStart": 15.267,
+   "outEnd": 15.727,
+   "keyword": false
+  },
+  {
+   "text": "o",
+   "start": 17.96,
+   "end": 18.06,
+   "outStart": 15.727,
+   "outEnd": 15.827,
+   "keyword": false
+  },
+  {
+   "text": "aplicație",
+   "start": 18.06,
+   "end": 18.68,
+   "outStart": 15.827,
+   "outEnd": 16.447,
+   "keyword": false
+  },
+  {
+   "text": "care",
+   "start": 18.68,
+   "end": 18.86,
+   "outStart": 16.447,
+   "outEnd": 16.627,
+   "keyword": false
+  },
+  {
+   "text": "să",
+   "start": 18.86,
+   "end": 19.02,
+   "outStart": 16.627,
+   "outEnd": 16.787,
+   "keyword": false
+  },
+  {
+   "text": "o",
+   "start": 19.02,
+   "end": 19.14,
+   "outStart": 16.787,
+   "outEnd": 16.907,
+   "keyword": false
+  },
+  {
+   "text": "am",
+   "start": 19.14,
+   "end": 19.32,
+   "outStart": 16.907,
+   "outEnd": 17.087,
+   "keyword": false
+  },
+  {
+   "text": "pe",
+   "start": 19.32,
+   "end": 19.48,
+   "outStart": 17.087,
+   "outEnd": 17.247,
+   "keyword": false
+  },
+  {
+   "text": "desktop",
+   "start": 19.48,
+   "end": 19.84,
+   "outStart": 17.247,
+   "outEnd": 17.607,
+   "keyword": true
+  },
+  {
+   "text": "pentru",
+   "start": 19.84,
+   "end": 20.76,
+   "outStart": 17.607,
+   "outEnd": 18.227,
+   "keyword": false
+  },
+  {
+   "text": "a",
+   "start": 20.76,
+   "end": 21.04,
+   "outStart": 18.227,
+   "outEnd": 18.507,
+   "keyword": false
+  },
+  {
+   "text": "redimensiona",
+   "start": 21.04,
+   "end": 21.82,
+   "outStart": 18.507,
+   "outEnd": 19.287,
+   "keyword": true
+  },
+  {
+   "text": "pozele",
+   "start": 21.82,
+   "end": 22.34,
+   "outStart": 19.287,
+   "outEnd": 19.807,
+   "keyword": false
+  },
+  {
+   "text": "pentru",
+   "start": 22.34,
+   "end": 22.88,
+   "outStart": 19.807,
+   "outEnd": 20.347,
+   "keyword": false
+  },
+  {
+   "text": "Facebook,",
+   "start": 22.88,
+   "end": 23.4,
+   "outStart": 20.347,
+   "outEnd": 20.867,
+   "keyword": true
+  },
+  {
+   "text": "TikTok",
+   "start": 23.54,
+   "end": 23.76,
+   "outStart": 21.007,
+   "outEnd": 21.227,
+   "keyword": true
+  },
+  {
+   "text": "și",
+   "start": 23.76,
+   "end": 24.06,
+   "outStart": 21.227,
+   "outEnd": 21.527,
+   "keyword": false
+  },
+  {
+   "text": "Instagram.",
+   "start": 24.06,
+   "end": 24.42,
+   "outStart": 21.527,
+   "outEnd": 21.887,
+   "keyword": true
+  },
+  {
+   "text": "Aplicația",
+   "start": 24.42,
+   "end": 25.1,
+   "outStart": 21.887,
+   "outEnd": 22.567,
+   "keyword": false
+  },
+  {
+   "text": "2.",
+   "start": 25.1,
+   "end": 25.62,
+   "outStart": 22.567,
+   "outEnd": 23.087,
+   "keyword": false
+  },
+  {
+   "text": "Creează",
+   "start": 25.88,
+   "end": 26.34,
+   "outStart": 23.2,
+   "outEnd": 23.573,
+   "keyword": false
+  },
+  {
+   "text": "o",
+   "start": 26.34,
+   "end": 26.42,
+   "outStart": 23.573,
+   "outEnd": 23.653,
+   "keyword": false
+  },
+  {
+   "text": "aplicație",
+   "start": 26.42,
+   "end": 27.06,
+   "outStart": 23.653,
+   "outEnd": 24.293,
+   "keyword": false
+  },
+  {
+   "text": "care",
+   "start": 27.06,
+   "end": 27.34,
+   "outStart": 24.293,
+   "outEnd": 24.573,
+   "keyword": false
+  },
+  {
+   "text": "să",
+   "start": 27.34,
+   "end": 27.5,
+   "outStart": 24.573,
+   "outEnd": 24.733,
+   "keyword": false
+  },
+  {
+   "text": "îmi",
+   "start": 27.5,
+   "end": 27.62,
+   "outStart": 24.733,
+   "outEnd": 24.853,
+   "keyword": false
+  },
+  {
+   "text": "aducă",
+   "start": 27.62,
+   "end": 27.86,
+   "outStart": 24.853,
+   "outEnd": 25.093,
+   "keyword": false
+  },
+  {
+   "text": "aminte",
+   "start": 27.86,
+   "end": 28.28,
+   "outStart": 25.093,
+   "outEnd": 25.513,
+   "keyword": true
+  },
+  {
+   "text": "în",
+   "start": 28.28,
+   "end": 28.66,
+   "outStart": 25.513,
+   "outEnd": 25.893,
+   "keyword": false
+  },
+  {
+   "text": "fiecare",
+   "start": 28.66,
+   "end": 28.94,
+   "outStart": 25.893,
+   "outEnd": 26.173,
+   "keyword": false
+  },
+  {
+   "text": "zi",
+   "start": 28.94,
+   "end": 29.28,
+   "outStart": 26.173,
+   "outEnd": 26.513,
+   "keyword": false
+  },
+  {
+   "text": "să",
+   "start": 29.28,
+   "end": 29.42,
+   "outStart": 26.513,
+   "outEnd": 26.653,
+   "keyword": false
+  },
+  {
+   "text": "postez",
+   "start": 29.42,
+   "end": 29.84,
+   "outStart": 26.653,
+   "outEnd": 27.073,
+   "keyword": false
+  },
+  {
+   "text": "în",
+   "start": 29.84,
+   "end": 30.02,
+   "outStart": 27.073,
+   "outEnd": 27.253,
+   "keyword": false
+  },
+  {
+   "text": "TikTok",
+   "start": 30.02,
+   "end": 30.22,
+   "outStart": 27.253,
+   "outEnd": 27.453,
+   "keyword": true
+  },
+  {
+   "text": "la",
+   "start": 30.22,
+   "end": 30.5,
+   "outStart": 27.453,
+   "outEnd": 27.733,
+   "keyword": false
+  },
+  {
+   "text": "ora",
+   "start": 30.5,
+   "end": 30.7,
+   "outStart": 27.733,
+   "outEnd": 27.933,
+   "keyword": false
+  },
+  {
+   "text": "18",
+   "start": 30.7,
+   "end": 31.18,
+   "outStart": 27.933,
+   "outEnd": 28.413,
+   "keyword": true
+  },
+  {
+   "text": "sau",
+   "start": 31.18,
+   "end": 31.84,
+   "outStart": 28.413,
+   "outEnd": 29.073,
+   "keyword": false
+  },
+  {
+   "text": "când",
+   "start": 31.84,
+   "end": 32.32,
+   "outStart": 29.073,
+   "outEnd": 29.553,
+   "keyword": false
+  },
+  {
+   "text": "vrei",
+   "start": 32.32,
+   "end": 32.56,
+   "outStart": 29.553,
+   "outEnd": 29.793,
+   "keyword": false
+  },
+  {
+   "text": "tu.",
+   "start": 32.56,
+   "end": 32.74,
+   "outStart": 29.793,
+   "outEnd": 29.973,
+   "keyword": false
+  },
+  {
+   "text": "Această",
+   "start": 33.18,
+   "end": 33.64,
+   "outStart": 30.033,
+   "outEnd": 30.34,
+   "keyword": false
+  },
+  {
+   "text": "aplicație",
+   "start": 33.64,
+   "end": 34.08,
+   "outStart": 30.34,
+   "outEnd": 30.78,
+   "keyword": false
+  },
+  {
+   "text": "îți",
+   "start": 34.08,
+   "end": 34.18,
+   "outStart": 30.78,
+   "outEnd": 30.88,
+   "keyword": false
+  },
+  {
+   "text": "va",
+   "start": 34.18,
+   "end": 34.26,
+   "outStart": 30.88,
+   "outEnd": 30.96,
+   "keyword": false
+  },
+  {
+   "text": "trimite",
+   "start": 34.26,
+   "end": 34.52,
+   "outStart": 30.96,
+   "outEnd": 31.22,
+   "keyword": false
+  },
+  {
+   "text": "notificare",
+   "start": 34.52,
+   "end": 35.24,
+   "outStart": 31.22,
+   "outEnd": 31.94,
+   "keyword": true
+  },
+  {
+   "text": "și",
+   "start": 35.24,
+   "end": 35.42,
+   "outStart": 31.94,
+   "outEnd": 32.12,
+   "keyword": false
+  },
+  {
+   "text": "nu",
+   "start": 35.42,
+   "end": 35.54,
+   "outStart": 32.12,
+   "outEnd": 32.24,
+   "keyword": false
+  },
+  {
+   "text": "numai.",
+   "start": 35.54,
+   "end": 35.84,
+   "outStart": 32.24,
+   "outEnd": 32.54,
+   "keyword": false
+  },
+  {
+   "text": "Bineînțeles",
+   "start": 35.88,
+   "end": 36.26,
+   "outStart": 32.58,
+   "outEnd": 32.96,
+   "keyword": false
+  },
+  {
+   "text": "că",
+   "start": 36.26,
+   "end": 36.48,
+   "outStart": 32.96,
+   "outEnd": 33.18,
+   "keyword": false
+  },
+  {
+   "text": "poți",
+   "start": 36.48,
+   "end": 36.74,
+   "outStart": 33.18,
+   "outEnd": 33.44,
+   "keyword": false
+  },
+  {
+   "text": "să",
+   "start": 36.74,
+   "end": 36.88,
+   "outStart": 33.44,
+   "outEnd": 33.58,
+   "keyword": false
+  },
+  {
+   "text": "o",
+   "start": 36.88,
+   "end": 36.94,
+   "outStart": 33.58,
+   "outEnd": 33.64,
+   "keyword": false
+  },
+  {
+   "text": "share-uiești,",
+   "start": 36.94,
+   "end": 38.02,
+   "outStart": 33.64,
+   "outEnd": 34.72,
+   "keyword": true
+  },
+  {
+   "text": "să",
+   "start": 38.1,
+   "end": 38.12,
+   "outStart": 34.8,
+   "outEnd": 34.82,
+   "keyword": false
+  },
+  {
+   "text": "o",
+   "start": 38.12,
+   "end": 38.18,
+   "outStart": 34.82,
+   "outEnd": 34.88,
+   "keyword": false
+  },
+  {
+   "text": "împărtășești",
+   "start": 38.18,
+   "end": 38.74,
+   "outStart": 34.88,
+   "outEnd": 35.44,
+   "keyword": true
+  },
+  {
+   "text": "cu",
+   "start": 38.74,
+   "end": 38.88,
+   "outStart": 35.44,
+   "outEnd": 35.58,
+   "keyword": false
+  },
+  {
+   "text": "cine",
+   "start": 38.88,
+   "end": 39.1,
+   "outStart": 35.58,
+   "outEnd": 35.8,
+   "keyword": false
+  },
+  {
+   "text": "vrei",
+   "start": 39.1,
+   "end": 39.32,
+   "outStart": 35.8,
+   "outEnd": 36.02,
+   "keyword": false
+  },
+  {
+   "text": "tu,",
+   "start": 39.32,
+   "end": 39.46,
+   "outStart": 36.02,
+   "outEnd": 36.16,
+   "keyword": false
+  },
+  {
+   "text": "poate",
+   "start": 39.5,
+   "end": 39.8,
+   "outStart": 36.2,
+   "outEnd": 36.5,
+   "keyword": false
+  },
+  {
+   "text": "și",
+   "start": 39.8,
+   "end": 39.92,
+   "outStart": 36.5,
+   "outEnd": 36.62,
+   "keyword": false
+  },
+  {
+   "text": "cu",
+   "start": 39.92,
+   "end": 40.06,
+   "outStart": 36.62,
+   "outEnd": 36.76,
+   "keyword": false
+  },
+  {
+   "text": "membrii",
+   "start": 40.06,
+   "end": 40.56,
+   "outStart": 36.76,
+   "outEnd": 37.26,
+   "keyword": false
+  },
+  {
+   "text": "team-ului",
+   "start": 40.56,
+   "end": 41.16,
+   "outStart": 37.26,
+   "outEnd": 37.66,
+   "keyword": true
+  },
+  {
+   "text": "tău.",
+   "start": 41.16,
+   "end": 41.36,
+   "outStart": 37.66,
+   "outEnd": 37.86,
+   "keyword": false
+  },
+  {
+   "text": "Faci",
+   "start": 41.44,
+   "end": 41.56,
+   "outStart": 37.94,
+   "outEnd": 38.06,
+   "keyword": false
+  },
+  {
+   "text": "lucrul",
+   "start": 41.56,
+   "end": 41.88,
+   "outStart": 38.06,
+   "outEnd": 38.38,
+   "keyword": false
+  },
+  {
+   "text": "ăsta.",
+   "start": 41.88,
+   "end": 42.16,
+   "outStart": 38.38,
+   "outEnd": 38.66,
+   "keyword": false
+  },
+  {
+   "text": "Întâi",
+   "start": 42.26,
+   "end": 42.64,
+   "outStart": 38.76,
+   "outEnd": 39.14,
+   "keyword": false
+  },
+  {
+   "text": "și",
+   "start": 42.64,
+   "end": 42.74,
+   "outStart": 39.14,
+   "outEnd": 39.24,
+   "keyword": false
+  },
+  {
+   "text": "întâi",
+   "start": 42.74,
+   "end": 43.02,
+   "outStart": 39.24,
+   "outEnd": 39.52,
+   "keyword": false
+  },
+  {
+   "text": "creezi",
+   "start": 43.02,
+   "end": 43.64,
+   "outStart": 39.52,
+   "outEnd": 40.14,
+   "keyword": false
+  },
+  {
+   "text": "promptul,",
+   "start": 43.64,
+   "end": 44.16,
+   "outStart": 40.14,
+   "outEnd": 40.66,
+   "keyword": true
+  },
+  {
+   "text": "îi",
+   "start": 44.2,
+   "end": 44.3,
+   "outStart": 40.7,
+   "outEnd": 40.8,
+   "keyword": false
+  },
+  {
+   "text": "trimiți",
+   "start": 44.3,
+   "end": 44.68,
+   "outStart": 40.8,
+   "outEnd": 41.18,
+   "keyword": false
+  },
+  {
+   "text": "acest",
+   "start": 44.68,
+   "end": 45.06,
+   "outStart": 41.18,
+   "outEnd": 41.56,
+   "keyword": false
+  },
+  {
+   "text": "prompt,",
+   "start": 45.06,
+   "end": 45.26,
+   "outStart": 41.56,
+   "outEnd": 41.76,
+   "keyword": false
+  },
+  {
+   "text": "această",
+   "start": 45.4,
+   "end": 45.76,
+   "outStart": 41.9,
+   "outEnd": 42.26,
+   "keyword": false
+  },
+  {
+   "text": "comandă,",
+   "start": 45.76,
+   "end": 46.26,
+   "outStart": 42.26,
+   "outEnd": 42.76,
+   "keyword": true
+  },
+  {
+   "text": "după",
+   "start": 46.3,
+   "end": 46.48,
+   "outStart": 42.8,
+   "outEnd": 42.98,
+   "keyword": false
+  },
+  {
+   "text": "care",
+   "start": 46.48,
+   "end": 46.74,
+   "outStart": 42.98,
+   "outEnd": 43.24,
+   "keyword": false
+  },
+  {
+   "text": "când",
+   "start": 46.74,
+   "end": 47.06,
+   "outStart": 43.24,
+   "outEnd": 43.56,
+   "keyword": false
+  },
+  {
+   "text": "a",
+   "start": 47.06,
+   "end": 47.12,
+   "outStart": 43.56,
+   "outEnd": 43.62,
+   "keyword": false
+  },
+  {
+   "text": "terminat,",
+   "start": 47.12,
+   "end": 47.64,
+   "outStart": 43.62,
+   "outEnd": 44.14,
+   "keyword": false
+  },
+  {
+   "text": "este",
+   "start": 47.64,
+   "end": 48.04,
+   "outStart": 44.14,
+   "outEnd": 44.34,
+   "keyword": false
+  },
+  {
+   "text": "de",
+   "start": 48.04,
+   "end": 48.26,
+   "outStart": 44.34,
+   "outEnd": 44.56,
+   "keyword": false
+  },
+  {
+   "text": "ajuns,",
+   "start": 48.26,
+   "end": 48.62,
+   "outStart": 44.56,
+   "outEnd": 44.92,
+   "keyword": false
+  },
+  {
+   "text": "el",
+   "start": 48.62,
+   "end": 48.78,
+   "outStart": 44.92,
+   "outEnd": 45.08,
+   "keyword": false
+  },
+  {
+   "text": "lucrează",
+   "start": 48.78,
+   "end": 49.92,
+   "outStart": 45.08,
+   "outEnd": 46.22,
+   "keyword": false
+  },
+  {
+   "text": "în",
+   "start": 49.92,
+   "end": 50.02,
+   "outStart": 46.22,
+   "outEnd": 46.32,
+   "keyword": false
+  },
+  {
+   "text": "artefact.",
+   "start": 50.02,
+   "end": 50.52,
+   "outStart": 46.32,
+   "outEnd": 46.82,
+   "keyword": true
+  },
+  {
+   "text": "Când",
+   "start": 50.52,
+   "end": 51.22,
+   "outStart": 46.82,
+   "outEnd": 47.12,
+   "keyword": false
+  },
+  {
+   "text": "a",
+   "start": 51.22,
+   "end": 51.32,
+   "outStart": 47.12,
+   "outEnd": 47.22,
+   "keyword": false
+  },
+  {
+   "text": "terminat,",
+   "start": 51.32,
+   "end": 51.76,
+   "outStart": 47.22,
+   "outEnd": 47.66,
+   "keyword": false
+  },
+  {
+   "text": "faci",
+   "start": 51.76,
+   "end": 52.02,
+   "outStart": 47.66,
+   "outEnd": 47.92,
+   "keyword": false
+  },
+  {
+   "text": "click",
+   "start": 52.02,
+   "end": 52.14,
+   "outStart": 47.92,
+   "outEnd": 48.04,
+   "keyword": false
+  },
+  {
+   "text": "pe",
+   "start": 52.14,
+   "end": 52.26,
+   "outStart": 48.04,
+   "outEnd": 48.16,
+   "keyword": false
+  },
+  {
+   "text": "cele",
+   "start": 52.26,
+   "end": 52.42,
+   "outStart": 48.16,
+   "outEnd": 48.32,
+   "keyword": false
+  },
+  {
+   "text": "trei",
+   "start": 52.42,
+   "end": 52.66,
+   "outStart": 48.32,
+   "outEnd": 48.56,
+   "keyword": false
+  },
+  {
+   "text": "butoane",
+   "start": 52.66,
+   "end": 53.12,
+   "outStart": 48.56,
+   "outEnd": 49.02,
+   "keyword": false
+  },
+  {
+   "text": "și",
+   "start": 53.12,
+   "end": 53.84,
+   "outStart": 49.02,
+   "outEnd": 49.34,
+   "keyword": false
+  },
+  {
+   "text": "apeși",
+   "start": 53.84,
+   "end": 54.54,
+   "outStart": 49.34,
+   "outEnd": 50.04,
+   "keyword": false
+  },
+  {
+   "text": "pe",
+   "start": 54.54,
+   "end": 54.58,
+   "outStart": 50.04,
+   "outEnd": 50.08,
+   "keyword": false
+  },
+  {
+   "text": "Install",
+   "start": 54.58,
+   "end": 55.12,
+   "outStart": 50.08,
+   "outEnd": 50.62,
+   "keyword": true
+  },
+  {
+   "text": "App.",
+   "start": 55.12,
+   "end": 55.54,
+   "outStart": 50.62,
+   "outEnd": 51.04,
+   "keyword": true
+  },
+  {
+   "text": "Creează",
+   "start": 56.0,
+   "end": 56.44,
+   "outStart": 51.167,
+   "outEnd": 51.607,
+   "keyword": false
+  },
+  {
+   "text": "app,",
+   "start": 56.44,
+   "end": 56.58,
+   "outStart": 51.607,
+   "outEnd": 51.747,
+   "keyword": false
+  },
+  {
+   "text": "install",
+   "start": 56.78,
+   "end": 57.14,
+   "outStart": 51.947,
+   "outEnd": 52.307,
+   "keyword": false
+  },
+  {
+   "text": "app.",
+   "start": 57.14,
+   "end": 57.4,
+   "outStart": 52.307,
+   "outEnd": 52.567,
+   "keyword": false
+  },
+  {
+   "text": "Este",
+   "start": 57.68,
+   "end": 57.92,
+   "outStart": 52.847,
+   "outEnd": 53.087,
+   "keyword": false
+  },
+  {
+   "text": "foarte,",
+   "start": 57.92,
+   "end": 58.22,
+   "outStart": 53.087,
+   "outEnd": 53.387,
+   "keyword": false
+  },
+  {
+   "text": "foarte",
+   "start": 58.28,
+   "end": 58.48,
+   "outStart": 53.447,
+   "outEnd": 53.647,
+   "keyword": false
+  },
+  {
+   "text": "simplu",
+   "start": 58.48,
+   "end": 59.12,
+   "outStart": 53.647,
+   "outEnd": 54.287,
+   "keyword": true
+  },
+  {
+   "text": "într-adevăr,",
+   "start": 59.12,
+   "end": 59.56,
+   "outStart": 54.287,
+   "outEnd": 54.727,
+   "keyword": false
+  },
+  {
+   "text": "și",
+   "start": 59.56,
+   "end": 59.66,
+   "outStart": 54.727,
+   "outEnd": 54.827,
+   "keyword": false
+  },
+  {
+   "text": "pentru",
+   "start": 59.66,
+   "end": 59.84,
+   "outStart": 54.827,
+   "outEnd": 55.007,
+   "keyword": false
+  },
+  {
+   "text": "un",
+   "start": 59.84,
+   "end": 59.96,
+   "outStart": 55.007,
+   "outEnd": 55.127,
+   "keyword": false
+  },
+  {
+   "text": "copil",
+   "start": 59.96,
+   "end": 60.28,
+   "outStart": 55.127,
+   "outEnd": 55.447,
+   "keyword": true
+  },
+  {
+   "text": "de",
+   "start": 60.28,
+   "end": 60.38,
+   "outStart": 55.447,
+   "outEnd": 55.547,
+   "keyword": false
+  },
+  {
+   "text": "5",
+   "start": 60.38,
+   "end": 60.76,
+   "outStart": 55.547,
+   "outEnd": 55.927,
+   "keyword": false
+  },
+  {
+   "text": "ani.",
+   "start": 60.76,
+   "end": 61.02,
+   "outStart": 55.927,
+   "outEnd": 56.187,
+   "keyword": false
+  },
+  {
+   "text": "Vreau",
+   "start": 61.22,
+   "end": 61.52,
+   "outStart": 56.367,
+   "outEnd": 56.52,
+   "keyword": false
+  },
+  {
+   "text": "să",
+   "start": 61.52,
+   "end": 61.6,
+   "outStart": 56.52,
+   "outEnd": 56.6,
+   "keyword": false
+  },
+  {
+   "text": "te",
+   "start": 61.6,
+   "end": 61.66,
+   "outStart": 56.6,
+   "outEnd": 56.66,
+   "keyword": false
+  },
+  {
+   "text": "întorci",
+   "start": 61.66,
+   "end": 61.88,
+   "outStart": 56.66,
+   "outEnd": 56.88,
+   "keyword": false
+  },
+  {
+   "text": "în",
+   "start": 61.88,
+   "end": 62.0,
+   "outStart": 56.88,
+   "outEnd": 57.0,
+   "keyword": false
+  },
+  {
+   "text": "comentarii",
+   "start": 62.0,
+   "end": 62.48,
+   "outStart": 57.0,
+   "outEnd": 57.48,
+   "keyword": true
+  },
+  {
+   "text": "să",
+   "start": 62.48,
+   "end": 62.6,
+   "outStart": 57.48,
+   "outEnd": 57.6,
+   "keyword": false
+  },
+  {
+   "text": "îmi",
+   "start": 62.6,
+   "end": 62.78,
+   "outStart": 57.6,
+   "outEnd": 57.78,
+   "keyword": false
+  },
+  {
+   "text": "spui",
+   "start": 62.78,
+   "end": 63.08,
+   "outStart": 57.78,
+   "outEnd": 58.08,
+   "keyword": false
+  },
+  {
+   "text": "ce",
+   "start": 63.08,
+   "end": 63.16,
+   "outStart": 58.08,
+   "outEnd": 58.16,
+   "keyword": false
+  },
+  {
+   "text": "ai",
+   "start": 63.16,
+   "end": 63.28,
+   "outStart": 58.16,
+   "outEnd": 58.28,
+   "keyword": false
+  },
+  {
+   "text": "realizat",
+   "start": 63.28,
+   "end": 63.86,
+   "outStart": 58.28,
+   "outEnd": 58.86,
+   "keyword": false
+  },
+  {
+   "text": "și",
+   "start": 63.86,
+   "end": 64.06,
+   "outStart": 58.86,
+   "outEnd": 59.06,
+   "keyword": false
+  },
+  {
+   "text": "ce",
+   "start": 64.06,
+   "end": 64.22,
+   "outStart": 59.06,
+   "outEnd": 59.22,
+   "keyword": false
+  },
+  {
+   "text": "idei",
+   "start": 64.22,
+   "end": 64.54,
+   "outStart": 59.22,
+   "outEnd": 59.54,
+   "keyword": true
+  },
+  {
+   "text": "de",
+   "start": 64.54,
+   "end": 64.6,
+   "outStart": 59.54,
+   "outEnd": 59.6,
+   "keyword": false
+  },
+  {
+   "text": "aplicație",
+   "start": 64.6,
+   "end": 65.1,
+   "outStart": 59.6,
+   "outEnd": 60.1,
+   "keyword": false
+  },
+  {
+   "text": "ai",
+   "start": 65.1,
+   "end": 65.2,
+   "outStart": 60.1,
+   "outEnd": 60.2,
+   "keyword": false
+  },
+  {
+   "text": "tu.",
+   "start": 65.2,
+   "end": 65.34,
+   "outStart": 60.2,
+   "outEnd": 60.34,
+   "keyword": false
+  },
+  {
+   "text": "Nu",
+   "start": 67.74,
+   "end": 68.18,
+   "outStart": 60.4,
+   "outEnd": 60.513,
+   "keyword": false
+  },
+  {
+   "text": "uita,",
+   "start": 68.18,
+   "end": 68.5,
+   "outStart": 60.513,
+   "outEnd": 60.833,
+   "keyword": false
+  },
+  {
+   "text": "fii",
+   "start": 68.58,
+   "end": 68.96,
+   "outStart": 60.913,
+   "outEnd": 61.293,
+   "keyword": false
+  },
+  {
+   "text": "digital,",
+   "start": 68.96,
+   "end": 69.3,
+   "outStart": 61.293,
+   "outEnd": 61.633,
+   "keyword": true
+  },
+  {
+   "text": "fii",
+   "start": 69.5,
+   "end": 69.96,
+   "outStart": 61.833,
+   "outEnd": 62.093,
+   "keyword": false
+  },
+  {
+   "text": "geo,",
+   "start": 69.96,
+   "end": 70.14,
+   "outStart": 62.093,
+   "outEnd": 62.273,
+   "keyword": true
+  },
+  {
+   "text": "fii",
+   "start": 70.32,
+   "end": 70.6,
+   "outStart": 62.453,
+   "outEnd": 62.733,
+   "keyword": false
+  },
+  {
+   "text": "deșteaptă,",
+   "start": 70.6,
+   "end": 71.185,
+   "outStart": 62.733,
+   "outEnd": 63.318,
+   "keyword": true
+  },
+  {
+   "text": "te",
+   "start": 71.185,
+   "end": 71.38,
+   "outStart": 63.318,
+   "outEnd": 63.513,
+   "keyword": false
+  },
+  {
+   "text": "române!",
+   "start": 71.38,
+   "end": 72.32,
+   "outStart": 63.513,
+   "outEnd": 64.453,
+   "keyword": false
+  }
+ ]
+}
