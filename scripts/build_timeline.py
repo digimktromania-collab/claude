@@ -280,7 +280,6 @@ removed = sum(e - s for s, e in cuts)
 lines = [f"# Timeline — Claude Apps reel", "",
          f"- Durată sursă: 72.6s → durată finală: **{TOTAL / FPS:.2f}s** ({TOTAL} cadre @ {FPS} fps)",
          f"- Jump cuts: **{len(SEG) - 1}** tăieturi, {removed:.2f}s de pauze eliminate", ""]
-open(os.path.join(ROOT, "timeline.tmp.json"), "w").write(json.dumps(dict(S=S, sfx=sfx, zooms=zooms, total=TOTAL / FPS,
                                                                          cuts=len(SEG) - 1, removed=removed), ensure_ascii=False))
 print('fog', fog)
 print(f"segments={len(SEG)} total={TOTAL / FPS:.2f}s removed={removed:.2f}s captions={len(captions)}")
