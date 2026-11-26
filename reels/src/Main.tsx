@@ -2,7 +2,8 @@ import React from "react";
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
 import { Captions } from "./Captions";
 import { Cuts } from "./Cuts";
-import { FPS, TL } from "./lib";
+import { FaceFog, faceAt } from "./FaceFog";
+import { ACCENT, FPS, TL } from "./lib";
 import { Scenes } from "./Scenes";
 import { Sound } from "./Sound";
 
@@ -23,15 +24,35 @@ const useZoom = () => {
   return (1 + (z.scale - 1) * k) * creep;
 };
 
+const ProgressBar: React.FC = () => {
+  const frame = useCurrentFrame();
+  const p = frame / (TL.durationInFrames - 1);
+  return (
+    <div style={{ position: "absolute", left: 0, top: 0, height: 10, width: `${p * 100}%`, background: ACCENT, boxShadow: `0 0 18px ${ACCENT}` }} />
+  );
+};
+
 export const Main: React.FC = () => {
+  const frame = useCurrentFrame();
   const zoom = useZoom();
+  const [cx, cy] = faceAt(frame);
   return (
     <AbsoluteFill style={{ backgroundColor: "#000" }}>
-      <AbsoluteFill style={{ transform: `scale(${zoom})`, transformOrigin: "50% 38%" }}>
+      <AbsoluteFill
+        style={{
+          transform: `scale(${zoom})`,
+          transformOrigin: `${cx}px ${cy}px`,
+          filter: "contrast(1.07) saturate(1.12) brightness(1.02)",
+        }}
+      >
         <Cuts />
+        <FaceFog />
       </AbsoluteFill>
+      {/* vignette */}
+      <AbsoluteFill style={{ background: "radial-gradient(ellipse 80% 70% at 50% 45%, transparent 60%, rgba(0,0,0,0.38) 100%)" }} />
       <Scenes />
       <Captions />
+      <ProgressBar />
       <Sound />
     </AbsoluteFill>
   );

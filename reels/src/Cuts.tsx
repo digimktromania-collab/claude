@@ -6,26 +6,26 @@ import { AbsoluteFill, staticFile } from "remotion";
 const SRC = staticFile("voice.mp4");
 const STYLE: React.CSSProperties = { width: "100%", height: "100%", objectFit: "cover" };
 
-export const Cuts: React.FC = () => {
+export const Cuts: React.FC<{ muted?: boolean }> = ({ muted = false }) => {
   return (
     <AbsoluteFill>
-      <Video name="Clip 1 (0.30s–7.27s)" src={SRC} trimBefore={9} from={0} durationInFrames={209} style={STYLE} />
-      <Video name="Clip 2 (7.50s–8.10s)" src={SRC} trimBefore={225} from={209} durationInFrames={18} style={STYLE} />
-      <Video name="Clip 3 (8.80s–13.63s)" src={SRC} trimBefore={264} from={227} durationInFrames={145} style={STYLE} />
-      <Video name="Clip 4 (13.90s–14.87s)" src={SRC} trimBefore={417} from={372} durationInFrames={29} style={STYLE} />
-      <Video name="Clip 5 (15.17s–17.00s)" src={SRC} trimBefore={455} from={401} durationInFrames={55} style={STYLE} />
-      <Video name="Clip 6 (17.43s–20.30s)" src={SRC} trimBefore={523} from={456} durationInFrames={86} style={STYLE} />
-      <Video name="Clip 7 (20.60s–25.73s)" src={SRC} trimBefore={618} from={542} durationInFrames={154} style={STYLE} />
-      <Video name="Clip 8 (25.97s–32.80s)" src={SRC} trimBefore={779} from={696} durationInFrames={205} style={STYLE} />
-      <Video name="Clip 9 (33.33s–40.60s)" src={SRC} trimBefore={1000} from={901} durationInFrames={218} style={STYLE} />
-      <Video name="Clip 10 (40.80s–47.70s)" src={SRC} trimBefore={1224} from={1119} durationInFrames={207} style={STYLE} />
-      <Video name="Clip 11 (47.90s–50.70s)" src={SRC} trimBefore={1437} from={1326} durationInFrames={84} style={STYLE} />
-      <Video name="Clip 12 (51.10s–53.33s)" src={SRC} trimBefore={1533} from={1410} durationInFrames={67} style={STYLE} />
-      <Video name="Clip 13 (53.73s–55.60s)" src={SRC} trimBefore={1612} from={1477} durationInFrames={56} style={STYLE} />
-      <Video name="Clip 14 (55.93s–61.20s)" src={SRC} trimBefore={1678} from={1533} durationInFrames={158} style={STYLE} />
-      <Video name="Clip 15 (61.37s–65.40s)" src={SRC} trimBefore={1841} from={1691} durationInFrames={121} style={STYLE} />
-      <Video name="Clip 16 (68.07s–69.63s)" src={SRC} trimBefore={2042} from={1812} durationInFrames={47} style={STYLE} />
-      <Video name="Clip 17 (69.83s–72.60s)" src={SRC} trimBefore={2095} from={1859} durationInFrames={83} style={STYLE} />
+      <Video name="Clip 1 (0.30s–7.27s)" src={SRC} trimBefore={9} from={0} durationInFrames={209} style={STYLE} muted={muted} />
+      <Video name="Clip 2 (7.50s–8.10s)" src={SRC} trimBefore={225} from={209} durationInFrames={18} style={STYLE} muted={muted} />
+      <Video name="Clip 3 (8.80s–13.63s)" src={SRC} trimBefore={264} from={227} durationInFrames={145} style={STYLE} muted={muted} />
+      <Video name="Clip 4 (13.90s–14.87s)" src={SRC} trimBefore={417} from={372} durationInFrames={29} style={STYLE} muted={muted} />
+      <Video name="Clip 5 (15.17s–17.00s)" src={SRC} trimBefore={455} from={401} durationInFrames={55} style={STYLE} muted={muted} />
+      <Video name="Clip 6 (17.43s–20.30s)" src={SRC} trimBefore={523} from={456} durationInFrames={86} style={STYLE} muted={muted} />
+      <Video name="Clip 7 (20.60s–25.73s)" src={SRC} trimBefore={618} from={542} durationInFrames={154} style={STYLE} muted={muted} />
+      <Video name="Clip 8 (25.97s–32.80s)" src={SRC} trimBefore={779} from={696} durationInFrames={205} style={STYLE} muted={muted} />
+      <Video name="Clip 9 (33.33s–40.60s)" src={SRC} trimBefore={1000} from={901} durationInFrames={218} style={STYLE} muted={muted} />
+      <Video name="Clip 10 (40.80s–47.70s)" src={SRC} trimBefore={1224} from={1119} durationInFrames={207} style={STYLE} muted={muted} />
+      <Video name="Clip 11 (47.90s–50.70s)" src={SRC} trimBefore={1437} from={1326} durationInFrames={84} style={STYLE} muted={muted} />
+      <Video name="Clip 12 (51.10s–53.33s)" src={SRC} trimBefore={1533} from={1410} durationInFrames={67} style={STYLE} muted={muted} />
+      <Video name="Clip 13 (53.73s–55.60s)" src={SRC} trimBefore={1612} from={1477} durationInFrames={56} style={STYLE} muted={muted} />
+      <Video name="Clip 14 (55.93s–61.20s)" src={SRC} trimBefore={1678} from={1533} durationInFrames={158} style={STYLE} muted={muted} />
+      <Video name="Clip 15 (61.37s–65.40s)" src={SRC} trimBefore={1841} from={1691} durationInFrames={121} style={STYLE} muted={muted} />
+      <Video name="Clip 16 (68.07s–69.63s)" src={SRC} trimBefore={2042} from={1812} durationInFrames={47} style={STYLE} muted={muted} />
+      <Video name="Clip 17 (69.83s–72.60s)" src={SRC} trimBefore={2095} from={1859} durationInFrames={83} style={STYLE} muted={muted} />
     </AbsoluteFill>
   );
 };

@@ -19,7 +19,8 @@ export const Captions: React.FC = () => {
   const { fps } = useVideoConfig();
   const t = frame / fps;
   const page = TL.captions.find((c) => t >= c.start && t < c.end);
-  if (!page) return null;
+  // the outro has its own kinetic typography
+  if (!page || t >= TL.scenes.outro.start) return null;
 
   const pageIn = spring({
     frame: frame - Math.round(page.start * fps),

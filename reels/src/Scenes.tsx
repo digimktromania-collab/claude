@@ -497,6 +497,131 @@ const CTA: React.FC = () => {
   );
 };
 
+/* ----------------------------------------------- 2 IDEI (gap filler) */
+const Ideas: React.FC = () => {
+  const { frame, fps, v } = useInOut(6);
+  const two = pop(frame, rel(S.ideas.two, S.ideas.start), fps);
+  return (
+    <TopZone top={200}>
+      <div style={{ ...slideUp(v), display: "flex", alignItems: "center", gap: 30 }}>
+        <div style={{ width: 230, height: 230, borderRadius: 115, background: ACCENT, boxShadow: cardShadow, display: "flex", alignItems: "center", justifyContent: "center", transform: `scale(${0.4 + 0.6 * two}) rotate(${(1 - two) * -90}deg)` }}>
+          <span style={{ fontFamily: SANS, fontWeight: 900, fontSize: 170, color: "#fff", lineHeight: 1 }}>{two > 0.05 ? "2" : "?"}</span>
+        </div>
+        <Card style={{ padding: "26px 36px" }}>
+          <div style={{ fontWeight: 900, fontSize: 60, lineHeight: 1 }}>idei de</div>
+          <div style={{ fontFamily: SERIF, fontStyle: "italic", fontSize: 82, lineHeight: 1.05, color: ACCENT }}>aplicații</div>
+          <div style={{ fontWeight: 800, fontSize: 36, color: "#8A8478", opacity: two }}>foarte simple ✓</div>
+        </Card>
+      </div>
+    </TopZone>
+  );
+};
+
+/* ------------------------------------------- 1 PROMPT (prompt bar) */
+const OnePrompt: React.FC = () => {
+  const { frame, fps, v } = useInOut(4);
+  const send = pop(frame, 9, fps);
+  return (
+    <TopZone top={260}>
+      <div style={{ ...slideUp(v, 100), width: "100%" }}>
+        <div style={{ background: "#fff", borderRadius: 999, boxShadow: cardShadow, padding: "22px 22px 22px 46px", display: "flex", alignItems: "center", gap: 20, border: `4px solid ${ACCENT}` }}>
+          <span style={{ flex: 1, fontFamily: SANS, fontWeight: 700, fontSize: 50, color: INK }}>
+            un <span style={{ fontFamily: SERIF, fontStyle: "italic", fontWeight: 400, fontSize: 62 }}>simplu</span> prompt
+          </span>
+          <div style={{ width: 92, height: 92, borderRadius: 46, background: ACCENT, color: "#fff", fontSize: 54, fontWeight: 900, display: "flex", alignItems: "center", justifyContent: "center", transform: `scale(${0.7 + 0.3 * send})` }}>↑</div>
+        </div>
+      </div>
+    </TopZone>
+  );
+};
+
+/* -------------------------------- CREEAZĂ APP → INSTALL APP (chips) */
+const AppFlow: React.FC = () => {
+  const { frame, fps, v } = useInOut(5);
+  const a = pop(frame, 0, fps);
+  const b = pop(frame, rel(S.appflow.install, S.appflow.start), fps);
+  const chip = (txt: string, s: number, hot: boolean) => (
+    <div style={{ transform: `scale(${s})`, background: hot ? ACCENT : PAPER, color: hot ? "#fff" : INK, fontFamily: SANS, fontWeight: 900, fontSize: 54, padding: "24px 38px", borderRadius: 28, boxShadow: cardShadow }}>{txt}</div>
+  );
+  return (
+    <TopZone top={250}>
+      <div style={{ display: "flex", alignItems: "center", gap: 20, opacity: v }}>
+        {chip("Creează app", a, false)}
+        <span style={{ fontSize: 70, color: "#fff", fontWeight: 900, opacity: b, textShadow: "0 3px 12px rgba(0,0,0,.6)" }}>→</span>
+        {chip("Install app", b, true)}
+      </div>
+    </TopZone>
+  );
+};
+
+/* ------------------------------------------- FOARTE SIMPLU · 5 ANI */
+const Kid: React.FC = () => {
+  const { frame, fps, v } = useInOut(5);
+  const stamp = pop(frame, rel(S.kid.simplu, S.kid.start), fps);
+  const kid = pop(frame, rel(S.kid.kid, S.kid.start), fps);
+  return (
+    <TopZone top={210}>
+      <div style={{ opacity: v, display: "flex", flexDirection: "column", alignItems: "center", gap: 26 }}>
+        <div style={{ transform: `scale(${2 - stamp}) rotate(-6deg)`, opacity: stamp, border: "8px solid #fff", borderRadius: 24, padding: "8px 34px 16px", color: "#fff", fontFamily: SANS, fontWeight: 900, fontSize: 92, letterSpacing: -2, textShadow: "0 4px 18px rgba(0,0,0,.55)", boxShadow: "0 6px 30px rgba(0,0,0,.35)" }}>
+          FOARTE <span style={{ fontFamily: SERIF, fontStyle: "italic", fontWeight: 400, fontSize: 112, letterSpacing: 0 }}>simplu</span>
+        </div>
+        <Card style={{ display: "flex", alignItems: "center", gap: 20, padding: "20px 36px", transform: `scale(${kid})` }}>
+          <span style={{ fontSize: 84 }}>👶</span>
+          <span style={{ fontWeight: 900, fontSize: 54 }}>
+            chiar și la <span style={{ color: ACCENT }}>5 ani</span>
+          </span>
+        </Card>
+      </div>
+    </TopZone>
+  );
+};
+
+/* ---------------------------------------- OUTRO: Deșteaptă-te, române! */
+const Outro: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps, durationInFrames } = useVideoConfig();
+  const st = S.outro.start;
+  const l1 = pop(frame, rel(S.outro.digital, st) - 3, fps);
+  const l2 = pop(frame, rel(S.outro.geo, st) - 3, fps);
+  const wakeAt = rel(S.outro.wake, st);
+  const wake = spring({ frame: frame - wakeAt, fps, config: { damping: 12, stiffness: 160 } });
+  const ro = spring({ frame: frame - rel(S.outro.ro, st), fps, config: { damping: 9, stiffness: 180, mass: 0.7 } });
+  const band = interpolate(frame, [wakeAt, wakeAt + 12], [0, 1], { ...clamp, easing: Easing.out(Easing.cubic) });
+  const shade = interpolate(frame, [0, 8], [0, 1], clamp);
+  const lift = interpolate(wake, [0, 1], [0, -40]);
+  const cta = pop(frame, 4, fps);
+  const end = interpolate(frame, [durationInFrames - 6, durationInFrames], [1, 0.0], clamp);
+  const line: React.CSSProperties = { fontFamily: SANS, fontWeight: 900, fontSize: 96, color: "#fff", letterSpacing: -2, textShadow: "0 5px 22px rgba(0,0,0,.6)", lineHeight: 1.05 };
+  return (
+    <AbsoluteFill style={{ opacity: end }}>
+      <AbsoluteFill style={{ background: "linear-gradient(180deg, rgba(0,0,0,0) 38%, rgba(0,0,0,0.78) 78%)", opacity: shade }} />
+      {/* small persistent CTA */}
+      <div style={{ position: "absolute", top: 170, left: 0, right: 0, display: "flex", justifyContent: "center", transform: `scale(${cta})` }}>
+        <div style={{ background: PAPER, borderRadius: 999, padding: "16px 34px", boxShadow: cardShadow, fontFamily: SANS, fontWeight: 900, fontSize: 44, color: INK }}>
+          💬 Scrie <span style={{ background: ACCENT, color: "#fff", padding: "0 12px", borderRadius: 12 }}>APP</span> în comentarii
+        </div>
+      </div>
+      <div style={{ position: "absolute", left: 80, right: 80, top: 1040, display: "flex", flexDirection: "column", alignItems: "center", gap: 6, transform: `translateY(${lift}px)` }}>
+        <div style={{ ...line, opacity: l1, transform: `translateY(${(1 - l1) * 50}px) scale(${1 - 0.18 * wake})` }}>
+          Fii <span style={{ fontFamily: SERIF, fontStyle: "italic", fontWeight: 400, fontSize: 116, color: ACCENT }}>digital.</span>
+        </div>
+        <div style={{ ...line, opacity: l2, transform: `translateY(${(1 - l2) * 50}px) scale(${1 - 0.18 * wake})` }}>
+          Fii <span style={{ fontFamily: SERIF, fontStyle: "italic", fontWeight: 400, fontSize: 116, color: ACCENT }}>GEO.</span>
+        </div>
+        <div style={{ height: 24 }} />
+        <div style={{ ...line, fontSize: 118, opacity: wake, transform: `translateY(${(1 - wake) * 80}px)` }}>Deșteaptă-te,</div>
+        <div style={{ ...line, fontFamily: SERIF, fontStyle: "italic", fontWeight: 400, fontSize: 168, letterSpacing: 0, opacity: ro, transform: `scale(${0.6 + 0.4 * ro})` }}>române!</div>
+        {/* tricolour band */}
+        <div style={{ display: "flex", width: 560 * band, height: 18, borderRadius: 9, overflow: "hidden", marginTop: 8, boxShadow: "0 6px 20px rgba(0,0,0,.4)" }}>
+          <div style={{ flex: 1, background: "#002B7F" }} />
+          <div style={{ flex: 1, background: "#FCD116" }} />
+          <div style={{ flex: 1, background: "#CE1126" }} />
+        </div>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
 export const Scenes: React.FC = () => {
   return (
     <AbsoluteFill>
@@ -527,8 +652,23 @@ export const Scenes: React.FC = () => {
       <At name="Install as app" start={S.install.start} end={S.install.end}>
         <Install />
       </At>
+      <At name="2 idei" start={S.ideas.start} end={S.ideas.end}>
+        <Ideas />
+      </At>
+      <At name="1 prompt" start={S.oneprompt.start} end={S.oneprompt.end}>
+        <OnePrompt />
+      </At>
+      <At name="Creează app → Install app" start={S.appflow.start} end={S.appflow.end}>
+        <AppFlow />
+      </At>
+      <At name="Foarte simplu · 5 ani" start={S.kid.start} end={S.kid.end}>
+        <Kid />
+      </At>
       <At name="CTA" start={S.cta.start} end={S.cta.end}>
         <CTA />
+      </At>
+      <At name="OUTRO Deșteaptă-te, române!" start={S.outro.start} end={S.outro.end}>
+        <Outro />
       </At>
     </AbsoluteFill>
   );

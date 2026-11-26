@@ -312,7 +312,7 @@
    "end": 11.88,
    "outStart": 10.247,
    "outEnd": 10.647,
-   "keyword": false
+   "keyword": true
   },
   {
    "text": "două",
@@ -360,7 +360,7 @@
    "end": 14.64,
    "outStart": 12.94,
    "outEnd": 13.14,
-   "keyword": false
+   "keyword": true
   },
   {
    "text": "Pentru",
@@ -600,7 +600,7 @@
    "end": 25.62,
    "outStart": 22.567,
    "outEnd": 23.087,
-   "keyword": false
+   "keyword": true
   },
   {
    "text": "Creează",
@@ -1651,28 +1651,12 @@
    "keyword": true
   },
   {
-   "text": "fii",
+   "text": "Deșteaptă-te,",
    "start": 70.32,
-   "end": 70.6,
-   "outStart": 62.453,
-   "outEnd": 62.733,
-   "keyword": false
-  },
-  {
-   "text": "deșteaptă,",
-   "start": 70.6,
-   "end": 71.185,
-   "outStart": 62.733,
-   "outEnd": 63.318,
-   "keyword": true
-  },
-  {
-   "text": "te",
-   "start": 71.185,
    "end": 71.38,
-   "outStart": 63.318,
+   "outStart": 62.453,
    "outEnd": 63.513,
-   "keyword": false
+   "keyword": true
   },
   {
    "text": "române!",
@@ -1680,7 +1664,7 @@
    "end": 72.32,
    "outStart": 63.513,
    "outEnd": 64.453,
-   "keyword": false
+   "keyword": true
   }
  ]
 }
