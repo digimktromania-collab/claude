@@ -1,0 +1,698 @@
+{
+ "language": "ro",
+ "words": [
+  {
+   "text": "Iată",
+   "start": 0.0,
+   "end": 0.56,
+   "outStart": 0.0,
+   "outEnd": 0.293
+  },
+  {
+   "text": "ce",
+   "start": 0.56,
+   "end": 0.66,
+   "outStart": 0.293,
+   "outEnd": 0.393
+  },
+  {
+   "text": "poți",
+   "start": 0.66,
+   "end": 0.9,
+   "outStart": 0.393,
+   "outEnd": 0.633
+  },
+  {
+   "text": "face",
+   "start": 0.9,
+   "end": 1.22,
+   "outStart": 0.633,
+   "outEnd": 0.953
+  },
+  {
+   "text": "cu",
+   "start": 1.22,
+   "end": 1.42,
+   "outStart": 0.953,
+   "outEnd": 1.153
+  },
+  {
+   "text": "o",
+   "start": 1.42,
+   "end": 1.5,
+   "outStart": 1.153,
+   "outEnd": 1.233
+  },
+  {
+   "text": "simplă",
+   "start": 1.5,
+   "end": 1.84,
+   "outStart": 1.233,
+   "outEnd": 1.573
+  },
+  {
+   "text": "poză",
+   "start": 1.84,
+   "end": 2.36,
+   "outStart": 1.573,
+   "outEnd": 2.093
+  },
+  {
+   "text": "în",
+   "start": 2.36,
+   "end": 2.58,
+   "outStart": 2.093,
+   "outEnd": 2.313
+  },
+  {
+   "text": "Claude,",
+   "start": 2.58,
+   "end": 2.96,
+   "outStart": 2.313,
+   "outEnd": 2.693
+  },
+  {
+   "text": "fără",
+   "start": 3.1,
+   "end": 3.58,
+   "outStart": 2.833,
+   "outEnd": 3.313
+  },
+  {
+   "text": "să",
+   "start": 3.58,
+   "end": 3.68,
+   "outStart": 3.313,
+   "outEnd": 3.413
+  },
+  {
+   "text": "ai",
+   "start": 3.68,
+   "end": 3.82,
+   "outStart": 3.413,
+   "outEnd": 3.553
+  },
+  {
+   "text": "microfoane",
+   "start": 3.82,
+   "end": 4.32,
+   "outStart": 3.553,
+   "outEnd": 4.053
+  },
+  {
+   "text": "scumpe",
+   "start": 4.32,
+   "end": 4.76,
+   "outStart": 4.053,
+   "outEnd": 4.493
+  },
+  {
+   "text": "sau",
+   "start": 4.76,
+   "end": 5.0,
+   "outStart": 4.493,
+   "outEnd": 4.733
+  },
+  {
+   "text": "cameră",
+   "start": 5.0,
+   "end": 5.52,
+   "outStart": 4.733,
+   "outEnd": 5.253
+  },
+  {
+   "text": "scumpă.",
+   "start": 5.52,
+   "end": 5.9,
+   "outStart": 5.253,
+   "outEnd": 5.633
+  },
+  {
+   "text": "Doar",
+   "start": 6.16,
+   "end": 6.74,
+   "outStart": 5.893,
+   "outEnd": 6.473
+  },
+  {
+   "text": "îi",
+   "start": 6.74,
+   "end": 6.86,
+   "outStart": 6.473,
+   "outEnd": 6.593
+  },
+  {
+   "text": "spun",
+   "start": 6.86,
+   "end": 7.06,
+   "outStart": 6.593,
+   "outEnd": 6.793
+  },
+  {
+   "text": "ce",
+   "start": 7.06,
+   "end": 7.42,
+   "outStart": 6.793,
+   "outEnd": 7.153
+  },
+  {
+   "text": "vreau.",
+   "start": 7.42,
+   "end": 7.76,
+   "outStart": 7.153,
+   "outEnd": 7.493
+  },
+  {
+   "text": "Îi",
+   "start": 8.18,
+   "end": 8.76,
+   "outStart": 7.567,
+   "outEnd": 7.727
+  },
+  {
+   "text": "spun,",
+   "start": 8.76,
+   "end": 9.0,
+   "outStart": 7.727,
+   "outEnd": 7.967
+  },
+  {
+   "text": "schimbă-mi",
+   "start": 9.14,
+   "end": 9.7,
+   "outStart": 8.107,
+   "outEnd": 8.667
+  },
+  {
+   "text": "fundalul",
+   "start": 9.7,
+   "end": 10.24,
+   "outStart": 8.667,
+   "outEnd": 9.207
+  },
+  {
+   "text": "într-o",
+   "start": 10.24,
+   "end": 10.58,
+   "outStart": 9.207,
+   "outEnd": 9.547
+  },
+  {
+   "text": "culoare",
+   "start": 10.58,
+   "end": 10.92,
+   "outStart": 9.547,
+   "outEnd": 9.887
+  },
+  {
+   "text": "roz",
+   "start": 10.92,
+   "end": 11.14,
+   "outStart": 9.887,
+   "outEnd": 10.107
+  },
+  {
+   "text": "pudrat.",
+   "start": 11.14,
+   "end": 11.64,
+   "outStart": 10.107,
+   "outEnd": 10.607
+  },
+  {
+   "text": "Și",
+   "start": 11.98,
+   "end": 12.56,
+   "outStart": 10.667,
+   "outEnd": 11.127
+  },
+  {
+   "text": "gata!",
+   "start": 12.56,
+   "end": 12.86,
+   "outStart": 11.127,
+   "outEnd": 11.427
+  },
+  {
+   "text": "Apoi",
+   "start": 13.86,
+   "end": 14.44,
+   "outStart": 11.767,
+   "outEnd": 12.307
+  },
+  {
+   "text": "îi",
+   "start": 14.44,
+   "end": 14.6,
+   "outStart": 12.307,
+   "outEnd": 12.467
+  },
+  {
+   "text": "spun,",
+   "start": 14.6,
+   "end": 14.8,
+   "outStart": 12.467,
+   "outEnd": 12.667
+  },
+  {
+   "text": "vreau",
+   "start": 14.98,
+   "end": 15.22,
+   "outStart": 12.847,
+   "outEnd": 13.087
+  },
+  {
+   "text": "să",
+   "start": 15.22,
+   "end": 15.36,
+   "outStart": 13.087,
+   "outEnd": 13.227
+  },
+  {
+   "text": "crească",
+   "start": 15.36,
+   "end": 15.98,
+   "outStart": 13.227,
+   "outEnd": 13.847
+  },
+  {
+   "text": "câțiva",
+   "start": 15.98,
+   "end": 16.56,
+   "outStart": 13.847,
+   "outEnd": 14.427
+  },
+  {
+   "text": "copaci",
+   "start": 16.56,
+   "end": 17.16,
+   "outStart": 14.427,
+   "outEnd": 15.027
+  },
+  {
+   "text": "în",
+   "start": 17.16,
+   "end": 17.36,
+   "outStart": 15.027,
+   "outEnd": 15.227
+  },
+  {
+   "text": "capul",
+   "start": 17.36,
+   "end": 17.7,
+   "outStart": 15.227,
+   "outEnd": 15.567
+  },
+  {
+   "text": "meu.",
+   "start": 17.7,
+   "end": 17.94,
+   "outStart": 15.567,
+   "outEnd": 15.807
+  },
+  {
+   "text": "Și",
+   "start": 18.14,
+   "end": 18.62,
+   "outStart": 16.007,
+   "outEnd": 16.487
+  },
+  {
+   "text": "gata!",
+   "start": 18.62,
+   "end": 18.94,
+   "outStart": 16.487,
+   "outEnd": 16.807
+  },
+  {
+   "text": "După,",
+   "start": 19.68,
+   "end": 20.26,
+   "outStart": 17.167,
+   "outEnd": 17.66
+  },
+  {
+   "text": "vreau",
+   "start": 20.28,
+   "end": 20.56,
+   "outStart": 17.68,
+   "outEnd": 17.96
+  },
+  {
+   "text": "să",
+   "start": 20.56,
+   "end": 20.68,
+   "outStart": 17.96,
+   "outEnd": 18.08
+  },
+  {
+   "text": "văd",
+   "start": 20.68,
+   "end": 20.88,
+   "outStart": 18.08,
+   "outEnd": 18.28
+  },
+  {
+   "text": "pe",
+   "start": 20.88,
+   "end": 21.02,
+   "outStart": 18.28,
+   "outEnd": 18.42
+  },
+  {
+   "text": "fundal",
+   "start": 21.02,
+   "end": 21.56,
+   "outStart": 18.42,
+   "outEnd": 18.96
+  },
+  {
+   "text": "postările",
+   "start": 21.56,
+   "end": 22.4,
+   "outStart": 18.96,
+   "outEnd": 19.8
+  },
+  {
+   "text": "mele",
+   "start": 22.4,
+   "end": 22.82,
+   "outStart": 19.8,
+   "outEnd": 20.22
+  },
+  {
+   "text": "în",
+   "start": 22.82,
+   "end": 23.02,
+   "outStart": 20.22,
+   "outEnd": 20.42
+  },
+  {
+   "text": "efect",
+   "start": 23.02,
+   "end": 23.32,
+   "outStart": 20.42,
+   "outEnd": 20.72
+  },
+  {
+   "text": "cascadă.",
+   "start": 23.32,
+   "end": 24.08,
+   "outStart": 20.72,
+   "outEnd": 21.48
+  },
+  {
+   "text": "Și",
+   "start": 24.1,
+   "end": 24.66,
+   "outStart": 21.5,
+   "outEnd": 21.76
+  },
+  {
+   "text": "gata!",
+   "start": 24.66,
+   "end": 25.18,
+   "outStart": 21.76,
+   "outEnd": 22.28
+  },
+  {
+   "text": "Acesta,",
+   "start": 26.08,
+   "end": 26.6,
+   "outStart": 22.633,
+   "outEnd": 23.1
+  },
+  {
+   "text": "bineînțeles,",
+   "start": 26.6,
+   "end": 27.12,
+   "outStart": 23.1,
+   "outEnd": 23.62
+  },
+  {
+   "text": "este",
+   "start": 27.18,
+   "end": 27.4,
+   "outStart": 23.68,
+   "outEnd": 23.9
+  },
+  {
+   "text": "un",
+   "start": 27.4,
+   "end": 27.62,
+   "outStart": 23.9,
+   "outEnd": 24.12
+  },
+  {
+   "text": "exemplu",
+   "start": 27.62,
+   "end": 28.1,
+   "outStart": 24.12,
+   "outEnd": 24.6
+  },
+  {
+   "text": "foarte",
+   "start": 28.1,
+   "end": 28.36,
+   "outStart": 24.6,
+   "outEnd": 24.86
+  },
+  {
+   "text": "simplu",
+   "start": 28.36,
+   "end": 28.98,
+   "outStart": 24.86,
+   "outEnd": 25.48
+  },
+  {
+   "text": "din",
+   "start": 28.98,
+   "end": 29.06,
+   "outStart": 25.48,
+   "outEnd": 25.56
+  },
+  {
+   "text": "ceea",
+   "start": 29.06,
+   "end": 29.34,
+   "outStart": 25.56,
+   "outEnd": 25.84
+  },
+  {
+   "text": "ce",
+   "start": 29.34,
+   "end": 29.38,
+   "outStart": 25.84,
+   "outEnd": 25.88
+  },
+  {
+   "text": "poți",
+   "start": 29.38,
+   "end": 29.66,
+   "outStart": 25.88,
+   "outEnd": 26.16
+  },
+  {
+   "text": "face",
+   "start": 29.66,
+   "end": 29.9,
+   "outStart": 26.16,
+   "outEnd": 26.4
+  },
+  {
+   "text": "acum",
+   "start": 29.9,
+   "end": 30.18,
+   "outStart": 26.4,
+   "outEnd": 26.68
+  },
+  {
+   "text": "cu",
+   "start": 30.18,
+   "end": 30.44,
+   "outStart": 26.68,
+   "outEnd": 26.94
+  },
+  {
+   "text": "Claude",
+   "start": 30.44,
+   "end": 30.88,
+   "outStart": 26.94,
+   "outEnd": 27.38
+  },
+  {
+   "text": "și",
+   "start": 30.88,
+   "end": 30.94,
+   "outStart": 27.38,
+   "outEnd": 27.44
+  },
+  {
+   "text": "cu",
+   "start": 30.94,
+   "end": 31.12,
+   "outStart": 27.44,
+   "outEnd": 27.62
+  },
+  {
+   "text": "AI",
+   "start": 31.12,
+   "end": 31.32,
+   "outStart": 27.62,
+   "outEnd": 27.82
+  },
+  {
+   "text": "în",
+   "start": 31.32,
+   "end": 31.54,
+   "outStart": 27.82,
+   "outEnd": 28.04
+  },
+  {
+   "text": "general.",
+   "start": 31.54,
+   "end": 31.86,
+   "outStart": 28.04,
+   "outEnd": 28.36
+  },
+  {
+   "text": "Dacă",
+   "start": 32.04,
+   "end": 32.5,
+   "outStart": 28.54,
+   "outEnd": 29.0
+  },
+  {
+   "text": "vrei",
+   "start": 32.5,
+   "end": 32.76,
+   "outStart": 29.0,
+   "outEnd": 29.26
+  },
+  {
+   "text": "să",
+   "start": 32.76,
+   "end": 32.88,
+   "outStart": 29.26,
+   "outEnd": 29.38
+  },
+  {
+   "text": "afli",
+   "start": 32.88,
+   "end": 33.16,
+   "outStart": 29.38,
+   "outEnd": 29.66
+  },
+  {
+   "text": "și",
+   "start": 33.16,
+   "end": 33.24,
+   "outStart": 29.66,
+   "outEnd": 29.74
+  },
+  {
+   "text": "să",
+   "start": 33.24,
+   "end": 33.42,
+   "outStart": 29.74,
+   "outEnd": 29.92
+  },
+  {
+   "text": "înțelegi,",
+   "start": 33.42,
+   "end": 34.16,
+   "outStart": 29.92,
+   "outEnd": 30.66
+  },
+  {
+   "text": "să",
+   "start": 34.16,
+   "end": 34.36,
+   "outStart": 30.66,
+   "outEnd": 30.86
+  },
+  {
+   "text": "înveți",
+   "start": 34.36,
+   "end": 34.84,
+   "outStart": 30.86,
+   "outEnd": 31.34
+  },
+  {
+   "text": "mai",
+   "start": 34.84,
+   "end": 35.1,
+   "outStart": 31.34,
+   "outEnd": 31.6
+  },
+  {
+   "text": "multe,",
+   "start": 35.1,
+   "end": 35.58,
+   "outStart": 31.6,
+   "outEnd": 32.08
+  },
+  {
+   "text": "atunci",
+   "start": 35.6,
+   "end": 35.96,
+   "outStart": 32.1,
+   "outEnd": 32.46
+  },
+  {
+   "text": "te",
+   "start": 35.96,
+   "end": 36.08,
+   "outStart": 32.46,
+   "outEnd": 32.58
+  },
+  {
+   "text": "aștept,",
+   "start": 36.08,
+   "end": 36.42,
+   "outStart": 32.58,
+   "outEnd": 32.92
+  },
+  {
+   "text": "bineînțeles,",
+   "start": 36.42,
+   "end": 37.0,
+   "outStart": 32.92,
+   "outEnd": 33.5
+  },
+  {
+   "text": "în",
+   "start": 37.04,
+   "end": 37.26,
+   "outStart": 33.54,
+   "outEnd": 33.76
+  },
+  {
+   "text": "Academia",
+   "start": 37.26,
+   "end": 38.0,
+   "outStart": 33.76,
+   "outEnd": 34.5
+  },
+  {
+   "text": "Digitală.",
+   "start": 38.0,
+   "end": 38.62,
+   "outStart": 34.5,
+   "outEnd": 35.12
+  },
+  {
+   "text": "Deșteaptă-te,",
+   "start": 38.62,
+   "end": 39.72,
+   "outStart": 35.12,
+   "outEnd": 36.22
+  },
+  {
+   "text": "Române!",
+   "start": 39.72,
+   "end": 40.32,
+   "outStart": 36.22,
+   "outEnd": 36.82
+  }
+ ]
+}

@@ -80,3 +80,27 @@ while pos < 2.95:
     k = lp(rng.standard_normal(int(SR * 0.02)), 0.45 + 0.2 * rng.random()) * np.exp(-t(0.02) * 260) * (0.6 + 0.4 * rng.random())
     place(ty, k, pos); pos += 0.055 + 0.06 * rng.random()
 save('typing.wav', ty)
+
+# ---------------- academia reel: transformation sounds ----------------
+# magic sparkle: shower of high random bell partials over a soft rising shimmer
+sp = np.zeros(int(SR * 1.6))
+for k in range(26):
+    f = 2000 + 4000 * rng.random(); at = 0.02 + 0.9 * (k / 26) + 0.04 * rng.random()
+    place(sp, tone(f, 0.5, 9 + 6 * rng.random(), 0.4 + 0.6 * rng.random()), at)
+d = 1.0; tt = t(d); sp[:len(tt)] += 0.35 * lp(rng.standard_normal(len(tt)), 0.3) * np.sin(np.pi * tt / d) * (tt / d)
+save('sparkle.wav', sp)
+# grow: quick rising marimba-like arpeggio + leafy rustle
+gr = np.zeros(int(SR * 1.5))
+for k, m in enumerate([60, 64, 67, 72, 76, 79]):
+    n = tone(mf2(m), 0.5, 10) + 0.5 * tone(mf2(m) * 4, 0.5, 30)
+    place(gr, n, k * 0.06)
+d = 0.9; tt = t(d); r = lp(rng.standard_normal(len(tt)), 0.55) - lp(rng.standard_normal(len(tt)), 0.1)
+place(gr, 0.25 * r * np.sin(np.pi * tt / d) * (0.6 + 0.4 * np.sin(2 * np.pi * 9 * tt)), 0.25)
+save('grow.wav', gr)
+# cascade: many short paper flutters, falling pitch, over 1.4s
+ca = np.zeros(int(SR * 1.8))
+for k in range(18):
+    at = 0.04 + 1.3 * (k / 18) ** 0.8; d = 0.12; tt = t(d)
+    fl = lp(rng.standard_normal(len(tt)), 0.25 + 0.3 * rng.random()) * np.sin(np.pi * tt / d) * (0.5 + 0.5 * rng.random())
+    place(ca, fl, at); place(ca, 0.25 * tone(900 - 30 * k, 0.08, 40), at + 0.02)
+save('cascade.wav', ca)

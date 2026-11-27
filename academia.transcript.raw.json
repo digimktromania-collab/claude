@@ -1,0 +1,623 @@
+{
+ "language": "ro",
+ "words": [
+  {
+   "text": "Iată",
+   "start": 0.0,
+   "end": 0.56,
+   "prob": 0.9
+  },
+  {
+   "text": "ce",
+   "start": 0.56,
+   "end": 0.66,
+   "prob": 1.0
+  },
+  {
+   "text": "poți",
+   "start": 0.66,
+   "end": 0.9,
+   "prob": 0.992
+  },
+  {
+   "text": "face",
+   "start": 0.9,
+   "end": 1.22,
+   "prob": 1.0
+  },
+  {
+   "text": "cu",
+   "start": 1.22,
+   "end": 1.42,
+   "prob": 0.999
+  },
+  {
+   "text": "o",
+   "start": 1.42,
+   "end": 1.5,
+   "prob": 1.0
+  },
+  {
+   "text": "simplă",
+   "start": 1.5,
+   "end": 1.84,
+   "prob": 1.0
+  },
+  {
+   "text": "poză",
+   "start": 1.84,
+   "end": 2.36,
+   "prob": 0.991
+  },
+  {
+   "text": "în",
+   "start": 2.36,
+   "end": 2.58,
+   "prob": 1.0
+  },
+  {
+   "text": "Claude,",
+   "start": 2.58,
+   "end": 2.96,
+   "prob": 0.501
+  },
+  {
+   "text": "fără",
+   "start": 3.1,
+   "end": 3.58,
+   "prob": 1.0
+  },
+  {
+   "text": "să",
+   "start": 3.58,
+   "end": 3.68,
+   "prob": 0.998
+  },
+  {
+   "text": "ai",
+   "start": 3.68,
+   "end": 3.82,
+   "prob": 1.0
+  },
+  {
+   "text": "microfoane",
+   "start": 3.82,
+   "end": 4.32,
+   "prob": 0.992
+  },
+  {
+   "text": "scumpe",
+   "start": 4.32,
+   "end": 4.76,
+   "prob": 0.999
+  },
+  {
+   "text": "sau",
+   "start": 4.76,
+   "end": 5.0,
+   "prob": 0.999
+  },
+  {
+   "text": "cameră",
+   "start": 5.0,
+   "end": 5.52,
+   "prob": 0.988
+  },
+  {
+   "text": "scumpă.",
+   "start": 5.52,
+   "end": 5.9,
+   "prob": 0.999
+  },
+  {
+   "text": "Doar",
+   "start": 6.16,
+   "end": 6.74,
+   "prob": 1.0
+  },
+  {
+   "text": "îi",
+   "start": 6.74,
+   "end": 6.86,
+   "prob": 1.0
+  },
+  {
+   "text": "spun",
+   "start": 6.86,
+   "end": 7.06,
+   "prob": 0.999
+  },
+  {
+   "text": "ce",
+   "start": 7.06,
+   "end": 7.42,
+   "prob": 1.0
+  },
+  {
+   "text": "vreau.",
+   "start": 7.42,
+   "end": 7.76,
+   "prob": 1.0
+  },
+  {
+   "text": "Îi",
+   "start": 8.18,
+   "end": 8.76,
+   "prob": 0.999
+  },
+  {
+   "text": "spun,",
+   "start": 8.76,
+   "end": 9.0,
+   "prob": 1.0
+  },
+  {
+   "text": "schimbăm",
+   "start": 9.14,
+   "end": 9.7,
+   "prob": 0.978
+  },
+  {
+   "text": "fundalul",
+   "start": 9.7,
+   "end": 10.24,
+   "prob": 0.998
+  },
+  {
+   "text": "într",
+   "start": 10.24,
+   "end": 10.48,
+   "prob": 1.0
+  },
+  {
+   "text": "-o",
+   "start": 10.48,
+   "end": 10.58,
+   "prob": 1.0
+  },
+  {
+   "text": "culoare",
+   "start": 10.58,
+   "end": 10.92,
+   "prob": 1.0
+  },
+  {
+   "text": "roz",
+   "start": 10.92,
+   "end": 11.14,
+   "prob": 0.991
+  },
+  {
+   "text": "pudrat.",
+   "start": 11.14,
+   "end": 11.64,
+   "prob": 0.997
+  },
+  {
+   "text": "Și",
+   "start": 11.98,
+   "end": 12.56,
+   "prob": 0.999
+  },
+  {
+   "text": "gata!",
+   "start": 12.56,
+   "end": 12.86,
+   "prob": 1.0
+  },
+  {
+   "text": "Apoi",
+   "start": 13.86,
+   "end": 14.44,
+   "prob": 1.0
+  },
+  {
+   "text": "îi",
+   "start": 14.44,
+   "end": 14.6,
+   "prob": 0.999
+  },
+  {
+   "text": "spun,",
+   "start": 14.6,
+   "end": 14.8,
+   "prob": 1.0
+  },
+  {
+   "text": "vreau",
+   "start": 14.98,
+   "end": 15.22,
+   "prob": 1.0
+  },
+  {
+   "text": "să",
+   "start": 15.22,
+   "end": 15.36,
+   "prob": 1.0
+  },
+  {
+   "text": "crească",
+   "start": 15.36,
+   "end": 15.98,
+   "prob": 0.999
+  },
+  {
+   "text": "câțiva",
+   "start": 15.98,
+   "end": 16.56,
+   "prob": 1.0
+  },
+  {
+   "text": "copaci",
+   "start": 16.56,
+   "end": 17.16,
+   "prob": 0.995
+  },
+  {
+   "text": "în",
+   "start": 17.16,
+   "end": 17.36,
+   "prob": 1.0
+  },
+  {
+   "text": "capul",
+   "start": 17.36,
+   "end": 17.7,
+   "prob": 1.0
+  },
+  {
+   "text": "meu.",
+   "start": 17.7,
+   "end": 17.94,
+   "prob": 1.0
+  },
+  {
+   "text": "Și",
+   "start": 18.14,
+   "end": 18.62,
+   "prob": 1.0
+  },
+  {
+   "text": "gata!",
+   "start": 18.62,
+   "end": 18.94,
+   "prob": 1.0
+  },
+  {
+   "text": "După,",
+   "start": 19.68,
+   "end": 20.26,
+   "prob": 1.0
+  },
+  {
+   "text": "vreau",
+   "start": 20.28,
+   "end": 20.56,
+   "prob": 1.0
+  },
+  {
+   "text": "să",
+   "start": 20.56,
+   "end": 20.68,
+   "prob": 1.0
+  },
+  {
+   "text": "văd",
+   "start": 20.68,
+   "end": 20.88,
+   "prob": 1.0
+  },
+  {
+   "text": "pe",
+   "start": 20.88,
+   "end": 21.02,
+   "prob": 1.0
+  },
+  {
+   "text": "fundal",
+   "start": 21.02,
+   "end": 21.56,
+   "prob": 0.999
+  },
+  {
+   "text": "postările",
+   "start": 21.56,
+   "end": 22.4,
+   "prob": 0.962
+  },
+  {
+   "text": "mele",
+   "start": 22.4,
+   "end": 22.82,
+   "prob": 1.0
+  },
+  {
+   "text": "în",
+   "start": 22.82,
+   "end": 23.02,
+   "prob": 0.998
+  },
+  {
+   "text": "efect",
+   "start": 23.02,
+   "end": 23.32,
+   "prob": 1.0
+  },
+  {
+   "text": "cascadă.",
+   "start": 23.32,
+   "end": 24.08,
+   "prob": 0.988
+  },
+  {
+   "text": "Și",
+   "start": 24.1,
+   "end": 24.66,
+   "prob": 1.0
+  },
+  {
+   "text": "gata!",
+   "start": 24.66,
+   "end": 25.18,
+   "prob": 1.0
+  },
+  {
+   "text": "Acesta,",
+   "start": 26.08,
+   "end": 26.6,
+   "prob": 0.707
+  },
+  {
+   "text": "bineînțeles,",
+   "start": 26.6,
+   "end": 27.12,
+   "prob": 0.985
+  },
+  {
+   "text": "este",
+   "start": 27.18,
+   "end": 27.4,
+   "prob": 0.998
+  },
+  {
+   "text": "un",
+   "start": 27.4,
+   "end": 27.62,
+   "prob": 0.999
+  },
+  {
+   "text": "exemplu",
+   "start": 27.62,
+   "end": 28.1,
+   "prob": 1.0
+  },
+  {
+   "text": "foarte",
+   "start": 28.1,
+   "end": 28.36,
+   "prob": 0.999
+  },
+  {
+   "text": "simplu",
+   "start": 28.36,
+   "end": 28.98,
+   "prob": 1.0
+  },
+  {
+   "text": "din",
+   "start": 28.98,
+   "end": 29.06,
+   "prob": 0.802
+  },
+  {
+   "text": "ceea",
+   "start": 29.06,
+   "end": 29.34,
+   "prob": 1.0
+  },
+  {
+   "text": "ce",
+   "start": 29.34,
+   "end": 29.38,
+   "prob": 1.0
+  },
+  {
+   "text": "poți",
+   "start": 29.38,
+   "end": 29.66,
+   "prob": 0.995
+  },
+  {
+   "text": "face",
+   "start": 29.66,
+   "end": 29.9,
+   "prob": 0.995
+  },
+  {
+   "text": "acum",
+   "start": 29.9,
+   "end": 30.18,
+   "prob": 0.993
+  },
+  {
+   "text": "cu",
+   "start": 30.18,
+   "end": 30.44,
+   "prob": 0.991
+  },
+  {
+   "text": "Claude",
+   "start": 30.44,
+   "end": 30.88,
+   "prob": 0.503
+  },
+  {
+   "text": "și",
+   "start": 30.88,
+   "end": 30.94,
+   "prob": 0.989
+  },
+  {
+   "text": "cu",
+   "start": 30.94,
+   "end": 31.12,
+   "prob": 0.988
+  },
+  {
+   "text": "AI",
+   "start": 31.12,
+   "end": 31.32,
+   "prob": 0.609
+  },
+  {
+   "text": "în",
+   "start": 31.32,
+   "end": 31.54,
+   "prob": 0.91
+  },
+  {
+   "text": "general.",
+   "start": 31.54,
+   "end": 31.86,
+   "prob": 1.0
+  },
+  {
+   "text": "Dacă",
+   "start": 32.04,
+   "end": 32.5,
+   "prob": 0.998
+  },
+  {
+   "text": "vrei",
+   "start": 32.5,
+   "end": 32.76,
+   "prob": 1.0
+  },
+  {
+   "text": "să",
+   "start": 32.76,
+   "end": 32.88,
+   "prob": 0.997
+  },
+  {
+   "text": "afli",
+   "start": 32.88,
+   "end": 33.16,
+   "prob": 1.0
+  },
+  {
+   "text": "și",
+   "start": 33.16,
+   "end": 33.24,
+   "prob": 0.987
+  },
+  {
+   "text": "să",
+   "start": 33.24,
+   "end": 33.42,
+   "prob": 0.998
+  },
+  {
+   "text": "înțelegi,",
+   "start": 33.42,
+   "end": 34.16,
+   "prob": 0.999
+  },
+  {
+   "text": "să",
+   "start": 34.16,
+   "end": 34.36,
+   "prob": 0.999
+  },
+  {
+   "text": "înveți",
+   "start": 34.36,
+   "end": 34.84,
+   "prob": 0.999
+  },
+  {
+   "text": "mai",
+   "start": 34.84,
+   "end": 35.1,
+   "prob": 0.998
+  },
+  {
+   "text": "multe,",
+   "start": 35.1,
+   "end": 35.58,
+   "prob": 0.999
+  },
+  {
+   "text": "atunci",
+   "start": 35.6,
+   "end": 35.96,
+   "prob": 0.999
+  },
+  {
+   "text": "te",
+   "start": 35.96,
+   "end": 36.08,
+   "prob": 0.99
+  },
+  {
+   "text": "aștept,",
+   "start": 36.08,
+   "end": 36.42,
+   "prob": 0.888
+  },
+  {
+   "text": "bineînțeles,",
+   "start": 36.42,
+   "end": 37.0,
+   "prob": 1.0
+  },
+  {
+   "text": "în",
+   "start": 37.04,
+   "end": 37.26,
+   "prob": 0.998
+  },
+  {
+   "text": "Academia",
+   "start": 37.26,
+   "end": 38.0,
+   "prob": 0.995
+  },
+  {
+   "text": "Digitală.",
+   "start": 38.0,
+   "end": 38.62,
+   "prob": 0.995
+  },
+  {
+   "text": "Deci,",
+   "start": 38.62,
+   "end": 38.94,
+   "prob": 0.912
+  },
+  {
+   "text": "tap",
+   "start": 38.94,
+   "end": 39.14,
+   "prob": 0.582
+  },
+  {
+   "text": "-tă",
+   "start": 39.14,
+   "end": 39.5,
+   "prob": 0.775
+  },
+  {
+   "text": "-te,",
+   "start": 39.5,
+   "end": 39.72,
+   "prob": 0.984
+  },
+  {
+   "text": "român!",
+   "start": 39.72,
+   "end": 40.32,
+   "prob": 0.872
+  }
+ ]
+}
