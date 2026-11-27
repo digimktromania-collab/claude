@@ -62,7 +62,7 @@ const Cascade: React.FC = () => {
         // the first tiles fall in with a little acceleration, then the column flows steadily
         const dist = fr * c.speed + 0.5 * 0.9 * Math.min(fr, 18) ** 2;
         const tiles = [];
-        for (let k = 0; k < 9; k++) {
+        for (let k = 0; k < 40; k++) {
           const y = dist - TH - k * (TH + GAP) - 40;
           if (y < -TH - 20 || y > 1940) continue;
           const post = POSTS[(ci * 3 + k) % POSTS.length];
